@@ -73,15 +73,27 @@
                             "type": "text"
                         },
                         {
+                            "key": "ip_address",
+                            "value": "",
+                            "description": "Optional. The fixed IP address which will be used to send webhook requests instead of the IP address resolved through DNS",
+                            "type": "text"
+                        },
+                        {
                             "key": "max_connections",
                             "value": "",
-                            "description": "Optional. Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery, 1-100. Defaults to 40. Use lower values to limit the load on your bot\u2018s server, and higher values to increase your bot\u2019s throughput.",
+                            "description": "Optional. Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery, 1-100. Defaults to 40. Use lower values to limit the load on your bot's server, and higher values to increase your bot's throughput.",
                             "type": "text"
                         },
                         {
                             "key": "allowed_updates",
                             "value": "",
                             "description": "Optional. A JSON-serialized list of the update types you want your bot to receive. For example, specify [\u201cmessage\u201d, \u201cedited_channel_post\u201d, \u201ccallback_query\u201d] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all updates regardless of type (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the setWebhook, so unwanted updates may be received for a short period of time.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "drop_pending_updates",
+                            "value": "",
+                            "description": "Optional. Pass True to drop all pending updates",
                             "type": "text"
                         }
                     ]
@@ -99,7 +111,7 @@
                         "setWebhook"
                     ]
                 },
-                "description": "Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.\nIf you'd like to make sure that the Webhook request comes from Telegram, we recommend using a secret path in the URL, e.g. https://www.example.com/<token>. Since nobody else knows your bot\u2018s token, you can be pretty sure it\u2019s us."
+                "description": "Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success."
             }
         },
         {
@@ -108,7 +120,14 @@
                 "method": "POST",
                 "body": {
                     "mode": "formdata",
-                    "formdata": []
+                    "formdata": [
+                        {
+                            "key": "drop_pending_updates",
+                            "value": "",
+                            "description": "Optional. Pass True to drop all pending updates",
+                            "type": "text"
+                        }
+                    ]
                 },
                 "url": {
                     "raw": "https://api.telegram.org/bot{{token}}/deleteWebhook",
@@ -123,7 +142,7 @@
                         "deleteWebhook"
                     ]
                 },
-                "description": "Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success. Requires no parameters."
+                "description": "Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success."
             }
         },
         {
@@ -175,6 +194,54 @@
             }
         },
         {
+            "name": "logOut",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/logOut",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "logOut"
+                    ]
+                },
+                "description": "Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters."
+            }
+        },
+        {
+            "name": "close",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/close",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "close"
+                    ]
+                },
+                "description": "Use this method to close the bot instance before moving it from one local server to another. You need to delete the webhook before calling this method to ensure that the bot isn't launched again after server restart. The method will return error 429 in the first 10 minutes after the bot is launched. Returns True on success. Requires no parameters."
+            }
+        },
+        {
             "name": "sendMessage",
             "request": {
                 "method": "POST",
@@ -200,6 +267,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "entities",
+                            "value": "",
+                            "description": "Optional. List of special entities that appear in message text, which can be specified instead of parse_mode",
+                            "type": "text"
+                        },
+                        {
                             "key": "disable_web_page_preview",
                             "value": "",
                             "description": "Optional. Disables link previews for links in this message",
@@ -215,6 +288,12 @@
                             "key": "reply_to_message_id",
                             "value": "",
                             "description": "Optional. If the message is a reply, ID of the original message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
                             "type": "text"
                         },
                         {
@@ -291,6 +370,91 @@
             }
         },
         {
+            "name": "copyMessage",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat or username of the target channel (in the format @channelusername)",
+                            "type": "text"
+                        },
+                        {
+                            "key": "from_chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)",
+                            "type": "text"
+                        },
+                        {
+                            "key": "message_id",
+                            "value": "",
+                            "description": "Required. Message identifier in the chat specified in from_chat_id",
+                            "type": "text"
+                        },
+                        {
+                            "key": "caption",
+                            "value": "",
+                            "description": "Optional. New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept",
+                            "type": "text"
+                        },
+                        {
+                            "key": "parse_mode",
+                            "value": "",
+                            "description": "Optional. Mode for parsing entities in the new caption. See formatting options for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "caption_entities",
+                            "value": "",
+                            "description": "Optional. List of special entities that appear in the new caption, which can be specified instead of parse_mode",
+                            "type": "text"
+                        },
+                        {
+                            "key": "disable_notification",
+                            "value": "",
+                            "description": "Optional. Sends the message silently. Users will receive a notification with no sound.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "reply_to_message_id",
+                            "value": "",
+                            "description": "Optional. If the message is a reply, ID of the original message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
+                            "type": "text"
+                        },
+                        {
+                            "key": "reply_markup",
+                            "value": "",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/copyMessage",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "copyMessage"
+                    ]
+                },
+                "description": "Use this method to copy messages of any kind. The method is analogous to the method forwardMessages, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success."
+            }
+        },
+        {
             "name": "sendPhoto",
             "request": {
                 "method": "POST",
@@ -322,6 +486,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "caption_entities",
+                            "value": "",
+                            "description": "Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode",
+                            "type": "text"
+                        },
+                        {
                             "key": "disable_notification",
                             "value": "",
                             "description": "Optional. Sends the message silently. Users will receive a notification with no sound.",
@@ -331,6 +501,12 @@
                             "key": "reply_to_message_id",
                             "value": "",
                             "description": "Optional. If the message is a reply, ID of the original message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
                             "type": "text"
                         },
                         {
@@ -389,6 +565,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "caption_entities",
+                            "value": "",
+                            "description": "Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode",
+                            "type": "text"
+                        },
+                        {
                             "key": "duration",
                             "value": "",
                             "description": "Optional. Duration of the audio in seconds",
@@ -409,7 +591,7 @@
                         {
                             "key": "thumb",
                             "value": "",
-                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail\u2018s width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can\u2019t be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files \u00bb",
+                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files \u00bb",
                             "type": "text"
                         },
                         {
@@ -422,6 +604,12 @@
                             "key": "reply_to_message_id",
                             "value": "",
                             "description": "Optional. If the message is a reply, ID of the original message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
                             "type": "text"
                         },
                         {
@@ -445,7 +633,7 @@
                         "sendAudio"
                     ]
                 },
-                "description": "Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.\nFor sending voice messages, use the sendVoice method instead."
+                "description": "Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future."
             }
         },
         {
@@ -470,7 +658,7 @@
                         {
                             "key": "thumb",
                             "value": "",
-                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail\u2018s width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can\u2019t be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files \u00bb",
+                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files \u00bb",
                             "type": "text"
                         },
                         {
@@ -486,6 +674,18 @@
                             "type": "text"
                         },
                         {
+                            "key": "caption_entities",
+                            "value": "",
+                            "description": "Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode",
+                            "type": "text"
+                        },
+                        {
+                            "key": "disable_content_type_detection",
+                            "value": "",
+                            "description": "Optional. Disables automatic server-side content type detection for files uploaded using multipart/form-data",
+                            "type": "text"
+                        },
+                        {
                             "key": "disable_notification",
                             "value": "",
                             "description": "Optional. Sends the message silently. Users will receive a notification with no sound.",
@@ -495,6 +695,12 @@
                             "key": "reply_to_message_id",
                             "value": "",
                             "description": "Optional. If the message is a reply, ID of the original message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
                             "type": "text"
                         },
                         {
@@ -561,7 +767,7 @@
                         {
                             "key": "thumb",
                             "value": "",
-                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail\u2018s width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can\u2019t be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files \u00bb",
+                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files \u00bb",
                             "type": "text"
                         },
                         {
@@ -574,6 +780,12 @@
                             "key": "parse_mode",
                             "value": "",
                             "description": "Optional. Mode for parsing entities in the video caption. See formatting options for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "caption_entities",
+                            "value": "",
+                            "description": "Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode",
                             "type": "text"
                         },
                         {
@@ -592,6 +804,12 @@
                             "key": "reply_to_message_id",
                             "value": "",
                             "description": "Optional. If the message is a reply, ID of the original message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
                             "type": "text"
                         },
                         {
@@ -658,7 +876,7 @@
                         {
                             "key": "thumb",
                             "value": "",
-                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail\u2018s width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can\u2019t be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files \u00bb",
+                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files \u00bb",
                             "type": "text"
                         },
                         {
@@ -674,6 +892,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "caption_entities",
+                            "value": "",
+                            "description": "Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode",
+                            "type": "text"
+                        },
+                        {
                             "key": "disable_notification",
                             "value": "",
                             "description": "Optional. Sends the message silently. Users will receive a notification with no sound.",
@@ -683,6 +907,12 @@
                             "key": "reply_to_message_id",
                             "value": "",
                             "description": "Optional. If the message is a reply, ID of the original message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
                             "type": "text"
                         },
                         {
@@ -741,6 +971,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "caption_entities",
+                            "value": "",
+                            "description": "Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode",
+                            "type": "text"
+                        },
+                        {
                             "key": "duration",
                             "value": "",
                             "description": "Optional. Duration of the voice message in seconds",
@@ -756,6 +992,12 @@
                             "key": "reply_to_message_id",
                             "value": "",
                             "description": "Optional. If the message is a reply, ID of the original message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
                             "type": "text"
                         },
                         {
@@ -816,7 +1058,7 @@
                         {
                             "key": "thumb",
                             "value": "",
-                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail\u2018s width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can\u2019t be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files \u00bb",
+                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files \u00bb",
                             "type": "text"
                         },
                         {
@@ -829,6 +1071,12 @@
                             "key": "reply_to_message_id",
                             "value": "",
                             "description": "Optional. If the message is a reply, ID of the original message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
                             "type": "text"
                         },
                         {
@@ -871,19 +1119,25 @@
                         {
                             "key": "media",
                             "value": "",
-                            "description": "Required. A JSON-serialized array describing photos and videos to be sent, must include 2-10 items",
+                            "description": "Required. A JSON-serialized array describing messages to be sent, must include 2-10 items",
                             "type": "text"
                         },
                         {
                             "key": "disable_notification",
                             "value": "",
-                            "description": "Optional. Sends the messages silently. Users will receive a notification with no sound.",
+                            "description": "Optional. Sends messages silently. Users will receive a notification with no sound.",
                             "type": "text"
                         },
                         {
                             "key": "reply_to_message_id",
                             "value": "",
                             "description": "Optional. If the messages are a reply, ID of the original message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
                             "type": "text"
                         }
                     ]
@@ -901,7 +1155,7 @@
                         "sendMediaGroup"
                     ]
                 },
-                "description": "Use this method to send a group of photos or videos as an album. On success, an array of the sent Messages is returned."
+                "description": "Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only group in an album with messages of the same type. On success, an array of Messages that were sent is returned."
             }
         },
         {
@@ -930,9 +1184,27 @@
                             "type": "text"
                         },
                         {
+                            "key": "horizontal_accuracy",
+                            "value": "",
+                            "description": "Optional. The radius of uncertainty for the location, measured in meters; 0-1500",
+                            "type": "text"
+                        },
+                        {
                             "key": "live_period",
                             "value": "",
                             "description": "Optional. Period in seconds for which the location will be updated (see Live Locations, should be between 60 and 86400.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "heading",
+                            "value": "",
+                            "description": "Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "proximity_alert_radius",
+                            "value": "",
+                            "description": "Optional. For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.",
                             "type": "text"
                         },
                         {
@@ -945,6 +1217,12 @@
                             "key": "reply_to_message_id",
                             "value": "",
                             "description": "Optional. If the message is a reply, ID of the original message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
                             "type": "text"
                         },
                         {
@@ -1009,6 +1287,24 @@
                             "type": "text"
                         },
                         {
+                            "key": "horizontal_accuracy",
+                            "value": "",
+                            "description": "Optional. The radius of uncertainty for the location, measured in meters; 0-1500",
+                            "type": "text"
+                        },
+                        {
+                            "key": "heading",
+                            "value": "",
+                            "description": "Optional. Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "proximity_alert_radius",
+                            "value": "",
+                            "description": "Optional. Maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.",
+                            "type": "text"
+                        },
+                        {
                             "key": "reply_markup",
                             "value": "",
                             "description": "Optional. A JSON-serialized object for a new inline keyboard.",
@@ -1029,7 +1325,7 @@
                         "editMessageLiveLocation"
                     ]
                 },
-                "description": "Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message was sent by the bot, the edited Message is returned, otherwise True is returned."
+                "description": "Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned."
             }
         },
         {
@@ -1131,6 +1427,18 @@
                             "type": "text"
                         },
                         {
+                            "key": "google_place_id",
+                            "value": "",
+                            "description": "Optional. Google Places identifier of the venue",
+                            "type": "text"
+                        },
+                        {
+                            "key": "google_place_type",
+                            "value": "",
+                            "description": "Optional. Google Places type of the venue. (See supported types.)",
+                            "type": "text"
+                        },
+                        {
                             "key": "disable_notification",
                             "value": "",
                             "description": "Optional. Sends the message silently. Users will receive a notification with no sound.",
@@ -1140,6 +1448,12 @@
                             "key": "reply_to_message_id",
                             "value": "",
                             "description": "Optional. If the message is a reply, ID of the original message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
                             "type": "text"
                         },
                         {
@@ -1216,6 +1530,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
+                            "type": "text"
+                        },
+                        {
                             "key": "reply_markup",
                             "value": "",
                             "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove keyboard or to force a reply from the user.",
@@ -1255,7 +1575,7 @@
                         {
                             "key": "question",
                             "value": "",
-                            "description": "Required. Poll question, 1-255 characters",
+                            "description": "Required. Poll question, 1-300 characters",
                             "type": "text"
                         },
                         {
@@ -1301,6 +1621,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "explanation_entities",
+                            "value": "",
+                            "description": "Optional. List of special entities that appear in the poll explanation, which can be specified instead of parse_mode",
+                            "type": "text"
+                        },
+                        {
                             "key": "open_period",
                             "value": "",
                             "description": "Optional. Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together with close_date.",
@@ -1328,6 +1654,12 @@
                             "key": "reply_to_message_id",
                             "value": "",
                             "description": "Optional. If the message is a reply, ID of the original message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
                             "type": "text"
                         },
                         {
@@ -1370,7 +1702,7 @@
                         {
                             "key": "emoji",
                             "value": "",
-                            "description": "Optional. Emoji on which the dice throw animation is based. Currently, must be one of \u201c\u201d or \u201c\u201d. Defauts to \u201c\u201d",
+                            "description": "Optional. Emoji on which the dice throw animation is based. Currently, must be one of \u201c\u201d, \u201c\u201d, \u201c\u201d, \u201c\u201d, or \u201c\u201d. Dice can have values 1-6 for \u201c\u201d and \u201c\u201d, values 1-5 for \u201c\u201d and \u201c\u201d, and values 1-64 for \u201c\u201d. Defaults to \u201c\u201d",
                             "type": "text"
                         },
                         {
@@ -1383,6 +1715,12 @@
                             "key": "reply_to_message_id",
                             "value": "",
                             "description": "Optional. If the message is a reply, ID of the original message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
                             "type": "text"
                         },
                         {
@@ -1406,7 +1744,7 @@
                         "sendDice"
                     ]
                 },
-                "description": "Use this method to send a dice, which will have a random value from 1 to 6. On success, the sent Message is returned. (Yes, we're aware of the \u201cproper\u201d singular of die. But it's awkward, and we decided to help it change. One dice at a time!)"
+                "description": "Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned."
             }
         },
         {
@@ -1443,7 +1781,7 @@
                         "sendChatAction"
                     ]
                 },
-                "description": "Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.\nWe only recommend using this method when a response from the bot will take a noticeable amount of time to arrive."
+                "description": "Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success."
             }
         },
         {
@@ -1581,6 +1919,12 @@
                             "value": "",
                             "description": "Required. Unique identifier of the target user",
                             "type": "text"
+                        },
+                        {
+                            "key": "only_if_banned",
+                            "value": "",
+                            "description": "Optional. Do nothing if the user is not banned",
+                            "type": "text"
                         }
                     ]
                 },
@@ -1597,7 +1941,7 @@
                         "unbanChatMember"
                     ]
                 },
-                "description": "Use this method to unban a previously kicked user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. Returns True on success."
+                "description": "Use this method to unban a previously kicked user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter only_if_banned. Returns True on success."
             }
         },
         {
@@ -1622,7 +1966,7 @@
                         {
                             "key": "permissions",
                             "value": "",
-                            "description": "Required. New user permissions",
+                            "description": "Required. A JSON-serialized object for new user permissions",
                             "type": "text"
                         },
                         {
@@ -1666,6 +2010,12 @@
                             "key": "user_id",
                             "value": "",
                             "description": "Required. Unique identifier of the target user",
+                            "type": "text"
+                        },
+                        {
+                            "key": "is_anonymous",
+                            "value": "",
+                            "description": "Optional. Pass True, if the administrator's presence in the chat is hidden",
                             "type": "text"
                         },
                         {
@@ -2009,7 +2359,7 @@
                         {
                             "key": "disable_notification",
                             "value": "",
-                            "description": "Optional. Pass True, if it is not necessary to send a notification to all chat members about the new pinned message. Notifications are always disabled in channels.",
+                            "description": "Optional. Pass True, if it is not necessary to send a notification to all chat members about the new pinned message. Notifications are always disabled in channels and private chats.",
                             "type": "text"
                         }
                     ]
@@ -2027,7 +2377,7 @@
                         "pinChatMessage"
                     ]
                 },
-                "description": "Use this method to pin a message in a group, a supergroup, or a channel. The bot must be an administrator in the chat for this to work and must have the \u2018can_pin_messages\u2019 admin right in the supergroup or \u2018can_edit_messages\u2019 admin right in the channel. Returns True on success."
+                "description": "Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' admin right in a supergroup or 'can_edit_messages' admin right in a channel. Returns True on success."
             }
         },
         {
@@ -2041,6 +2391,12 @@
                             "key": "chat_id",
                             "value": "",
                             "description": "Required. Unique identifier for the target chat or username of the target channel (in the format @channelusername)",
+                            "type": "text"
+                        },
+                        {
+                            "key": "message_id",
+                            "value": "",
+                            "description": "Optional. Identifier of a message to unpin. If not specified, the most recent pinned message (by sending date) will be unpinned.",
                             "type": "text"
                         }
                     ]
@@ -2058,7 +2414,38 @@
                         "unpinChatMessage"
                     ]
                 },
-                "description": "Use this method to unpin a message in a group, a supergroup, or a channel. The bot must be an administrator in the chat for this to work and must have the \u2018can_pin_messages\u2019 admin right in the supergroup or \u2018can_edit_messages\u2019 admin right in the channel. Returns True on success."
+                "description": "Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' admin right in a supergroup or 'can_edit_messages' admin right in a channel. Returns True on success."
+            }
+        },
+        {
+            "name": "unpinAllChatMessages",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat or username of the target channel (in the format @channelusername)",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/unpinAllChatMessages",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "unpinAllChatMessages"
+                    ]
+                },
+                "description": "Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' admin right in a supergroup or 'can_edit_messages' admin right in a channel. Returns True on success."
             }
         },
         {
@@ -2438,6 +2825,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "entities",
+                            "value": "",
+                            "description": "Optional. List of special entities that appear in message text, which can be specified instead of parse_mode",
+                            "type": "text"
+                        },
+                        {
                             "key": "disable_web_page_preview",
                             "value": "",
                             "description": "Optional. Disables link previews for links in this message",
@@ -2464,7 +2857,7 @@
                         "editMessageText"
                     ]
                 },
-                "description": "Use this method to edit text and game messages. On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned."
+                "description": "Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned."
             }
         },
         {
@@ -2505,6 +2898,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "caption_entities",
+                            "value": "",
+                            "description": "Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode",
+                            "type": "text"
+                        },
+                        {
                             "key": "reply_markup",
                             "value": "",
                             "description": "Optional. A JSON-serialized object for an inline keyboard.",
@@ -2525,7 +2924,7 @@
                         "editMessageCaption"
                     ]
                 },
-                "description": "Use this method to edit captions of messages. On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned."
+                "description": "Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned."
             }
         },
         {
@@ -2580,7 +2979,7 @@
                         "editMessageMedia"
                     ]
                 },
-                "description": "Use this method to edit animation, audio, document, photo, or video messages. If a message is a part of a message album, then it can be edited only to a photo or a video. Otherwise, message type can be changed arbitrarily. When inline message is edited, new file can't be uploaded. Use previously uploaded file via its file_id or specify a URL. On success, if the edited message was sent by the bot, the edited Message is returned, otherwise True is returned."
+                "description": "Use this method to edit animation, audio, document, photo, or video messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded. Use a previously uploaded file via its file_id or specify a URL. On success, if the edited message was sent by the bot, the edited Message is returned, otherwise True is returned."
             }
         },
         {
@@ -2629,7 +3028,7 @@
                         "editMessageReplyMarkup"
                     ]
                 },
-                "description": "Use this method to edit only the reply markup of messages. On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned."
+                "description": "Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned."
             }
         },
         {
@@ -2741,6 +3140,12 @@
                             "key": "reply_to_message_id",
                             "value": "",
                             "description": "Optional. If the message is a reply, ID of the original message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
                             "type": "text"
                         },
                         {
@@ -2930,7 +3335,7 @@
                         {
                             "key": "png_sticker",
                             "value": "",
-                            "description": "Required. PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files \u00bb",
+                            "description": "Optional. PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files \u00bb",
                             "type": "text"
                         },
                         {
@@ -3114,7 +3519,7 @@
                         {
                             "key": "next_offset",
                             "value": "",
-                            "description": "Optional. Pass the offset that a client should send in the next query with the same text to receive more results. Pass an empty string if there are no more results or if you don\u2018t support pagination. Offset length can\u2019t exceed 64 bytes.",
+                            "description": "Optional. Pass the offset that a client should send in the next query with the same text to receive more results. Pass an empty string if there are no more results or if you don't support pagination. Offset length can't exceed 64 bytes.",
                             "type": "text"
                         },
                         {
@@ -3126,7 +3531,7 @@
                         {
                             "key": "switch_pm_parameter",
                             "value": "",
-                            "description": "Optional. Deep-linking parameter for the /start message sent to the bot when user presses the switch button. 1-64 characters, only A-Z, a-z, 0-9, _ and - are allowed.Example: An inline bot that sends YouTube videos can ask the user to connect the bot to their YouTube account to adapt search results accordingly. To do this, it displays a \u2018Connect your YouTube account\u2019 button above the results, or even before showing any. The user presses the button, switches to a private chat with the bot and, in doing so, passes a start parameter that instructs the bot to return an oauth link. Once done, the bot can offer a switch_inline button so that the user can easily return to the chat where they wanted to use the bot's inline capabilities.",
+                            "description": "Optional. Deep-linking parameter for the /start message sent to the bot when user presses the switch button. 1-64 characters, only A-Z, a-z, 0-9, _ and - are allowed.Example: An inline bot that sends YouTube videos can ask the user to connect the bot to their YouTube account to adapt search results accordingly. To do this, it displays a 'Connect your YouTube account' button above the results, or even before showing any. The user presses the button, switches to a private chat with the bot and, in doing so, passes a start parameter that instructs the bot to return an oauth link. Once done, the bot can offer a switch_inline button so that the user can easily return to the chat where they wanted to use the bot's inline capabilities.",
                             "type": "text"
                         }
                     ]
@@ -3205,7 +3610,7 @@
                         {
                             "key": "provider_data",
                             "value": "",
-                            "description": "Optional. JSON-encoded data about the invoice, which will be shared with the payment provider. A detailed description of required fields should be provided by the payment provider.",
+                            "description": "Optional. A JSON-serialized data about the invoice, which will be shared with the payment provider. A detailed description of required fields should be provided by the payment provider.",
                             "type": "text"
                         },
                         {
@@ -3284,6 +3689,12 @@
                             "key": "reply_to_message_id",
                             "value": "",
                             "description": "Optional. If the message is a reply, ID of the original message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
                             "type": "text"
                         },
                         {
@@ -3436,7 +3847,7 @@
                         "setPassportDataErrors"
                     ]
                 },
-                "description": "Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.\nUse this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues."
+                "description": "Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success."
             }
         },
         {
@@ -3471,9 +3882,15 @@
                             "type": "text"
                         },
                         {
+                            "key": "allow_sending_without_reply",
+                            "value": "",
+                            "description": "Optional. Pass True, if the message should be sent even if the specified replied-to message is not found",
+                            "type": "text"
+                        },
+                        {
                             "key": "reply_markup",
                             "value": "",
-                            "description": "Optional. A JSON-serialized object for an inline keyboard. If empty, one \u2018Play game_title\u2019 button will be shown. If not empty, the first button must launch the game.",
+                            "description": "Optional. A JSON-serialized object for an inline keyboard. If empty, one 'Play game_title' button will be shown. If not empty, the first button must launch the game.",
                             "type": "text"
                         }
                     ]
