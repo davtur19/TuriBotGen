@@ -2,6 +2,8 @@
 
 //functions automatically generated from https://core.telegram.org/bots/api
 
+//generator source code https://github.com/davtur19/TuriBotGen
+
 namespace TuriBot;
 
 abstract class Api implements ApiInterface
@@ -37,8 +39,10 @@ return $this->Request('getUpdates', $args);
 public function setWebhook(
 	string $url, 
 	\CURLFile $certificate = null, 
+	string $ip_address = null, 
 	int $max_connections = null, 
-	array $allowed_updates = null
+	array $allowed_updates = null, 
+	bool $drop_pending_updates = null
 ) {
 $args = [
 	'url' => $url
@@ -48,12 +52,20 @@ if ($certificate !== null) {
 	$args['certificate'] = $certificate;
 }
 
+if ($ip_address !== null) {
+	$args['ip_address'] = $ip_address;
+}
+
 if ($max_connections !== null) {
 	$args['max_connections'] = $max_connections;
 }
 
 if ($allowed_updates !== null) {
 	$args['allowed_updates'] = json_encode($allowed_updates);
+}
+
+if ($drop_pending_updates !== null) {
+	$args['drop_pending_updates'] = $drop_pending_updates;
 }
 
 return $this->Request('setWebhook', $args);
@@ -74,13 +86,67 @@ public function getMe()
 return $this->Request('getMe', []);
 }
 
+public function logOut()
+{
+return $this->Request('logOut', []);
+}
+
+public function close()
+{
+return $this->Request('close', []);
+}
+
 public function sendMessage(
+	string $type = null, 
+	string $media = null, 
+	$thumb = null, 
+	string $caption = null, 
+	string $parse_mode = null, 
+	array $caption_entities = null, 
+	bool $disable_content_type_detection = null
+) {
+$args = [];
+
+if ($type !== null) {
+	$args['type'] = $type;
+}
+
+if ($media !== null) {
+	$args['media'] = $media;
+}
+
+if ($thumb !== null) {
+	$args['thumb'] = $thumb;
+}
+
+if ($caption !== null) {
+	$args['caption'] = $caption;
+}
+
+if ($parse_mode !== null) {
+	$args['parse_mode'] = $parse_mode;
+}
+
+if ($caption_entities !== null) {
+	$args['caption_entities'] = json_encode($caption_entities);
+}
+
+if ($disable_content_type_detection !== null) {
+	$args['disable_content_type_detection'] = $disable_content_type_detection;
+}
+
+return $this->Request('sendMessage', $args);
+}
+
+public function forwardMessage(
 	$chat_id, 
 	string $text, 
 	string $parse_mode = null, 
+	array $entities = null, 
 	bool $disable_web_page_preview = null, 
 	bool $disable_notification = null, 
 	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null, 
 	array $reply_markup = null
 ) {
 $args = [
@@ -90,6 +156,10 @@ $args = [
 
 if ($parse_mode !== null) {
 	$args['parse_mode'] = $parse_mode;
+}
+
+if ($entities !== null) {
+	$args['entities'] = json_encode($entities);
 }
 
 if ($disable_web_page_preview !== null) {
@@ -104,14 +174,18 @@ if ($reply_to_message_id !== null) {
 	$args['reply_to_message_id'] = $reply_to_message_id;
 }
 
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+}
+
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
-return $this->Request('sendMessage', $args);
+return $this->Request('forwardMessage', $args);
 }
 
-public function forwardMessage(
+public function copyMessage(
 	$chat_id, 
 	$from_chat_id, 
 	bool $disable_notification = null, 
@@ -127,16 +201,67 @@ if ($disable_notification !== null) {
 	$args['disable_notification'] = $disable_notification;
 }
 
-return $this->Request('forwardMessage', $args);
+return $this->Request('copyMessage', $args);
 }
 
 public function sendPhoto(
 	$chat_id, 
+	$from_chat_id, 
+	int $message_id, 
+	string $caption = null, 
+	string $parse_mode = null, 
+	array $caption_entities = null, 
+	bool $disable_notification = null, 
+	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null, 
+	array $reply_markup = null
+) {
+$args = [
+	'chat_id' => $chat_id,
+	'from_chat_id' => $from_chat_id,
+	'message_id' => $message_id
+];
+
+if ($caption !== null) {
+	$args['caption'] = $caption;
+}
+
+if ($parse_mode !== null) {
+	$args['parse_mode'] = $parse_mode;
+}
+
+if ($caption_entities !== null) {
+	$args['caption_entities'] = json_encode($caption_entities);
+}
+
+if ($disable_notification !== null) {
+	$args['disable_notification'] = $disable_notification;
+}
+
+if ($reply_to_message_id !== null) {
+	$args['reply_to_message_id'] = $reply_to_message_id;
+}
+
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+}
+
+if ($reply_markup !== null) {
+	$args['reply_markup'] = json_encode($reply_markup);
+}
+
+return $this->Request('sendPhoto', $args);
+}
+
+public function sendAudio(
+	$chat_id, 
 	$photo, 
 	string $caption = null, 
 	string $parse_mode = null, 
+	array $caption_entities = null, 
 	bool $disable_notification = null, 
 	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null, 
 	array $reply_markup = null
 ) {
 $args = [
@@ -152,6 +277,10 @@ if ($parse_mode !== null) {
 	$args['parse_mode'] = $parse_mode;
 }
 
+if ($caption_entities !== null) {
+	$args['caption_entities'] = json_encode($caption_entities);
+}
+
 if ($disable_notification !== null) {
 	$args['disable_notification'] = $disable_notification;
 }
@@ -160,24 +289,30 @@ if ($reply_to_message_id !== null) {
 	$args['reply_to_message_id'] = $reply_to_message_id;
 }
 
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+}
+
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
-return $this->Request('sendPhoto', $args);
+return $this->Request('sendAudio', $args);
 }
 
-public function sendAudio(
+public function sendDocument(
 	$chat_id, 
 	$audio, 
 	string $caption = null, 
 	string $parse_mode = null, 
+	array $caption_entities = null, 
 	int $duration = null, 
 	string $performer = null, 
 	string $title = null, 
 	$thumb = null, 
 	bool $disable_notification = null, 
 	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null, 
 	array $reply_markup = null
 ) {
 $args = [
@@ -191,6 +326,10 @@ if ($caption !== null) {
 
 if ($parse_mode !== null) {
 	$args['parse_mode'] = $parse_mode;
+}
+
+if ($caption_entities !== null) {
+	$args['caption_entities'] = json_encode($caption_entities);
 }
 
 if ($duration !== null) {
@@ -217,21 +356,28 @@ if ($reply_to_message_id !== null) {
 	$args['reply_to_message_id'] = $reply_to_message_id;
 }
 
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+}
+
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
-return $this->Request('sendAudio', $args);
+return $this->Request('sendDocument', $args);
 }
 
-public function sendDocument(
+public function sendVideo(
 	$chat_id, 
 	$document, 
 	$thumb = null, 
 	string $caption = null, 
 	string $parse_mode = null, 
+	array $caption_entities = null, 
+	bool $disable_content_type_detection = null, 
 	bool $disable_notification = null, 
 	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null, 
 	array $reply_markup = null
 ) {
 $args = [
@@ -251,6 +397,14 @@ if ($parse_mode !== null) {
 	$args['parse_mode'] = $parse_mode;
 }
 
+if ($caption_entities !== null) {
+	$args['caption_entities'] = json_encode($caption_entities);
+}
+
+if ($disable_content_type_detection !== null) {
+	$args['disable_content_type_detection'] = $disable_content_type_detection;
+}
+
 if ($disable_notification !== null) {
 	$args['disable_notification'] = $disable_notification;
 }
@@ -259,14 +413,18 @@ if ($reply_to_message_id !== null) {
 	$args['reply_to_message_id'] = $reply_to_message_id;
 }
 
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+}
+
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
-return $this->Request('sendDocument', $args);
+return $this->Request('sendVideo', $args);
 }
 
-public function sendVideo(
+public function sendAnimation(
 	$chat_id, 
 	$video, 
 	int $duration = null, 
@@ -275,9 +433,11 @@ public function sendVideo(
 	$thumb = null, 
 	string $caption = null, 
 	string $parse_mode = null, 
+	array $caption_entities = null, 
 	bool $supports_streaming = null, 
 	bool $disable_notification = null, 
 	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null, 
 	array $reply_markup = null
 ) {
 $args = [
@@ -309,6 +469,10 @@ if ($parse_mode !== null) {
 	$args['parse_mode'] = $parse_mode;
 }
 
+if ($caption_entities !== null) {
+	$args['caption_entities'] = json_encode($caption_entities);
+}
+
 if ($supports_streaming !== null) {
 	$args['supports_streaming'] = $supports_streaming;
 }
@@ -321,14 +485,18 @@ if ($reply_to_message_id !== null) {
 	$args['reply_to_message_id'] = $reply_to_message_id;
 }
 
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+}
+
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
-return $this->Request('sendVideo', $args);
+return $this->Request('sendAnimation', $args);
 }
 
-public function sendAnimation(
+public function sendVoice(
 	$chat_id, 
 	$animation, 
 	int $duration = null, 
@@ -337,8 +505,10 @@ public function sendAnimation(
 	$thumb = null, 
 	string $caption = null, 
 	string $parse_mode = null, 
+	array $caption_entities = null, 
 	bool $disable_notification = null, 
 	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null, 
 	array $reply_markup = null
 ) {
 $args = [
@@ -370,6 +540,10 @@ if ($parse_mode !== null) {
 	$args['parse_mode'] = $parse_mode;
 }
 
+if ($caption_entities !== null) {
+	$args['caption_entities'] = json_encode($caption_entities);
+}
+
 if ($disable_notification !== null) {
 	$args['disable_notification'] = $disable_notification;
 }
@@ -378,21 +552,27 @@ if ($reply_to_message_id !== null) {
 	$args['reply_to_message_id'] = $reply_to_message_id;
 }
 
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+}
+
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
-return $this->Request('sendAnimation', $args);
+return $this->Request('sendVoice', $args);
 }
 
-public function sendVoice(
+public function sendVideoNote(
 	$chat_id, 
 	$voice, 
 	string $caption = null, 
 	string $parse_mode = null, 
+	array $caption_entities = null, 
 	int $duration = null, 
 	bool $disable_notification = null, 
 	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null, 
 	array $reply_markup = null
 ) {
 $args = [
@@ -408,6 +588,10 @@ if ($parse_mode !== null) {
 	$args['parse_mode'] = $parse_mode;
 }
 
+if ($caption_entities !== null) {
+	$args['caption_entities'] = json_encode($caption_entities);
+}
+
 if ($duration !== null) {
 	$args['duration'] = $duration;
 }
@@ -420,14 +604,18 @@ if ($reply_to_message_id !== null) {
 	$args['reply_to_message_id'] = $reply_to_message_id;
 }
 
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+}
+
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
-return $this->Request('sendVoice', $args);
+return $this->Request('sendVideoNote', $args);
 }
 
-public function sendVideoNote(
+public function sendMediaGroup(
 	$chat_id, 
 	$video_note, 
 	int $duration = null, 
@@ -435,6 +623,7 @@ public function sendVideoNote(
 	$thumb = null, 
 	bool $disable_notification = null, 
 	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null, 
 	array $reply_markup = null
 ) {
 $args = [
@@ -462,18 +651,23 @@ if ($reply_to_message_id !== null) {
 	$args['reply_to_message_id'] = $reply_to_message_id;
 }
 
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+}
+
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
-return $this->Request('sendVideoNote', $args);
+return $this->Request('sendMediaGroup', $args);
 }
 
-public function sendMediaGroup(
+public function sendLocation(
 	$chat_id, 
 	array $media, 
 	bool $disable_notification = null, 
-	int $reply_to_message_id = null
+	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -488,16 +682,24 @@ if ($reply_to_message_id !== null) {
 	$args['reply_to_message_id'] = $reply_to_message_id;
 }
 
-return $this->Request('sendMediaGroup', $args);
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
 }
 
-public function sendLocation(
+return $this->Request('sendLocation', $args);
+}
+
+public function editMessageLiveLocation(
 	$chat_id, 
 	float $latitude, 
 	float $longitude, 
+	float $horizontal_accuracy = null, 
 	int $live_period = null, 
+	int $heading = null, 
+	int $proximity_alert_radius = null, 
 	bool $disable_notification = null, 
 	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null, 
 	array $reply_markup = null
 ) {
 $args = [
@@ -506,8 +708,20 @@ $args = [
 	'longitude' => $longitude
 ];
 
+if ($horizontal_accuracy !== null) {
+	$args['horizontal_accuracy'] = $horizontal_accuracy;
+}
+
 if ($live_period !== null) {
 	$args['live_period'] = $live_period;
+}
+
+if ($heading !== null) {
+	$args['heading'] = $heading;
+}
+
+if ($proximity_alert_radius !== null) {
+	$args['proximity_alert_radius'] = $proximity_alert_radius;
 }
 
 if ($disable_notification !== null) {
@@ -518,19 +732,26 @@ if ($reply_to_message_id !== null) {
 	$args['reply_to_message_id'] = $reply_to_message_id;
 }
 
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+}
+
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
-return $this->Request('sendLocation', $args);
+return $this->Request('editMessageLiveLocation', $args);
 }
 
-public function editMessageLiveLocation(
+public function stopMessageLiveLocation(
 	$chat_id = null, 
 	int $message_id = null, 
 	string $inline_message_id = null, 
 	float $latitude, 
 	float $longitude, 
+	float $horizontal_accuracy = null, 
+	int $heading = null, 
+	int $proximity_alert_radius = null, 
 	array $reply_markup = null
 ) {
 $args = [
@@ -550,14 +771,26 @@ if ($inline_message_id !== null) {
 	$args['inline_message_id'] = $inline_message_id;
 }
 
+if ($horizontal_accuracy !== null) {
+	$args['horizontal_accuracy'] = $horizontal_accuracy;
+}
+
+if ($heading !== null) {
+	$args['heading'] = $heading;
+}
+
+if ($proximity_alert_radius !== null) {
+	$args['proximity_alert_radius'] = $proximity_alert_radius;
+}
+
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
-return $this->Request('editMessageLiveLocation', $args);
+return $this->Request('stopMessageLiveLocation', $args);
 }
 
-public function stopMessageLiveLocation(
+public function sendVenue(
 	$chat_id = null, 
 	int $message_id = null, 
 	string $inline_message_id = null, 
@@ -581,10 +814,10 @@ if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
-return $this->Request('stopMessageLiveLocation', $args);
+return $this->Request('sendVenue', $args);
 }
 
-public function sendVenue(
+public function sendContact(
 	$chat_id, 
 	float $latitude, 
 	float $longitude, 
@@ -592,8 +825,11 @@ public function sendVenue(
 	string $address, 
 	string $foursquare_id = null, 
 	string $foursquare_type = null, 
+	string $google_place_id = null, 
+	string $google_place_type = null, 
 	bool $disable_notification = null, 
 	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null, 
 	array $reply_markup = null
 ) {
 $args = [
@@ -612,6 +848,14 @@ if ($foursquare_type !== null) {
 	$args['foursquare_type'] = $foursquare_type;
 }
 
+if ($google_place_id !== null) {
+	$args['google_place_id'] = $google_place_id;
+}
+
+if ($google_place_type !== null) {
+	$args['google_place_type'] = $google_place_type;
+}
+
 if ($disable_notification !== null) {
 	$args['disable_notification'] = $disable_notification;
 }
@@ -620,14 +864,18 @@ if ($reply_to_message_id !== null) {
 	$args['reply_to_message_id'] = $reply_to_message_id;
 }
 
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+}
+
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
-return $this->Request('sendVenue', $args);
+return $this->Request('sendContact', $args);
 }
 
-public function sendContact(
+public function sendPoll(
 	$chat_id, 
 	string $phone_number, 
 	string $first_name, 
@@ -635,6 +883,7 @@ public function sendContact(
 	string $vcard = null, 
 	bool $disable_notification = null, 
 	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null, 
 	array $reply_markup = null
 ) {
 $args = [
@@ -659,14 +908,18 @@ if ($reply_to_message_id !== null) {
 	$args['reply_to_message_id'] = $reply_to_message_id;
 }
 
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+}
+
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
-return $this->Request('sendContact', $args);
+return $this->Request('sendPoll', $args);
 }
 
-public function sendPoll(
+public function sendDice(
 	$chat_id, 
 	string $question, 
 	array $options, 
@@ -676,11 +929,13 @@ public function sendPoll(
 	int $correct_option_id = null, 
 	string $explanation = null, 
 	string $explanation_parse_mode = null, 
+	array $explanation_entities = null, 
 	int $open_period = null, 
 	int $close_date = null, 
 	bool $is_closed = null, 
 	bool $disable_notification = null, 
 	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null, 
 	array $reply_markup = null
 ) {
 $args = [
@@ -713,6 +968,10 @@ if ($explanation_parse_mode !== null) {
 	$args['explanation_parse_mode'] = $explanation_parse_mode;
 }
 
+if ($explanation_entities !== null) {
+	$args['explanation_entities'] = json_encode($explanation_entities);
+}
+
 if ($open_period !== null) {
 	$args['open_period'] = $open_period;
 }
@@ -733,18 +992,23 @@ if ($reply_to_message_id !== null) {
 	$args['reply_to_message_id'] = $reply_to_message_id;
 }
 
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+}
+
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
-return $this->Request('sendPoll', $args);
+return $this->Request('sendDice', $args);
 }
 
-public function sendDice(
+public function sendChatAction(
 	$chat_id, 
 	string $emoji = null, 
 	bool $disable_notification = null, 
 	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null, 
 	array $reply_markup = null
 ) {
 $args = [
@@ -763,14 +1027,18 @@ if ($reply_to_message_id !== null) {
 	$args['reply_to_message_id'] = $reply_to_message_id;
 }
 
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+}
+
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
-return $this->Request('sendDice', $args);
+return $this->Request('sendChatAction', $args);
 }
 
-public function sendChatAction(
+public function getUserProfilePhotos(
 	$chat_id, 
 	string $action
 ) {
@@ -779,10 +1047,10 @@ $args = [
 	'action' => $action
 ];
 
-return $this->Request('sendChatAction', $args);
+return $this->Request('getUserProfilePhotos', $args);
 }
 
-public function getUserProfilePhotos(
+public function getFile(
 	int $user_id, 
 	int $offset = null, 
 	int $limit = null
@@ -799,20 +1067,20 @@ if ($limit !== null) {
 	$args['limit'] = $limit;
 }
 
-return $this->Request('getUserProfilePhotos', $args);
+return $this->Request('getFile', $args);
 }
 
-public function getFile(
+public function kickChatMember(
 	string $file_id
 ) {
 $args = [
 	'file_id' => $file_id
 ];
 
-return $this->Request('getFile', $args);
+return $this->Request('kickChatMember', $args);
 }
 
-public function kickChatMember(
+public function unbanChatMember(
 	$chat_id, 
 	int $user_id, 
 	int $until_date = null
@@ -826,22 +1094,27 @@ if ($until_date !== null) {
 	$args['until_date'] = $until_date;
 }
 
-return $this->Request('kickChatMember', $args);
+return $this->Request('unbanChatMember', $args);
 }
 
-public function unbanChatMember(
+public function restrictChatMember(
 	$chat_id, 
-	int $user_id
+	int $user_id, 
+	bool $only_if_banned = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
 	'user_id' => $user_id
 ];
 
-return $this->Request('unbanChatMember', $args);
+if ($only_if_banned !== null) {
+	$args['only_if_banned'] = $only_if_banned;
 }
 
-public function restrictChatMember(
+return $this->Request('restrictChatMember', $args);
+}
+
+public function promoteChatMember(
 	$chat_id, 
 	int $user_id, 
 	array $permissions, 
@@ -857,12 +1130,13 @@ if ($until_date !== null) {
 	$args['until_date'] = $until_date;
 }
 
-return $this->Request('restrictChatMember', $args);
+return $this->Request('promoteChatMember', $args);
 }
 
-public function promoteChatMember(
+public function setChatAdministratorCustomTitle(
 	$chat_id, 
 	int $user_id, 
+	bool $is_anonymous = null, 
 	bool $can_change_info = null, 
 	bool $can_post_messages = null, 
 	bool $can_edit_messages = null, 
@@ -876,6 +1150,10 @@ $args = [
 	'chat_id' => $chat_id,
 	'user_id' => $user_id
 ];
+
+if ($is_anonymous !== null) {
+	$args['is_anonymous'] = $is_anonymous;
+}
 
 if ($can_change_info !== null) {
 	$args['can_change_info'] = $can_change_info;
@@ -909,10 +1187,10 @@ if ($can_promote_members !== null) {
 	$args['can_promote_members'] = $can_promote_members;
 }
 
-return $this->Request('promoteChatMember', $args);
+return $this->Request('setChatAdministratorCustomTitle', $args);
 }
 
-public function setChatAdministratorCustomTitle(
+public function setChatPermissions(
 	$chat_id, 
 	int $user_id, 
 	string $custom_title
@@ -923,10 +1201,10 @@ $args = [
 	'custom_title' => $custom_title
 ];
 
-return $this->Request('setChatAdministratorCustomTitle', $args);
+return $this->Request('setChatPermissions', $args);
 }
 
-public function setChatPermissions(
+public function exportChatInviteLink(
 	$chat_id, 
 	array $permissions
 ) {
@@ -935,20 +1213,20 @@ $args = [
 	'permissions' => json_encode($permissions)
 ];
 
-return $this->Request('setChatPermissions', $args);
+return $this->Request('exportChatInviteLink', $args);
 }
 
-public function exportChatInviteLink(
+public function setChatPhoto(
 	$chat_id
 ) {
 $args = [
 	'chat_id' => $chat_id
 ];
 
-return $this->Request('exportChatInviteLink', $args);
+return $this->Request('setChatPhoto', $args);
 }
 
-public function setChatPhoto(
+public function deleteChatPhoto(
 	$chat_id, 
 	\CURLFile $photo
 ) {
@@ -957,20 +1235,20 @@ $args = [
 	'photo' => $photo
 ];
 
-return $this->Request('setChatPhoto', $args);
+return $this->Request('deleteChatPhoto', $args);
 }
 
-public function deleteChatPhoto(
+public function setChatTitle(
 	$chat_id
 ) {
 $args = [
 	'chat_id' => $chat_id
 ];
 
-return $this->Request('deleteChatPhoto', $args);
+return $this->Request('setChatTitle', $args);
 }
 
-public function setChatTitle(
+public function setChatDescription(
 	$chat_id, 
 	string $title
 ) {
@@ -979,10 +1257,10 @@ $args = [
 	'title' => $title
 ];
 
-return $this->Request('setChatTitle', $args);
+return $this->Request('setChatDescription', $args);
 }
 
-public function setChatDescription(
+public function pinChatMessage(
 	$chat_id, 
 	string $description = null
 ) {
@@ -994,10 +1272,10 @@ if ($description !== null) {
 	$args['description'] = $description;
 }
 
-return $this->Request('setChatDescription', $args);
+return $this->Request('pinChatMessage', $args);
 }
 
-public function pinChatMessage(
+public function unpinChatMessage(
 	$chat_id, 
 	int $message_id, 
 	bool $disable_notification = null
@@ -1011,17 +1289,22 @@ if ($disable_notification !== null) {
 	$args['disable_notification'] = $disable_notification;
 }
 
-return $this->Request('pinChatMessage', $args);
+return $this->Request('unpinChatMessage', $args);
 }
 
-public function unpinChatMessage(
-	$chat_id
+public function unpinAllChatMessages(
+	$chat_id, 
+	int $message_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id
 ];
 
-return $this->Request('unpinChatMessage', $args);
+if ($message_id !== null) {
+	$args['message_id'] = $message_id;
+}
+
+return $this->Request('unpinAllChatMessages', $args);
 }
 
 public function leaveChat(
@@ -1065,6 +1348,16 @@ return $this->Request('getChatMembersCount', $args);
 }
 
 public function getChatMember(
+	$chat_id
+) {
+$args = [
+	'chat_id' => $chat_id
+];
+
+return $this->Request('getChatMember', $args);
+}
+
+public function setChatStickerSet(
 	$chat_id, 
 	int $user_id
 ) {
@@ -1073,10 +1366,10 @@ $args = [
 	'user_id' => $user_id
 ];
 
-return $this->Request('getChatMember', $args);
+return $this->Request('setChatStickerSet', $args);
 }
 
-public function setChatStickerSet(
+public function deleteChatStickerSet(
 	$chat_id, 
 	string $sticker_set_name
 ) {
@@ -1085,20 +1378,20 @@ $args = [
 	'sticker_set_name' => $sticker_set_name
 ];
 
-return $this->Request('setChatStickerSet', $args);
+return $this->Request('deleteChatStickerSet', $args);
 }
 
-public function deleteChatStickerSet(
+public function answerCallbackQuery(
 	$chat_id
 ) {
 $args = [
 	'chat_id' => $chat_id
 ];
 
-return $this->Request('deleteChatStickerSet', $args);
+return $this->Request('answerCallbackQuery', $args);
 }
 
-public function answerCallbackQuery(
+public function setMyCommands(
 	string $callback_query_id, 
 	string $text = null, 
 	bool $show_alert = null, 
@@ -1125,22 +1418,17 @@ if ($cache_time !== null) {
 	$args['cache_time'] = $cache_time;
 }
 
-return $this->Request('answerCallbackQuery', $args);
+return $this->Request('setMyCommands', $args);
 }
 
-public function setMyCommands(
+public function getMyCommands(
 	array $commands
 ) {
 $args = [
 	'commands' => json_encode($commands)
 ];
 
-return $this->Request('setMyCommands', $args);
-}
-
-public function getMyCommands()
-{
-return $this->Request('getMyCommands', []);
+return $this->Request('getMyCommands', $args);
 }
 
 public function editMessageText(
@@ -1149,6 +1437,7 @@ public function editMessageText(
 	string $inline_message_id = null, 
 	string $text, 
 	string $parse_mode = null, 
+	array $entities = null, 
 	bool $disable_web_page_preview = null, 
 	array $reply_markup = null
 ) {
@@ -1172,6 +1461,10 @@ if ($parse_mode !== null) {
 	$args['parse_mode'] = $parse_mode;
 }
 
+if ($entities !== null) {
+	$args['entities'] = json_encode($entities);
+}
+
 if ($disable_web_page_preview !== null) {
 	$args['disable_web_page_preview'] = $disable_web_page_preview;
 }
@@ -1189,6 +1482,7 @@ public function editMessageCaption(
 	string $inline_message_id = null, 
 	string $caption = null, 
 	string $parse_mode = null, 
+	array $caption_entities = null, 
 	array $reply_markup = null
 ) {
 $args = [];
@@ -1211,6 +1505,10 @@ if ($caption !== null) {
 
 if ($parse_mode !== null) {
 	$args['parse_mode'] = $parse_mode;
+}
+
+if ($caption_entities !== null) {
+	$args['caption_entities'] = json_encode($caption_entities);
 }
 
 if ($reply_markup !== null) {
@@ -1311,6 +1609,7 @@ public function sendSticker(
 	$sticker, 
 	bool $disable_notification = null, 
 	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null, 
 	array $reply_markup = null
 ) {
 $args = [
@@ -1324,6 +1623,10 @@ if ($disable_notification !== null) {
 
 if ($reply_to_message_id !== null) {
 	$args['reply_to_message_id'] = $reply_to_message_id;
+}
+
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
 }
 
 if ($reply_markup !== null) {
@@ -1394,7 +1697,7 @@ return $this->Request('createNewStickerSet', $args);
 public function addStickerToSet(
 	int $user_id, 
 	string $name, 
-	$png_sticker, 
+	$png_sticker = null, 
 	\CURLFile $tgs_sticker = null, 
 	string $emojis, 
 	array $mask_position = null
@@ -1402,9 +1705,12 @@ public function addStickerToSet(
 $args = [
 	'user_id' => $user_id,
 	'name' => $name,
-	'png_sticker' => $png_sticker,
 	'emojis' => $emojis
 ];
+
+if ($png_sticker !== null) {
+	$args['png_sticker'] = $png_sticker;
+}
 
 if ($tgs_sticker !== null) {
 	$args['tgs_sticker'] = $tgs_sticker;
@@ -1516,6 +1822,7 @@ public function sendInvoice(
 	bool $is_flexible = null, 
 	bool $disable_notification = null, 
 	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null, 
 	array $reply_markup = null
 ) {
 $args = [
@@ -1585,6 +1892,10 @@ if ($reply_to_message_id !== null) {
 	$args['reply_to_message_id'] = $reply_to_message_id;
 }
 
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+}
+
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
@@ -1648,6 +1959,7 @@ public function sendGame(
 	string $game_short_name, 
 	bool $disable_notification = null, 
 	int $reply_to_message_id = null, 
+	bool $allow_sending_without_reply = null, 
 	array $reply_markup = null
 ) {
 $args = [
@@ -1661,6 +1973,10 @@ if ($disable_notification !== null) {
 
 if ($reply_to_message_id !== null) {
 	$args['reply_to_message_id'] = $reply_to_message_id;
+}
+
+if ($allow_sending_without_reply !== null) {
+	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
 }
 
 if ($reply_markup !== null) {
