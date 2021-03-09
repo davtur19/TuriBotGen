@@ -32,7 +32,7 @@
                         {
                             "key": "allowed_updates",
                             "value": "",
-                            "description": "Optional. A JSON-serialized list of the update types you want your bot to receive. For example, specify [\u201cmessage\u201d, \u201cedited_channel_post\u201d, \u201ccallback_query\u201d] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all updates regardless of type (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the getUpdates, so unwanted updates may be received for a short period of time.",
+                            "description": "Optional. A JSON-serialized list of the update types you want your bot to receive. For example, specify [\u201cmessage\u201d, \u201cedited_channel_post\u201d, \u201ccallback_query\u201d] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all update types except chat_member (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the getUpdates, so unwanted updates may be received for a short period of time.",
                             "type": "text"
                         }
                     ]
@@ -87,7 +87,7 @@
                         {
                             "key": "allowed_updates",
                             "value": "",
-                            "description": "Optional. A JSON-serialized list of the update types you want your bot to receive. For example, specify [\u201cmessage\u201d, \u201cedited_channel_post\u201d, \u201ccallback_query\u201d] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all updates regardless of type (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the setWebhook, so unwanted updates may be received for a short period of time.",
+                            "description": "Optional. A JSON-serialized list of the update types you want your bot to receive. For example, specify [\u201cmessage\u201d, \u201cedited_channel_post\u201d, \u201ccallback_query\u201d] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all update types except chat_member (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the setWebhook, so unwanted updates may be received for a short period of time.",
                             "type": "text"
                         },
                         {
@@ -111,7 +111,7 @@
                         "setWebhook"
                     ]
                 },
-                "description": "Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success."
+                "description": "Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.\r\nIf you'd like to make sure that the Webhook request comes from Telegram, we recommend using a secret path in the URL, e.g. https://www.example.com/<token>. Since nobody else knows your bot's token, you can be pretty sure it's us."
             }
         },
         {
@@ -451,7 +451,7 @@
                         "copyMessage"
                     ]
                 },
-                "description": "Use this method to copy messages of any kind. The method is analogous to the method forwardMessages, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success."
+                "description": "Use this method to copy messages of any kind. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success."
             }
         },
         {
@@ -470,7 +470,7 @@
                         {
                             "key": "photo",
                             "value": "",
-                            "description": "Required. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. More info on Sending Files \u00bb",
+                            "description": "Required. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More info on Sending Files \u00bb",
                             "type": "text"
                         },
                         {
@@ -633,7 +633,7 @@
                         "sendAudio"
                     ]
                 },
-                "description": "Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future."
+                "description": "Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.\r\nFor sending voice messages, use the sendVoice method instead."
             }
         },
         {
@@ -1155,7 +1155,7 @@
                         "sendMediaGroup"
                     ]
                 },
-                "description": "Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only group in an album with messages of the same type. On success, an array of Messages that were sent is returned."
+                "description": "Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned."
             }
         },
         {
@@ -1702,7 +1702,7 @@
                         {
                             "key": "emoji",
                             "value": "",
-                            "description": "Optional. Emoji on which the dice throw animation is based. Currently, must be one of \u201c\u201d, \u201c\u201d, \u201c\u201d, \u201c\u201d, or \u201c\u201d. Dice can have values 1-6 for \u201c\u201d and \u201c\u201d, values 1-5 for \u201c\u201d and \u201c\u201d, and values 1-64 for \u201c\u201d. Defaults to \u201c\u201d",
+                            "description": "Optional. Emoji on which the dice throw animation is based. Currently, must be one of \u201c\u201d, \u201c\u201d, \u201c\u201d, \u201c\u201d, \u201c\u201d, or \u201c\u201d. Dice can have values 1-6 for \u201c\u201d, \u201c\u201d and \u201c\u201d, values 1-5 for \u201c\u201d and \u201c\u201d, and values 1-64 for \u201c\u201d. Defaults to \u201c\u201d",
                             "type": "text"
                         },
                         {
@@ -1763,7 +1763,7 @@
                         {
                             "key": "action",
                             "value": "",
-                            "description": "Required. Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_audio or upload_audio for audio files, upload_document for general files, find_location for location data, record_video_note or upload_video_note for video notes.",
+                            "description": "Required. Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_voice or upload_voice for voice notes, upload_document for general files, find_location for location data, record_video_note or upload_video_note for video notes.",
                             "type": "text"
                         }
                     ]
@@ -1781,7 +1781,7 @@
                         "sendChatAction"
                     ]
                 },
-                "description": "Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success."
+                "description": "Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.\r\nWe only recommend using this method when a response from the bot will take a noticeable amount of time to arrive."
             }
         },
         {
@@ -1880,7 +1880,13 @@
                         {
                             "key": "until_date",
                             "value": "",
-                            "description": "Optional. Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever",
+                            "description": "Optional. Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever. Applied for supergroups and channels only.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "revoke_messages",
+                            "value": "",
+                            "description": "Optional. Pass True to delete all messages from the chat for the user that is being removed. If False, the user will be able to see messages in the group that were sent before the user was removed. Always True for supergroups and channels.",
                             "type": "text"
                         }
                     ]
@@ -1898,7 +1904,7 @@
                         "kickChatMember"
                     ]
                 },
-                "description": "Use this method to kick a user from a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success."
+                "description": "Use this method to kick a user from a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success."
             }
         },
         {
@@ -2019,9 +2025,9 @@
                             "type": "text"
                         },
                         {
-                            "key": "can_change_info",
+                            "key": "can_manage_chat",
                             "value": "",
-                            "description": "Optional. Pass True, if the administrator can change chat title, photo and other settings",
+                            "description": "Optional. Pass True, if the administrator can access the chat event log, chat statistics, message statistics in channels, see channel members, see anonymous administrators in supergoups and ignore slow mode. Implied by any other administrator privilege",
                             "type": "text"
                         },
                         {
@@ -2043,9 +2049,9 @@
                             "type": "text"
                         },
                         {
-                            "key": "can_invite_users",
+                            "key": "can_manage_voice_chats",
                             "value": "",
-                            "description": "Optional. Pass True, if the administrator can invite new users to the chat",
+                            "description": "Optional. Pass True, if the administrator can manage voice chats, supergroups only",
                             "type": "text"
                         },
                         {
@@ -2055,15 +2061,27 @@
                             "type": "text"
                         },
                         {
-                            "key": "can_pin_messages",
-                            "value": "",
-                            "description": "Optional. Pass True, if the administrator can pin messages, supergroups only",
-                            "type": "text"
-                        },
-                        {
                             "key": "can_promote_members",
                             "value": "",
                             "description": "Optional. Pass True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that he has promoted, directly or indirectly (promoted by administrators that were appointed by him)",
+                            "type": "text"
+                        },
+                        {
+                            "key": "can_change_info",
+                            "value": "",
+                            "description": "Optional. Pass True, if the administrator can change chat title, photo and other settings",
+                            "type": "text"
+                        },
+                        {
+                            "key": "can_invite_users",
+                            "value": "",
+                            "description": "Optional. Pass True, if the administrator can invite new users to the chat",
+                            "type": "text"
+                        },
+                        {
+                            "key": "can_pin_messages",
+                            "value": "",
+                            "description": "Optional. Pass True, if the administrator can pin messages, supergroups only",
                             "type": "text"
                         }
                     ]
@@ -2192,7 +2210,136 @@
                         "exportChatInviteLink"
                     ]
                 },
-                "description": "Use this method to generate a new invite link for a chat; any previously generated link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns the new invite link as String on success."
+                "description": "Use this method to generate a new primary invite link for a chat; any previously generated primary link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns the new invite link as String on success."
+            }
+        },
+        {
+            "name": "createChatInviteLink",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat or username of the target channel (in the format @channelusername)",
+                            "type": "text"
+                        },
+                        {
+                            "key": "expire_date",
+                            "value": "",
+                            "description": "Optional. Point in time (Unix timestamp) when the link will expire",
+                            "type": "text"
+                        },
+                        {
+                            "key": "member_limit",
+                            "value": "",
+                            "description": "Optional. Maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/createChatInviteLink",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "createChatInviteLink"
+                    ]
+                },
+                "description": "Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. The link can be revoked using the method revokeChatInviteLink. Returns the new invite link as ChatInviteLink object."
+            }
+        },
+        {
+            "name": "editChatInviteLink",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat or username of the target channel (in the format @channelusername)",
+                            "type": "text"
+                        },
+                        {
+                            "key": "invite_link",
+                            "value": "",
+                            "description": "Required. The invite link to edit",
+                            "type": "text"
+                        },
+                        {
+                            "key": "expire_date",
+                            "value": "",
+                            "description": "Optional. Point in time (Unix timestamp) when the link will expire",
+                            "type": "text"
+                        },
+                        {
+                            "key": "member_limit",
+                            "value": "",
+                            "description": "Optional. Maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/editChatInviteLink",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "editChatInviteLink"
+                    ]
+                },
+                "description": "Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns the edited invite link as a ChatInviteLink object."
+            }
+        },
+        {
+            "name": "revokeChatInviteLink",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the target chat or username of the target channel (in the format @channelusername)",
+                            "type": "text"
+                        },
+                        {
+                            "key": "invite_link",
+                            "value": "",
+                            "description": "Required. The invite link to revoke",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/revokeChatInviteLink",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "revokeChatInviteLink"
+                    ]
+                },
+                "description": "Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns the revoked invite link as ChatInviteLink object."
             }
         },
         {
@@ -3847,7 +3994,7 @@
                         "setPassportDataErrors"
                     ]
                 },
-                "description": "Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success."
+                "description": "Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.\r\nUse this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues."
             }
         },
         {
