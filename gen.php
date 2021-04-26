@@ -21,6 +21,7 @@ $types = [
     'LabeledPrice[]'                                                          => 'array',
     'MessageEntity[]'                                                         => 'array',
     'InputMediaAudio, InputMediaDocument, InputMediaPhoto, InputMediaVideo[]' => 'array',
+    'int[]'                                                                   => 'array'
 ];
 
 $out = '';
