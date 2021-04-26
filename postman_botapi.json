@@ -366,7 +366,7 @@
                         "forwardMessage"
                     ]
                 },
-                "description": "Use this method to forward messages of any kind. On success, the sent Message is returned."
+                "description": "Use this method to forward messages of any kind. Service messages can't be forwarded. On success, the sent Message is returned."
             }
         },
         {
@@ -451,7 +451,7 @@
                         "copyMessage"
                     ]
                 },
-                "description": "Use this method to copy messages of any kind. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success."
+                "description": "Use this method to copy messages of any kind. Service messages and invoice messages can't be copied. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success."
             }
         },
         {
@@ -2027,7 +2027,7 @@
                         {
                             "key": "can_manage_chat",
                             "value": "",
-                            "description": "Optional. Pass True, if the administrator can access the chat event log, chat statistics, message statistics in channels, see channel members, see anonymous administrators in supergoups and ignore slow mode. Implied by any other administrator privilege",
+                            "description": "Optional. Pass True, if the administrator can access the chat event log, chat statistics, message statistics in channels, see channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege",
                             "type": "text"
                         },
                         {
@@ -2051,7 +2051,7 @@
                         {
                             "key": "can_manage_voice_chats",
                             "value": "",
-                            "description": "Optional. Pass True, if the administrator can manage voice chats, supergroups only",
+                            "description": "Optional. Pass True, if the administrator can manage voice chats",
                             "type": "text"
                         },
                         {
@@ -3709,7 +3709,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target private chat",
+                            "description": "Required. Unique identifier for the target chat or username of the target channel (in the format @channelusername)",
                             "type": "text"
                         },
                         {
@@ -3737,12 +3737,6 @@
                             "type": "text"
                         },
                         {
-                            "key": "start_parameter",
-                            "value": "",
-                            "description": "Required. Unique deep-linking parameter that can be used to generate this invoice when used as a start parameter",
-                            "type": "text"
-                        },
-                        {
                             "key": "currency",
                             "value": "",
                             "description": "Required. Three-letter ISO 4217 currency code, see more on currencies",
@@ -3752,6 +3746,24 @@
                             "key": "prices",
                             "value": "",
                             "description": "Required. Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.)",
+                            "type": "text"
+                        },
+                        {
+                            "key": "max_tip_amount",
+                            "value": "",
+                            "description": "Optional. The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0",
+                            "type": "text"
+                        },
+                        {
+                            "key": "suggested_tip_amounts",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "start_parameter",
+                            "value": "",
+                            "description": "Optional. Unique deep-linking parameter. If left empty, forwarded copies of the sent message will have a Pay button, allowing multiple users to pay directly from the forwarded message, using the same invoice. If non-empty, forwarded copies of the sent message will have a URL button with a deep link to the bot (instead of a Pay button), with the value used as the start parameter",
                             "type": "text"
                         },
                         {
