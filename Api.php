@@ -628,7 +628,7 @@ return $this->Request('sendVideoNote', $args);
 
 public function sendMediaGroup(
 	$chat_id, 
-	$media, 
+	array $media, 
 	bool $disable_notification = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null

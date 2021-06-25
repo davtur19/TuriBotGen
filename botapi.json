@@ -7170,8 +7170,7 @@
                 {
                     "name": "media",
                     "types": [
-                        "InputMediaAudio, InputMediaDocument, InputMediaPhoto[]",
-                        "InputMediaVideo"
+                        "InputMediaAudio, InputMediaDocument, InputMediaPhoto, InputMediaVideo[]"
                     ],
                     "required": true,
                     "description": "A JSON-serialized array describing messages to be sent, must include 2-10 items"
