@@ -21,11 +21,13 @@ $types = [
     'LabeledPrice[]'                                                          => 'array',
     'MessageEntity[]'                                                         => 'array',
     'InputMediaAudio, InputMediaDocument, InputMediaPhoto, InputMediaVideo[]' => 'array',
-    'int[]'                                                                   => 'array'
+    'int[]'                                                                   => 'array',
+    'InputMediaAudio, InputMediaDocument, InputMediaPhoto[]'                  => 'array',
+    'BotCommandScope'                                                         => 'array',
 ];
 
-$out = '';
-$out .= '<?php /** @noinspection PhpOptionalBeforeRequiredParametersInspection */';
+$out
+     = '<?php /** @noinspection PhpOptionalBeforeRequiredParametersInspection */';
 $out .= PHP_EOL.PHP_EOL;
 $out .= '//functions automatically generated from https://core.telegram.org/bots/api';
 $out .= PHP_EOL;

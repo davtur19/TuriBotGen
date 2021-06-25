@@ -1859,7 +1859,7 @@
             }
         },
         {
-            "name": "kickChatMember",
+            "name": "banChatMember",
             "request": {
                 "method": "POST",
                 "body": {
@@ -1892,7 +1892,7 @@
                     ]
                 },
                 "url": {
-                    "raw": "https://api.telegram.org/bot{{token}}/kickChatMember",
+                    "raw": "https://api.telegram.org/bot{{token}}/banChatMember",
                     "protocol": "https",
                     "host": [
                         "api",
@@ -1901,10 +1901,10 @@
                     ],
                     "path": [
                         "bot{{token}}",
-                        "kickChatMember"
+                        "banChatMember"
                     ]
                 },
-                "description": "Use this method to kick a user from a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success."
+                "description": "Use this method to ban a user in a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless unbanned first. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns True on success."
             }
         },
         {
@@ -1947,7 +1947,7 @@
                         "unbanChatMember"
                     ]
                 },
-                "description": "Use this method to unban a previously kicked user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter only_if_banned. Returns True on success."
+                "description": "Use this method to unban a previously banned user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter only_if_banned. Returns True on success."
             }
         },
         {
@@ -2689,7 +2689,7 @@
             }
         },
         {
-            "name": "getChatMembersCount",
+            "name": "getChatMemberCount",
             "request": {
                 "method": "POST",
                 "body": {
@@ -2704,7 +2704,7 @@
                     ]
                 },
                 "url": {
-                    "raw": "https://api.telegram.org/bot{{token}}/getChatMembersCount",
+                    "raw": "https://api.telegram.org/bot{{token}}/getChatMemberCount",
                     "protocol": "https",
                     "host": [
                         "api",
@@ -2713,7 +2713,7 @@
                     ],
                     "path": [
                         "bot{{token}}",
-                        "getChatMembersCount"
+                        "getChatMemberCount"
                     ]
                 },
                 "description": "Use this method to get the number of members in a chat. Returns Int on success."
@@ -2891,6 +2891,18 @@
                             "value": "",
                             "description": "Required. A JSON-serialized list of bot commands to be set as the list of the bot's commands. At most 100 commands can be specified.",
                             "type": "text"
+                        },
+                        {
+                            "key": "scope",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "language_code",
+                            "value": "",
+                            "description": "Optional. A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands",
+                            "type": "text"
                         }
                     ]
                 },
@@ -2907,7 +2919,44 @@
                         "setMyCommands"
                     ]
                 },
-                "description": "Use this method to change the list of the bot's commands. Returns True on success."
+                "description": "Use this method to change the list of the bot's commands. See https://core.telegram.org/bots#commands for more details about bot commands. Returns True on success."
+            }
+        },
+        {
+            "name": "deleteMyCommands",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "scope",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "language_code",
+                            "value": "",
+                            "description": "Optional. A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/deleteMyCommands",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "deleteMyCommands"
+                    ]
+                },
+                "description": "Use this method to delete the list of the bot's commands for the given scope and user language. After deletion, higher level commands will be shown to affected users. Returns True on success."
             }
         },
         {
@@ -2916,7 +2965,20 @@
                 "method": "POST",
                 "body": {
                     "mode": "formdata",
-                    "formdata": []
+                    "formdata": [
+                        {
+                            "key": "scope",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized object, describing scope of users. Defaults to BotCommandScopeDefault.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "language_code",
+                            "value": "",
+                            "description": "Optional. A two-letter ISO 639-1 language code or an empty string",
+                            "type": "text"
+                        }
+                    ]
                 },
                 "url": {
                     "raw": "https://api.telegram.org/bot{{token}}/getMyCommands",
@@ -2931,7 +2993,7 @@
                         "getMyCommands"
                     ]
                 },
-                "description": "Use this method to get the current list of the bot's commands. Requires no parameters. Returns Array of BotCommand on success."
+                "description": "Use this method to get the current list of the bot's commands for the given scope and user language. Returns Array of BotCommand on success. If commands aren't set, an empty list is returned."
             }
         },
         {
