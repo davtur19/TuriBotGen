@@ -5,7 +5,7 @@ $api = json_decode(file_get_contents('botapi.json'), true);
 $json = [];
 
 $json['info'] = [
-    'name'   => 'Telegram Bot API',
+    'name' => 'Telegram Bot API',
     'schema' => 'https://schema.getpostman.com/json/collection/v2.1.0/collection.json'
 ];
 
@@ -13,17 +13,17 @@ foreach ($api['methods'] as $method => $fields) {
     if (!empty($fields['fields'])) {
         //gen parameters
         foreach ($fields['fields'] as $field) {
-            if ($field['required']) {
+            if (!$field['optional']) {
                 $required = 'Required';
             } else {
                 $required = 'Optional';
             }
 
             $formData[] = [
-                'key'         => $field['name'],
-                'value'       => '',
+                'key' => $field['name'],
+                'value' => '',
                 'description' => $required . '. ' . $field['description'],
-                'type'        => 'text'
+                'type' => 'text'
             ];
         }
     } else {
@@ -31,27 +31,27 @@ foreach ($api['methods'] as $method => $fields) {
     }
 
     $items[] = [
-        'name'    => $fields['name'],
+        'name' => $fields['name'],
         'request' => [
             'method' => 'POST',
-            'body'   => [
-                'mode'     => 'formdata',
+            'body' => [
+                'mode' => 'formdata',
                 'formdata' => $formData
             ],
-            'url'    => [
-                'raw'      => 'https://api.telegram.org/bot{{token}}/' . $fields['name'],
+            'url' => [
+                'raw' => 'https://api.telegram.org/bot{{token}}/' . $fields['name'],
                 'protocol' => 'https',
-                'host'     => [
+                'host' => [
                     'api',
                     'telegram',
                     'org'
                 ],
-                'path'     => [
+                'path' => [
                     'bot{{token}}',
                     $fields['name']
                 ]
             ],
-            'description'  => $fields['description']
+            'description' => $fields['description']
         ]
     ];
 
@@ -62,9 +62,9 @@ $json['item'] = $items;
 
 $json['variable'] = [
     [
-        'key'   => 'token',
+        'key' => 'token',
         'value' => '1234:AAbbcc',
-        'type'  => 'string'
+        'type' => 'string'
     ]
 ];
 

@@ -3,53 +3,52 @@
 $api = json_decode(file_get_contents('botapi.json'), true);
 
 $types = [
-    'int'                                                                     => 'int',
-    'string[]'                                                                => 'array',
-    'string'                                                                  => 'string',
-    'InputFile'                                                               => '\CURLFile',
-    'bool'                                                                    => 'bool',
-    'float'                                                                   => 'float',
-    'ChatPermissions'                                                         => 'array',
-    'BotCommand[]'                                                            => 'array',
-    'InlineKeyboardMarkup'                                                    => 'array',
-    'InputMediaPhoto and InputMediaVideo[]'                                   => 'array',
-    'InputMedia'                                                              => 'array',
-    'MaskPosition'                                                            => 'array',
-    'InlineQueryResult[]'                                                     => 'array',
-    'ShippingOption[]'                                                        => 'array',
-    'PassportElementError[]'                                                  => 'array',
-    'LabeledPrice[]'                                                          => 'array',
-    'MessageEntity[]'                                                         => 'array',
-    'InputMediaAudio, InputMediaDocument, InputMediaPhoto, InputMediaVideo[]' => 'array',
-    'int[]'                                                                   => 'array',
-    'InputMediaAudio, InputMediaDocument, InputMediaPhoto[]'                  => 'array',
-    'BotCommandScope'                                                         => 'array',
+    'int' => 'int',
+    'Array<string>' => 'array',
+    'string' => 'string',
+    'InputFile' => '\CURLFile',
+    'bool' => 'bool',
+    'float' => 'float',
+    'ChatPermissions' => 'array',
+    'Array<BotCommand>' => 'array',
+    'InlineKeyboardMarkup' => 'array',
+    'InputMedia' => 'array',
+    'MaskPosition' => 'array',
+    'Array<InlineQueryResult>' => 'array',
+    'Array<ShippingOption>' => 'array',
+    'Array<PassportElementError>' => 'array',
+    'Array<LabeledPrice>' => 'array',
+    'Array<MessageEntity>' => 'array',
+    'Array<InputMediaAudio, InputMediaDocument, InputMediaPhoto, InputMediaVideo>' => 'array',
+    'Array<int>' => 'array',
+    'BotCommandScope' => 'array',
 ];
 
 $out
-     = '<?php /** @noinspection PhpOptionalBeforeRequiredParametersInspection */';
-$out .= PHP_EOL.PHP_EOL;
+    = '<?php /** @noinspection PhpOptionalBeforeRequiredParametersInspection */';
+$out .= PHP_EOL . PHP_EOL;
 $out .= '//functions automatically generated from https://core.telegram.org/bots/api';
 $out .= PHP_EOL;
 $out .= '//generator source code https://github.com/davtur19/TuriBotGen';
-$out .= PHP_EOL.PHP_EOL;
+$out .= PHP_EOL . PHP_EOL;
 $out .= 'namespace TuriBot;';
-$out .= PHP_EOL.PHP_EOL;
+$out .= PHP_EOL . PHP_EOL;
 $out .= 'abstract class Api implements ApiInterface';
 $out .= PHP_EOL;
 $out .= '{';
-$out .= PHP_EOL.PHP_EOL;
-foreach ($api['methods'] as $fields) {
+$out .= PHP_EOL . PHP_EOL;
+foreach ($api['methods'] as $method) {
     $args = [];
 
     $out .= 'public function ';
-    $out .= $fields['name'];
+    $out .= $method['name'];
     $out .= '(';
 
-    if ( ! empty($fields['fields'])) {
+    if (!empty($method['fields'])) {
+        $optional = false;
         $out .= PHP_EOL;
         //gen parameters
-        foreach ($fields['fields'] as $field) {
+        foreach ($method['fields'] as $field) {
             $out .= "\t";
             if (count($field['types']) === 1) {
                 $out .= $types[$field['types'][0]];
@@ -58,9 +57,10 @@ foreach ($api['methods'] as $fields) {
                 $out .= 'array ';
             }
 
-            $out .= '$'.$field['name'];
+            $out .= '$' . $field['name'];
 
-            if ( ! $field['required']) {
+            if ($field['optional'] or $optional) {
+                $optional = true;
                 $out .= ' = null';
             } else {
                 //gen array $args of mandatory parameters
@@ -73,7 +73,7 @@ foreach ($api['methods'] as $fields) {
                 }
             }
 
-            if (end($fields['fields']) != $field) {
+            if (end($method['fields']) != $field) {
                 $out .= ', ';
             }
             $out .= PHP_EOL;
@@ -89,10 +89,10 @@ foreach ($api['methods'] as $fields) {
             $out .= PHP_EOL;
             foreach ($args as $name) {
                 if ($name['array']) {
-                    $out .= "\t".'\''.$name['name'].'\' => json_encode($'
-                        .$name['name'].')';
+                    $out .= "\t" . '\'' . $name['name'] . '\' => json_encode($'
+                        . $name['name'] . ')';
                 } else {
-                    $out .= "\t".'\''.$name['name'].'\' => $'.$name['name'];
+                    $out .= "\t" . '\'' . $name['name'] . '\' => $' . $name['name'];
                 }
                 if (end($args)['name'] != $name['name']) {
                     $out .= ',';
@@ -102,39 +102,41 @@ foreach ($api['methods'] as $fields) {
 
             $out .= '];';
         }
-        $out .= PHP_EOL.PHP_EOL;
+        $out .= PHP_EOL . PHP_EOL;
 
         //gen "if !== null" of non-mandatory parameters
-        foreach ($fields['fields'] as $field) {
-            if ( ! $field['required']) {
-                $out .= 'if ($'.$field['name'].' !== null) {'.PHP_EOL;
-                $out .= "\t".'$args[\''.$field['name'].'\'] = ';
+        $optional = false;
+        foreach ($method['fields'] as $field) {
+            if ($field['optional'] or $optional) {
+                $optional = true;
+                $out .= 'if ($' . $field['name'] . ' !== null) {' . PHP_EOL;
+                $out .= "\t" . '$args[\'' . $field['name'] . '\'] = ';
                 if ($types[$field['types'][0]] === 'array' or $field['name']
                     === 'reply_markup'
                 ) {
-                    $out .= 'json_encode($'.$field['name'].')';
+                    $out .= 'json_encode($' . $field['name'] . ')';
                 } else {
-                    $out .= '$'.$field['name'];
+                    $out .= '$' . $field['name'];
                 }
-                $out .= ';'.PHP_EOL;
-                $out .= '}'.PHP_EOL.PHP_EOL;
+                $out .= ';' . PHP_EOL;
+                $out .= '}' . PHP_EOL . PHP_EOL;
             }
         }
 
         //end of function
-        $out .= 'return $this->Request(\''.$fields['name'].'\', $args);';
+        $out .= 'return $this->Request(\'' . $method['name'] . '\', $args);';
     } else {
         $out .= ')';
         $out .= PHP_EOL;
         $out .= '{';
         $out .= PHP_EOL;
-        $out .= 'return $this->Request(\''.$fields['name'].'\', []);';
+        $out .= 'return $this->Request(\'' . $method['name'] . '\', []);';
     }
 
     $out .= PHP_EOL;
     $out .= '}';
-    $out .= PHP_EOL.PHP_EOL;
-    /*if ($fields['name'] == 'sendMessage') {
+    $out .= PHP_EOL . PHP_EOL;
+    /*if ($method['name'] == 'sendMessage') {
         break;
     }*/
 }
