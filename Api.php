@@ -1191,6 +1191,35 @@ $args = [
 return $this->Request('setChatAdministratorCustomTitle', $args);
 }
 
+public function banChatSenderChat(
+	$chat_id, 
+	int $sender_chat_id, 
+	int $until_date = null
+) {
+$args = [
+	'chat_id' => $chat_id,
+	'sender_chat_id' => $sender_chat_id
+];
+
+if ($until_date !== null) {
+	$args['until_date'] = $until_date;
+}
+
+return $this->Request('banChatSenderChat', $args);
+}
+
+public function unbanChatSenderChat(
+	$chat_id, 
+	int $sender_chat_id
+) {
+$args = [
+	'chat_id' => $chat_id,
+	'sender_chat_id' => $sender_chat_id
+];
+
+return $this->Request('unbanChatSenderChat', $args);
+}
+
 public function setChatPermissions(
 	$chat_id, 
 	array $permissions
