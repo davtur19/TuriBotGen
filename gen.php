@@ -24,8 +24,8 @@ $types = [
     'BotCommandScope' => 'array',
 ];
 
-$out
-    = '<?php /** @noinspection PhpOptionalBeforeRequiredParametersInspection */';
+$out = '<?php' . PHP_EOL;
+$out .= '/** @noinspection PhpUnused */';
 $out .= PHP_EOL . PHP_EOL;
 $out .= '//functions automatically generated from https://core.telegram.org/bots/api';
 $out .= PHP_EOL;

@@ -1,4 +1,5 @@
-<?php /** @noinspection PhpOptionalBeforeRequiredParametersInspection */
+<?php
+/** @noinspection PhpUnused */
 
 //functions automatically generated from https://core.telegram.org/bots/api
 //generator source code https://github.com/davtur19/TuriBotGen
