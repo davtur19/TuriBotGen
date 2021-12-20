@@ -113,7 +113,7 @@ foreach ($api['methods'] as $method) {
                 $out .= "\t\t\$media[\$key]['media'] = 'attach://upload' . \$key;" . PHP_EOL;
                 $out .= "\t}" . PHP_EOL;
                 $out .= "}" . PHP_EOL;
-                $out .= "\$args['media'] = json_encode(\$media);" . PHP_EOL;
+                $out .= "\$args['media'] = json_encode(\$media);";
             }
         }
         $out .= PHP_EOL . PHP_EOL;

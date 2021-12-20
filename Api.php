@@ -649,7 +649,6 @@ foreach ($media as $key => $value) {
 }
 $args['media'] = json_encode($media);
 
-
 if ($disable_notification !== null) {
 	$args['disable_notification'] = $disable_notification;
 }
