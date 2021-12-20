@@ -639,8 +639,16 @@ public function sendMediaGroup(
 ) {
 $args = [
 	'chat_id' => $chat_id,
-	'media' => json_encode($media)
 ];
+
+foreach ($media as $key => $value) {
+	if (is_object($value['media'])) {
+		$args['upload' . $key] = $value['media'];
+		$media[$key]['media'] = 'attach://upload' . $key;
+	}
+}
+$args['media'] = json_encode($media);
+
 
 if ($disable_notification !== null) {
 	$args['disable_notification'] = $disable_notification;
@@ -1701,6 +1709,10 @@ if ($inline_message_id !== null) {
 }
 
 if ($media !== null) {
+	if (is_object($media['media'])) {
+		$args['upload'] = $media['media'];
+		$media['media'] = 'attach://upload';
+	}
 	$args['media'] = json_encode($media);
 }
 

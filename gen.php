@@ -24,6 +24,11 @@ $types = [
     'BotCommandScope' => 'array',
 ];
 
+$methods_upload = [
+    'sendMediaGroup', // Array of InputMediaAudio, InputMediaDocument, InputMediaPhoto and InputMediaVideo
+    'editMessageMedia', // InputMedia
+];
+
 $out = '<?php' . PHP_EOL;
 $out .= '/** @noinspection PhpUnused */';
 $out .= PHP_EOL . PHP_EOL;
@@ -40,9 +45,7 @@ $out .= PHP_EOL . PHP_EOL;
 foreach ($api['methods'] as $method) {
     $args = [];
 
-    $out .= 'public function ';
-    $out .= $method['name'];
-    $out .= '(';
+    $out .= "public function {$method['name']}(";
 
     if (!empty($method['fields'])) {
         $optional = false;
@@ -64,9 +67,7 @@ foreach ($api['methods'] as $method) {
                 $out .= ' = null';
             } else {
                 //gen array $args of mandatory parameters
-                if ($types[$field['types'][0]] === 'array' or $field['name']
-                    === 'reply_markup'
-                ) {
+                if ($types[$field['types'][0]] === 'array' or $field['name'] === 'reply_markup') {
                     $args[] = ['name' => $field['name'], 'array' => true];
                 } else {
                     $args[] = ['name' => $field['name'], 'array' => false];
@@ -88,19 +89,32 @@ foreach ($api['methods'] as $method) {
             $out .= '$args = [';
             $out .= PHP_EOL;
             foreach ($args as $name) {
-                if ($name['array']) {
-                    $out .= "\t" . '\'' . $name['name'] . '\' => json_encode($'
-                        . $name['name'] . ')';
-                } else {
-                    $out .= "\t" . '\'' . $name['name'] . '\' => $' . $name['name'];
+                // support specific case for upload media with attach:// in json object
+                if (!(in_array($method['name'], $methods_upload) and $name['name'] === 'media')) {
+                    if ($name['array']) {
+                        $out .= "\t'{$name['name']}' => json_encode(\${$name['name']})";
+                    } else {
+                        $out .= "\t'{$name['name']}' => \$" . $name['name'];
+                    }
+                    if (end($args)['name'] != $name['name']) {
+                        $out .= ',';
+                    }
+                    $out .= PHP_EOL;
                 }
-                if (end($args)['name'] != $name['name']) {
-                    $out .= ',';
-                }
-                $out .= PHP_EOL;
             }
 
             $out .= '];';
+
+            // support specific case for upload media with attach:// in json object
+            if (in_array($method['name'], $methods_upload) and in_array(['name' => 'media', 'array' => true], $args)) {
+                $out .= PHP_EOL . PHP_EOL . "foreach (\$media as \$key => \$value) {" . PHP_EOL;
+                $out .= "\tif (is_object(\$value['media'])) {" . PHP_EOL;
+                $out .= "\t\t\$args['upload' . \$key] = \$value['media'];" . PHP_EOL;
+                $out .= "\t\t\$media[\$key]['media'] = 'attach://upload' . \$key;" . PHP_EOL;
+                $out .= "\t}" . PHP_EOL;
+                $out .= "}" . PHP_EOL;
+                $out .= "\$args['media'] = json_encode(\$media);" . PHP_EOL;
+            }
         }
         $out .= PHP_EOL . PHP_EOL;
 
@@ -110,11 +124,16 @@ foreach ($api['methods'] as $method) {
             if ($field['optional'] or $optional) {
                 $optional = true;
                 $out .= 'if ($' . $field['name'] . ' !== null) {' . PHP_EOL;
+                // support specific case for upload media with attach:// in json object
+                if (in_array($method['name'], $methods_upload) and $field['name'] === 'media') {
+                    $out .= "\tif (is_object(\$media['media'])) {" . PHP_EOL;
+                    $out .= "\t\t\$args['upload'] = \$media['media'];" . PHP_EOL;
+                    $out .= "\t\t\$media['media'] = 'attach://upload';" . PHP_EOL;
+                    $out .= "\t}" . PHP_EOL;
+                }
                 $out .= "\t" . '$args[\'' . $field['name'] . '\'] = ';
-                if ($types[$field['types'][0]] === 'array' or $field['name']
-                    === 'reply_markup'
-                ) {
-                    $out .= 'json_encode($' . $field['name'] . ')';
+                if ($types[$field['types'][0]] === 'array' or $field['name'] === 'reply_markup') {
+                    $out .= "json_encode(\${$field['name']})";
                 } else {
                     $out .= '$' . $field['name'];
                 }
