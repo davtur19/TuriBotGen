@@ -3,7 +3,7 @@ Generator for https://github.com/davtur19/TuriBot/
 
 ## How to use
 - ~~botapi.json is generated with https://github.com/sys-001/tgbotapi-generator~~
-- Download updated botapi.json from https://tgscraper.sys001.ml/schemas/botapi.json
+- Download updated botapi.json from https://tgscraper.sys001.ml/schemas/botapi.json or from https://t.me/BotApiUpdates
 - Run `gen.php` to generate `Api.php`
 - Run `postman.php` to generate `postman_botapi.json`
 
