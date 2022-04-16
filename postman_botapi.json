@@ -1792,7 +1792,7 @@
                         {
                             "key": "emoji",
                             "value": "",
-                            "description": "Optional. Emoji on which the dice throw animation is based. Currently, must be one of \u201c\u201d, \u201c\u201d, \u201c\u201d, \u201c\u201d, \u201c\u201d, or \u201c\u201d. Dice can have values 1-6 for \u201c\u201d, \u201c\u201d and \u201c\u201d, values 1-5 for \u201c\u201d and \u201c\u201d, and values 1-64 for \u201c\u201d. Defaults to \u201c\u201d",
+                            "description": "Optional. Emoji on which the dice throw animation is based. Currently, must be one of \u201c\ud83c\udfb2\u201d, \u201c\ud83c\udfaf\u201d, \u201c\ud83c\udfc0\u201d, \u201c\u26bd\u201d, \u201c\ud83c\udfb3\u201d, or \u201c\ud83c\udfb0\u201d. Dice can have values 1-6 for \u201c\ud83c\udfb2\u201d, \u201c\ud83c\udfaf\u201d and \u201c\ud83c\udfb3\u201d, values 1-5 for \u201c\ud83c\udfc0\u201d and \u201c\u26bd\u201d, and values 1-64 for \u201c\ud83c\udfb0\u201d. Defaults to \u201c\ud83c\udfb2\u201d",
                             "type": "text"
                         },
                         {
@@ -2145,9 +2145,9 @@
                             "type": "text"
                         },
                         {
-                            "key": "can_manage_voice_chats",
+                            "key": "can_manage_video_chats",
                             "value": "",
-                            "description": "Optional. Pass True, if the administrator can manage voice chats",
+                            "description": "Optional. Pass True, if the administrator can manage video chats",
                             "type": "text"
                         },
                         {
@@ -3265,6 +3265,142 @@
             }
         },
         {
+            "name": "setChatMenuButton",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Optional. Unique identifier for the target private chat. If not specified, default bot's menu button will be changed",
+                            "type": "text"
+                        },
+                        {
+                            "key": "menu_button",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized object for the new bot's menu button. Defaults to MenuButtonDefault",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/setChatMenuButton",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "setChatMenuButton"
+                    ]
+                },
+                "description": "Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success."
+            }
+        },
+        {
+            "name": "getChatMenuButton",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Optional. Unique identifier for the target private chat. If not specified, default bot's menu button will be returned",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/getChatMenuButton",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "getChatMenuButton"
+                    ]
+                },
+                "description": "Use this method to get the current value of the bot's menu button in a private chat, or the default menu button. Returns MenuButton on success."
+            }
+        },
+        {
+            "name": "setMyDefaultAdministratorRights",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "rights",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized object describing new default administrator rights. If not specified, the default administrator rights will be cleared.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "for_channels",
+                            "value": "",
+                            "description": "Optional. Pass True to change the default administrator rights of the bot in channels. Otherwise, the default administrator rights of the bot for groups and supergroups will be changed.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/setMyDefaultAdministratorRights",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "setMyDefaultAdministratorRights"
+                    ]
+                },
+                "description": "Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels. These rights will be suggested to users, but they are are free to modify the list before adding the bot. Returns True on success."
+            }
+        },
+        {
+            "name": "getMyDefaultAdministratorRights",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "for_channels",
+                            "value": "",
+                            "description": "Optional. Pass True to get default administrator rights of the bot in channels. Otherwise, default administrator rights of the bot for groups and supergroups will be returned.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/getMyDefaultAdministratorRights",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "getMyDefaultAdministratorRights"
+                    ]
+                },
+                "description": "Use this method to get the current default administrator rights of the bot. Returns ChatAdministratorRights on success."
+            }
+        },
+        {
             "name": "editMessageText",
             "request": {
                 "method": "POST",
@@ -3739,7 +3875,7 @@
                         {
                             "key": "name",
                             "value": "",
-                            "description": "Required. Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only english letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in \u201c_by_<bot username>\u201d. <bot_username> is case insensitive. 1-64 characters.",
+                            "description": "Required. Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only english letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in \"_by_<bot_username>\". <bot_username> is case insensitive. 1-64 characters.",
                             "type": "text"
                         },
                         {
@@ -4045,6 +4181,43 @@
                     ]
                 },
                 "description": "Use this method to send answers to an inline query. On success, True is returned.No more than 50 results per query are allowed."
+            }
+        },
+        {
+            "name": "answerWebAppQuery",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "web_app_query_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the query to be answered",
+                            "type": "text"
+                        },
+                        {
+                            "key": "result",
+                            "value": "",
+                            "description": "Required. A JSON-serialized object describing the message to be sent",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/answerWebAppQuery",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "answerWebAppQuery"
+                    ]
+                },
+                "description": "Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned."
             }
         },
         {

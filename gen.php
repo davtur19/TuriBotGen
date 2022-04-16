@@ -22,6 +22,10 @@ $types = [
     'Array<InputMediaAudio, InputMediaDocument, InputMediaPhoto, InputMediaVideo>' => 'array',
     'Array<int>' => 'array',
     'BotCommandScope' => 'array',
+    'Array<InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo>' => 'array',
+    'MenuButton' => 'array',
+    'ChatAdministratorRights' => 'array',
+    'InlineQueryResult' => 'array',
 ];
 
 $methods_upload = [
