@@ -3,34 +3,39 @@
 $api = json_decode(file_get_contents('botapi.json'), true);
 
 $types = [
-    'int' => 'int',
-    'Array<string>' => 'array',
-    'string' => 'string',
-    'InputFile' => '\CURLFile',
-    'bool' => 'bool',
-    'float' => 'float',
-    'ChatPermissions' => 'array',
-    'Array<BotCommand>' => 'array',
-    'InlineKeyboardMarkup' => 'array',
-    'InputMedia' => 'array',
-    'MaskPosition' => 'array',
-    'Array<InlineQueryResult>' => 'array',
-    'Array<ShippingOption>' => 'array',
-    'Array<PassportElementError>' => 'array',
-    'Array<LabeledPrice>' => 'array',
-    'Array<MessageEntity>' => 'array',
+    'int'                                                                          => 'int',
+    'Array<string>'                                                                => 'array',
+    'string'                                                                       => 'string',
+    'InputFile'                                                                    => '\CURLFile',
+    'bool'                                                                         => 'bool',
+    'float'                                                                        => 'float',
+    'ChatPermissions'                                                              => 'array',
+    'Array<BotCommand>'                                                            => 'array',
+    'InlineKeyboardMarkup'                                                         => 'array',
+    'InputMedia'                                                                   => 'array',
+    'MaskPosition'                                                                 => 'array',
+    'Array<InlineQueryResult>'                                                     => 'array',
+    'Array<ShippingOption>'                                                        => 'array',
+    'Array<PassportElementError>'                                                  => 'array',
+    'Array<LabeledPrice>'                                                          => 'array',
+    'Array<MessageEntity>'                                                         => 'array',
     'Array<InputMediaAudio, InputMediaDocument, InputMediaPhoto, InputMediaVideo>' => 'array',
-    'Array<int>' => 'array',
-    'BotCommandScope' => 'array',
-    'Array<InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo>' => 'array',
-    'MenuButton' => 'array',
-    'ChatAdministratorRights' => 'array',
-    'InlineQueryResult' => 'array',
+    'Array<int>'                                                                   => 'array',
+    'BotCommandScope'                                                              => 'array',
+    'Array<InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo>'    => 'array',
+    'MenuButton'                                                                   => 'array',
+    'ChatAdministratorRights'                                                      => 'array',
+    'InlineQueryResult'                                                            => 'array',
 ];
 
 $methods_upload = [
     'sendMediaGroup', // Array of InputMediaAudio, InputMediaDocument, InputMediaPhoto and InputMediaVideo
     'editMessageMedia', // InputMedia
+];
+
+// Parameters to be added last, to avoid compatibility problems
+$last_parameters = [
+    'message_thread_id',
 ];
 
 $out = '<?php' . PHP_EOL;
@@ -54,6 +59,15 @@ foreach ($api['methods'] as $method) {
     if (!empty($method['fields'])) {
         $optional = false;
         $out .= PHP_EOL;
+
+        // Move parameters to the end of the array to avoid compatibility problems
+        foreach ($method['fields'] as $key => $field) {
+            if (in_array($field['name'], $last_parameters)) {
+                unset($method['fields'][$key]);
+                $method['fields'][] = $field;
+            }
+        }
+
         //gen parameters
         foreach ($method['fields'] as $field) {
             $out .= "\t";

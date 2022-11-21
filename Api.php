@@ -118,7 +118,8 @@ public function sendMessage(
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null, 
-	array $reply_markup = null
+	array $reply_markup = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -157,6 +158,10 @@ if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
+}
+
 return $this->Request('sendMessage', $args);
 }
 
@@ -165,7 +170,8 @@ public function forwardMessage(
 	$from_chat_id, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $message_id = null
+	int $message_id = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -184,6 +190,10 @@ if ($message_id !== null) {
 	$args['message_id'] = $message_id;
 }
 
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
+}
+
 return $this->Request('forwardMessage', $args);
 }
 
@@ -198,7 +208,8 @@ public function copyMessage(
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null, 
-	array $reply_markup = null
+	array $reply_markup = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -238,6 +249,10 @@ if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
+}
+
 return $this->Request('copyMessage', $args);
 }
 
@@ -251,7 +266,8 @@ public function sendPhoto(
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null, 
-	array $reply_markup = null
+	array $reply_markup = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -290,6 +306,10 @@ if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
+}
+
 return $this->Request('sendPhoto', $args);
 }
 
@@ -307,7 +327,8 @@ public function sendAudio(
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null, 
-	array $reply_markup = null
+	array $reply_markup = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -362,6 +383,10 @@ if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
+}
+
 return $this->Request('sendAudio', $args);
 }
 
@@ -377,7 +402,8 @@ public function sendDocument(
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null, 
-	array $reply_markup = null
+	array $reply_markup = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -424,6 +450,10 @@ if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
+}
+
 return $this->Request('sendDocument', $args);
 }
 
@@ -442,7 +472,8 @@ public function sendVideo(
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null, 
-	array $reply_markup = null
+	array $reply_markup = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -501,6 +532,10 @@ if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
+}
+
 return $this->Request('sendVideo', $args);
 }
 
@@ -518,7 +553,8 @@ public function sendAnimation(
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null, 
-	array $reply_markup = null
+	array $reply_markup = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -573,6 +609,10 @@ if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
+}
+
 return $this->Request('sendAnimation', $args);
 }
 
@@ -587,7 +627,8 @@ public function sendVoice(
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null, 
-	array $reply_markup = null
+	array $reply_markup = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -630,6 +671,10 @@ if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
+}
+
 return $this->Request('sendVoice', $args);
 }
 
@@ -643,7 +688,8 @@ public function sendVideoNote(
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null, 
-	array $reply_markup = null
+	array $reply_markup = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -682,6 +728,10 @@ if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
+}
+
 return $this->Request('sendVideoNote', $args);
 }
 
@@ -691,7 +741,8 @@ public function sendMediaGroup(
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null
+	bool $allow_sending_without_reply = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -721,6 +772,10 @@ if ($allow_sending_without_reply !== null) {
 	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
 }
 
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
+}
+
 return $this->Request('sendMediaGroup', $args);
 }
 
@@ -736,7 +791,8 @@ public function sendLocation(
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null, 
-	array $reply_markup = null
+	array $reply_markup = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -778,6 +834,10 @@ if ($allow_sending_without_reply !== null) {
 
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
+}
+
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
 }
 
 return $this->Request('sendLocation', $args);
@@ -876,7 +936,8 @@ public function sendVenue(
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null, 
-	array $reply_markup = null
+	array $reply_markup = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -922,6 +983,10 @@ if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
+}
+
 return $this->Request('sendVenue', $args);
 }
 
@@ -935,7 +1000,8 @@ public function sendContact(
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null, 
-	array $reply_markup = null
+	array $reply_markup = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -971,6 +1037,10 @@ if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
+}
+
 return $this->Request('sendContact', $args);
 }
 
@@ -992,7 +1062,8 @@ public function sendPoll(
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null, 
-	array $reply_markup = null
+	array $reply_markup = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -1060,6 +1131,10 @@ if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
 }
 
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
+}
+
 return $this->Request('sendPoll', $args);
 }
 
@@ -1070,7 +1145,8 @@ public function sendDice(
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null, 
-	array $reply_markup = null
+	array $reply_markup = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id
@@ -1098,6 +1174,10 @@ if ($allow_sending_without_reply !== null) {
 
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
+}
+
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
 }
 
 return $this->Request('sendDice', $args);
@@ -1216,7 +1296,8 @@ public function promoteChatMember(
 	bool $can_promote_members = null, 
 	bool $can_change_info = null, 
 	bool $can_invite_users = null, 
-	bool $can_pin_messages = null
+	bool $can_pin_messages = null, 
+	bool $can_manage_topics = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -1265,6 +1346,10 @@ if ($can_invite_users !== null) {
 
 if ($can_pin_messages !== null) {
 	$args['can_pin_messages'] = $can_pin_messages;
+}
+
+if ($can_manage_topics !== null) {
+	$args['can_manage_topics'] = $can_manage_topics;
 }
 
 return $this->Request('promoteChatMember', $args);
@@ -1591,6 +1676,97 @@ $args = [
 ];
 
 return $this->Request('deleteChatStickerSet', $args);
+}
+
+public function getForumTopicIconStickers()
+{
+return $this->Request('getForumTopicIconStickers', []);
+}
+
+public function createForumTopic(
+	$chat_id, 
+	string $name, 
+	int $icon_color = null, 
+	string $icon_custom_emoji_id = null
+) {
+$args = [
+	'chat_id' => $chat_id,
+	'name' => $name
+];
+
+if ($icon_color !== null) {
+	$args['icon_color'] = $icon_color;
+}
+
+if ($icon_custom_emoji_id !== null) {
+	$args['icon_custom_emoji_id'] = $icon_custom_emoji_id;
+}
+
+return $this->Request('createForumTopic', $args);
+}
+
+public function editForumTopic(
+	$chat_id, 
+	string $name, 
+	string $icon_custom_emoji_id, 
+	int $message_thread_id
+) {
+$args = [
+	'chat_id' => $chat_id,
+	'name' => $name,
+	'icon_custom_emoji_id' => $icon_custom_emoji_id,
+	'message_thread_id' => $message_thread_id
+];
+
+return $this->Request('editForumTopic', $args);
+}
+
+public function closeForumTopic(
+	$chat_id, 
+	int $message_thread_id
+) {
+$args = [
+	'chat_id' => $chat_id,
+	'message_thread_id' => $message_thread_id
+];
+
+return $this->Request('closeForumTopic', $args);
+}
+
+public function reopenForumTopic(
+	$chat_id, 
+	int $message_thread_id
+) {
+$args = [
+	'chat_id' => $chat_id,
+	'message_thread_id' => $message_thread_id
+];
+
+return $this->Request('reopenForumTopic', $args);
+}
+
+public function deleteForumTopic(
+	$chat_id, 
+	int $message_thread_id
+) {
+$args = [
+	'chat_id' => $chat_id,
+	'message_thread_id' => $message_thread_id
+];
+
+return $this->Request('deleteForumTopic', $args);
+}
+
+public function unpinAllForumTopicMessages(
+	$chat_id, 
+	int $message_thread_id
+) {
+$args = [
+	'chat_id' => $chat_id,
+	'message_thread_id' => $message_thread_id
+];
+
+return $this->Request('unpinAllForumTopicMessages', $args);
 }
 
 public function answerCallbackQuery(
@@ -1923,7 +2099,8 @@ public function sendSticker(
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null, 
-	array $reply_markup = null
+	array $reply_markup = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -1948,6 +2125,10 @@ if ($allow_sending_without_reply !== null) {
 
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
+}
+
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
 }
 
 return $this->Request('sendSticker', $args);
@@ -2181,7 +2362,8 @@ public function sendInvoice(
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null, 
-	array $reply_markup = null
+	array $reply_markup = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -2271,6 +2453,10 @@ if ($allow_sending_without_reply !== null) {
 
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
+}
+
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
 }
 
 return $this->Request('sendInvoice', $args);
@@ -2424,7 +2610,8 @@ public function sendGame(
 	bool $protect_content = null, 
 	int $reply_to_message_id = null, 
 	bool $allow_sending_without_reply = null, 
-	array $reply_markup = null
+	array $reply_markup = null, 
+	int $message_thread_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
@@ -2449,6 +2636,10 @@ if ($allow_sending_without_reply !== null) {
 
 if ($reply_markup !== null) {
 	$args['reply_markup'] = json_encode($reply_markup);
+}
+
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
 }
 
 return $this->Request('sendGame', $args);
