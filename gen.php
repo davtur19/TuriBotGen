@@ -36,6 +36,7 @@ $methods_upload = [
 // Parameters to be added last, to avoid compatibility problems
 $last_parameters = [
     'message_thread_id',
+    'has_spoiler',
 ];
 
 $out = '<?php' . PHP_EOL;
