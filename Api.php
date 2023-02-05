@@ -1288,6 +1288,7 @@ public function restrictChatMember(
 	$chat_id, 
 	int $user_id, 
 	array $permissions, 
+	bool $use_independent_chat_permissions = null, 
 	int $until_date = null
 ) {
 $args = [
@@ -1295,6 +1296,10 @@ $args = [
 	'user_id' => $user_id,
 	'permissions' => json_encode($permissions)
 ];
+
+if ($use_independent_chat_permissions !== null) {
+	$args['use_independent_chat_permissions'] = $use_independent_chat_permissions;
+}
 
 if ($until_date !== null) {
 	$args['until_date'] = $until_date;
@@ -1415,12 +1420,17 @@ return $this->Request('unbanChatSenderChat', $args);
 
 public function setChatPermissions(
 	$chat_id, 
-	array $permissions
+	array $permissions, 
+	bool $use_independent_chat_permissions = null
 ) {
 $args = [
 	'chat_id' => $chat_id,
 	'permissions' => json_encode($permissions)
 ];
+
+if ($use_independent_chat_permissions !== null) {
+	$args['use_independent_chat_permissions'] = $use_independent_chat_permissions;
+}
 
 return $this->Request('setChatPermissions', $args);
 }
