@@ -26,6 +26,8 @@ $types = [
     'MenuButton'                                                                   => 'array',
     'ChatAdministratorRights'                                                      => 'array',
     'InlineQueryResult'                                                            => 'array',
+    'Array<InputSticker>'                                                          => 'array',
+    'InputSticker'                                                                 => 'array',
 ];
 
 $methods_upload = [
