@@ -28,6 +28,7 @@ $types = [
     'InlineQueryResult'                                                            => 'array',
     'Array<InputSticker>'                                                          => 'array',
     'InputSticker'                                                                 => 'array',
+    'InlineQueryResultsButton'                                                     => 'array',
 ];
 
 $methods_upload = [
