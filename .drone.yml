@@ -63,9 +63,9 @@ volumes:
     path: /srv/drone/data/tgbuild
 
 trigger:
-  event:
-  - cron
-  cron:
-  - tgbuild
+  #event:
+  #- cron
+  #cron:
+  #- tgbuild
   branch:
   - master
