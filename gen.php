@@ -48,14 +48,14 @@ $types = [
 ];
 
 $methods_upload = [
-    'sendMediaGroup', // Array of InputMediaAudio, InputMediaDocument, InputMediaPhoto and InputMediaVideo
+    'sendMediaGroup',   // Array of InputMediaAudio, InputMediaDocument, InputMediaPhoto and InputMediaVideo
     'editMessageMedia', // InputMedia
 ];
 
 // Parameters to be added last, to avoid compatibility problems
 $last_parameters = [
-    'message_thread_id',
-    'has_spoiler',
+    // 'message_thread_id',
+    //'has_spoiler',
 ];
 
 $out = '<?php' . PHP_EOL;
@@ -77,7 +77,6 @@ foreach ($api['methods'] as $method) {
     $out .= "public function {$method['name']}(";
 
     if (!empty($method['fields'])) {
-        $optional = false;
         $out .= PHP_EOL;
 
         // Move parameters to the end of the array to avoid compatibility problems
@@ -87,6 +86,29 @@ foreach ($api['methods'] as $method) {
                 $method['fields'][] = $field;
             }
         }
+
+        // sort $method['fields'] by putting non-optional parameters first
+        foreach ($method['fields'] as $field) {
+            if ($field['optional']) {
+                $array_optional[] = $field;
+            } else {
+                $array_required[] = $field;
+            }
+        }
+        unset($method['fields']);
+        $method['fields'] = [];
+        if (isset($array_required)) {
+            foreach ($array_required as $req) {
+                $method['fields'][] = $req;
+            }
+        }
+        unset($array_required);
+        if (isset($array_optional)) {
+            foreach ($array_optional as $opt) {
+                $method['fields'][] = $opt;
+            }
+        }
+        unset($array_optional);
 
         //gen parameters
         foreach ($method['fields'] as $field) {
@@ -100,8 +122,7 @@ foreach ($api['methods'] as $method) {
 
             $out .= '$' . $field['name'];
 
-            if ($field['optional'] or $optional) {
-                $optional = true;
+            if ($field['optional']) {
                 $out .= ' = null';
             } else {
                 //gen array $args of mandatory parameters
@@ -157,10 +178,8 @@ foreach ($api['methods'] as $method) {
         $out .= PHP_EOL . PHP_EOL;
 
         //gen "if !== null" of non-mandatory parameters
-        $optional = false;
         foreach ($method['fields'] as $field) {
-            if ($field['optional'] or $optional) {
-                $optional = true;
+            if ($field['optional']) {
                 $out .= 'if ($' . $field['name'] . ' !== null) {' . PHP_EOL;
                 // support specific case for upload media with attach:// in json object
                 if (in_array($method['name'], $methods_upload) and $field['name'] === 'media') {
