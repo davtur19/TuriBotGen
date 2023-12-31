@@ -205,4 +205,6 @@ $out .= '}';
 
 file_put_contents('Api.php', $out);
 
+echo "OK";
+
 //var_export($typeGen);
