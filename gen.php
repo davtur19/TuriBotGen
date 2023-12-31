@@ -1,5 +1,18 @@
 <?php
 
+use JetBrains\PhpStorm\NoReturn;
+
+function errHandle($errNo, $errStr, $errFile, $errLine): void {
+    echo $errNo . PHP_EOL;
+    echo $errStr . PHP_EOL;
+    echo $errFile . PHP_EOL;
+    echo $errLine . PHP_EOL;
+    exit(1);
+}
+
+set_error_handler('errHandle');
+
+
 $api = json_decode(file_get_contents('botapi.json'), true);
 
 $types = [
@@ -29,6 +42,9 @@ $types = [
     'Array<InputSticker>'                                                          => 'array',
     'InputSticker'                                                                 => 'array',
     'InlineQueryResultsButton'                                                     => 'array',
+    'LinkPreviewOptions'                                                           => 'array',
+    'ReplyParameters'                                                              => 'array',
+    'Array<ReactionType>'                                                          => 'array',
 ];
 
 $methods_upload = [

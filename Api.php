@@ -113,11 +113,10 @@ public function sendMessage(
 	string $text, 
 	string $parse_mode = null, 
 	array $entities = null, 
-	bool $disable_web_page_preview = null, 
+	array $link_preview_options = null, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	array $reply_markup = null, 
 	int $message_thread_id = null
 ) {
@@ -134,8 +133,8 @@ if ($entities !== null) {
 	$args['entities'] = json_encode($entities);
 }
 
-if ($disable_web_page_preview !== null) {
-	$args['disable_web_page_preview'] = $disable_web_page_preview;
+if ($link_preview_options !== null) {
+	$args['link_preview_options'] = json_encode($link_preview_options);
 }
 
 if ($disable_notification !== null) {
@@ -146,12 +145,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($reply_markup !== null) {
@@ -197,6 +192,35 @@ if ($message_thread_id !== null) {
 return $this->Request('forwardMessage', $args);
 }
 
+public function forwardMessages(
+	$chat_id, 
+	$from_chat_id, 
+	array $message_ids, 
+	bool $disable_notification = null, 
+	bool $protect_content = null, 
+	int $message_thread_id = null
+) {
+$args = [
+	'chat_id' => $chat_id,
+	'from_chat_id' => $from_chat_id,
+	'message_ids' => json_encode($message_ids)
+];
+
+if ($disable_notification !== null) {
+	$args['disable_notification'] = $disable_notification;
+}
+
+if ($protect_content !== null) {
+	$args['protect_content'] = $protect_content;
+}
+
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
+}
+
+return $this->Request('forwardMessages', $args);
+}
+
 public function copyMessage(
 	$chat_id, 
 	$from_chat_id, 
@@ -206,8 +230,7 @@ public function copyMessage(
 	array $caption_entities = null, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	array $reply_markup = null, 
 	int $message_thread_id = null
 ) {
@@ -237,12 +260,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($reply_markup !== null) {
@@ -256,6 +275,40 @@ if ($message_thread_id !== null) {
 return $this->Request('copyMessage', $args);
 }
 
+public function copyMessages(
+	$chat_id, 
+	$from_chat_id, 
+	array $message_ids, 
+	bool $disable_notification = null, 
+	bool $protect_content = null, 
+	bool $remove_caption = null, 
+	int $message_thread_id = null
+) {
+$args = [
+	'chat_id' => $chat_id,
+	'from_chat_id' => $from_chat_id,
+	'message_ids' => json_encode($message_ids)
+];
+
+if ($disable_notification !== null) {
+	$args['disable_notification'] = $disable_notification;
+}
+
+if ($protect_content !== null) {
+	$args['protect_content'] = $protect_content;
+}
+
+if ($remove_caption !== null) {
+	$args['remove_caption'] = $remove_caption;
+}
+
+if ($message_thread_id !== null) {
+	$args['message_thread_id'] = $message_thread_id;
+}
+
+return $this->Request('copyMessages', $args);
+}
+
 public function sendPhoto(
 	$chat_id, 
 	$photo, 
@@ -264,8 +317,7 @@ public function sendPhoto(
 	array $caption_entities = null, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	array $reply_markup = null, 
 	int $message_thread_id = null, 
 	bool $has_spoiler = null
@@ -295,12 +347,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($reply_markup !== null) {
@@ -330,8 +378,7 @@ public function sendAudio(
 	$thumbnail = null, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	array $reply_markup = null, 
 	int $message_thread_id = null
 ) {
@@ -376,12 +423,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($reply_markup !== null) {
@@ -405,8 +448,7 @@ public function sendDocument(
 	bool $disable_content_type_detection = null, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	array $reply_markup = null, 
 	int $message_thread_id = null
 ) {
@@ -443,12 +485,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($reply_markup !== null) {
@@ -475,8 +513,7 @@ public function sendVideo(
 	bool $supports_streaming = null, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	array $reply_markup = null, 
 	int $message_thread_id = null, 
 	bool $has_spoiler = null
@@ -526,12 +563,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($reply_markup !== null) {
@@ -561,8 +594,7 @@ public function sendAnimation(
 	array $caption_entities = null, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	array $reply_markup = null, 
 	int $message_thread_id = null, 
 	bool $has_spoiler = null
@@ -608,12 +640,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($reply_markup !== null) {
@@ -640,8 +668,7 @@ public function sendVoice(
 	int $duration = null, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	array $reply_markup = null, 
 	int $message_thread_id = null
 ) {
@@ -674,12 +701,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($reply_markup !== null) {
@@ -701,8 +724,7 @@ public function sendVideoNote(
 	$thumbnail = null, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	array $reply_markup = null, 
 	int $message_thread_id = null
 ) {
@@ -731,12 +753,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($reply_markup !== null) {
@@ -755,8 +773,7 @@ public function sendMediaGroup(
 	array $media, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	int $message_thread_id = null
 ) {
 $args = [
@@ -779,12 +796,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($message_thread_id !== null) {
@@ -804,8 +817,7 @@ public function sendLocation(
 	int $proximity_alert_radius = null, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	array $reply_markup = null, 
 	int $message_thread_id = null
 ) {
@@ -839,12 +851,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($reply_markup !== null) {
@@ -870,8 +878,7 @@ public function sendVenue(
 	string $google_place_type = null, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	array $reply_markup = null, 
 	int $message_thread_id = null
 ) {
@@ -907,12 +914,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($reply_markup !== null) {
@@ -934,8 +937,7 @@ public function sendContact(
 	string $vcard = null, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	array $reply_markup = null, 
 	int $message_thread_id = null
 ) {
@@ -961,12 +963,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($reply_markup !== null) {
@@ -996,8 +994,7 @@ public function sendPoll(
 	bool $is_closed = null, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	array $reply_markup = null, 
 	int $message_thread_id = null
 ) {
@@ -1055,12 +1052,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($reply_markup !== null) {
@@ -1079,8 +1072,7 @@ public function sendDice(
 	string $emoji = null, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	array $reply_markup = null, 
 	int $message_thread_id = null
 ) {
@@ -1100,12 +1092,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($reply_markup !== null) {
@@ -1134,6 +1122,28 @@ if ($message_thread_id !== null) {
 }
 
 return $this->Request('sendChatAction', $args);
+}
+
+public function setMessageReaction(
+	$chat_id, 
+	int $message_id, 
+	array $reaction = null, 
+	bool $is_big = null
+) {
+$args = [
+	'chat_id' => $chat_id,
+	'message_id' => $message_id
+];
+
+if ($reaction !== null) {
+	$args['reaction'] = json_encode($reaction);
+}
+
+if ($is_big !== null) {
+	$args['is_big'] = $is_big;
+}
+
+return $this->Request('setMessageReaction', $args);
 }
 
 public function getUserProfilePhotos(
@@ -1234,15 +1244,18 @@ public function promoteChatMember(
 	int $user_id, 
 	bool $is_anonymous = null, 
 	bool $can_manage_chat = null, 
-	bool $can_post_messages = null, 
-	bool $can_edit_messages = null, 
 	bool $can_delete_messages = null, 
 	bool $can_manage_video_chats = null, 
 	bool $can_restrict_members = null, 
 	bool $can_promote_members = null, 
 	bool $can_change_info = null, 
 	bool $can_invite_users = null, 
+	bool $can_post_messages = null, 
+	bool $can_edit_messages = null, 
 	bool $can_pin_messages = null, 
+	bool $can_post_stories = null, 
+	bool $can_edit_stories = null, 
+	bool $can_delete_stories = null, 
 	bool $can_manage_topics = null
 ) {
 $args = [
@@ -1256,14 +1269,6 @@ if ($is_anonymous !== null) {
 
 if ($can_manage_chat !== null) {
 	$args['can_manage_chat'] = $can_manage_chat;
-}
-
-if ($can_post_messages !== null) {
-	$args['can_post_messages'] = $can_post_messages;
-}
-
-if ($can_edit_messages !== null) {
-	$args['can_edit_messages'] = $can_edit_messages;
 }
 
 if ($can_delete_messages !== null) {
@@ -1290,8 +1295,28 @@ if ($can_invite_users !== null) {
 	$args['can_invite_users'] = $can_invite_users;
 }
 
+if ($can_post_messages !== null) {
+	$args['can_post_messages'] = $can_post_messages;
+}
+
+if ($can_edit_messages !== null) {
+	$args['can_edit_messages'] = $can_edit_messages;
+}
+
 if ($can_pin_messages !== null) {
 	$args['can_pin_messages'] = $can_pin_messages;
+}
+
+if ($can_post_stories !== null) {
+	$args['can_post_stories'] = $can_post_stories;
+}
+
+if ($can_edit_stories !== null) {
+	$args['can_edit_stories'] = $can_edit_stories;
+}
+
+if ($can_delete_stories !== null) {
+	$args['can_delete_stories'] = $can_delete_stories;
 }
 
 if ($can_manage_topics !== null) {
@@ -1821,6 +1846,18 @@ if ($cache_time !== null) {
 return $this->Request('answerCallbackQuery', $args);
 }
 
+public function getUserChatBoosts(
+	$chat_id, 
+	int $user_id
+) {
+$args = [
+	'chat_id' => $chat_id,
+	'user_id' => $user_id
+];
+
+return $this->Request('getUserChatBoosts', $args);
+}
+
 public function setMyCommands(
 	array $commands, 
 	array $scope = null, 
@@ -2027,7 +2064,7 @@ public function editMessageText(
 	string $text = null, 
 	string $parse_mode = null, 
 	array $entities = null, 
-	bool $disable_web_page_preview = null, 
+	array $link_preview_options = null, 
 	array $reply_markup = null
 ) {
 $args = [];
@@ -2056,8 +2093,8 @@ if ($entities !== null) {
 	$args['entities'] = json_encode($entities);
 }
 
-if ($disable_web_page_preview !== null) {
-	$args['disable_web_page_preview'] = $disable_web_page_preview;
+if ($link_preview_options !== null) {
+	$args['link_preview_options'] = json_encode($link_preview_options);
 }
 
 if ($reply_markup !== null) {
@@ -2280,14 +2317,25 @@ $args = [
 return $this->Request('deleteMessage', $args);
 }
 
+public function deleteMessages(
+	$chat_id, 
+	array $message_ids
+) {
+$args = [
+	'chat_id' => $chat_id,
+	'message_ids' => json_encode($message_ids)
+];
+
+return $this->Request('deleteMessages', $args);
+}
+
 public function sendSticker(
 	$chat_id, 
 	$sticker, 
 	string $emoji = null, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	array $reply_markup = null, 
 	int $message_thread_id = null
 ) {
@@ -2308,12 +2356,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($reply_markup !== null) {
@@ -2590,8 +2634,7 @@ public function sendInvoice(
 	bool $is_flexible = null, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	array $reply_markup = null, 
 	int $message_thread_id = null
 ) {
@@ -2673,12 +2716,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($reply_markup !== null) {
@@ -2838,8 +2877,7 @@ public function sendGame(
 	string $game_short_name, 
 	bool $disable_notification = null, 
 	bool $protect_content = null, 
-	int $reply_to_message_id = null, 
-	bool $allow_sending_without_reply = null, 
+	array $reply_parameters = null, 
 	array $reply_markup = null, 
 	int $message_thread_id = null
 ) {
@@ -2856,12 +2894,8 @@ if ($protect_content !== null) {
 	$args['protect_content'] = $protect_content;
 }
 
-if ($reply_to_message_id !== null) {
-	$args['reply_to_message_id'] = $reply_to_message_id;
-}
-
-if ($allow_sending_without_reply !== null) {
-	$args['allow_sending_without_reply'] = $allow_sending_without_reply;
+if ($reply_parameters !== null) {
+	$args['reply_parameters'] = json_encode($reply_parameters);
 }
 
 if ($reply_markup !== null) {
