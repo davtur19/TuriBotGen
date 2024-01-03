@@ -116,6 +116,8 @@ foreach ($api['methods'] as $method) {
             if (count($field['types']) === 1) {
                 $out .= $types[$field['types'][0]];
                 $out .= ' ';
+            } elseif ($field['types'][0] === 'int' and $field['types'][1] === 'string') {
+                $out .= 'int|string ';
             } elseif ($field['name'] == 'reply_markup') {
                 $out .= 'array ';
             }
@@ -180,22 +182,24 @@ foreach ($api['methods'] as $method) {
         //gen "if !== null" of non-mandatory parameters
         foreach ($method['fields'] as $field) {
             if ($field['optional']) {
-                $out .= 'if ($' . $field['name'] . ' !== null) {' . PHP_EOL;
+                $out .= 'if (null !== $' . $field['name'] . ') ';
                 // support specific case for upload media with attach:// in json object
                 if (in_array($method['name'], $methods_upload) and $field['name'] === 'media') {
+                    $out .= '{ ' . PHP_EOL;
                     $out .= "\tif (is_object(\$media['media'])) {" . PHP_EOL;
                     $out .= "\t\t\$args['upload'] = \$media['media'];" . PHP_EOL;
                     $out .= "\t\t\$media['media'] = 'attach://upload';" . PHP_EOL;
                     $out .= "\t}" . PHP_EOL;
+                    $out .= '}' . PHP_EOL;
                 }
-                $out .= "\t" . '$args[\'' . $field['name'] . '\'] = ';
+                $out .= '$args[\'' . $field['name'] . '\'] = ';
                 if ($types[$field['types'][0]] === 'array' or $field['name'] === 'reply_markup') {
                     $out .= "json_encode(\${$field['name']})";
                 } else {
                     $out .= '$' . $field['name'];
                 }
                 $out .= ';' . PHP_EOL;
-                $out .= '}' . PHP_EOL . PHP_EOL;
+                $out .= PHP_EOL;
             }
         }
 

@@ -17,21 +17,13 @@ public function getUpdates(
 ) {
 $args = [];
 
-if ($offset !== null) {
-	$args['offset'] = $offset;
-}
+if (null !== $offset) $args['offset'] = $offset;
 
-if ($limit !== null) {
-	$args['limit'] = $limit;
-}
+if (null !== $limit) $args['limit'] = $limit;
 
-if ($timeout !== null) {
-	$args['timeout'] = $timeout;
-}
+if (null !== $timeout) $args['timeout'] = $timeout;
 
-if ($allowed_updates !== null) {
-	$args['allowed_updates'] = json_encode($allowed_updates);
-}
+if (null !== $allowed_updates) $args['allowed_updates'] = json_encode($allowed_updates);
 
 return $this->Request('getUpdates', $args);
 }
@@ -49,29 +41,17 @@ $args = [
 	'url' => $url
 ];
 
-if ($certificate !== null) {
-	$args['certificate'] = $certificate;
-}
+if (null !== $certificate) $args['certificate'] = $certificate;
 
-if ($ip_address !== null) {
-	$args['ip_address'] = $ip_address;
-}
+if (null !== $ip_address) $args['ip_address'] = $ip_address;
 
-if ($max_connections !== null) {
-	$args['max_connections'] = $max_connections;
-}
+if (null !== $max_connections) $args['max_connections'] = $max_connections;
 
-if ($allowed_updates !== null) {
-	$args['allowed_updates'] = json_encode($allowed_updates);
-}
+if (null !== $allowed_updates) $args['allowed_updates'] = json_encode($allowed_updates);
 
-if ($drop_pending_updates !== null) {
-	$args['drop_pending_updates'] = $drop_pending_updates;
-}
+if (null !== $drop_pending_updates) $args['drop_pending_updates'] = $drop_pending_updates;
 
-if ($secret_token !== null) {
-	$args['secret_token'] = $secret_token;
-}
+if (null !== $secret_token) $args['secret_token'] = $secret_token;
 
 return $this->Request('setWebhook', $args);
 }
@@ -81,9 +61,7 @@ public function deleteWebhook(
 ) {
 $args = [];
 
-if ($drop_pending_updates !== null) {
-	$args['drop_pending_updates'] = $drop_pending_updates;
-}
+if (null !== $drop_pending_updates) $args['drop_pending_updates'] = $drop_pending_updates;
 
 return $this->Request('deleteWebhook', $args);
 }
@@ -109,7 +87,7 @@ return $this->Request('close', []);
 }
 
 public function sendMessage(
-	$chat_id, 
+	int|string $chat_id, 
 	string $text, 
 	int $message_thread_id = null, 
 	string $parse_mode = null, 
@@ -125,44 +103,28 @@ $args = [
 	'text' => $text
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($parse_mode !== null) {
-	$args['parse_mode'] = $parse_mode;
-}
+if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
 
-if ($entities !== null) {
-	$args['entities'] = json_encode($entities);
-}
+if (null !== $entities) $args['entities'] = json_encode($entities);
 
-if ($link_preview_options !== null) {
-	$args['link_preview_options'] = json_encode($link_preview_options);
-}
+if (null !== $link_preview_options) $args['link_preview_options'] = json_encode($link_preview_options);
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('sendMessage', $args);
 }
 
 public function forwardMessage(
-	$chat_id, 
-	$from_chat_id, 
+	int|string $chat_id, 
+	int|string $from_chat_id, 
 	int $message_id, 
 	int $message_thread_id = null, 
 	bool $disable_notification = null, 
@@ -174,24 +136,18 @@ $args = [
 	'message_id' => $message_id
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
 return $this->Request('forwardMessage', $args);
 }
 
 public function forwardMessages(
-	$chat_id, 
-	$from_chat_id, 
+	int|string $chat_id, 
+	int|string $from_chat_id, 
 	array $message_ids, 
 	int $message_thread_id = null, 
 	bool $disable_notification = null, 
@@ -203,24 +159,18 @@ $args = [
 	'message_ids' => json_encode($message_ids)
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
 return $this->Request('forwardMessages', $args);
 }
 
 public function copyMessage(
-	$chat_id, 
-	$from_chat_id, 
+	int|string $chat_id, 
+	int|string $from_chat_id, 
 	int $message_id, 
 	int $message_thread_id = null, 
 	string $caption = null, 
@@ -237,44 +187,28 @@ $args = [
 	'message_id' => $message_id
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($caption !== null) {
-	$args['caption'] = $caption;
-}
+if (null !== $caption) $args['caption'] = $caption;
 
-if ($parse_mode !== null) {
-	$args['parse_mode'] = $parse_mode;
-}
+if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
 
-if ($caption_entities !== null) {
-	$args['caption_entities'] = json_encode($caption_entities);
-}
+if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('copyMessage', $args);
 }
 
 public function copyMessages(
-	$chat_id, 
-	$from_chat_id, 
+	int|string $chat_id, 
+	int|string $from_chat_id, 
 	array $message_ids, 
 	int $message_thread_id = null, 
 	bool $disable_notification = null, 
@@ -287,27 +221,19 @@ $args = [
 	'message_ids' => json_encode($message_ids)
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($remove_caption !== null) {
-	$args['remove_caption'] = $remove_caption;
-}
+if (null !== $remove_caption) $args['remove_caption'] = $remove_caption;
 
 return $this->Request('copyMessages', $args);
 }
 
 public function sendPhoto(
-	$chat_id, 
+	int|string $chat_id, 
 	$photo, 
 	int $message_thread_id = null, 
 	string $caption = null, 
@@ -324,47 +250,29 @@ $args = [
 	'photo' => $photo
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($caption !== null) {
-	$args['caption'] = $caption;
-}
+if (null !== $caption) $args['caption'] = $caption;
 
-if ($parse_mode !== null) {
-	$args['parse_mode'] = $parse_mode;
-}
+if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
 
-if ($caption_entities !== null) {
-	$args['caption_entities'] = json_encode($caption_entities);
-}
+if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
 
-if ($has_spoiler !== null) {
-	$args['has_spoiler'] = $has_spoiler;
-}
+if (null !== $has_spoiler) $args['has_spoiler'] = $has_spoiler;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('sendPhoto', $args);
 }
 
 public function sendAudio(
-	$chat_id, 
+	int|string $chat_id, 
 	$audio, 
 	int $message_thread_id = null, 
 	string $caption = null, 
@@ -384,59 +292,35 @@ $args = [
 	'audio' => $audio
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($caption !== null) {
-	$args['caption'] = $caption;
-}
+if (null !== $caption) $args['caption'] = $caption;
 
-if ($parse_mode !== null) {
-	$args['parse_mode'] = $parse_mode;
-}
+if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
 
-if ($caption_entities !== null) {
-	$args['caption_entities'] = json_encode($caption_entities);
-}
+if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
 
-if ($duration !== null) {
-	$args['duration'] = $duration;
-}
+if (null !== $duration) $args['duration'] = $duration;
 
-if ($performer !== null) {
-	$args['performer'] = $performer;
-}
+if (null !== $performer) $args['performer'] = $performer;
 
-if ($title !== null) {
-	$args['title'] = $title;
-}
+if (null !== $title) $args['title'] = $title;
 
-if ($thumbnail !== null) {
-	$args['thumbnail'] = $thumbnail;
-}
+if (null !== $thumbnail) $args['thumbnail'] = $thumbnail;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('sendAudio', $args);
 }
 
 public function sendDocument(
-	$chat_id, 
+	int|string $chat_id, 
 	$document, 
 	int $message_thread_id = null, 
 	$thumbnail = null, 
@@ -454,51 +338,31 @@ $args = [
 	'document' => $document
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($thumbnail !== null) {
-	$args['thumbnail'] = $thumbnail;
-}
+if (null !== $thumbnail) $args['thumbnail'] = $thumbnail;
 
-if ($caption !== null) {
-	$args['caption'] = $caption;
-}
+if (null !== $caption) $args['caption'] = $caption;
 
-if ($parse_mode !== null) {
-	$args['parse_mode'] = $parse_mode;
-}
+if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
 
-if ($caption_entities !== null) {
-	$args['caption_entities'] = json_encode($caption_entities);
-}
+if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
 
-if ($disable_content_type_detection !== null) {
-	$args['disable_content_type_detection'] = $disable_content_type_detection;
-}
+if (null !== $disable_content_type_detection) $args['disable_content_type_detection'] = $disable_content_type_detection;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('sendDocument', $args);
 }
 
 public function sendVideo(
-	$chat_id, 
+	int|string $chat_id, 
 	$video, 
 	int $message_thread_id = null, 
 	int $duration = null, 
@@ -520,67 +384,39 @@ $args = [
 	'video' => $video
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($duration !== null) {
-	$args['duration'] = $duration;
-}
+if (null !== $duration) $args['duration'] = $duration;
 
-if ($width !== null) {
-	$args['width'] = $width;
-}
+if (null !== $width) $args['width'] = $width;
 
-if ($height !== null) {
-	$args['height'] = $height;
-}
+if (null !== $height) $args['height'] = $height;
 
-if ($thumbnail !== null) {
-	$args['thumbnail'] = $thumbnail;
-}
+if (null !== $thumbnail) $args['thumbnail'] = $thumbnail;
 
-if ($caption !== null) {
-	$args['caption'] = $caption;
-}
+if (null !== $caption) $args['caption'] = $caption;
 
-if ($parse_mode !== null) {
-	$args['parse_mode'] = $parse_mode;
-}
+if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
 
-if ($caption_entities !== null) {
-	$args['caption_entities'] = json_encode($caption_entities);
-}
+if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
 
-if ($has_spoiler !== null) {
-	$args['has_spoiler'] = $has_spoiler;
-}
+if (null !== $has_spoiler) $args['has_spoiler'] = $has_spoiler;
 
-if ($supports_streaming !== null) {
-	$args['supports_streaming'] = $supports_streaming;
-}
+if (null !== $supports_streaming) $args['supports_streaming'] = $supports_streaming;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('sendVideo', $args);
 }
 
 public function sendAnimation(
-	$chat_id, 
+	int|string $chat_id, 
 	$animation, 
 	int $message_thread_id = null, 
 	int $duration = null, 
@@ -601,63 +437,37 @@ $args = [
 	'animation' => $animation
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($duration !== null) {
-	$args['duration'] = $duration;
-}
+if (null !== $duration) $args['duration'] = $duration;
 
-if ($width !== null) {
-	$args['width'] = $width;
-}
+if (null !== $width) $args['width'] = $width;
 
-if ($height !== null) {
-	$args['height'] = $height;
-}
+if (null !== $height) $args['height'] = $height;
 
-if ($thumbnail !== null) {
-	$args['thumbnail'] = $thumbnail;
-}
+if (null !== $thumbnail) $args['thumbnail'] = $thumbnail;
 
-if ($caption !== null) {
-	$args['caption'] = $caption;
-}
+if (null !== $caption) $args['caption'] = $caption;
 
-if ($parse_mode !== null) {
-	$args['parse_mode'] = $parse_mode;
-}
+if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
 
-if ($caption_entities !== null) {
-	$args['caption_entities'] = json_encode($caption_entities);
-}
+if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
 
-if ($has_spoiler !== null) {
-	$args['has_spoiler'] = $has_spoiler;
-}
+if (null !== $has_spoiler) $args['has_spoiler'] = $has_spoiler;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('sendAnimation', $args);
 }
 
 public function sendVoice(
-	$chat_id, 
+	int|string $chat_id, 
 	$voice, 
 	int $message_thread_id = null, 
 	string $caption = null, 
@@ -674,47 +484,29 @@ $args = [
 	'voice' => $voice
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($caption !== null) {
-	$args['caption'] = $caption;
-}
+if (null !== $caption) $args['caption'] = $caption;
 
-if ($parse_mode !== null) {
-	$args['parse_mode'] = $parse_mode;
-}
+if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
 
-if ($caption_entities !== null) {
-	$args['caption_entities'] = json_encode($caption_entities);
-}
+if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
 
-if ($duration !== null) {
-	$args['duration'] = $duration;
-}
+if (null !== $duration) $args['duration'] = $duration;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('sendVoice', $args);
 }
 
 public function sendVideoNote(
-	$chat_id, 
+	int|string $chat_id, 
 	$video_note, 
 	int $message_thread_id = null, 
 	int $duration = null, 
@@ -730,43 +522,27 @@ $args = [
 	'video_note' => $video_note
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($duration !== null) {
-	$args['duration'] = $duration;
-}
+if (null !== $duration) $args['duration'] = $duration;
 
-if ($length !== null) {
-	$args['length'] = $length;
-}
+if (null !== $length) $args['length'] = $length;
 
-if ($thumbnail !== null) {
-	$args['thumbnail'] = $thumbnail;
-}
+if (null !== $thumbnail) $args['thumbnail'] = $thumbnail;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('sendVideoNote', $args);
 }
 
 public function sendMediaGroup(
-	$chat_id, 
+	int|string $chat_id, 
 	array $media, 
 	int $message_thread_id = null, 
 	bool $disable_notification = null, 
@@ -785,27 +561,19 @@ foreach ($media as $key => $value) {
 }
 $args['media'] = json_encode($media);
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
 return $this->Request('sendMediaGroup', $args);
 }
 
 public function sendLocation(
-	$chat_id, 
+	int|string $chat_id, 
 	float $latitude, 
 	float $longitude, 
 	int $message_thread_id = null, 
@@ -824,47 +592,29 @@ $args = [
 	'longitude' => $longitude
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($horizontal_accuracy !== null) {
-	$args['horizontal_accuracy'] = $horizontal_accuracy;
-}
+if (null !== $horizontal_accuracy) $args['horizontal_accuracy'] = $horizontal_accuracy;
 
-if ($live_period !== null) {
-	$args['live_period'] = $live_period;
-}
+if (null !== $live_period) $args['live_period'] = $live_period;
 
-if ($heading !== null) {
-	$args['heading'] = $heading;
-}
+if (null !== $heading) $args['heading'] = $heading;
 
-if ($proximity_alert_radius !== null) {
-	$args['proximity_alert_radius'] = $proximity_alert_radius;
-}
+if (null !== $proximity_alert_radius) $args['proximity_alert_radius'] = $proximity_alert_radius;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('sendLocation', $args);
 }
 
 public function sendVenue(
-	$chat_id, 
+	int|string $chat_id, 
 	float $latitude, 
 	float $longitude, 
 	string $title, 
@@ -887,47 +637,29 @@ $args = [
 	'address' => $address
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($foursquare_id !== null) {
-	$args['foursquare_id'] = $foursquare_id;
-}
+if (null !== $foursquare_id) $args['foursquare_id'] = $foursquare_id;
 
-if ($foursquare_type !== null) {
-	$args['foursquare_type'] = $foursquare_type;
-}
+if (null !== $foursquare_type) $args['foursquare_type'] = $foursquare_type;
 
-if ($google_place_id !== null) {
-	$args['google_place_id'] = $google_place_id;
-}
+if (null !== $google_place_id) $args['google_place_id'] = $google_place_id;
 
-if ($google_place_type !== null) {
-	$args['google_place_type'] = $google_place_type;
-}
+if (null !== $google_place_type) $args['google_place_type'] = $google_place_type;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('sendVenue', $args);
 }
 
 public function sendContact(
-	$chat_id, 
+	int|string $chat_id, 
 	string $phone_number, 
 	string $first_name, 
 	int $message_thread_id = null, 
@@ -944,39 +676,25 @@ $args = [
 	'first_name' => $first_name
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($last_name !== null) {
-	$args['last_name'] = $last_name;
-}
+if (null !== $last_name) $args['last_name'] = $last_name;
 
-if ($vcard !== null) {
-	$args['vcard'] = $vcard;
-}
+if (null !== $vcard) $args['vcard'] = $vcard;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('sendContact', $args);
 }
 
 public function sendPoll(
-	$chat_id, 
+	int|string $chat_id, 
 	string $question, 
 	array $options, 
 	int $message_thread_id = null, 
@@ -1001,71 +719,41 @@ $args = [
 	'options' => json_encode($options)
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($is_anonymous !== null) {
-	$args['is_anonymous'] = $is_anonymous;
-}
+if (null !== $is_anonymous) $args['is_anonymous'] = $is_anonymous;
 
-if ($type !== null) {
-	$args['type'] = $type;
-}
+if (null !== $type) $args['type'] = $type;
 
-if ($allows_multiple_answers !== null) {
-	$args['allows_multiple_answers'] = $allows_multiple_answers;
-}
+if (null !== $allows_multiple_answers) $args['allows_multiple_answers'] = $allows_multiple_answers;
 
-if ($correct_option_id !== null) {
-	$args['correct_option_id'] = $correct_option_id;
-}
+if (null !== $correct_option_id) $args['correct_option_id'] = $correct_option_id;
 
-if ($explanation !== null) {
-	$args['explanation'] = $explanation;
-}
+if (null !== $explanation) $args['explanation'] = $explanation;
 
-if ($explanation_parse_mode !== null) {
-	$args['explanation_parse_mode'] = $explanation_parse_mode;
-}
+if (null !== $explanation_parse_mode) $args['explanation_parse_mode'] = $explanation_parse_mode;
 
-if ($explanation_entities !== null) {
-	$args['explanation_entities'] = json_encode($explanation_entities);
-}
+if (null !== $explanation_entities) $args['explanation_entities'] = json_encode($explanation_entities);
 
-if ($open_period !== null) {
-	$args['open_period'] = $open_period;
-}
+if (null !== $open_period) $args['open_period'] = $open_period;
 
-if ($close_date !== null) {
-	$args['close_date'] = $close_date;
-}
+if (null !== $close_date) $args['close_date'] = $close_date;
 
-if ($is_closed !== null) {
-	$args['is_closed'] = $is_closed;
-}
+if (null !== $is_closed) $args['is_closed'] = $is_closed;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('sendPoll', $args);
 }
 
 public function sendDice(
-	$chat_id, 
+	int|string $chat_id, 
 	int $message_thread_id = null, 
 	string $emoji = null, 
 	bool $disable_notification = null, 
@@ -1077,35 +765,23 @@ $args = [
 	'chat_id' => $chat_id
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($emoji !== null) {
-	$args['emoji'] = $emoji;
-}
+if (null !== $emoji) $args['emoji'] = $emoji;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('sendDice', $args);
 }
 
 public function sendChatAction(
-	$chat_id, 
+	int|string $chat_id, 
 	string $action, 
 	int $message_thread_id = null
 ) {
@@ -1114,15 +790,13 @@ $args = [
 	'action' => $action
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
 return $this->Request('sendChatAction', $args);
 }
 
 public function setMessageReaction(
-	$chat_id, 
+	int|string $chat_id, 
 	int $message_id, 
 	array $reaction = null, 
 	bool $is_big = null
@@ -1132,13 +806,9 @@ $args = [
 	'message_id' => $message_id
 ];
 
-if ($reaction !== null) {
-	$args['reaction'] = json_encode($reaction);
-}
+if (null !== $reaction) $args['reaction'] = json_encode($reaction);
 
-if ($is_big !== null) {
-	$args['is_big'] = $is_big;
-}
+if (null !== $is_big) $args['is_big'] = $is_big;
 
 return $this->Request('setMessageReaction', $args);
 }
@@ -1152,13 +822,9 @@ $args = [
 	'user_id' => $user_id
 ];
 
-if ($offset !== null) {
-	$args['offset'] = $offset;
-}
+if (null !== $offset) $args['offset'] = $offset;
 
-if ($limit !== null) {
-	$args['limit'] = $limit;
-}
+if (null !== $limit) $args['limit'] = $limit;
 
 return $this->Request('getUserProfilePhotos', $args);
 }
@@ -1174,7 +840,7 @@ return $this->Request('getFile', $args);
 }
 
 public function banChatMember(
-	$chat_id, 
+	int|string $chat_id, 
 	int $user_id, 
 	int $until_date = null, 
 	bool $revoke_messages = null
@@ -1184,19 +850,15 @@ $args = [
 	'user_id' => $user_id
 ];
 
-if ($until_date !== null) {
-	$args['until_date'] = $until_date;
-}
+if (null !== $until_date) $args['until_date'] = $until_date;
 
-if ($revoke_messages !== null) {
-	$args['revoke_messages'] = $revoke_messages;
-}
+if (null !== $revoke_messages) $args['revoke_messages'] = $revoke_messages;
 
 return $this->Request('banChatMember', $args);
 }
 
 public function unbanChatMember(
-	$chat_id, 
+	int|string $chat_id, 
 	int $user_id, 
 	bool $only_if_banned = null
 ) {
@@ -1205,15 +867,13 @@ $args = [
 	'user_id' => $user_id
 ];
 
-if ($only_if_banned !== null) {
-	$args['only_if_banned'] = $only_if_banned;
-}
+if (null !== $only_if_banned) $args['only_if_banned'] = $only_if_banned;
 
 return $this->Request('unbanChatMember', $args);
 }
 
 public function restrictChatMember(
-	$chat_id, 
+	int|string $chat_id, 
 	int $user_id, 
 	array $permissions, 
 	bool $use_independent_chat_permissions = null, 
@@ -1225,19 +885,15 @@ $args = [
 	'permissions' => json_encode($permissions)
 ];
 
-if ($use_independent_chat_permissions !== null) {
-	$args['use_independent_chat_permissions'] = $use_independent_chat_permissions;
-}
+if (null !== $use_independent_chat_permissions) $args['use_independent_chat_permissions'] = $use_independent_chat_permissions;
 
-if ($until_date !== null) {
-	$args['until_date'] = $until_date;
-}
+if (null !== $until_date) $args['until_date'] = $until_date;
 
 return $this->Request('restrictChatMember', $args);
 }
 
 public function promoteChatMember(
-	$chat_id, 
+	int|string $chat_id, 
 	int $user_id, 
 	bool $is_anonymous = null, 
 	bool $can_manage_chat = null, 
@@ -1260,71 +916,41 @@ $args = [
 	'user_id' => $user_id
 ];
 
-if ($is_anonymous !== null) {
-	$args['is_anonymous'] = $is_anonymous;
-}
+if (null !== $is_anonymous) $args['is_anonymous'] = $is_anonymous;
 
-if ($can_manage_chat !== null) {
-	$args['can_manage_chat'] = $can_manage_chat;
-}
+if (null !== $can_manage_chat) $args['can_manage_chat'] = $can_manage_chat;
 
-if ($can_delete_messages !== null) {
-	$args['can_delete_messages'] = $can_delete_messages;
-}
+if (null !== $can_delete_messages) $args['can_delete_messages'] = $can_delete_messages;
 
-if ($can_manage_video_chats !== null) {
-	$args['can_manage_video_chats'] = $can_manage_video_chats;
-}
+if (null !== $can_manage_video_chats) $args['can_manage_video_chats'] = $can_manage_video_chats;
 
-if ($can_restrict_members !== null) {
-	$args['can_restrict_members'] = $can_restrict_members;
-}
+if (null !== $can_restrict_members) $args['can_restrict_members'] = $can_restrict_members;
 
-if ($can_promote_members !== null) {
-	$args['can_promote_members'] = $can_promote_members;
-}
+if (null !== $can_promote_members) $args['can_promote_members'] = $can_promote_members;
 
-if ($can_change_info !== null) {
-	$args['can_change_info'] = $can_change_info;
-}
+if (null !== $can_change_info) $args['can_change_info'] = $can_change_info;
 
-if ($can_invite_users !== null) {
-	$args['can_invite_users'] = $can_invite_users;
-}
+if (null !== $can_invite_users) $args['can_invite_users'] = $can_invite_users;
 
-if ($can_post_messages !== null) {
-	$args['can_post_messages'] = $can_post_messages;
-}
+if (null !== $can_post_messages) $args['can_post_messages'] = $can_post_messages;
 
-if ($can_edit_messages !== null) {
-	$args['can_edit_messages'] = $can_edit_messages;
-}
+if (null !== $can_edit_messages) $args['can_edit_messages'] = $can_edit_messages;
 
-if ($can_pin_messages !== null) {
-	$args['can_pin_messages'] = $can_pin_messages;
-}
+if (null !== $can_pin_messages) $args['can_pin_messages'] = $can_pin_messages;
 
-if ($can_post_stories !== null) {
-	$args['can_post_stories'] = $can_post_stories;
-}
+if (null !== $can_post_stories) $args['can_post_stories'] = $can_post_stories;
 
-if ($can_edit_stories !== null) {
-	$args['can_edit_stories'] = $can_edit_stories;
-}
+if (null !== $can_edit_stories) $args['can_edit_stories'] = $can_edit_stories;
 
-if ($can_delete_stories !== null) {
-	$args['can_delete_stories'] = $can_delete_stories;
-}
+if (null !== $can_delete_stories) $args['can_delete_stories'] = $can_delete_stories;
 
-if ($can_manage_topics !== null) {
-	$args['can_manage_topics'] = $can_manage_topics;
-}
+if (null !== $can_manage_topics) $args['can_manage_topics'] = $can_manage_topics;
 
 return $this->Request('promoteChatMember', $args);
 }
 
 public function setChatAdministratorCustomTitle(
-	$chat_id, 
+	int|string $chat_id, 
 	int $user_id, 
 	string $custom_title
 ) {
@@ -1338,7 +964,7 @@ return $this->Request('setChatAdministratorCustomTitle', $args);
 }
 
 public function banChatSenderChat(
-	$chat_id, 
+	int|string $chat_id, 
 	int $sender_chat_id
 ) {
 $args = [
@@ -1350,7 +976,7 @@ return $this->Request('banChatSenderChat', $args);
 }
 
 public function unbanChatSenderChat(
-	$chat_id, 
+	int|string $chat_id, 
 	int $sender_chat_id
 ) {
 $args = [
@@ -1362,7 +988,7 @@ return $this->Request('unbanChatSenderChat', $args);
 }
 
 public function setChatPermissions(
-	$chat_id, 
+	int|string $chat_id, 
 	array $permissions, 
 	bool $use_independent_chat_permissions = null
 ) {
@@ -1371,15 +997,13 @@ $args = [
 	'permissions' => json_encode($permissions)
 ];
 
-if ($use_independent_chat_permissions !== null) {
-	$args['use_independent_chat_permissions'] = $use_independent_chat_permissions;
-}
+if (null !== $use_independent_chat_permissions) $args['use_independent_chat_permissions'] = $use_independent_chat_permissions;
 
 return $this->Request('setChatPermissions', $args);
 }
 
 public function exportChatInviteLink(
-	$chat_id
+	int|string $chat_id
 ) {
 $args = [
 	'chat_id' => $chat_id
@@ -1389,7 +1013,7 @@ return $this->Request('exportChatInviteLink', $args);
 }
 
 public function createChatInviteLink(
-	$chat_id, 
+	int|string $chat_id, 
 	string $name = null, 
 	int $expire_date = null, 
 	int $member_limit = null, 
@@ -1399,27 +1023,19 @@ $args = [
 	'chat_id' => $chat_id
 ];
 
-if ($name !== null) {
-	$args['name'] = $name;
-}
+if (null !== $name) $args['name'] = $name;
 
-if ($expire_date !== null) {
-	$args['expire_date'] = $expire_date;
-}
+if (null !== $expire_date) $args['expire_date'] = $expire_date;
 
-if ($member_limit !== null) {
-	$args['member_limit'] = $member_limit;
-}
+if (null !== $member_limit) $args['member_limit'] = $member_limit;
 
-if ($creates_join_request !== null) {
-	$args['creates_join_request'] = $creates_join_request;
-}
+if (null !== $creates_join_request) $args['creates_join_request'] = $creates_join_request;
 
 return $this->Request('createChatInviteLink', $args);
 }
 
 public function editChatInviteLink(
-	$chat_id, 
+	int|string $chat_id, 
 	string $invite_link, 
 	string $name = null, 
 	int $expire_date = null, 
@@ -1431,27 +1047,19 @@ $args = [
 	'invite_link' => $invite_link
 ];
 
-if ($name !== null) {
-	$args['name'] = $name;
-}
+if (null !== $name) $args['name'] = $name;
 
-if ($expire_date !== null) {
-	$args['expire_date'] = $expire_date;
-}
+if (null !== $expire_date) $args['expire_date'] = $expire_date;
 
-if ($member_limit !== null) {
-	$args['member_limit'] = $member_limit;
-}
+if (null !== $member_limit) $args['member_limit'] = $member_limit;
 
-if ($creates_join_request !== null) {
-	$args['creates_join_request'] = $creates_join_request;
-}
+if (null !== $creates_join_request) $args['creates_join_request'] = $creates_join_request;
 
 return $this->Request('editChatInviteLink', $args);
 }
 
 public function revokeChatInviteLink(
-	$chat_id, 
+	int|string $chat_id, 
 	string $invite_link
 ) {
 $args = [
@@ -1463,7 +1071,7 @@ return $this->Request('revokeChatInviteLink', $args);
 }
 
 public function approveChatJoinRequest(
-	$chat_id, 
+	int|string $chat_id, 
 	int $user_id
 ) {
 $args = [
@@ -1475,7 +1083,7 @@ return $this->Request('approveChatJoinRequest', $args);
 }
 
 public function declineChatJoinRequest(
-	$chat_id, 
+	int|string $chat_id, 
 	int $user_id
 ) {
 $args = [
@@ -1487,7 +1095,7 @@ return $this->Request('declineChatJoinRequest', $args);
 }
 
 public function setChatPhoto(
-	$chat_id, 
+	int|string $chat_id, 
 	\CURLFile $photo
 ) {
 $args = [
@@ -1499,7 +1107,7 @@ return $this->Request('setChatPhoto', $args);
 }
 
 public function deleteChatPhoto(
-	$chat_id
+	int|string $chat_id
 ) {
 $args = [
 	'chat_id' => $chat_id
@@ -1509,7 +1117,7 @@ return $this->Request('deleteChatPhoto', $args);
 }
 
 public function setChatTitle(
-	$chat_id, 
+	int|string $chat_id, 
 	string $title
 ) {
 $args = [
@@ -1521,22 +1129,20 @@ return $this->Request('setChatTitle', $args);
 }
 
 public function setChatDescription(
-	$chat_id, 
+	int|string $chat_id, 
 	string $description = null
 ) {
 $args = [
 	'chat_id' => $chat_id
 ];
 
-if ($description !== null) {
-	$args['description'] = $description;
-}
+if (null !== $description) $args['description'] = $description;
 
 return $this->Request('setChatDescription', $args);
 }
 
 public function pinChatMessage(
-	$chat_id, 
+	int|string $chat_id, 
 	int $message_id, 
 	bool $disable_notification = null
 ) {
@@ -1545,30 +1151,26 @@ $args = [
 	'message_id' => $message_id
 ];
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
 return $this->Request('pinChatMessage', $args);
 }
 
 public function unpinChatMessage(
-	$chat_id, 
+	int|string $chat_id, 
 	int $message_id = null
 ) {
 $args = [
 	'chat_id' => $chat_id
 ];
 
-if ($message_id !== null) {
-	$args['message_id'] = $message_id;
-}
+if (null !== $message_id) $args['message_id'] = $message_id;
 
 return $this->Request('unpinChatMessage', $args);
 }
 
 public function unpinAllChatMessages(
-	$chat_id
+	int|string $chat_id
 ) {
 $args = [
 	'chat_id' => $chat_id
@@ -1578,7 +1180,7 @@ return $this->Request('unpinAllChatMessages', $args);
 }
 
 public function leaveChat(
-	$chat_id
+	int|string $chat_id
 ) {
 $args = [
 	'chat_id' => $chat_id
@@ -1588,7 +1190,7 @@ return $this->Request('leaveChat', $args);
 }
 
 public function getChat(
-	$chat_id
+	int|string $chat_id
 ) {
 $args = [
 	'chat_id' => $chat_id
@@ -1598,7 +1200,7 @@ return $this->Request('getChat', $args);
 }
 
 public function getChatAdministrators(
-	$chat_id
+	int|string $chat_id
 ) {
 $args = [
 	'chat_id' => $chat_id
@@ -1608,7 +1210,7 @@ return $this->Request('getChatAdministrators', $args);
 }
 
 public function getChatMemberCount(
-	$chat_id
+	int|string $chat_id
 ) {
 $args = [
 	'chat_id' => $chat_id
@@ -1618,7 +1220,7 @@ return $this->Request('getChatMemberCount', $args);
 }
 
 public function getChatMember(
-	$chat_id, 
+	int|string $chat_id, 
 	int $user_id
 ) {
 $args = [
@@ -1630,7 +1232,7 @@ return $this->Request('getChatMember', $args);
 }
 
 public function setChatStickerSet(
-	$chat_id, 
+	int|string $chat_id, 
 	string $sticker_set_name
 ) {
 $args = [
@@ -1642,7 +1244,7 @@ return $this->Request('setChatStickerSet', $args);
 }
 
 public function deleteChatStickerSet(
-	$chat_id
+	int|string $chat_id
 ) {
 $args = [
 	'chat_id' => $chat_id
@@ -1657,7 +1259,7 @@ return $this->Request('getForumTopicIconStickers', []);
 }
 
 public function createForumTopic(
-	$chat_id, 
+	int|string $chat_id, 
 	string $name, 
 	int $icon_color = null, 
 	string $icon_custom_emoji_id = null
@@ -1667,19 +1269,15 @@ $args = [
 	'name' => $name
 ];
 
-if ($icon_color !== null) {
-	$args['icon_color'] = $icon_color;
-}
+if (null !== $icon_color) $args['icon_color'] = $icon_color;
 
-if ($icon_custom_emoji_id !== null) {
-	$args['icon_custom_emoji_id'] = $icon_custom_emoji_id;
-}
+if (null !== $icon_custom_emoji_id) $args['icon_custom_emoji_id'] = $icon_custom_emoji_id;
 
 return $this->Request('createForumTopic', $args);
 }
 
 public function editForumTopic(
-	$chat_id, 
+	int|string $chat_id, 
 	int $message_thread_id, 
 	string $name = null, 
 	string $icon_custom_emoji_id = null
@@ -1689,19 +1287,15 @@ $args = [
 	'message_thread_id' => $message_thread_id
 ];
 
-if ($name !== null) {
-	$args['name'] = $name;
-}
+if (null !== $name) $args['name'] = $name;
 
-if ($icon_custom_emoji_id !== null) {
-	$args['icon_custom_emoji_id'] = $icon_custom_emoji_id;
-}
+if (null !== $icon_custom_emoji_id) $args['icon_custom_emoji_id'] = $icon_custom_emoji_id;
 
 return $this->Request('editForumTopic', $args);
 }
 
 public function closeForumTopic(
-	$chat_id, 
+	int|string $chat_id, 
 	int $message_thread_id
 ) {
 $args = [
@@ -1713,7 +1307,7 @@ return $this->Request('closeForumTopic', $args);
 }
 
 public function reopenForumTopic(
-	$chat_id, 
+	int|string $chat_id, 
 	int $message_thread_id
 ) {
 $args = [
@@ -1725,7 +1319,7 @@ return $this->Request('reopenForumTopic', $args);
 }
 
 public function deleteForumTopic(
-	$chat_id, 
+	int|string $chat_id, 
 	int $message_thread_id
 ) {
 $args = [
@@ -1737,7 +1331,7 @@ return $this->Request('deleteForumTopic', $args);
 }
 
 public function unpinAllForumTopicMessages(
-	$chat_id, 
+	int|string $chat_id, 
 	int $message_thread_id
 ) {
 $args = [
@@ -1749,7 +1343,7 @@ return $this->Request('unpinAllForumTopicMessages', $args);
 }
 
 public function editGeneralForumTopic(
-	$chat_id, 
+	int|string $chat_id, 
 	string $name
 ) {
 $args = [
@@ -1761,7 +1355,7 @@ return $this->Request('editGeneralForumTopic', $args);
 }
 
 public function closeGeneralForumTopic(
-	$chat_id
+	int|string $chat_id
 ) {
 $args = [
 	'chat_id' => $chat_id
@@ -1771,7 +1365,7 @@ return $this->Request('closeGeneralForumTopic', $args);
 }
 
 public function reopenGeneralForumTopic(
-	$chat_id
+	int|string $chat_id
 ) {
 $args = [
 	'chat_id' => $chat_id
@@ -1781,7 +1375,7 @@ return $this->Request('reopenGeneralForumTopic', $args);
 }
 
 public function hideGeneralForumTopic(
-	$chat_id
+	int|string $chat_id
 ) {
 $args = [
 	'chat_id' => $chat_id
@@ -1791,7 +1385,7 @@ return $this->Request('hideGeneralForumTopic', $args);
 }
 
 public function unhideGeneralForumTopic(
-	$chat_id
+	int|string $chat_id
 ) {
 $args = [
 	'chat_id' => $chat_id
@@ -1801,7 +1395,7 @@ return $this->Request('unhideGeneralForumTopic', $args);
 }
 
 public function unpinAllGeneralForumTopicMessages(
-	$chat_id
+	int|string $chat_id
 ) {
 $args = [
 	'chat_id' => $chat_id
@@ -1821,27 +1415,19 @@ $args = [
 	'callback_query_id' => $callback_query_id
 ];
 
-if ($text !== null) {
-	$args['text'] = $text;
-}
+if (null !== $text) $args['text'] = $text;
 
-if ($show_alert !== null) {
-	$args['show_alert'] = $show_alert;
-}
+if (null !== $show_alert) $args['show_alert'] = $show_alert;
 
-if ($url !== null) {
-	$args['url'] = $url;
-}
+if (null !== $url) $args['url'] = $url;
 
-if ($cache_time !== null) {
-	$args['cache_time'] = $cache_time;
-}
+if (null !== $cache_time) $args['cache_time'] = $cache_time;
 
 return $this->Request('answerCallbackQuery', $args);
 }
 
 public function getUserChatBoosts(
-	$chat_id, 
+	int|string $chat_id, 
 	int $user_id
 ) {
 $args = [
@@ -1861,13 +1447,9 @@ $args = [
 	'commands' => json_encode($commands)
 ];
 
-if ($scope !== null) {
-	$args['scope'] = json_encode($scope);
-}
+if (null !== $scope) $args['scope'] = json_encode($scope);
 
-if ($language_code !== null) {
-	$args['language_code'] = $language_code;
-}
+if (null !== $language_code) $args['language_code'] = $language_code;
 
 return $this->Request('setMyCommands', $args);
 }
@@ -1878,13 +1460,9 @@ public function deleteMyCommands(
 ) {
 $args = [];
 
-if ($scope !== null) {
-	$args['scope'] = json_encode($scope);
-}
+if (null !== $scope) $args['scope'] = json_encode($scope);
 
-if ($language_code !== null) {
-	$args['language_code'] = $language_code;
-}
+if (null !== $language_code) $args['language_code'] = $language_code;
 
 return $this->Request('deleteMyCommands', $args);
 }
@@ -1895,13 +1473,9 @@ public function getMyCommands(
 ) {
 $args = [];
 
-if ($scope !== null) {
-	$args['scope'] = json_encode($scope);
-}
+if (null !== $scope) $args['scope'] = json_encode($scope);
 
-if ($language_code !== null) {
-	$args['language_code'] = $language_code;
-}
+if (null !== $language_code) $args['language_code'] = $language_code;
 
 return $this->Request('getMyCommands', $args);
 }
@@ -1912,13 +1486,9 @@ public function setMyName(
 ) {
 $args = [];
 
-if ($name !== null) {
-	$args['name'] = $name;
-}
+if (null !== $name) $args['name'] = $name;
 
-if ($language_code !== null) {
-	$args['language_code'] = $language_code;
-}
+if (null !== $language_code) $args['language_code'] = $language_code;
 
 return $this->Request('setMyName', $args);
 }
@@ -1928,9 +1498,7 @@ public function getMyName(
 ) {
 $args = [];
 
-if ($language_code !== null) {
-	$args['language_code'] = $language_code;
-}
+if (null !== $language_code) $args['language_code'] = $language_code;
 
 return $this->Request('getMyName', $args);
 }
@@ -1941,13 +1509,9 @@ public function setMyDescription(
 ) {
 $args = [];
 
-if ($description !== null) {
-	$args['description'] = $description;
-}
+if (null !== $description) $args['description'] = $description;
 
-if ($language_code !== null) {
-	$args['language_code'] = $language_code;
-}
+if (null !== $language_code) $args['language_code'] = $language_code;
 
 return $this->Request('setMyDescription', $args);
 }
@@ -1957,9 +1521,7 @@ public function getMyDescription(
 ) {
 $args = [];
 
-if ($language_code !== null) {
-	$args['language_code'] = $language_code;
-}
+if (null !== $language_code) $args['language_code'] = $language_code;
 
 return $this->Request('getMyDescription', $args);
 }
@@ -1970,13 +1532,9 @@ public function setMyShortDescription(
 ) {
 $args = [];
 
-if ($short_description !== null) {
-	$args['short_description'] = $short_description;
-}
+if (null !== $short_description) $args['short_description'] = $short_description;
 
-if ($language_code !== null) {
-	$args['language_code'] = $language_code;
-}
+if (null !== $language_code) $args['language_code'] = $language_code;
 
 return $this->Request('setMyShortDescription', $args);
 }
@@ -1986,9 +1544,7 @@ public function getMyShortDescription(
 ) {
 $args = [];
 
-if ($language_code !== null) {
-	$args['language_code'] = $language_code;
-}
+if (null !== $language_code) $args['language_code'] = $language_code;
 
 return $this->Request('getMyShortDescription', $args);
 }
@@ -1999,13 +1555,9 @@ public function setChatMenuButton(
 ) {
 $args = [];
 
-if ($chat_id !== null) {
-	$args['chat_id'] = $chat_id;
-}
+if (null !== $chat_id) $args['chat_id'] = $chat_id;
 
-if ($menu_button !== null) {
-	$args['menu_button'] = json_encode($menu_button);
-}
+if (null !== $menu_button) $args['menu_button'] = json_encode($menu_button);
 
 return $this->Request('setChatMenuButton', $args);
 }
@@ -2015,9 +1567,7 @@ public function getChatMenuButton(
 ) {
 $args = [];
 
-if ($chat_id !== null) {
-	$args['chat_id'] = $chat_id;
-}
+if (null !== $chat_id) $args['chat_id'] = $chat_id;
 
 return $this->Request('getChatMenuButton', $args);
 }
@@ -2028,13 +1578,9 @@ public function setMyDefaultAdministratorRights(
 ) {
 $args = [];
 
-if ($rights !== null) {
-	$args['rights'] = json_encode($rights);
-}
+if (null !== $rights) $args['rights'] = json_encode($rights);
 
-if ($for_channels !== null) {
-	$args['for_channels'] = $for_channels;
-}
+if (null !== $for_channels) $args['for_channels'] = $for_channels;
 
 return $this->Request('setMyDefaultAdministratorRights', $args);
 }
@@ -2044,16 +1590,14 @@ public function getMyDefaultAdministratorRights(
 ) {
 $args = [];
 
-if ($for_channels !== null) {
-	$args['for_channels'] = $for_channels;
-}
+if (null !== $for_channels) $args['for_channels'] = $for_channels;
 
 return $this->Request('getMyDefaultAdministratorRights', $args);
 }
 
 public function editMessageText(
 	string $text, 
-	$chat_id = null, 
+	int|string $chat_id = null, 
 	int $message_id = null, 
 	string $inline_message_id = null, 
 	string $parse_mode = null, 
@@ -2065,39 +1609,25 @@ $args = [
 	'text' => $text
 ];
 
-if ($chat_id !== null) {
-	$args['chat_id'] = $chat_id;
-}
+if (null !== $chat_id) $args['chat_id'] = $chat_id;
 
-if ($message_id !== null) {
-	$args['message_id'] = $message_id;
-}
+if (null !== $message_id) $args['message_id'] = $message_id;
 
-if ($inline_message_id !== null) {
-	$args['inline_message_id'] = $inline_message_id;
-}
+if (null !== $inline_message_id) $args['inline_message_id'] = $inline_message_id;
 
-if ($parse_mode !== null) {
-	$args['parse_mode'] = $parse_mode;
-}
+if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
 
-if ($entities !== null) {
-	$args['entities'] = json_encode($entities);
-}
+if (null !== $entities) $args['entities'] = json_encode($entities);
 
-if ($link_preview_options !== null) {
-	$args['link_preview_options'] = json_encode($link_preview_options);
-}
+if (null !== $link_preview_options) $args['link_preview_options'] = json_encode($link_preview_options);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('editMessageText', $args);
 }
 
 public function editMessageCaption(
-	$chat_id = null, 
+	int|string $chat_id = null, 
 	int $message_id = null, 
 	string $inline_message_id = null, 
 	string $caption = null, 
@@ -2107,40 +1637,26 @@ public function editMessageCaption(
 ) {
 $args = [];
 
-if ($chat_id !== null) {
-	$args['chat_id'] = $chat_id;
-}
+if (null !== $chat_id) $args['chat_id'] = $chat_id;
 
-if ($message_id !== null) {
-	$args['message_id'] = $message_id;
-}
+if (null !== $message_id) $args['message_id'] = $message_id;
 
-if ($inline_message_id !== null) {
-	$args['inline_message_id'] = $inline_message_id;
-}
+if (null !== $inline_message_id) $args['inline_message_id'] = $inline_message_id;
 
-if ($caption !== null) {
-	$args['caption'] = $caption;
-}
+if (null !== $caption) $args['caption'] = $caption;
 
-if ($parse_mode !== null) {
-	$args['parse_mode'] = $parse_mode;
-}
+if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
 
-if ($caption_entities !== null) {
-	$args['caption_entities'] = json_encode($caption_entities);
-}
+if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('editMessageCaption', $args);
 }
 
 public function editMessageMedia(
 	array $media, 
-	$chat_id = null, 
+	int|string $chat_id = null, 
 	int $message_id = null, 
 	string $inline_message_id = null, 
 	array $reply_markup = null
@@ -2156,21 +1672,13 @@ foreach ($media as $key => $value) {
 }
 $args['media'] = json_encode($media);
 
-if ($chat_id !== null) {
-	$args['chat_id'] = $chat_id;
-}
+if (null !== $chat_id) $args['chat_id'] = $chat_id;
 
-if ($message_id !== null) {
-	$args['message_id'] = $message_id;
-}
+if (null !== $message_id) $args['message_id'] = $message_id;
 
-if ($inline_message_id !== null) {
-	$args['inline_message_id'] = $inline_message_id;
-}
+if (null !== $inline_message_id) $args['inline_message_id'] = $inline_message_id;
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('editMessageMedia', $args);
 }
@@ -2178,7 +1686,7 @@ return $this->Request('editMessageMedia', $args);
 public function editMessageLiveLocation(
 	float $latitude, 
 	float $longitude, 
-	$chat_id = null, 
+	int|string $chat_id = null, 
 	int $message_id = null, 
 	string $inline_message_id = null, 
 	float $horizontal_accuracy = null, 
@@ -2191,93 +1699,63 @@ $args = [
 	'longitude' => $longitude
 ];
 
-if ($chat_id !== null) {
-	$args['chat_id'] = $chat_id;
-}
+if (null !== $chat_id) $args['chat_id'] = $chat_id;
 
-if ($message_id !== null) {
-	$args['message_id'] = $message_id;
-}
+if (null !== $message_id) $args['message_id'] = $message_id;
 
-if ($inline_message_id !== null) {
-	$args['inline_message_id'] = $inline_message_id;
-}
+if (null !== $inline_message_id) $args['inline_message_id'] = $inline_message_id;
 
-if ($horizontal_accuracy !== null) {
-	$args['horizontal_accuracy'] = $horizontal_accuracy;
-}
+if (null !== $horizontal_accuracy) $args['horizontal_accuracy'] = $horizontal_accuracy;
 
-if ($heading !== null) {
-	$args['heading'] = $heading;
-}
+if (null !== $heading) $args['heading'] = $heading;
 
-if ($proximity_alert_radius !== null) {
-	$args['proximity_alert_radius'] = $proximity_alert_radius;
-}
+if (null !== $proximity_alert_radius) $args['proximity_alert_radius'] = $proximity_alert_radius;
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('editMessageLiveLocation', $args);
 }
 
 public function stopMessageLiveLocation(
-	$chat_id = null, 
+	int|string $chat_id = null, 
 	int $message_id = null, 
 	string $inline_message_id = null, 
 	array $reply_markup = null
 ) {
 $args = [];
 
-if ($chat_id !== null) {
-	$args['chat_id'] = $chat_id;
-}
+if (null !== $chat_id) $args['chat_id'] = $chat_id;
 
-if ($message_id !== null) {
-	$args['message_id'] = $message_id;
-}
+if (null !== $message_id) $args['message_id'] = $message_id;
 
-if ($inline_message_id !== null) {
-	$args['inline_message_id'] = $inline_message_id;
-}
+if (null !== $inline_message_id) $args['inline_message_id'] = $inline_message_id;
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('stopMessageLiveLocation', $args);
 }
 
 public function editMessageReplyMarkup(
-	$chat_id = null, 
+	int|string $chat_id = null, 
 	int $message_id = null, 
 	string $inline_message_id = null, 
 	array $reply_markup = null
 ) {
 $args = [];
 
-if ($chat_id !== null) {
-	$args['chat_id'] = $chat_id;
-}
+if (null !== $chat_id) $args['chat_id'] = $chat_id;
 
-if ($message_id !== null) {
-	$args['message_id'] = $message_id;
-}
+if (null !== $message_id) $args['message_id'] = $message_id;
 
-if ($inline_message_id !== null) {
-	$args['inline_message_id'] = $inline_message_id;
-}
+if (null !== $inline_message_id) $args['inline_message_id'] = $inline_message_id;
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('editMessageReplyMarkup', $args);
 }
 
 public function stopPoll(
-	$chat_id, 
+	int|string $chat_id, 
 	int $message_id, 
 	array $reply_markup = null
 ) {
@@ -2286,15 +1764,13 @@ $args = [
 	'message_id' => $message_id
 ];
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('stopPoll', $args);
 }
 
 public function deleteMessage(
-	$chat_id, 
+	int|string $chat_id, 
 	int $message_id
 ) {
 $args = [
@@ -2306,7 +1782,7 @@ return $this->Request('deleteMessage', $args);
 }
 
 public function deleteMessages(
-	$chat_id, 
+	int|string $chat_id, 
 	array $message_ids
 ) {
 $args = [
@@ -2318,7 +1794,7 @@ return $this->Request('deleteMessages', $args);
 }
 
 public function sendSticker(
-	$chat_id, 
+	int|string $chat_id, 
 	$sticker, 
 	int $message_thread_id = null, 
 	string $emoji = null, 
@@ -2332,29 +1808,17 @@ $args = [
 	'sticker' => $sticker
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($emoji !== null) {
-	$args['emoji'] = $emoji;
-}
+if (null !== $emoji) $args['emoji'] = $emoji;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('sendSticker', $args);
 }
@@ -2410,13 +1874,9 @@ $args = [
 	'sticker_format' => $sticker_format
 ];
 
-if ($sticker_type !== null) {
-	$args['sticker_type'] = $sticker_type;
-}
+if (null !== $sticker_type) $args['sticker_type'] = $sticker_type;
 
-if ($needs_repainting !== null) {
-	$args['needs_repainting'] = $needs_repainting;
-}
+if (null !== $needs_repainting) $args['needs_repainting'] = $needs_repainting;
 
 return $this->Request('createNewStickerSet', $args);
 }
@@ -2477,9 +1937,7 @@ $args = [
 	'sticker' => $sticker
 ];
 
-if ($keywords !== null) {
-	$args['keywords'] = json_encode($keywords);
-}
+if (null !== $keywords) $args['keywords'] = json_encode($keywords);
 
 return $this->Request('setStickerKeywords', $args);
 }
@@ -2492,9 +1950,7 @@ $args = [
 	'sticker' => $sticker
 ];
 
-if ($mask_position !== null) {
-	$args['mask_position'] = json_encode($mask_position);
-}
+if (null !== $mask_position) $args['mask_position'] = json_encode($mask_position);
 
 return $this->Request('setStickerMaskPosition', $args);
 }
@@ -2521,9 +1977,7 @@ $args = [
 	'user_id' => $user_id
 ];
 
-if ($thumbnail !== null) {
-	$args['thumbnail'] = $thumbnail;
-}
+if (null !== $thumbnail) $args['thumbnail'] = $thumbnail;
 
 return $this->Request('setStickerSetThumbnail', $args);
 }
@@ -2536,9 +1990,7 @@ $args = [
 	'name' => $name
 ];
 
-if ($custom_emoji_id !== null) {
-	$args['custom_emoji_id'] = $custom_emoji_id;
-}
+if (null !== $custom_emoji_id) $args['custom_emoji_id'] = $custom_emoji_id;
 
 return $this->Request('setCustomEmojiStickerSetThumbnail', $args);
 }
@@ -2566,21 +2018,13 @@ $args = [
 	'results' => json_encode($results)
 ];
 
-if ($cache_time !== null) {
-	$args['cache_time'] = $cache_time;
-}
+if (null !== $cache_time) $args['cache_time'] = $cache_time;
 
-if ($is_personal !== null) {
-	$args['is_personal'] = $is_personal;
-}
+if (null !== $is_personal) $args['is_personal'] = $is_personal;
 
-if ($next_offset !== null) {
-	$args['next_offset'] = $next_offset;
-}
+if (null !== $next_offset) $args['next_offset'] = $next_offset;
 
-if ($button !== null) {
-	$args['button'] = json_encode($button);
-}
+if (null !== $button) $args['button'] = json_encode($button);
 
 return $this->Request('answerInlineQuery', $args);
 }
@@ -2598,7 +2042,7 @@ return $this->Request('answerWebAppQuery', $args);
 }
 
 public function sendInvoice(
-	$chat_id, 
+	int|string $chat_id, 
 	string $title, 
 	string $description, 
 	string $payload, 
@@ -2636,85 +2080,45 @@ $args = [
 	'prices' => json_encode($prices)
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($max_tip_amount !== null) {
-	$args['max_tip_amount'] = $max_tip_amount;
-}
+if (null !== $max_tip_amount) $args['max_tip_amount'] = $max_tip_amount;
 
-if ($suggested_tip_amounts !== null) {
-	$args['suggested_tip_amounts'] = json_encode($suggested_tip_amounts);
-}
+if (null !== $suggested_tip_amounts) $args['suggested_tip_amounts'] = json_encode($suggested_tip_amounts);
 
-if ($start_parameter !== null) {
-	$args['start_parameter'] = $start_parameter;
-}
+if (null !== $start_parameter) $args['start_parameter'] = $start_parameter;
 
-if ($provider_data !== null) {
-	$args['provider_data'] = $provider_data;
-}
+if (null !== $provider_data) $args['provider_data'] = $provider_data;
 
-if ($photo_url !== null) {
-	$args['photo_url'] = $photo_url;
-}
+if (null !== $photo_url) $args['photo_url'] = $photo_url;
 
-if ($photo_size !== null) {
-	$args['photo_size'] = $photo_size;
-}
+if (null !== $photo_size) $args['photo_size'] = $photo_size;
 
-if ($photo_width !== null) {
-	$args['photo_width'] = $photo_width;
-}
+if (null !== $photo_width) $args['photo_width'] = $photo_width;
 
-if ($photo_height !== null) {
-	$args['photo_height'] = $photo_height;
-}
+if (null !== $photo_height) $args['photo_height'] = $photo_height;
 
-if ($need_name !== null) {
-	$args['need_name'] = $need_name;
-}
+if (null !== $need_name) $args['need_name'] = $need_name;
 
-if ($need_phone_number !== null) {
-	$args['need_phone_number'] = $need_phone_number;
-}
+if (null !== $need_phone_number) $args['need_phone_number'] = $need_phone_number;
 
-if ($need_email !== null) {
-	$args['need_email'] = $need_email;
-}
+if (null !== $need_email) $args['need_email'] = $need_email;
 
-if ($need_shipping_address !== null) {
-	$args['need_shipping_address'] = $need_shipping_address;
-}
+if (null !== $need_shipping_address) $args['need_shipping_address'] = $need_shipping_address;
 
-if ($send_phone_number_to_provider !== null) {
-	$args['send_phone_number_to_provider'] = $send_phone_number_to_provider;
-}
+if (null !== $send_phone_number_to_provider) $args['send_phone_number_to_provider'] = $send_phone_number_to_provider;
 
-if ($send_email_to_provider !== null) {
-	$args['send_email_to_provider'] = $send_email_to_provider;
-}
+if (null !== $send_email_to_provider) $args['send_email_to_provider'] = $send_email_to_provider;
 
-if ($is_flexible !== null) {
-	$args['is_flexible'] = $is_flexible;
-}
+if (null !== $is_flexible) $args['is_flexible'] = $is_flexible;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('sendInvoice', $args);
 }
@@ -2750,61 +2154,33 @@ $args = [
 	'prices' => json_encode($prices)
 ];
 
-if ($max_tip_amount !== null) {
-	$args['max_tip_amount'] = $max_tip_amount;
-}
+if (null !== $max_tip_amount) $args['max_tip_amount'] = $max_tip_amount;
 
-if ($suggested_tip_amounts !== null) {
-	$args['suggested_tip_amounts'] = json_encode($suggested_tip_amounts);
-}
+if (null !== $suggested_tip_amounts) $args['suggested_tip_amounts'] = json_encode($suggested_tip_amounts);
 
-if ($provider_data !== null) {
-	$args['provider_data'] = $provider_data;
-}
+if (null !== $provider_data) $args['provider_data'] = $provider_data;
 
-if ($photo_url !== null) {
-	$args['photo_url'] = $photo_url;
-}
+if (null !== $photo_url) $args['photo_url'] = $photo_url;
 
-if ($photo_size !== null) {
-	$args['photo_size'] = $photo_size;
-}
+if (null !== $photo_size) $args['photo_size'] = $photo_size;
 
-if ($photo_width !== null) {
-	$args['photo_width'] = $photo_width;
-}
+if (null !== $photo_width) $args['photo_width'] = $photo_width;
 
-if ($photo_height !== null) {
-	$args['photo_height'] = $photo_height;
-}
+if (null !== $photo_height) $args['photo_height'] = $photo_height;
 
-if ($need_name !== null) {
-	$args['need_name'] = $need_name;
-}
+if (null !== $need_name) $args['need_name'] = $need_name;
 
-if ($need_phone_number !== null) {
-	$args['need_phone_number'] = $need_phone_number;
-}
+if (null !== $need_phone_number) $args['need_phone_number'] = $need_phone_number;
 
-if ($need_email !== null) {
-	$args['need_email'] = $need_email;
-}
+if (null !== $need_email) $args['need_email'] = $need_email;
 
-if ($need_shipping_address !== null) {
-	$args['need_shipping_address'] = $need_shipping_address;
-}
+if (null !== $need_shipping_address) $args['need_shipping_address'] = $need_shipping_address;
 
-if ($send_phone_number_to_provider !== null) {
-	$args['send_phone_number_to_provider'] = $send_phone_number_to_provider;
-}
+if (null !== $send_phone_number_to_provider) $args['send_phone_number_to_provider'] = $send_phone_number_to_provider;
 
-if ($send_email_to_provider !== null) {
-	$args['send_email_to_provider'] = $send_email_to_provider;
-}
+if (null !== $send_email_to_provider) $args['send_email_to_provider'] = $send_email_to_provider;
 
-if ($is_flexible !== null) {
-	$args['is_flexible'] = $is_flexible;
-}
+if (null !== $is_flexible) $args['is_flexible'] = $is_flexible;
 
 return $this->Request('createInvoiceLink', $args);
 }
@@ -2820,13 +2196,9 @@ $args = [
 	'ok' => $ok
 ];
 
-if ($shipping_options !== null) {
-	$args['shipping_options'] = json_encode($shipping_options);
-}
+if (null !== $shipping_options) $args['shipping_options'] = json_encode($shipping_options);
 
-if ($error_message !== null) {
-	$args['error_message'] = $error_message;
-}
+if (null !== $error_message) $args['error_message'] = $error_message;
 
 return $this->Request('answerShippingQuery', $args);
 }
@@ -2841,9 +2213,7 @@ $args = [
 	'ok' => $ok
 ];
 
-if ($error_message !== null) {
-	$args['error_message'] = $error_message;
-}
+if (null !== $error_message) $args['error_message'] = $error_message;
 
 return $this->Request('answerPreCheckoutQuery', $args);
 }
@@ -2874,25 +2244,15 @@ $args = [
 	'game_short_name' => $game_short_name
 ];
 
-if ($message_thread_id !== null) {
-	$args['message_thread_id'] = $message_thread_id;
-}
+if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
 
-if ($disable_notification !== null) {
-	$args['disable_notification'] = $disable_notification;
-}
+if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
 
-if ($protect_content !== null) {
-	$args['protect_content'] = $protect_content;
-}
+if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
-if ($reply_parameters !== null) {
-	$args['reply_parameters'] = json_encode($reply_parameters);
-}
+if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
 
-if ($reply_markup !== null) {
-	$args['reply_markup'] = json_encode($reply_markup);
-}
+if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
 return $this->Request('sendGame', $args);
 }
@@ -2911,25 +2271,15 @@ $args = [
 	'score' => $score
 ];
 
-if ($force !== null) {
-	$args['force'] = $force;
-}
+if (null !== $force) $args['force'] = $force;
 
-if ($disable_edit_message !== null) {
-	$args['disable_edit_message'] = $disable_edit_message;
-}
+if (null !== $disable_edit_message) $args['disable_edit_message'] = $disable_edit_message;
 
-if ($chat_id !== null) {
-	$args['chat_id'] = $chat_id;
-}
+if (null !== $chat_id) $args['chat_id'] = $chat_id;
 
-if ($message_id !== null) {
-	$args['message_id'] = $message_id;
-}
+if (null !== $message_id) $args['message_id'] = $message_id;
 
-if ($inline_message_id !== null) {
-	$args['inline_message_id'] = $inline_message_id;
-}
+if (null !== $inline_message_id) $args['inline_message_id'] = $inline_message_id;
 
 return $this->Request('setGameScore', $args);
 }
@@ -2944,17 +2294,11 @@ $args = [
 	'user_id' => $user_id
 ];
 
-if ($chat_id !== null) {
-	$args['chat_id'] = $chat_id;
-}
+if (null !== $chat_id) $args['chat_id'] = $chat_id;
 
-if ($message_id !== null) {
-	$args['message_id'] = $message_id;
-}
+if (null !== $message_id) $args['message_id'] = $message_id;
 
-if ($inline_message_id !== null) {
-	$args['inline_message_id'] = $inline_message_id;
-}
+if (null !== $inline_message_id) $args['inline_message_id'] = $inline_message_id;
 
 return $this->Request('getGameHighScores', $args);
 }
