@@ -139,7 +139,7 @@ foreach ($api['methods'] as $method) {
             }
 
             if (end($method['fields']) != $field) {
-                $out .= ', ';
+                $out .= ',';
             }
             $out .= PHP_EOL;
         }
