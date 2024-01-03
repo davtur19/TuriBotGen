@@ -113,15 +113,25 @@ foreach ($api['methods'] as $method) {
         //gen parameters
         foreach ($method['fields'] as $field) {
             $out .= "\t";
-            if ($field['optional']) {
+            if ($field['optional'] and count($field['types']) === 1) {
                 $out .= '?';
             }
             if (count($field['types']) === 1) {
                 $out .= $types[$field['types'][0]];
                 $out .= ' ';
             } elseif ($field['types'][0] === 'int' and $field['types'][1] === 'string') {
-                $out .= 'int|string ';
-            } elseif ($field['name'] == 'reply_markup') {
+                if ($field['optional']) {
+                    $out .= 'int|string|null ';
+                } else {
+                    $out .= 'int|string ';
+                }
+            } elseif ($field['types'][0] === 'InputFile' and $field['types'][1] === 'string') {
+                if ($field['optional']) {
+                    $out .= '\CURLFile|string|null ';
+                } else {
+                    $out .= '\CURLFile|string ';
+                }
+            }  elseif ($field['name'] == 'reply_markup') {
                 $out .= 'array ';
             }
 
@@ -202,10 +212,9 @@ foreach ($api['methods'] as $method) {
                 $out .= ';' . PHP_EOL;
             }
         }
-        $out .= PHP_EOL;
 
         //end of function
-        $out .= 'return $this->Request(\'' . $method['name'] . '\', $args);';
+        $out .= PHP_EOL . 'return $this->Request(\'' . $method['name'] . '\', $args);';
     } else {
         $out .= ')';
         $out .= PHP_EOL;

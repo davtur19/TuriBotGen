@@ -88,7 +88,7 @@ public function sendMessage(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	?array $reply_markup
+	array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -160,7 +160,7 @@ public function copyMessage(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	?array $reply_markup
+	array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -205,7 +205,7 @@ return $this->Request('copyMessages', $args);
 
 public function sendPhoto(
 	int|string $chat_id, 
-	$photo, 
+	\CURLFile|string $photo, 
 	?int $message_thread_id, 
 	?string $caption, 
 	?string $parse_mode, 
@@ -214,7 +214,7 @@ public function sendPhoto(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	?array $reply_markup
+	array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -236,7 +236,7 @@ return $this->Request('sendPhoto', $args);
 
 public function sendAudio(
 	int|string $chat_id, 
-	$audio, 
+	\CURLFile|string $audio, 
 	?int $message_thread_id, 
 	?string $caption, 
 	?string $parse_mode, 
@@ -244,11 +244,11 @@ public function sendAudio(
 	?int $duration, 
 	?string $performer, 
 	?string $title, 
-	?$thumbnail, 
+	\CURLFile|string|null $thumbnail, 
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	?array $reply_markup
+	array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -273,9 +273,9 @@ return $this->Request('sendAudio', $args);
 
 public function sendDocument(
 	int|string $chat_id, 
-	$document, 
+	\CURLFile|string $document, 
 	?int $message_thread_id, 
-	?$thumbnail, 
+	\CURLFile|string|null $thumbnail, 
 	?string $caption, 
 	?string $parse_mode, 
 	?array $caption_entities, 
@@ -283,7 +283,7 @@ public function sendDocument(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	?array $reply_markup
+	array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -306,12 +306,12 @@ return $this->Request('sendDocument', $args);
 
 public function sendVideo(
 	int|string $chat_id, 
-	$video, 
+	\CURLFile|string $video, 
 	?int $message_thread_id, 
 	?int $duration, 
 	?int $width, 
 	?int $height, 
-	?$thumbnail, 
+	\CURLFile|string|null $thumbnail, 
 	?string $caption, 
 	?string $parse_mode, 
 	?array $caption_entities, 
@@ -320,7 +320,7 @@ public function sendVideo(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	?array $reply_markup
+	array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -347,12 +347,12 @@ return $this->Request('sendVideo', $args);
 
 public function sendAnimation(
 	int|string $chat_id, 
-	$animation, 
+	\CURLFile|string $animation, 
 	?int $message_thread_id, 
 	?int $duration, 
 	?int $width, 
 	?int $height, 
-	?$thumbnail, 
+	\CURLFile|string|null $thumbnail, 
 	?string $caption, 
 	?string $parse_mode, 
 	?array $caption_entities, 
@@ -360,7 +360,7 @@ public function sendAnimation(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	?array $reply_markup
+	array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -386,7 +386,7 @@ return $this->Request('sendAnimation', $args);
 
 public function sendVoice(
 	int|string $chat_id, 
-	$voice, 
+	\CURLFile|string $voice, 
 	?int $message_thread_id, 
 	?string $caption, 
 	?string $parse_mode, 
@@ -395,7 +395,7 @@ public function sendVoice(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	?array $reply_markup
+	array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -417,15 +417,15 @@ return $this->Request('sendVoice', $args);
 
 public function sendVideoNote(
 	int|string $chat_id, 
-	$video_note, 
+	\CURLFile|string $video_note, 
 	?int $message_thread_id, 
 	?int $duration, 
 	?int $length, 
-	?$thumbnail, 
+	\CURLFile|string|null $thumbnail, 
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	?array $reply_markup
+	array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -484,7 +484,7 @@ public function sendLocation(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	?array $reply_markup
+	array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -519,7 +519,7 @@ public function sendVenue(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	?array $reply_markup
+	array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -552,7 +552,7 @@ public function sendContact(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	?array $reply_markup
+	array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -589,7 +589,7 @@ public function sendPoll(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	?array $reply_markup
+	array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -623,7 +623,7 @@ public function sendDice(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	?array $reply_markup
+	array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id
@@ -1449,7 +1449,7 @@ return $this->Request('getMyDefaultAdministratorRights', $args);
 
 public function editMessageText(
 	string $text, 
-	?int|string $chat_id, 
+	int|string|null $chat_id, 
 	?int $message_id, 
 	?string $inline_message_id, 
 	?string $parse_mode, 
@@ -1473,7 +1473,7 @@ return $this->Request('editMessageText', $args);
 }
 
 public function editMessageCaption(
-	?int|string $chat_id, 
+	int|string|null $chat_id, 
 	?int $message_id, 
 	?string $inline_message_id, 
 	?string $caption, 
@@ -1496,7 +1496,7 @@ return $this->Request('editMessageCaption', $args);
 
 public function editMessageMedia(
 	array $media, 
-	?int|string $chat_id, 
+	int|string|null $chat_id, 
 	?int $message_id, 
 	?string $inline_message_id, 
 	?array $reply_markup
@@ -1523,7 +1523,7 @@ return $this->Request('editMessageMedia', $args);
 public function editMessageLiveLocation(
 	float $latitude, 
 	float $longitude, 
-	?int|string $chat_id, 
+	int|string|null $chat_id, 
 	?int $message_id, 
 	?string $inline_message_id, 
 	?float $horizontal_accuracy, 
@@ -1548,7 +1548,7 @@ return $this->Request('editMessageLiveLocation', $args);
 }
 
 public function stopMessageLiveLocation(
-	?int|string $chat_id, 
+	int|string|null $chat_id, 
 	?int $message_id, 
 	?string $inline_message_id, 
 	?array $reply_markup
@@ -1564,7 +1564,7 @@ return $this->Request('stopMessageLiveLocation', $args);
 }
 
 public function editMessageReplyMarkup(
-	?int|string $chat_id, 
+	int|string|null $chat_id, 
 	?int $message_id, 
 	?string $inline_message_id, 
 	?array $reply_markup
@@ -1622,13 +1622,13 @@ return $this->Request('deleteMessages', $args);
 
 public function sendSticker(
 	int|string $chat_id, 
-	$sticker, 
+	\CURLFile|string $sticker, 
 	?int $message_thread_id, 
 	?string $emoji, 
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	?array $reply_markup
+	array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -1799,7 +1799,7 @@ return $this->Request('setStickerSetTitle', $args);
 public function setStickerSetThumbnail(
 	string $name, 
 	int $user_id, 
-	?$thumbnail
+	\CURLFile|string|null $thumbnail
 ): \stdClass {
 $args = [
 	'name' => $name,
