@@ -58,23 +58,11 @@ $last_parameters = [
     //'has_spoiler',
 ];
 
-$out = '<?php' . PHP_EOL;
-$out .= '/** @noinspection PhpUnused */';
-$out .= PHP_EOL . PHP_EOL;
-$out .= '//functions automatically generated from https://core.telegram.org/bots/api';
-$out .= PHP_EOL;
-$out .= '//generator source code https://github.com/davtur19/TuriBotGen';
-$out .= PHP_EOL . PHP_EOL;
-$out .= 'namespace TuriBot;';
-$out .= PHP_EOL . PHP_EOL;
-$out .= 'abstract class Api implements ApiInterface';
-$out .= PHP_EOL;
-$out .= '{';
-$out .= PHP_EOL . PHP_EOL;
+$out = '';
 foreach ($api['methods'] as $method) {
     $args = [];
 
-    $out .= "public function {$method['name']}(";
+    $out .= PHP_EOL . "public function {$method['name']}(";
 
     if (!empty($method['fields'])) {
         $out .= PHP_EOL;
@@ -158,6 +146,7 @@ foreach ($api['methods'] as $method) {
         $out .= '): \stdClass {';
         $out .= PHP_EOL;
 
+        $out .= "\t";
         //gen string from args
         if ($args === []) {
             $out .= '$args = [];';
@@ -168,9 +157,9 @@ foreach ($api['methods'] as $method) {
                 // support specific case for upload media with attach:// in json object
                 if (!(in_array($method['name'], $methods_upload) and $name['name'] === 'media')) {
                     if ($name['array']) {
-                        $out .= "\t'{$name['name']}' => json_encode(\${$name['name']})";
+                        $out .= "\t\t'{$name['name']}' => json_encode(\${$name['name']})";
                     } else {
-                        $out .= "\t'{$name['name']}' => \$" . $name['name'];
+                        $out .= "\t\t'{$name['name']}' => \$" . $name['name'];
                     }
                     if (end($args)['name'] != $name['name']) {
                         $out .= ',';
@@ -179,17 +168,17 @@ foreach ($api['methods'] as $method) {
                 }
             }
 
-            $out .= '];';
+            $out .= "\t];";
 
             // support specific case for upload media with attach:// in json object
             if (in_array($method['name'], $methods_upload) and in_array(['name' => 'media', 'array' => true], $args)) {
                 $out .= PHP_EOL . PHP_EOL . "foreach (\$media as \$key => \$value) {" . PHP_EOL;
-                $out .= "\tif (is_object(\$value['media'])) {" . PHP_EOL;
-                $out .= "\t\t\$args['upload' . \$key] = \$value['media'];" . PHP_EOL;
-                $out .= "\t\t\$media[\$key]['media'] = 'attach://upload' . \$key;" . PHP_EOL;
+                $out .= "\t\tif (is_object(\$value['media'])) {" . PHP_EOL;
+                $out .= "\t\t\t\$args['upload' . \$key] = \$value['media'];" . PHP_EOL;
+                $out .= "\t\t\t\$media[\$key]['media'] = 'attach://upload' . \$key;" . PHP_EOL;
+                $out .= "\t\t}" . PHP_EOL;
                 $out .= "\t}" . PHP_EOL;
-                $out .= "}" . PHP_EOL;
-                $out .= "\$args['media'] = json_encode(\$media);";
+                $out .= "\t\$args['media'] = json_encode(\$media);";
             }
         }
         $out .= PHP_EOL . PHP_EOL;
@@ -197,15 +186,15 @@ foreach ($api['methods'] as $method) {
         //gen "if !== null" of non-mandatory parameters
         foreach ($method['fields'] as $field) {
             if ($field['optional']) {
-                $out .= 'if (null !== $' . $field['name'] . ') ';
+                $out .= "\tif (null !== \$" . $field['name'] . ') ';
                 // support specific case for upload media with attach:// in json object
                 if (in_array($method['name'], $methods_upload) and $field['name'] === 'media') {
-                    $out .= '{ ' . PHP_EOL;
-                    $out .= "\tif (is_object(\$media['media'])) {" . PHP_EOL;
-                    $out .= "\t\t\$args['upload'] = \$media['media'];" . PHP_EOL;
-                    $out .= "\t\t\$media['media'] = 'attach://upload';" . PHP_EOL;
+                    $out .= "\t{ " . PHP_EOL;
+                    $out .= "\t\tif (is_object(\$media['media'])) {" . PHP_EOL;
+                    $out .= "\t\t\t\$args['upload'] = \$media['media'];" . PHP_EOL;
+                    $out .= "\t\t\t\$media['media'] = 'attach://upload';" . PHP_EOL;
+                    $out .= "\t\t}" . PHP_EOL;
                     $out .= "\t}" . PHP_EOL;
-                    $out .= '}' . PHP_EOL;
                 }
                 $out .= '$args[\'' . $field['name'] . '\'] = ';
                 if ($types[$field['types'][0]] === 'array' or $field['name'] === 'reply_markup') {
@@ -218,27 +207,49 @@ foreach ($api['methods'] as $method) {
         }
 
         //end of function
-        $out .= PHP_EOL . 'return $this->Request(\'' . $method['name'] . '\', $args);';
+        $out .= PHP_EOL . "\treturn \$this->Request('" . $method['name'] . '\', $args);';
     } else {
         $out .= ')';
         $out .= PHP_EOL;
         $out .= '{';
         $out .= PHP_EOL;
-        $out .= 'return $this->Request(\'' . $method['name'] . '\', []);';
+        $out .= "\treturn \$this->Request('" . $method['name'] . '\', []);';
     }
 
     $out .= PHP_EOL;
     $out .= '}';
-    $out .= PHP_EOL . PHP_EOL;
+    $out .= PHP_EOL;
     /*if ($method['name'] == 'sendMessage') {
         break;
     }*/
 }
 
-$out .= PHP_EOL;
-$out .= '}';
 
 //echo $out;
+$lines = explode(PHP_EOL, $out);
+unset($out);
+
+$out = '<?php' . PHP_EOL;
+$out .= '/** @noinspection PhpUnused */';
+$out .= PHP_EOL . PHP_EOL;
+$out .= '//functions automatically generated from https://core.telegram.org/bots/api';
+$out .= PHP_EOL;
+$out .= '//generator source code https://github.com/davtur19/TuriBotGen';
+$out .= PHP_EOL . PHP_EOL;
+$out .= 'namespace TuriBot;';
+$out .= PHP_EOL . PHP_EOL;
+$out .= 'abstract class Api implements ApiInterface';
+$out .= PHP_EOL;
+$out .= '{';
+$out .= PHP_EOL;
+foreach ($lines as $line) {
+    if($line === '') {
+        $out .= $line . PHP_EOL;
+    } else {
+    $out .= "\t" . $line . PHP_EOL;
+    }
+}
+$out .= '}';
 
 file_put_contents('Api.php', $out);
 
