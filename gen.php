@@ -132,7 +132,11 @@ foreach ($api['methods'] as $method) {
                     $out .= '\CURLFile|string ';
                 }
             }  elseif ($field['name'] == 'reply_markup') {
-                $out .= 'array ';
+                if ($field['optional']) {
+                    $out .= '?array ';
+                } else {
+                    $out .= 'array ';
+                }
             }
 
             $out .= '$' . $field['name'];

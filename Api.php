@@ -88,7 +88,7 @@ public function sendMessage(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	array $reply_markup
+	?array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -160,7 +160,7 @@ public function copyMessage(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	array $reply_markup
+	?array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -214,7 +214,7 @@ public function sendPhoto(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	array $reply_markup
+	?array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -248,7 +248,7 @@ public function sendAudio(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	array $reply_markup
+	?array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -283,7 +283,7 @@ public function sendDocument(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	array $reply_markup
+	?array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -320,7 +320,7 @@ public function sendVideo(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	array $reply_markup
+	?array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -360,7 +360,7 @@ public function sendAnimation(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	array $reply_markup
+	?array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -395,7 +395,7 @@ public function sendVoice(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	array $reply_markup
+	?array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -425,7 +425,7 @@ public function sendVideoNote(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	array $reply_markup
+	?array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -484,7 +484,7 @@ public function sendLocation(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	array $reply_markup
+	?array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -519,7 +519,7 @@ public function sendVenue(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	array $reply_markup
+	?array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -552,7 +552,7 @@ public function sendContact(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	array $reply_markup
+	?array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -589,7 +589,7 @@ public function sendPoll(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	array $reply_markup
+	?array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
@@ -623,7 +623,7 @@ public function sendDice(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	array $reply_markup
+	?array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id
@@ -1628,7 +1628,7 @@ public function sendSticker(
 	?bool $disable_notification, 
 	?bool $protect_content, 
 	?array $reply_parameters, 
-	array $reply_markup
+	?array $reply_markup
 ): \stdClass {
 $args = [
 	'chat_id' => $chat_id,
