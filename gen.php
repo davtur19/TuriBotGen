@@ -209,9 +209,7 @@ foreach ($api['methods'] as $method) {
         //end of function
         $out .= PHP_EOL . TAB . "return \$this->Request('" . $method['name'] . '\', $args);';
     } else {
-        $out .= ')';
-        $out .= PHP_EOL;
-        $out .= '{';
+        $out .= '): \stdClass {';
         $out .= PHP_EOL;
         $out .= TAB . "return \$this->Request('" . $method['name'] . '\', []);';
     }

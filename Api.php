@@ -57,23 +57,19 @@ abstract class Api implements ApiInterface {
         return $this->Request('deleteWebhook', $args);
     }
 
-    public function getWebhookInfo()
-    {
+    public function getWebhookInfo(): \stdClass {
         return $this->Request('getWebhookInfo', []);
     }
 
-    public function getMe()
-    {
+    public function getMe(): \stdClass {
         return $this->Request('getMe', []);
     }
 
-    public function logOut()
-    {
+    public function logOut(): \stdClass {
         return $this->Request('logOut', []);
     }
 
-    public function close()
-    {
+    public function close(): \stdClass {
         return $this->Request('close', []);
     }
 
@@ -1106,8 +1102,7 @@ abstract class Api implements ApiInterface {
         return $this->Request('deleteChatStickerSet', $args);
     }
 
-    public function getForumTopicIconStickers()
-    {
+    public function getForumTopicIconStickers(): \stdClass {
         return $this->Request('getForumTopicIconStickers', []);
     }
 
