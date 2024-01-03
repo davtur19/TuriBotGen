@@ -113,6 +113,9 @@ foreach ($api['methods'] as $method) {
         //gen parameters
         foreach ($method['fields'] as $field) {
             $out .= "\t";
+            if ($field['optional']) {
+                $out .= '?';
+            }
             if (count($field['types']) === 1) {
                 $out .= $types[$field['types'][0]];
                 $out .= ' ';
@@ -124,9 +127,7 @@ foreach ($api['methods'] as $method) {
 
             $out .= '$' . $field['name'];
 
-            if ($field['optional']) {
-                $out .= ' = null';
-            } else {
+            if (!$field['optional']) {
                 //gen array $args of mandatory parameters
                 if ($types[$field['types'][0]] === 'array' or $field['name'] === 'reply_markup') {
                     $args[] = ['name' => $field['name'], 'array' => true];
@@ -140,7 +141,7 @@ foreach ($api['methods'] as $method) {
             }
             $out .= PHP_EOL;
         }
-        $out .= ') {';
+        $out .= '): \stdClass {';
         $out .= PHP_EOL;
 
         //gen string from args
@@ -199,9 +200,9 @@ foreach ($api['methods'] as $method) {
                     $out .= '$' . $field['name'];
                 }
                 $out .= ';' . PHP_EOL;
-                $out .= PHP_EOL;
             }
         }
+        $out .= PHP_EOL;
 
         //end of function
         $out .= 'return $this->Request(\'' . $method['name'] . '\', $args);';
