@@ -101,30 +101,15 @@ foreach ($api['methods'] as $method) {
         //gen parameters
         foreach ($method['fields'] as $field) {
             $out .= TAB;
-            if ($field['optional'] and count($field['types']) === 1) {
-                $out .= '?';
-            }
             if (count($field['types']) === 1) {
                 $out .= $types[$field['types'][0]];
                 $out .= ' ';
             } elseif ($field['types'][0] === 'int' and $field['types'][1] === 'string') {
-                if ($field['optional']) {
-                    $out .= 'int|string|null ';
-                } else {
-                    $out .= 'int|string ';
-                }
+                $out .= 'int|string ';
             } elseif ($field['types'][0] === 'InputFile' and $field['types'][1] === 'string') {
-                if ($field['optional']) {
-                    $out .= '\CURLFile|string|null ';
-                } else {
-                    $out .= '\CURLFile|string ';
-                }
+                $out .= '\CURLFile|string ';
             } elseif ($field['name'] == 'reply_markup') {
-                if ($field['optional']) {
-                    $out .= '?array ';
-                } else {
-                    $out .= 'array ';
-                }
+                $out .= 'array ';
             }
 
             $out .= '$' . $field['name'];
@@ -136,6 +121,10 @@ foreach ($api['methods'] as $method) {
                 } else {
                     $args[] = ['name' => $field['name'], 'array' => false];
                 }
+            }
+
+            if ($field['optional']) {
+                $out .= ' = null';
             }
 
             if (end($method['fields']) != $field) {
