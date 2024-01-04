@@ -62,7 +62,42 @@ $out = '';
 foreach ($api['methods'] as $method) {
     $args = [];
 
-    $out .= PHP_EOL . "public function {$method['name']}(";
+    // generate documentation
+    $out .= PHP_EOL;
+    $out .= "/**" . PHP_EOL;
+    $out .= " * " . wordwrap($method['description'], 100, PHP_EOL . " * ");
+    $out .= PHP_EOL . " *" . PHP_EOL;
+    foreach ($method['fields'] as $field) {
+        $out .= " * @param ";
+        if (count($field['types']) === 1) {
+            $out .= $types[$field['types'][0]];
+            $out .= ' ';
+        } elseif ($field['types'][0] === 'int' and $field['types'][1] === 'string') {
+            $out .= 'int|string';
+        } elseif ($field['types'][0] === 'InputFile' and $field['types'][1] === 'string') {
+            $out .= '\CURLFile|string';
+        } elseif ($field['name'] == 'reply_markup') {
+            $out .= 'array';
+        }
+        
+        if ($field['optional']) {
+            $out .= "|null";
+        }
+        $out .= ' ';
+
+        $out .= '$' . $field['name'];
+
+        $out .= " " . wordwrap($field['description'], 100, PHP_EOL . " *                                       ");
+
+        $out .= PHP_EOL;
+    }
+    $out .= " * @return \stdClass" . PHP_EOL;
+    $out .= " *" . PHP_EOL;
+    $out .= " * @see https://core.telegram.org/bots/api" . strtolower($method['name']) . PHP_EOL;
+    $out .= "*/" . PHP_EOL;
+
+    // generate function and parameters
+    $out .= "public function {$method['name']}(";
 
     if (!empty($method['fields'])) {
         $out .= PHP_EOL;
