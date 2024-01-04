@@ -29,7 +29,7 @@ abstract class Api implements ApiInterface {
      *                                       before the call to the getUpdates, so unwanted updates may be received for a short period of time.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetupdates
+     * @see https://core.telegram.org/bots/api#getupdates
     */
     public function getUpdates(
         int $offset = null,
@@ -76,7 +76,7 @@ If you'd like to make sure that the webhook was set by
      *                                       to ensure that the request comes from a webhook set by you.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetwebhook
+     * @see https://core.telegram.org/bots/api#setwebhook
     */
     public function setWebhook(
         string $url,
@@ -108,7 +108,7 @@ If you'd like to make sure that the webhook was set by
      * @param bool|null $drop_pending_updates Pass True to drop all pending updates
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apideletewebhook
+     * @see https://core.telegram.org/bots/api#deletewebhook
     */
     public function deleteWebhook(
         bool $drop_pending_updates = null
@@ -126,7 +126,7 @@ If you'd like to make sure that the webhook was set by
      *
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetwebhookinfo
+     * @see https://core.telegram.org/bots/api#getwebhookinfo
     */
     public function getWebhookInfo(): \stdClass {
         return $this->Request('getWebhookInfo', []);
@@ -138,7 +138,7 @@ If you'd like to make sure that the webhook was set by
      *
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetme
+     * @see https://core.telegram.org/bots/api#getme
     */
     public function getMe(): \stdClass {
         return $this->Request('getMe', []);
@@ -153,7 +153,7 @@ If you'd like to make sure that the webhook was set by
      *
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apilogout
+     * @see https://core.telegram.org/bots/api#logout
     */
     public function logOut(): \stdClass {
         return $this->Request('logOut', []);
@@ -167,7 +167,7 @@ If you'd like to make sure that the webhook was set by
      *
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apiclose
+     * @see https://core.telegram.org/bots/api#close
     */
     public function close(): \stdClass {
         return $this->Request('close', []);
@@ -191,7 +191,7 @@ If you'd like to make sure that the webhook was set by
      *                                       keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisendmessage
+     * @see https://core.telegram.org/bots/api#sendmessage
     */
     public function sendMessage(
         int|string $chat_id,
@@ -236,7 +236,7 @@ If you'd like to make sure that the webhook was set by
      * @param int $message_id Message identifier in the chat specified in from_chat_id
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apiforwardmessage
+     * @see https://core.telegram.org/bots/api#forwardmessage
     */
     public function forwardMessage(
         int|string $chat_id,
@@ -276,7 +276,7 @@ If you'd like to make sure that the webhook was set by
      * @param bool|null $protect_content Protects the contents of the forwarded messages from forwarding and saving
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apiforwardmessages
+     * @see https://core.telegram.org/bots/api#forwardmessages
     */
     public function forwardMessages(
         int|string $chat_id,
@@ -324,7 +324,7 @@ If you'd like to make sure that the webhook was set by
      *                                       keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apicopymessage
+     * @see https://core.telegram.org/bots/api#copymessage
     */
     public function copyMessage(
         int|string $chat_id,
@@ -377,7 +377,7 @@ If you'd like to make sure that the webhook was set by
      * @param bool|null $remove_caption Pass True to copy the messages without their captions
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apicopymessages
+     * @see https://core.telegram.org/bots/api#copymessages
     */
     public function copyMessages(
         int|string $chat_id,
@@ -426,7 +426,7 @@ If you'd like to make sure that the webhook was set by
      *                                       keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisendphoto
+     * @see https://core.telegram.org/bots/api#sendphoto
     */
     public function sendPhoto(
         int|string $chat_id,
@@ -492,7 +492,7 @@ For sending voice messages, use the sendVoice method instead.
      *                                       keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisendaudio
+     * @see https://core.telegram.org/bots/api#sendaudio
     */
     public function sendAudio(
         int|string $chat_id,
@@ -560,7 +560,7 @@ For sending voice messages, use the sendVoice method instead.
      *                                       keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisenddocument
+     * @see https://core.telegram.org/bots/api#senddocument
     */
     public function sendDocument(
         int|string $chat_id,
@@ -629,7 +629,7 @@ For sending voice messages, use the sendVoice method instead.
      *                                       keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisendvideo
+     * @see https://core.telegram.org/bots/api#sendvideo
     */
     public function sendVideo(
         int|string $chat_id,
@@ -705,7 +705,7 @@ For sending voice messages, use the sendVoice method instead.
      *                                       keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisendanimation
+     * @see https://core.telegram.org/bots/api#sendanimation
     */
     public function sendAnimation(
         int|string $chat_id,
@@ -770,7 +770,7 @@ For sending voice messages, use the sendVoice method instead.
      *                                       keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisendvoice
+     * @see https://core.telegram.org/bots/api#sendvoice
     */
     public function sendVoice(
         int|string $chat_id,
@@ -828,7 +828,7 @@ For sending voice messages, use the sendVoice method instead.
      *                                       keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisendvideonote
+     * @see https://core.telegram.org/bots/api#sendvideonote
     */
     public function sendVideoNote(
         int|string $chat_id,
@@ -873,7 +873,7 @@ For sending voice messages, use the sendVoice method instead.
      * @param array|null $reply_parameters Description of the message to reply to
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisendmediagroup
+     * @see https://core.telegram.org/bots/api#sendmediagroup
     */
     public function sendMediaGroup(
         int|string $chat_id,
@@ -925,7 +925,7 @@ For sending voice messages, use the sendVoice method instead.
      *                                       keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisendlocation
+     * @see https://core.telegram.org/bots/api#sendlocation
     */
     public function sendLocation(
         int|string $chat_id,
@@ -982,7 +982,7 @@ For sending voice messages, use the sendVoice method instead.
      *                                       keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisendvenue
+     * @see https://core.telegram.org/bots/api#sendvenue
     */
     public function sendVenue(
         int|string $chat_id,
@@ -1038,7 +1038,7 @@ For sending voice messages, use the sendVoice method instead.
      *                                       keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisendcontact
+     * @see https://core.telegram.org/bots/api#sendcontact
     */
     public function sendContact(
         int|string $chat_id,
@@ -1098,7 +1098,7 @@ For sending voice messages, use the sendVoice method instead.
      *                                       keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisendpoll
+     * @see https://core.telegram.org/bots/api#sendpoll
     */
     public function sendPoll(
         int|string $chat_id,
@@ -1163,7 +1163,7 @@ For sending voice messages, use the sendVoice method instead.
      *                                       keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisenddice
+     * @see https://core.telegram.org/bots/api#senddice
     */
     public function sendDice(
         int|string $chat_id,
@@ -1204,7 +1204,7 @@ We only recommend using this method when a response
      *                                       find_location for location data, record_video_note or upload_video_note for video notes.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisendchataction
+     * @see https://core.telegram.org/bots/api#sendchataction
     */
     public function sendChatAction(
         int|string $chat_id,
@@ -1236,7 +1236,7 @@ We only recommend using this method when a response
      * @param bool|null $is_big Pass True to set the reaction with a big animation
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetmessagereaction
+     * @see https://core.telegram.org/bots/api#setmessagereaction
     */
     public function setMessageReaction(
         int|string $chat_id,
@@ -1263,7 +1263,7 @@ We only recommend using this method when a response
      * @param int|null $limit Limits the number of photos to be retrieved. Values between 1-100 are accepted. Defaults to 100.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetuserprofilephotos
+     * @see https://core.telegram.org/bots/api#getuserprofilephotos
     */
     public function getUserProfilePhotos(
         int $user_id,
@@ -1290,7 +1290,7 @@ We only recommend using this method when a response
      * @param string $file_id File identifier to get information about
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetfile
+     * @see https://core.telegram.org/bots/api#getfile
     */
     public function getFile(
         string $file_id
@@ -1320,7 +1320,7 @@ We only recommend using this method when a response
      *                                       True for supergroups and channels.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apibanchatmember
+     * @see https://core.telegram.org/bots/api#banchatmember
     */
     public function banChatMember(
         int|string $chat_id,
@@ -1353,7 +1353,7 @@ We only recommend using this method when a response
      * @param bool|null $only_if_banned Do nothing if the user is not banned
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apiunbanchatmember
+     * @see https://core.telegram.org/bots/api#unbanchatmember
     */
     public function unbanChatMember(
         int|string $chat_id,
@@ -1387,7 +1387,7 @@ We only recommend using this method when a response
      *                                       366 days or less than 30 seconds from the current time, they are considered to be restricted forever
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apirestrictchatmember
+     * @see https://core.telegram.org/bots/api#restrictchatmember
     */
     public function restrictChatMember(
         int|string $chat_id,
@@ -1439,7 +1439,7 @@ We only recommend using this method when a response
      * @param bool|null $can_manage_topics Pass True if the user is allowed to create, rename, close, and reopen forum topics, supergroups only
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apipromotechatmember
+     * @see https://core.telegram.org/bots/api#promotechatmember
     */
     public function promoteChatMember(
         int|string $chat_id,
@@ -1494,7 +1494,7 @@ We only recommend using this method when a response
      * @param string $custom_title New custom title for the administrator; 0-16 characters, emoji are not allowed
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetchatadministratorcustomtitle
+     * @see https://core.telegram.org/bots/api#setchatadministratorcustomtitle
     */
     public function setChatAdministratorCustomTitle(
         int|string $chat_id,
@@ -1522,7 +1522,7 @@ We only recommend using this method when a response
      * @param int $sender_chat_id Unique identifier of the target sender chat
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apibanchatsenderchat
+     * @see https://core.telegram.org/bots/api#banchatsenderchat
     */
     public function banChatSenderChat(
         int|string $chat_id,
@@ -1547,7 +1547,7 @@ We only recommend using this method when a response
      * @param int $sender_chat_id Unique identifier of the target sender chat
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apiunbanchatsenderchat
+     * @see https://core.telegram.org/bots/api#unbanchatsenderchat
     */
     public function unbanChatSenderChat(
         int|string $chat_id,
@@ -1576,7 +1576,7 @@ We only recommend using this method when a response
      *                                       permissions; the can_send_polls permission will imply the can_send_messages permission.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetchatpermissions
+     * @see https://core.telegram.org/bots/api#setchatpermissions
     */
     public function setChatPermissions(
         int|string $chat_id,
@@ -1602,7 +1602,7 @@ We only recommend using this method when a response
      *                                       @channelusername)
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apiexportchatinvitelink
+     * @see https://core.telegram.org/bots/api#exportchatinvitelink
     */
     public function exportChatInviteLink(
         int|string $chat_id
@@ -1630,7 +1630,7 @@ We only recommend using this method when a response
      *                                       member_limit can't be specified
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apicreatechatinvitelink
+     * @see https://core.telegram.org/bots/api#createchatinvitelink
     */
     public function createChatInviteLink(
         int|string $chat_id,
@@ -1667,7 +1667,7 @@ We only recommend using this method when a response
      *                                       member_limit can't be specified
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apieditchatinvitelink
+     * @see https://core.telegram.org/bots/api#editchatinvitelink
     */
     public function editChatInviteLink(
         int|string $chat_id,
@@ -1701,7 +1701,7 @@ We only recommend using this method when a response
      * @param string $invite_link The invite link to revoke
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apirevokechatinvitelink
+     * @see https://core.telegram.org/bots/api#revokechatinvitelink
     */
     public function revokeChatInviteLink(
         int|string $chat_id,
@@ -1725,7 +1725,7 @@ We only recommend using this method when a response
      * @param int $user_id Unique identifier of the target user
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apiapprovechatjoinrequest
+     * @see https://core.telegram.org/bots/api#approvechatjoinrequest
     */
     public function approveChatJoinRequest(
         int|string $chat_id,
@@ -1749,7 +1749,7 @@ We only recommend using this method when a response
      * @param int $user_id Unique identifier of the target user
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apideclinechatjoinrequest
+     * @see https://core.telegram.org/bots/api#declinechatjoinrequest
     */
     public function declineChatJoinRequest(
         int|string $chat_id,
@@ -1774,7 +1774,7 @@ We only recommend using this method when a response
      * @param \CURLFile $photo New chat photo, uploaded using multipart/form-data
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetchatphoto
+     * @see https://core.telegram.org/bots/api#setchatphoto
     */
     public function setChatPhoto(
         int|string $chat_id,
@@ -1798,7 +1798,7 @@ We only recommend using this method when a response
      *                                       @channelusername)
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apideletechatphoto
+     * @see https://core.telegram.org/bots/api#deletechatphoto
     */
     public function deleteChatPhoto(
         int|string $chat_id
@@ -1821,7 +1821,7 @@ We only recommend using this method when a response
      * @param string $title New chat title, 1-128 characters
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetchattitle
+     * @see https://core.telegram.org/bots/api#setchattitle
     */
     public function setChatTitle(
         int|string $chat_id,
@@ -1846,7 +1846,7 @@ We only recommend using this method when a response
      * @param string|null $description New chat description, 0-255 characters
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetchatdescription
+     * @see https://core.telegram.org/bots/api#setchatdescription
     */
     public function setChatDescription(
         int|string $chat_id,
@@ -1874,7 +1874,7 @@ We only recommend using this method when a response
      *                                       message. Notifications are always disabled in channels and private chats.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apipinchatmessage
+     * @see https://core.telegram.org/bots/api#pinchatmessage
     */
     public function pinChatMessage(
         int|string $chat_id,
@@ -1903,7 +1903,7 @@ We only recommend using this method when a response
      *                                       will be unpinned.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apiunpinchatmessage
+     * @see https://core.telegram.org/bots/api#unpinchatmessage
     */
     public function unpinChatMessage(
         int|string $chat_id,
@@ -1928,7 +1928,7 @@ We only recommend using this method when a response
      *                                       @channelusername)
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apiunpinallchatmessages
+     * @see https://core.telegram.org/bots/api#unpinallchatmessages
     */
     public function unpinAllChatMessages(
         int|string $chat_id
@@ -1948,7 +1948,7 @@ We only recommend using this method when a response
      *                                       @channelusername)
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apileavechat
+     * @see https://core.telegram.org/bots/api#leavechat
     */
     public function leaveChat(
         int|string $chat_id
@@ -1968,7 +1968,7 @@ We only recommend using this method when a response
      *                                       @channelusername)
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetchat
+     * @see https://core.telegram.org/bots/api#getchat
     */
     public function getChat(
         int|string $chat_id
@@ -1989,7 +1989,7 @@ We only recommend using this method when a response
      *                                       @channelusername)
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetchatadministrators
+     * @see https://core.telegram.org/bots/api#getchatadministrators
     */
     public function getChatAdministrators(
         int|string $chat_id
@@ -2009,7 +2009,7 @@ We only recommend using this method when a response
      *                                       @channelusername)
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetchatmembercount
+     * @see https://core.telegram.org/bots/api#getchatmembercount
     */
     public function getChatMemberCount(
         int|string $chat_id
@@ -2031,7 +2031,7 @@ We only recommend using this method when a response
      * @param int $user_id Unique identifier of the target user
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetchatmember
+     * @see https://core.telegram.org/bots/api#getchatmember
     */
     public function getChatMember(
         int|string $chat_id,
@@ -2057,7 +2057,7 @@ We only recommend using this method when a response
      * @param string $sticker_set_name Name of the sticker set to be set as the group sticker set
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetchatstickerset
+     * @see https://core.telegram.org/bots/api#setchatstickerset
     */
     public function setChatStickerSet(
         int|string $chat_id,
@@ -2082,7 +2082,7 @@ We only recommend using this method when a response
      *                                       @supergroupusername)
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apideletechatstickerset
+     * @see https://core.telegram.org/bots/api#deletechatstickerset
     */
     public function deleteChatStickerSet(
         int|string $chat_id
@@ -2101,7 +2101,7 @@ We only recommend using this method when a response
      *
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetforumtopiciconstickers
+     * @see https://core.telegram.org/bots/api#getforumtopiciconstickers
     */
     public function getForumTopicIconStickers(): \stdClass {
         return $this->Request('getForumTopicIconStickers', []);
@@ -2121,7 +2121,7 @@ We only recommend using this method when a response
      *                                       all allowed custom emoji identifiers.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apicreateforumtopic
+     * @see https://core.telegram.org/bots/api#createforumtopic
     */
     public function createForumTopic(
         int|string $chat_id,
@@ -2155,7 +2155,7 @@ We only recommend using this method when a response
      *                                       the current icon will be kept
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apieditforumtopic
+     * @see https://core.telegram.org/bots/api#editforumtopic
     */
     public function editForumTopic(
         int|string $chat_id,
@@ -2184,7 +2184,7 @@ We only recommend using this method when a response
      * @param int $message_thread_id Unique identifier for the target message thread of the forum topic
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apicloseforumtopic
+     * @see https://core.telegram.org/bots/api#closeforumtopic
     */
     public function closeForumTopic(
         int|string $chat_id,
@@ -2209,7 +2209,7 @@ We only recommend using this method when a response
      * @param int $message_thread_id Unique identifier for the target message thread of the forum topic
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apireopenforumtopic
+     * @see https://core.telegram.org/bots/api#reopenforumtopic
     */
     public function reopenForumTopic(
         int|string $chat_id,
@@ -2234,7 +2234,7 @@ We only recommend using this method when a response
      * @param int $message_thread_id Unique identifier for the target message thread of the forum topic
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apideleteforumtopic
+     * @see https://core.telegram.org/bots/api#deleteforumtopic
     */
     public function deleteForumTopic(
         int|string $chat_id,
@@ -2259,7 +2259,7 @@ We only recommend using this method when a response
      * @param int $message_thread_id Unique identifier for the target message thread of the forum topic
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apiunpinallforumtopicmessages
+     * @see https://core.telegram.org/bots/api#unpinallforumtopicmessages
     */
     public function unpinAllForumTopicMessages(
         int|string $chat_id,
@@ -2284,7 +2284,7 @@ We only recommend using this method when a response
      * @param string $name New topic name, 1-128 characters
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apieditgeneralforumtopic
+     * @see https://core.telegram.org/bots/api#editgeneralforumtopic
     */
     public function editGeneralForumTopic(
         int|string $chat_id,
@@ -2308,7 +2308,7 @@ We only recommend using this method when a response
      *                                       @supergroupusername)
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apiclosegeneralforumtopic
+     * @see https://core.telegram.org/bots/api#closegeneralforumtopic
     */
     public function closeGeneralForumTopic(
         int|string $chat_id
@@ -2330,7 +2330,7 @@ We only recommend using this method when a response
      *                                       @supergroupusername)
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apireopengeneralforumtopic
+     * @see https://core.telegram.org/bots/api#reopengeneralforumtopic
     */
     public function reopenGeneralForumTopic(
         int|string $chat_id
@@ -2352,7 +2352,7 @@ We only recommend using this method when a response
      *                                       @supergroupusername)
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apihidegeneralforumtopic
+     * @see https://core.telegram.org/bots/api#hidegeneralforumtopic
     */
     public function hideGeneralForumTopic(
         int|string $chat_id
@@ -2374,7 +2374,7 @@ We only recommend using this method when a response
      *                                       @supergroupusername)
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apiunhidegeneralforumtopic
+     * @see https://core.telegram.org/bots/api#unhidegeneralforumtopic
     */
     public function unhideGeneralForumTopic(
         int|string $chat_id
@@ -2396,7 +2396,7 @@ We only recommend using this method when a response
      *                                       @supergroupusername)
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apiunpinallgeneralforumtopicmessages
+     * @see https://core.telegram.org/bots/api#unpinallgeneralforumtopicmessages
     */
     public function unpinAllGeneralForumTopicMessages(
         int|string $chat_id
@@ -2426,7 +2426,7 @@ We only recommend using this method when a response
      *                                       client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apianswercallbackquery
+     * @see https://core.telegram.org/bots/api#answercallbackquery
     */
     public function answerCallbackQuery(
         string $callback_query_id,
@@ -2455,7 +2455,7 @@ We only recommend using this method when a response
      * @param int $user_id Unique identifier of the target user
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetuserchatboosts
+     * @see https://core.telegram.org/bots/api#getuserchatboosts
     */
     public function getUserChatBoosts(
         int|string $chat_id,
@@ -2482,7 +2482,7 @@ We only recommend using this method when a response
      *                                       scope, for whose language there are no dedicated commands
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetmycommands
+     * @see https://core.telegram.org/bots/api#setmycommands
     */
     public function setMyCommands(
         array $commands,
@@ -2509,7 +2509,7 @@ We only recommend using this method when a response
      *                                       scope, for whose language there are no dedicated commands
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apideletemycommands
+     * @see https://core.telegram.org/bots/api#deletemycommands
     */
     public function deleteMyCommands(
         array $scope = null,
@@ -2531,7 +2531,7 @@ We only recommend using this method when a response
      * @param string|null $language_code A two-letter ISO 639-1 language code or an empty string
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetmycommands
+     * @see https://core.telegram.org/bots/api#getmycommands
     */
     public function getMyCommands(
         array $scope = null,
@@ -2554,7 +2554,7 @@ We only recommend using this method when a response
      *                                       language there is no dedicated name.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetmyname
+     * @see https://core.telegram.org/bots/api#setmyname
     */
     public function setMyName(
         string $name = null,
@@ -2574,7 +2574,7 @@ We only recommend using this method when a response
      * @param string|null $language_code A two-letter ISO 639-1 language code or an empty string
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetmyname
+     * @see https://core.telegram.org/bots/api#getmyname
     */
     public function getMyName(
         string $language_code = null
@@ -2596,7 +2596,7 @@ We only recommend using this method when a response
      *                                       whose language there is no dedicated description.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetmydescription
+     * @see https://core.telegram.org/bots/api#setmydescription
     */
     public function setMyDescription(
         string $description = null,
@@ -2617,7 +2617,7 @@ We only recommend using this method when a response
      * @param string|null $language_code A two-letter ISO 639-1 language code or an empty string
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetmydescription
+     * @see https://core.telegram.org/bots/api#getmydescription
     */
     public function getMyDescription(
         string $language_code = null
@@ -2639,7 +2639,7 @@ We only recommend using this method when a response
      *                                       for whose language there is no dedicated short description.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetmyshortdescription
+     * @see https://core.telegram.org/bots/api#setmyshortdescription
     */
     public function setMyShortDescription(
         string $short_description = null,
@@ -2660,7 +2660,7 @@ We only recommend using this method when a response
      * @param string|null $language_code A two-letter ISO 639-1 language code or an empty string
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetmyshortdescription
+     * @see https://core.telegram.org/bots/api#getmyshortdescription
     */
     public function getMyShortDescription(
         string $language_code = null
@@ -2681,7 +2681,7 @@ We only recommend using this method when a response
      * @param array|null $menu_button A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetchatmenubutton
+     * @see https://core.telegram.org/bots/api#setchatmenubutton
     */
     public function setChatMenuButton(
         int $chat_id = null,
@@ -2703,7 +2703,7 @@ We only recommend using this method when a response
      *                                       returned
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetchatmenubutton
+     * @see https://core.telegram.org/bots/api#getchatmenubutton
     */
     public function getChatMenuButton(
         int $chat_id = null
@@ -2726,7 +2726,7 @@ We only recommend using this method when a response
      *                                       administrator rights of the bot for groups and supergroups will be changed.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetmydefaultadministratorrights
+     * @see https://core.telegram.org/bots/api#setmydefaultadministratorrights
     */
     public function setMyDefaultAdministratorRights(
         array $rights = null,
@@ -2748,7 +2748,7 @@ We only recommend using this method when a response
      *                                       administrator rights of the bot for groups and supergroups will be returned.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetmydefaultadministratorrights
+     * @see https://core.telegram.org/bots/api#getmydefaultadministratorrights
     */
     public function getMyDefaultAdministratorRights(
         bool $for_channels = null
@@ -2776,7 +2776,7 @@ We only recommend using this method when a response
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apieditmessagetext
+     * @see https://core.telegram.org/bots/api#editmessagetext
     */
     public function editMessageText(
         string $text,
@@ -2818,7 +2818,7 @@ We only recommend using this method when a response
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apieditmessagecaption
+     * @see https://core.telegram.org/bots/api#editmessagecaption
     */
     public function editMessageCaption(
         int|string $chat_id = null,
@@ -2858,7 +2858,7 @@ We only recommend using this method when a response
      * @param array|null $reply_markup A JSON-serialized object for a new inline keyboard.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apieditmessagemedia
+     * @see https://core.telegram.org/bots/api#editmessagemedia
     */
     public function editMessageMedia(
         array $media,
@@ -2904,7 +2904,7 @@ We only recommend using this method when a response
      * @param array|null $reply_markup A JSON-serialized object for a new inline keyboard.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apieditmessagelivelocation
+     * @see https://core.telegram.org/bots/api#editmessagelivelocation
     */
     public function editMessageLiveLocation(
         float $latitude,
@@ -2944,7 +2944,7 @@ We only recommend using this method when a response
      * @param array|null $reply_markup A JSON-serialized object for a new inline keyboard.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apistopmessagelivelocation
+     * @see https://core.telegram.org/bots/api#stopmessagelivelocation
     */
     public function stopMessageLiveLocation(
         int|string $chat_id = null,
@@ -2973,7 +2973,7 @@ We only recommend using this method when a response
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apieditmessagereplymarkup
+     * @see https://core.telegram.org/bots/api#editmessagereplymarkup
     */
     public function editMessageReplyMarkup(
         int|string $chat_id = null,
@@ -3000,7 +3000,7 @@ We only recommend using this method when a response
      * @param array|null $reply_markup A JSON-serialized object for a new message inline keyboard.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apistoppoll
+     * @see https://core.telegram.org/bots/api#stoppoll
     */
     public function stopPoll(
         int|string $chat_id,
@@ -3032,7 +3032,7 @@ We only recommend using this method when a response
      * @param int $message_id Identifier of the message to delete
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apideletemessage
+     * @see https://core.telegram.org/bots/api#deletemessage
     */
     public function deleteMessage(
         int|string $chat_id,
@@ -3057,7 +3057,7 @@ We only recommend using this method when a response
      *                                       deleted
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apideletemessages
+     * @see https://core.telegram.org/bots/api#deletemessages
     */
     public function deleteMessages(
         int|string $chat_id,
@@ -3091,7 +3091,7 @@ We only recommend using this method when a response
      *                                       keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisendsticker
+     * @see https://core.telegram.org/bots/api#sendsticker
     */
     public function sendSticker(
         int|string $chat_id,
@@ -3124,7 +3124,7 @@ We only recommend using this method when a response
      * @param string $name Name of the sticker set
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetstickerset
+     * @see https://core.telegram.org/bots/api#getstickerset
     */
     public function getStickerSet(
         string $name
@@ -3144,7 +3144,7 @@ We only recommend using this method when a response
      * @param array $custom_emoji_ids List of custom emoji identifiers. At most 200 custom emoji identifiers can be specified.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetcustomemojistickers
+     * @see https://core.telegram.org/bots/api#getcustomemojistickers
     */
     public function getCustomEmojiStickers(
         array $custom_emoji_ids
@@ -3167,7 +3167,7 @@ We only recommend using this method when a response
      * @param string $sticker_format Format of the sticker, must be one of “static”, “animated”, “video”
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apiuploadstickerfile
+     * @see https://core.telegram.org/bots/api#uploadstickerfile
     */
     public function uploadStickerFile(
         int $user_id,
@@ -3203,7 +3203,7 @@ We only recommend using this method when a response
      *                                       color based on context; for custom emoji sticker sets only
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apicreatenewstickerset
+     * @see https://core.telegram.org/bots/api#createnewstickerset
     */
     public function createNewStickerSet(
         int $user_id,
@@ -3240,7 +3240,7 @@ We only recommend using this method when a response
      *                                       already been added to the set, then the set isn't changed.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apiaddstickertoset
+     * @see https://core.telegram.org/bots/api#addstickertoset
     */
     public function addStickerToSet(
         int $user_id,
@@ -3265,7 +3265,7 @@ We only recommend using this method when a response
      * @param int $position New sticker position in the set, zero-based
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetstickerpositioninset
+     * @see https://core.telegram.org/bots/api#setstickerpositioninset
     */
     public function setStickerPositionInSet(
         string $sticker,
@@ -3286,7 +3286,7 @@ We only recommend using this method when a response
      * @param string $sticker File identifier of the sticker
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apideletestickerfromset
+     * @see https://core.telegram.org/bots/api#deletestickerfromset
     */
     public function deleteStickerFromSet(
         string $sticker
@@ -3307,7 +3307,7 @@ We only recommend using this method when a response
      * @param array $emoji_list A JSON-serialized list of 1-20 emoji associated with the sticker
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetstickeremojilist
+     * @see https://core.telegram.org/bots/api#setstickeremojilist
     */
     public function setStickerEmojiList(
         string $sticker,
@@ -3331,7 +3331,7 @@ We only recommend using this method when a response
      *                                       characters
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetstickerkeywords
+     * @see https://core.telegram.org/bots/api#setstickerkeywords
     */
     public function setStickerKeywords(
         string $sticker,
@@ -3355,7 +3355,7 @@ We only recommend using this method when a response
      *                                       parameter to remove the mask position.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetstickermaskposition
+     * @see https://core.telegram.org/bots/api#setstickermaskposition
     */
     public function setStickerMaskPosition(
         string $sticker,
@@ -3377,7 +3377,7 @@ We only recommend using this method when a response
      * @param string $title Sticker set title, 1-64 characters
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetstickersettitle
+     * @see https://core.telegram.org/bots/api#setstickersettitle
     */
     public function setStickerSetTitle(
         string $name,
@@ -3410,7 +3410,7 @@ We only recommend using this method when a response
      *                                       used as the thumbnail.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetstickersetthumbnail
+     * @see https://core.telegram.org/bots/api#setstickersetthumbnail
     */
     public function setStickerSetThumbnail(
         string $name,
@@ -3435,7 +3435,7 @@ We only recommend using this method when a response
      *                                       thumbnail and use the first sticker as the thumbnail.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetcustomemojistickersetthumbnail
+     * @see https://core.telegram.org/bots/api#setcustomemojistickersetthumbnail
     */
     public function setCustomEmojiStickerSetThumbnail(
         string $name,
@@ -3456,7 +3456,7 @@ We only recommend using this method when a response
      * @param string $name Sticker set name
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apideletestickerset
+     * @see https://core.telegram.org/bots/api#deletestickerset
     */
     public function deleteStickerSet(
         string $name
@@ -3485,7 +3485,7 @@ We only recommend using this method when a response
      * @param array|null $button A JSON-serialized object describing a button to be shown above inline query results
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apianswerinlinequery
+     * @see https://core.telegram.org/bots/api#answerinlinequery
     */
     public function answerInlineQuery(
         string $inline_query_id,
@@ -3517,7 +3517,7 @@ We only recommend using this method when a response
      * @param array $result A JSON-serialized object describing the message to be sent
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apianswerwebappquery
+     * @see https://core.telegram.org/bots/api#answerwebappquery
     */
     public function answerWebAppQuery(
         string $web_app_query_id,
@@ -3578,7 +3578,7 @@ We only recommend using this method when a response
      *                                       shown. If not empty, the first button must be a Pay button.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisendinvoice
+     * @see https://core.telegram.org/bots/api#sendinvoice
     */
     public function sendInvoice(
         int|string $chat_id,
@@ -3678,7 +3678,7 @@ We only recommend using this method when a response
      * @param bool|null $is_flexible Pass True if the final price depends on the shipping method
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apicreateinvoicelink
+     * @see https://core.telegram.org/bots/api#createinvoicelink
     */
     public function createInvoiceLink(
         string $title,
@@ -3743,7 +3743,7 @@ We only recommend using this method when a response
      *                                       display this message to the user.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apianswershippingquery
+     * @see https://core.telegram.org/bots/api#answershippingquery
     */
     public function answerShippingQuery(
         string $shipping_query_id,
@@ -3777,7 +3777,7 @@ We only recommend using this method when a response
      *                                       garment!"). Telegram will display this message to the user.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apianswerprecheckoutquery
+     * @see https://core.telegram.org/bots/api#answerprecheckoutquery
     */
     public function answerPreCheckoutQuery(
         string $pre_checkout_query_id,
@@ -3808,7 +3808,7 @@ Use this if the data
      * @param array $errors A JSON-serialized array describing the errors
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetpassportdataerrors
+     * @see https://core.telegram.org/bots/api#setpassportdataerrors
     */
     public function setPassportDataErrors(
         int $user_id,
@@ -3837,7 +3837,7 @@ Use this if the data
      *                                       shown. If not empty, the first button must launch the game.
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisendgame
+     * @see https://core.telegram.org/bots/api#sendgame
     */
     public function sendGame(
         int $chat_id,
@@ -3877,7 +3877,7 @@ Use this if the data
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apisetgamescore
+     * @see https://core.telegram.org/bots/api#setgamescore
     */
     public function setGameScore(
         int $user_id,
@@ -3912,7 +3912,7 @@ Use this if the data
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
      * @return \stdClass
      *
-     * @see https://core.telegram.org/bots/apigetgamehighscores
+     * @see https://core.telegram.org/bots/api#getgamehighscores
     */
     public function getGameHighScores(
         int $user_id,

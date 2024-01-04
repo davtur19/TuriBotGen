@@ -92,7 +92,7 @@ foreach ($api['methods'] as $method) {
     }
     $out .= " * @return \stdClass" . PHP_EOL;
     $out .= " *" . PHP_EOL;
-    $out .= " * @see https://core.telegram.org/bots/api" . strtolower($method['name']) . PHP_EOL;
+    $out .= " * @see https://core.telegram.org/bots/api#" . strtolower($method['name']) . PHP_EOL;
     $out .= "*/" . PHP_EOL;
 
     // generate function and parameters
