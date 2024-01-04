@@ -71,7 +71,6 @@ foreach ($api['methods'] as $method) {
         $out .= " * @param ";
         if (count($field['types']) === 1) {
             $out .= $types[$field['types'][0]];
-            $out .= ' ';
         } elseif ($field['types'][0] === 'int' and $field['types'][1] === 'string') {
             $out .= 'int|string';
         } elseif ($field['types'][0] === 'InputFile' and $field['types'][1] === 'string') {
@@ -79,7 +78,7 @@ foreach ($api['methods'] as $method) {
         } elseif ($field['name'] == 'reply_markup') {
             $out .= 'array';
         }
-        
+
         if ($field['optional']) {
             $out .= "|null";
         }
