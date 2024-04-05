@@ -1,0 +1,82 @@
+#!/bin/bash
+
+set -xe 
+
+sleeper() {
+  echo $1
+  sleep $tgscraper_sleep_timeout
+  exit $2
+}
+
+# CHECK
+curl -Ls https://core.telegram.org/bots/api | grep -v "page generated" | md5sum > new_md5;
+
+if [ ! -f old_md5 ]; then
+  touch old_md5;
+fi;
+
+if [ -z "$(diff new_md5 old_md5)" ]; then 
+  sleeper "### html md5 matches." 1
+else
+  rm old_md5
+  mv new_md5 old_md5
+  composer require sysbot/tgscraper sysbot/tgscraper-cache --prefer-stable
+  /app/vendor/bin/tgscraper app:export-schema --readable botapi.json
+fi;
+
+# GIT
+## config
+git config --global user.name $tgscraper_user
+git config --global user.email $tgscraper_mail
+mkdir -p ~/.ssh
+echo "$tgscraper_pkey" > ~/.ssh/id_rsa
+chmod 0600 ~/.ssh/id_rsa
+cat <<EOF > ~/.ssh/config
+Host *
+    User git
+    StrictHostKeyChecking no
+EOF
+
+if [ ! -d ./generator ]; then
+  git clone $tgscraper_repo generator
+fi;
+  
+cd generator
+git fetch \
+  --force \
+  origin \
+  $tgscraper_branch
+
+git pull \
+  --force \
+  origin \
+  $tgscraper_branch
+
+mv Api.php Api_old.php
+mv botapi.json botapi_old.json
+mv postman_botapi.json postman_botapi_old.json
+cp ../botapi.json .
+php gen.php
+php postman.php
+
+if [ -n "$(diff botapi.json botapi_old.json)" ]; then
+  if [ -n "$(diff Api.php Api_old.php)" ]; then 
+    rm Api_old.php
+    rm botapi_old.json
+    rm postman_botapi_old.json
+    git add .
+    git commit -m "Update: Api.php"
+    git push --set-upstream origin $tgscraper_branch
+  else
+    rm botapi_old.json
+    rm postman_botapi_old.json
+    git add botapi.json
+    git add postman_botapi.json
+    git commit -m "Update: botapi.json"
+    git push --set-upstream origin $tgscraper_branch
+  fi;
+  sleeper "### Updated." 0
+else
+  sleeper "### Nothing to do." 1	
+fi;
+

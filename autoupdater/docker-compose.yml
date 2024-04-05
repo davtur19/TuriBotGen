@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  automation:
+    build: ../../../../Downloads/turibotgen
+    environment:
+      tgscraper_user: davtur19
+      tgscraper_mail: email@email.com
+      tgscraper_repo: git@github.com:davtur19/TuriBotGen.git
+      tgscraper_branch: master
+      tgscraper_pkey: |
+        -----BEGIN OPENSSH PRIVATE KEY-----
+        abcd
+        -----END OPENSSH PRIVATE KEY-----
+      tgscraper_sleep_timeout: 1800
+      # 1800 = 30min
+    image: tgscraper:git_updater
+    restart: always
