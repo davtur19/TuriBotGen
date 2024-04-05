@@ -54,6 +54,7 @@ $methods_upload = [
 
 // Parameters to be added last, to avoid compatibility problems
 $last_parameters = [
+    'business_connection_id'
     // 'message_thread_id',
     //'has_spoiler',
 ];
@@ -61,6 +62,14 @@ $last_parameters = [
 $out = '';
 foreach ($api['methods'] as $method) {
     $args = [];
+
+    // Move parameters to the end of the array to avoid compatibility problems
+    foreach ($method['fields'] as $key => $field) {
+        if (in_array($field['name'], $last_parameters)) {
+            unset($method['fields'][$key]);
+            $method['fields'][] = $field;
+        }
+    }
 
     // generate documentation
     $out .= PHP_EOL;
@@ -100,14 +109,6 @@ foreach ($api['methods'] as $method) {
 
     if (!empty($method['fields'])) {
         $out .= PHP_EOL;
-
-        // Move parameters to the end of the array to avoid compatibility problems
-        foreach ($method['fields'] as $key => $field) {
-            if (in_array($field['name'], $last_parameters)) {
-                unset($method['fields'][$key]);
-                $method['fields'][] = $field;
-            }
-        }
 
         // sort $method['fields'] by putting non-optional parameters first
         foreach ($method['fields'] as $field) {
