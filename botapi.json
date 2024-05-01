@@ -2947,7 +2947,7 @@
         },
         {
             "name": "SharedUser",
-            "description": "This object contains information about a user that was shared with the bot using a KeyboardButtonRequestUser button.",
+            "description": "This object contains information about a user that was shared with the bot using a KeyboardButtonRequestUsers button.",
             "fields": [
                 {
                     "name": "user_id",
@@ -3639,7 +3639,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Optional. Pass True to request the users' first and last name"
+                    "description": "Optional. Pass True to request the users' first and last names"
                 },
                 {
                     "name": "request_username",
@@ -3647,7 +3647,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Optional. Pass True to request the users' username"
+                    "description": "Optional. Pass True to request the users' usernames"
                 },
                 {
                     "name": "request_photo",
@@ -3655,14 +3655,14 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Optional. Pass True to request the users' photo"
+                    "description": "Optional. Pass True to request the users' photos"
                 }
             ],
             "extended_by": []
         },
         {
             "name": "KeyboardButtonRequestChat",
-            "description": "This object defines the criteria used to request a suitable chat. Information about the selected chat will be shared with the bot when the corresponding button is pressed. The bot will be granted requested rights in the сhat if appropriate More about requesting chats »",
+            "description": "This object defines the criteria used to request a suitable chat. Information about the selected chat will be shared with the bot when the corresponding button is pressed. The bot will be granted requested rights in the chat if appropriate. More about requesting chats ».",
             "fields": [
                 {
                     "name": "request_id",
@@ -5967,7 +5967,7 @@
                         "Array<int>"
                     ],
                     "optional": false,
-                    "description": "A JSON-serialized list of identifiers of deleted messages in the chat of the business account"
+                    "description": "The list of identifiers of deleted messages in the chat of the business account"
                 }
             ],
             "extended_by": []
@@ -10382,7 +10382,7 @@
                         "ForceReply"
                     ],
                     "optional": true,
-                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account"
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account."
                 }
             ],
             "return_types": [
@@ -10779,7 +10779,7 @@
                         "ForceReply"
                     ],
                     "optional": true,
-                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account"
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account."
                 }
             ],
             "return_types": [
@@ -10914,7 +10914,7 @@
                         "ForceReply"
                     ],
                     "optional": true,
-                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account"
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account."
                 }
             ],
             "return_types": [
@@ -11033,7 +11033,7 @@
                         "ForceReply"
                     ],
                     "optional": true,
-                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account"
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account."
                 }
             ],
             "return_types": [
@@ -11184,7 +11184,7 @@
                         "ForceReply"
                     ],
                     "optional": true,
-                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account"
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account."
                 }
             ],
             "return_types": [
@@ -11327,7 +11327,7 @@
                         "ForceReply"
                     ],
                     "optional": true,
-                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account"
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account."
                 }
             ],
             "return_types": [
@@ -11437,7 +11437,7 @@
                         "ForceReply"
                     ],
                     "optional": true,
-                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account"
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account."
                 }
             ],
             "return_types": [
@@ -11540,7 +11540,7 @@
                         "ForceReply"
                     ],
                     "optional": true,
-                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account"
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account."
                 }
             ],
             "return_types": [
@@ -11723,7 +11723,7 @@
                         "ForceReply"
                     ],
                     "optional": true,
-                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account"
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account."
                 }
             ],
             "return_types": [
@@ -11856,7 +11856,7 @@
                         "ForceReply"
                     ],
                     "optional": true,
-                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account"
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account."
                 }
             ],
             "return_types": [
@@ -11957,7 +11957,7 @@
                         "ForceReply"
                     ],
                     "optional": true,
-                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account"
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account."
                 }
             ],
             "return_types": [
@@ -12125,7 +12125,7 @@
                         "ForceReply"
                     ],
                     "optional": true,
-                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account"
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account."
                 }
             ],
             "return_types": [
@@ -12203,7 +12203,7 @@
                         "ForceReply"
                     ],
                     "optional": true,
-                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account"
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account."
                 }
             ],
             "return_types": [

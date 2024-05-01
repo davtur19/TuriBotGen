@@ -189,7 +189,7 @@ abstract class Api implements ApiInterface {
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account
+     *                                       for messages sent on behalf of a business account.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -428,7 +428,7 @@ abstract class Api implements ApiInterface {
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account
+     *                                       for messages sent on behalf of a business account.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -498,7 +498,7 @@ abstract class Api implements ApiInterface {
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account
+     *                                       for messages sent on behalf of a business account.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -570,7 +570,7 @@ abstract class Api implements ApiInterface {
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account
+     *                                       for messages sent on behalf of a business account.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -643,7 +643,7 @@ abstract class Api implements ApiInterface {
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account
+     *                                       for messages sent on behalf of a business account.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -723,7 +723,7 @@ abstract class Api implements ApiInterface {
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account
+     *                                       for messages sent on behalf of a business account.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -792,7 +792,7 @@ abstract class Api implements ApiInterface {
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account
+     *                                       for messages sent on behalf of a business account.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -854,7 +854,7 @@ abstract class Api implements ApiInterface {
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account
+     *                                       for messages sent on behalf of a business account.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -958,7 +958,7 @@ abstract class Api implements ApiInterface {
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account
+     *                                       for messages sent on behalf of a business account.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -1019,7 +1019,7 @@ abstract class Api implements ApiInterface {
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account
+     *                                       for messages sent on behalf of a business account.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -1079,7 +1079,7 @@ abstract class Api implements ApiInterface {
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account
+     *                                       for messages sent on behalf of a business account.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -1143,7 +1143,7 @@ abstract class Api implements ApiInterface {
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account
+     *                                       for messages sent on behalf of a business account.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -1212,7 +1212,7 @@ abstract class Api implements ApiInterface {
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account
+     *                                       for messages sent on behalf of a business account.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
