@@ -45,6 +45,7 @@ $types = [
     'LinkPreviewOptions'                                                           => 'array',
     'ReplyParameters'                                                              => 'array',
     'Array<ReactionType>'                                                          => 'array',
+    'Array<InputPollOption>'                                                       => 'array',
 ];
 
 $methods_upload = [
