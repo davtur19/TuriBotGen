@@ -188,8 +188,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account.
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -325,7 +324,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove reply keyboard or to force a reply from the user.
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#copymessage
@@ -427,8 +426,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account.
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -497,8 +495,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account.
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -569,8 +566,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account.
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -642,8 +638,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account.
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -722,8 +717,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account.
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -772,9 +766,10 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to send audio files, if you want Telegram clients to display the file as a playable
-     * voice message. For this to work, your audio must be in an .OGG file encoded with OPUS (other formats
-     * may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send
-     * voice messages of up to 50 MB in size, this limit may be changed in the future.
+     * voice message. For this to work, your audio must be in an .OGG file encoded with OPUS, or in .MP3
+     * format, or in .M4A format (other formats may be sent as Audio or Document). On success, the sent
+     * Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may
+     * be changed in the future.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
      *                                       @channelusername)
@@ -791,8 +786,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account.
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -853,8 +847,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account.
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -947,8 +940,8 @@ abstract class Api implements ApiInterface {
      * @param float $latitude Latitude of the location
      * @param float $longitude Longitude of the location
      * @param float|null $horizontal_accuracy The radius of uncertainty for the location, measured in meters; 0-1500
-     * @param int|null $live_period Period in seconds for which the location will be updated (see Live Locations, should be between 60
-     *                                       and 86400.
+     * @param int|null $live_period Period in seconds during which the location will be updated (see Live Locations, should be between
+     *                                       60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.
      * @param int|null $heading For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360
      *                                       if specified.
      * @param int|null $proximity_alert_radius For live locations, a maximum distance for proximity alerts about approaching another chat member,
@@ -957,8 +950,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account.
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -1018,8 +1010,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account.
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -1078,8 +1069,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account.
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -1123,7 +1113,11 @@ abstract class Api implements ApiInterface {
      *                                       @channelusername)
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
      * @param string $question Poll question, 1-300 characters
-     * @param array $options A JSON-serialized list of answer options, 2-10 strings 1-100 characters each
+     * @param string|null $question_parse_mode Mode for parsing entities in the question. See formatting options for more details. Currently, only
+     *                                       custom emoji entities are allowed
+     * @param array|null $question_entities A JSON-serialized list of special entities that appear in the poll question. It can be specified
+     *                                       instead of question_parse_mode
+     * @param array $options A JSON-serialized list of 2-10 answer options
      * @param bool|null $is_anonymous True, if the poll needs to be anonymous, defaults to True
      * @param string|null $type Poll type, “quiz” or “regular”, defaults to “regular”
      * @param bool|null $allows_multiple_answers True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to False
@@ -1131,8 +1125,8 @@ abstract class Api implements ApiInterface {
      * @param string|null $explanation Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style
      *                                       poll, 0-200 characters with at most 2 line feeds after entities parsing
      * @param string|null $explanation_parse_mode Mode for parsing entities in the explanation. See formatting options for more details.
-     * @param array|null $explanation_entities A JSON-serialized list of special entities that appear in the poll explanation, which can be
-     *                                       specified instead of parse_mode
+     * @param array|null $explanation_entities A JSON-serialized list of special entities that appear in the poll explanation. It can be specified
+     *                                       instead of explanation_parse_mode
      * @param int|null $open_period Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together with
      *                                       close_date.
      * @param int|null $close_date Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and no
@@ -1142,8 +1136,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account.
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -1154,6 +1147,8 @@ abstract class Api implements ApiInterface {
         string $question,
         array $options,
         int $message_thread_id = null,
+        string $question_parse_mode = null,
+        array $question_entities = null,
         bool $is_anonymous = null,
         string $type = null,
         bool $allows_multiple_answers = null,
@@ -1177,6 +1172,8 @@ abstract class Api implements ApiInterface {
         ];
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
+        if (null !== $question_parse_mode) $args['question_parse_mode'] = $question_parse_mode;
+        if (null !== $question_entities) $args['question_entities'] = json_encode($question_entities);
         if (null !== $is_anonymous) $args['is_anonymous'] = $is_anonymous;
         if (null !== $type) $args['type'] = $type;
         if (null !== $allows_multiple_answers) $args['allows_multiple_answers'] = $allows_multiple_answers;
@@ -1211,8 +1208,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported
-     *                                       for messages sent on behalf of a business account.
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -1488,7 +1484,8 @@ abstract class Api implements ApiInterface {
      * @param bool|null $can_change_info Pass True if the administrator can change chat title, photo and other settings
      * @param bool|null $can_invite_users Pass True if the administrator can invite new users to the chat
      * @param bool|null $can_post_stories Pass True if the administrator can post stories to the chat
-     * @param bool|null $can_edit_stories Pass True if the administrator can edit stories posted by other users
+     * @param bool|null $can_edit_stories Pass True if the administrator can edit stories posted by other users, post stories to the chat
+     *                                       page, pin chat stories, and access the chat's story archive
      * @param bool|null $can_delete_stories Pass True if the administrator can delete stories posted by other users
      * @param bool|null $can_post_messages Pass True if the administrator can post messages in the channel, or access channel statistics; for
      *                                       channels only
@@ -2022,7 +2019,8 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to get up to date information about the chat. Returns a Chat object on success.
+     * Use this method to get up-to-date information about the chat. Returns a ChatFullInfo object on
+     * success.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup or channel (in the format
      *                                       @channelusername)
@@ -2977,6 +2975,10 @@ abstract class Api implements ApiInterface {
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
      * @param float $latitude Latitude of new location
      * @param float $longitude Longitude of new location
+     * @param int|null $live_period New period in seconds during which the location can be updated, starting from the message send date.
+     *                                       If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must
+     *                                       not exceed the current live_period by more than a day, and the live location expiration date must
+     *                                       remain within the next 90 days. If not specified, then live_period remains unchanged
      * @param float|null $horizontal_accuracy The radius of uncertainty for the location, measured in meters; 0-1500
      * @param int|null $heading Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
      * @param int|null $proximity_alert_radius The maximum distance for proximity alerts about approaching another chat member, in meters. Must be
@@ -2992,6 +2994,7 @@ abstract class Api implements ApiInterface {
         int|string $chat_id = null,
         int $message_id = null,
         string $inline_message_id = null,
+        int $live_period = null,
         float $horizontal_accuracy = null,
         int $heading = null,
         int $proximity_alert_radius = null,
@@ -3005,6 +3008,7 @@ abstract class Api implements ApiInterface {
         if (null !== $chat_id) $args['chat_id'] = $chat_id;
         if (null !== $message_id) $args['message_id'] = $message_id;
         if (null !== $inline_message_id) $args['inline_message_id'] = $inline_message_id;
+        if (null !== $live_period) $args['live_period'] = $live_period;
         if (null !== $horizontal_accuracy) $args['horizontal_accuracy'] = $horizontal_accuracy;
         if (null !== $heading) $args['heading'] = $heading;
         if (null !== $proximity_alert_radius) $args['proximity_alert_radius'] = $proximity_alert_radius;
@@ -3168,8 +3172,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove reply keyboard or to force a reply from the user. Not supported for
-     *                                       messages sent on behalf of a business account.
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -3950,8 +3953,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard. If empty, one 'Play game_title' button will be
-     *                                       shown. If not empty, the first button must launch the game. Not supported for messages sent on
-     *                                       behalf of a business account.
+     *                                       shown. If not empty, the first button must launch the game.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *

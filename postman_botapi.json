@@ -317,7 +317,7 @@
                         {
                             "key": "reply_markup",
                             "value": "",
-                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account.",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user",
                             "type": "text"
                         }
                     ]
@@ -530,7 +530,7 @@
                         {
                             "key": "reply_markup",
                             "value": "",
-                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user",
                             "type": "text"
                         }
                     ]
@@ -694,7 +694,7 @@
                         {
                             "key": "reply_markup",
                             "value": "",
-                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account.",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user",
                             "type": "text"
                         }
                     ]
@@ -809,7 +809,7 @@
                         {
                             "key": "reply_markup",
                             "value": "",
-                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account.",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user",
                             "type": "text"
                         }
                     ]
@@ -912,7 +912,7 @@
                         {
                             "key": "reply_markup",
                             "value": "",
-                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account.",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user",
                             "type": "text"
                         }
                     ]
@@ -1039,7 +1039,7 @@
                         {
                             "key": "reply_markup",
                             "value": "",
-                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account.",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user",
                             "type": "text"
                         }
                     ]
@@ -1160,7 +1160,7 @@
                         {
                             "key": "reply_markup",
                             "value": "",
-                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account.",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user",
                             "type": "text"
                         }
                     ]
@@ -1257,7 +1257,7 @@
                         {
                             "key": "reply_markup",
                             "value": "",
-                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account.",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user",
                             "type": "text"
                         }
                     ]
@@ -1275,7 +1275,7 @@
                         "sendVoice"
                     ]
                 },
-                "description": "Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future."
+                "description": "Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS, or in .MP3 format, or in .M4A format (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future."
             }
         },
         {
@@ -1348,7 +1348,7 @@
                         {
                             "key": "reply_markup",
                             "value": "",
-                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account.",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user",
                             "type": "text"
                         }
                     ]
@@ -1482,7 +1482,7 @@
                         {
                             "key": "live_period",
                             "value": "",
-                            "description": "Optional. Period in seconds for which the location will be updated (see Live Locations, should be between 60 and 86400.",
+                            "description": "Optional. Period in seconds during which the location will be updated (see Live Locations, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.",
                             "type": "text"
                         },
                         {
@@ -1518,7 +1518,7 @@
                         {
                             "key": "reply_markup",
                             "value": "",
-                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account.",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user",
                             "type": "text"
                         }
                     ]
@@ -1633,7 +1633,7 @@
                         {
                             "key": "reply_markup",
                             "value": "",
-                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account.",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user",
                             "type": "text"
                         }
                     ]
@@ -1724,7 +1724,7 @@
                         {
                             "key": "reply_markup",
                             "value": "",
-                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account.",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user",
                             "type": "text"
                         }
                     ]
@@ -1777,9 +1777,21 @@
                             "type": "text"
                         },
                         {
+                            "key": "question_parse_mode",
+                            "value": "",
+                            "description": "Optional. Mode for parsing entities in the question. See formatting options for more details. Currently, only custom emoji entities are allowed",
+                            "type": "text"
+                        },
+                        {
+                            "key": "question_entities",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized list of special entities that appear in the poll question. It can be specified instead of question_parse_mode",
+                            "type": "text"
+                        },
+                        {
                             "key": "options",
                             "value": "",
-                            "description": "Required. A JSON-serialized list of answer options, 2-10 strings 1-100 characters each",
+                            "description": "Required. A JSON-serialized list of 2-10 answer options",
                             "type": "text"
                         },
                         {
@@ -1821,7 +1833,7 @@
                         {
                             "key": "explanation_entities",
                             "value": "",
-                            "description": "Optional. A JSON-serialized list of special entities that appear in the poll explanation, which can be specified instead of parse_mode",
+                            "description": "Optional. A JSON-serialized list of special entities that appear in the poll explanation. It can be specified instead of explanation_parse_mode",
                             "type": "text"
                         },
                         {
@@ -1863,7 +1875,7 @@
                         {
                             "key": "reply_markup",
                             "value": "",
-                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account.",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user",
                             "type": "text"
                         }
                     ]
@@ -1936,7 +1948,7 @@
                         {
                             "key": "reply_markup",
                             "value": "",
-                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account.",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user",
                             "type": "text"
                         }
                     ]
@@ -2352,7 +2364,7 @@
                         {
                             "key": "can_edit_stories",
                             "value": "",
-                            "description": "Optional. Pass True if the administrator can edit stories posted by other users",
+                            "description": "Optional. Pass True if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access the chat's story archive",
                             "type": "text"
                         },
                         {
@@ -3133,7 +3145,7 @@
                         "getChat"
                     ]
                 },
-                "description": "Use this method to get up to date information about the chat. Returns a Chat object on success."
+                "description": "Use this method to get up-to-date information about the chat. Returns a ChatFullInfo object on success."
             }
         },
         {
@@ -4578,6 +4590,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "live_period",
+                            "value": "",
+                            "description": "Optional. New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current live_period by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then live_period remains unchanged",
+                            "type": "text"
+                        },
+                        {
                             "key": "horizontal_accuracy",
                             "value": "",
                             "description": "Optional. The radius of uncertainty for the location, measured in meters; 0-1500",
@@ -4892,7 +4910,7 @@
                         {
                             "key": "reply_markup",
                             "value": "",
-                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a business account.",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user",
                             "type": "text"
                         }
                     ]
@@ -6115,7 +6133,7 @@
                         {
                             "key": "reply_markup",
                             "value": "",
-                            "description": "Optional. A JSON-serialized object for an inline keyboard. If empty, one 'Play game_title' button will be shown. If not empty, the first button must launch the game. Not supported for messages sent on behalf of a business account.",
+                            "description": "Optional. A JSON-serialized object for an inline keyboard. If empty, one 'Play game_title' button will be shown. If not empty, the first button must launch the game.",
                             "type": "text"
                         }
                     ]
