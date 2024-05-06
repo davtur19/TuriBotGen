@@ -52,9 +52,9 @@ abstract class Api implements ApiInterface {
      * there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing
      * a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable
      * amount of attempts. Returns True on success.
-    If you'd like to make sure that the webhook was set by
-     * you, you can specify secret data in the parameter secret_token. If specified, the request will
-     * contain a header “X-Telegram-Bot-Api-Secret-Token” with the secret token as content.
+     * If you'd like to make sure that the webhook was set by you, you can specify secret data in the
+     * parameter secret_token. If specified, the request will contain a header
+     * “X-Telegram-Bot-Api-Secret-Token” with the secret token as content.
      *
      * @param string $url HTTPS URL to send updates to. Use an empty string to remove webhook integration
      * @param \CURLFile|null $certificate Upload your public key certificate so that the root certificate in use can be checked. See our
@@ -468,9 +468,8 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to send audio files, if you want Telegram clients to display them in the music
      * player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned.
-     * Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the
-     * future.
-    For sending voice messages, use the sendVoice method instead.
+     * Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
+     * For sending voice messages, use the sendVoice method instead.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
      *                                       @channelusername)
@@ -1243,8 +1242,8 @@ abstract class Api implements ApiInterface {
      * Use this method when you need to tell the user that something is happening on the bot's side. The
      * status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear
      * its typing status). Returns True on success.
-    We only recommend using this method when a response
-     * from the bot will take a noticeable amount of time to arrive.
+     * We only recommend using this method when a response from the bot will take a noticeable amount of
+     * time to arrive.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
      *                                       @channelusername)
@@ -3917,11 +3916,10 @@ abstract class Api implements ApiInterface {
      * Informs a user that some of the Telegram Passport elements they provided contains errors. The user
      * will not be able to re-submit their Passport to you until the errors are fixed (the contents of the
      * field for which you returned the error must change). Returns True on success.
-    Use this if the data
-     * submitted by the user doesn't satisfy the standards your service requires for any reason. For
-     * example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of
-     * tampering, etc. Supply some details in the error message to make sure the user knows how to correct
-     * the issues.
+     * Use this if the data submitted by the user doesn't satisfy the standards your service requires for
+     * any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan
+     * shows evidence of tampering, etc. Supply some details in the error message to make sure the user
+     * knows how to correct the issues.
      *
      * @param int $user_id User identifier
      * @param array $errors A JSON-serialized array describing the errors

@@ -15,38 +15,34 @@ set_error_handler('errHandle');
 
 $api = json_decode(file_get_contents('botapi.json'), true);
 
-$types = [
-    'int'                                                                          => 'int',
-    'Array<string>'                                                                => 'array',
-    'string'                                                                       => 'string',
-    'InputFile'                                                                    => '\CURLFile',
-    'bool'                                                                         => 'bool',
-    'float'                                                                        => 'float',
-    'ChatPermissions'                                                              => 'array',
-    'Array<BotCommand>'                                                            => 'array',
-    'InlineKeyboardMarkup'                                                         => 'array',
-    'InputMedia'                                                                   => 'array',
-    'MaskPosition'                                                                 => 'array',
-    'Array<InlineQueryResult>'                                                     => 'array',
-    'Array<ShippingOption>'                                                        => 'array',
-    'Array<PassportElementError>'                                                  => 'array',
-    'Array<LabeledPrice>'                                                          => 'array',
-    'Array<MessageEntity>'                                                         => 'array',
-    'Array<InputMediaAudio, InputMediaDocument, InputMediaPhoto, InputMediaVideo>' => 'array',
-    'Array<int>'                                                                   => 'array',
-    'BotCommandScope'                                                              => 'array',
-    'Array<InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo>'    => 'array',
-    'MenuButton'                                                                   => 'array',
-    'ChatAdministratorRights'                                                      => 'array',
-    'InlineQueryResult'                                                            => 'array',
-    'Array<InputSticker>'                                                          => 'array',
-    'InputSticker'                                                                 => 'array',
-    'InlineQueryResultsButton'                                                     => 'array',
-    'LinkPreviewOptions'                                                           => 'array',
-    'ReplyParameters'                                                              => 'array',
-    'Array<ReactionType>'                                                          => 'array',
-    'Array<InputPollOption>'                                                       => 'array',
-];
+function returnType(string $type): string {
+    // se $type inizia con "Array" allora è un array
+    if (str_starts_with($type, 'Array')) {
+        return 'array';
+    }
+
+    $types = [
+        'int'                      => 'int',
+        'string'                   => 'string',
+        'InputFile'                => '\CURLFile',
+        'bool'                     => 'bool',
+        'float'                    => 'float',
+        'ChatPermissions'          => 'array',
+        'InlineKeyboardMarkup'     => 'array',
+        'InputMedia'               => 'array',
+        'MaskPosition'             => 'array',
+        'BotCommandScope'          => 'array',
+        'MenuButton'               => 'array',
+        'ChatAdministratorRights'  => 'array',
+        'InlineQueryResult'        => 'array',
+        'InputSticker'             => 'array',
+        'InlineQueryResultsButton' => 'array',
+        'LinkPreviewOptions'       => 'array',
+        'ReplyParameters'          => 'array',
+    ];
+
+    return $types[$type];
+}
 
 $methods_upload = [
     'sendMediaGroup',   // Array of InputMediaAudio, InputMediaDocument, InputMediaPhoto and InputMediaVideo
@@ -75,12 +71,12 @@ foreach ($api['methods'] as $method) {
     // generate documentation
     $out .= PHP_EOL;
     $out .= "/**" . PHP_EOL;
-    $out .= " * " . wordwrap($method['description'], 100, PHP_EOL . " * ");
+    $out .= " * " . wordwrap(str_replace("\n", PHP_EOL . " * ", $method['description']), 100, PHP_EOL . " * ");
     $out .= PHP_EOL . " *" . PHP_EOL;
     foreach ($method['fields'] as $field) {
         $out .= " * @param ";
         if (count($field['types']) === 1) {
-            $out .= $types[$field['types'][0]];
+            $out .= returnType($field['types'][0]);
         } elseif ($field['types'][0] === 'int' and $field['types'][1] === 'string') {
             $out .= 'int|string';
         } elseif ($field['types'][0] === 'InputFile' and $field['types'][1] === 'string') {
@@ -138,7 +134,7 @@ foreach ($api['methods'] as $method) {
         foreach ($method['fields'] as $field) {
             $out .= TAB;
             if (count($field['types']) === 1) {
-                $out .= $types[$field['types'][0]];
+                $out .= returnType($field['types'][0]);
                 $out .= ' ';
             } elseif ($field['types'][0] === 'int' and $field['types'][1] === 'string') {
                 $out .= 'int|string ';
@@ -152,7 +148,7 @@ foreach ($api['methods'] as $method) {
 
             if (!$field['optional']) {
                 //gen array $args of mandatory parameters
-                if ($types[$field['types'][0]] === 'array' or $field['name'] === 'reply_markup') {
+                if (returnType($field['types'][0]) === 'array' or $field['name'] === 'reply_markup') {
                     $args[] = ['name' => $field['name'], 'array' => true];
                 } else {
                     $args[] = ['name' => $field['name'], 'array' => false];
@@ -222,7 +218,7 @@ foreach ($api['methods'] as $method) {
                     $out .= TAB . "}" . PHP_EOL;
                 }
                 $out .= '$args[\'' . $field['name'] . '\'] = ';
-                if ($types[$field['types'][0]] === 'array' or $field['name'] === 'reply_markup') {
+                if (returnType($field['types'][0]) === 'array' or $field['name'] === 'reply_markup') {
                     $out .= "json_encode(\${$field['name']})";
                 } else {
                     $out .= '$' . $field['name'];
