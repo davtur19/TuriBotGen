@@ -10892,7 +10892,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the message effect to be added to the message"
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
                     "name": "reply_parameters",
@@ -11305,7 +11305,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the message effect to be added to the message"
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
                     "name": "reply_parameters",
@@ -11448,7 +11448,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the message effect to be added to the message"
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
                     "name": "reply_parameters",
@@ -11575,7 +11575,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the message effect to be added to the message"
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
                     "name": "reply_parameters",
@@ -11742,7 +11742,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the message effect to be added to the message"
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
                     "name": "reply_parameters",
@@ -11901,7 +11901,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the message effect to be added to the message"
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
                     "name": "reply_parameters",
@@ -12019,7 +12019,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the message effect to be added to the message"
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
                     "name": "reply_parameters",
@@ -12130,7 +12130,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the message effect to be added to the message"
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
                     "name": "reply_parameters",
@@ -12215,7 +12215,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the message effect to be added to the message"
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
                     "name": "reply_parameters",
@@ -12329,7 +12329,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the message effect to be added to the message"
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
                     "name": "reply_parameters",
@@ -12470,7 +12470,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the message effect to be added to the message"
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
                     "name": "reply_parameters",
@@ -12579,7 +12579,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the message effect to be added to the message"
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
                     "name": "reply_parameters",
@@ -12771,7 +12771,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the message effect to be added to the message"
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
                     "name": "reply_parameters",
@@ -12857,7 +12857,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the message effect to be added to the message"
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
                     "name": "reply_parameters",
@@ -15165,7 +15165,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the message effect to be added to the message"
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
                     "name": "reply_parameters",
@@ -15910,7 +15910,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the message effect to be added to the message"
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
                     "name": "reply_parameters",
@@ -16285,7 +16285,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the message effect to be added to the message"
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
                     "name": "reply_parameters",

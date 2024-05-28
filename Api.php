@@ -186,7 +186,7 @@ abstract class Api implements ApiInterface {
      * @param array|null $link_preview_options Link preview generation options for the message
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -428,7 +428,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $has_spoiler Pass True if the photo needs to be covered with a spoiler animation
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -501,7 +501,7 @@ abstract class Api implements ApiInterface {
      *                                       <file_attach_name>. More information on Sending Files »
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -575,7 +575,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_content_type_detection Disables automatic server-side content type detection for files uploaded using multipart/form-data
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -651,7 +651,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $supports_streaming Pass True if the uploaded video is suitable for streaming
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -736,7 +736,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $has_spoiler Pass True if the animation needs to be covered with a spoiler animation
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -810,7 +810,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $duration Duration of the voice message in seconds
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -874,7 +874,7 @@ abstract class Api implements ApiInterface {
      *                                       <file_attach_name>. More information on Sending Files »
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -927,7 +927,7 @@ abstract class Api implements ApiInterface {
      * @param array $media A JSON-serialized array describing messages to be sent, must include 2-10 items
      * @param bool|null $disable_notification Sends messages silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent messages from forwarding and saving
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
@@ -983,7 +983,7 @@ abstract class Api implements ApiInterface {
      *                                       in meters. Must be between 1 and 100000 if specified.
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -1046,7 +1046,7 @@ abstract class Api implements ApiInterface {
      * @param string|null $google_place_type Google Places type of the venue. (See supported types.)
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -1108,7 +1108,7 @@ abstract class Api implements ApiInterface {
      * @param string|null $vcard Additional data about the contact in the form of a vCard, 0-2048 bytes
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -1178,7 +1178,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $is_closed Pass True if the poll needs to be immediately closed. This can be useful for poll preview.
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -1253,7 +1253,7 @@ abstract class Api implements ApiInterface {
      *                                       Defaults to “🎲”
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -3224,7 +3224,7 @@ abstract class Api implements ApiInterface {
      * @param string|null $emoji Emoji associated with the sticker; only for just uploaded stickers
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -3757,7 +3757,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $is_flexible Pass True if the final price depends on the shipping method. Ignored for payments in Telegram Stars.
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard. If empty, one 'Pay total price' button will be
      *                                       shown. If not empty, the first button must be a Pay button.
@@ -4048,7 +4048,7 @@ abstract class Api implements ApiInterface {
      *                                       @BotFather.
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard. If empty, one 'Play game_title' button will be
      *                                       shown. If not empty, the first button must launch the game.

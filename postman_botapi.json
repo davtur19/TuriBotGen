@@ -311,7 +311,7 @@
                         {
                             "key": "message_effect_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
                             "type": "text"
                         },
                         {
@@ -700,7 +700,7 @@
                         {
                             "key": "message_effect_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
                             "type": "text"
                         },
                         {
@@ -821,7 +821,7 @@
                         {
                             "key": "message_effect_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
                             "type": "text"
                         },
                         {
@@ -930,7 +930,7 @@
                         {
                             "key": "message_effect_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
                             "type": "text"
                         },
                         {
@@ -1069,7 +1069,7 @@
                         {
                             "key": "message_effect_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
                             "type": "text"
                         },
                         {
@@ -1202,7 +1202,7 @@
                         {
                             "key": "message_effect_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
                             "type": "text"
                         },
                         {
@@ -1305,7 +1305,7 @@
                         {
                             "key": "message_effect_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
                             "type": "text"
                         },
                         {
@@ -1402,7 +1402,7 @@
                         {
                             "key": "message_effect_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
                             "type": "text"
                         },
                         {
@@ -1481,7 +1481,7 @@
                         {
                             "key": "message_effect_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
                             "type": "text"
                         },
                         {
@@ -1584,7 +1584,7 @@
                         {
                             "key": "message_effect_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
                             "type": "text"
                         },
                         {
@@ -1705,7 +1705,7 @@
                         {
                             "key": "message_effect_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
                             "type": "text"
                         },
                         {
@@ -1802,7 +1802,7 @@
                         {
                             "key": "message_effect_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
                             "type": "text"
                         },
                         {
@@ -1959,7 +1959,7 @@
                         {
                             "key": "message_effect_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
                             "type": "text"
                         },
                         {
@@ -2038,7 +2038,7 @@
                         {
                             "key": "message_effect_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
                             "type": "text"
                         },
                         {
@@ -5012,7 +5012,7 @@
                         {
                             "key": "message_effect_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
                             "type": "text"
                         },
                         {
@@ -5894,7 +5894,7 @@
                         {
                             "key": "message_effect_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
                             "type": "text"
                         },
                         {
@@ -6284,7 +6284,7 @@
                         {
                             "key": "message_effect_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
                             "type": "text"
                         },
                         {
