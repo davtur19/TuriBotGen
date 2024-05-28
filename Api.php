@@ -323,6 +323,8 @@ abstract class Api implements ApiInterface {
      * @param string|null $parse_mode Mode for parsing entities in the new caption. See formatting options for more details.
      * @param array|null $caption_entities A JSON-serialized list of special entities that appear in the new caption, which can be specified
      *                                       instead of parse_mode
+     * @param bool|null $show_caption_above_media Pass True, if the caption must be shown above the message media. Ignored if a new caption isn't
+     *                                       specified.
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param array|null $reply_parameters Description of the message to reply to
@@ -340,6 +342,7 @@ abstract class Api implements ApiInterface {
         string $caption = null,
         string $parse_mode = null,
         array $caption_entities = null,
+        bool $show_caption_above_media = null,
         bool $disable_notification = null,
         bool $protect_content = null,
         array $reply_parameters = null,
@@ -355,6 +358,7 @@ abstract class Api implements ApiInterface {
         if (null !== $caption) $args['caption'] = $caption;
         if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
         if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
+        if (null !== $show_caption_above_media) $args['show_caption_above_media'] = $show_caption_above_media;
         if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
         if (null !== $protect_content) $args['protect_content'] = $protect_content;
         if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
