@@ -1,5 +1,5 @@
 {
-    "version": "7.4.0",
+    "version": "7.5.0",
     "types": [
         {
             "name": "Update",
@@ -4260,7 +4260,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes. Not supported for messages sent on behalf of a Telegram Business account."
+                    "description": "Optional. Data to be sent in a callback query to the bot when the button is pressed, 1-64 bytes"
                 },
                 {
                     "name": "web_app",
@@ -9994,6 +9994,210 @@
             "extended_by": []
         },
         {
+            "name": "RevenueWithdrawalState",
+            "description": "This object describes the state of a revenue withdrawal operation. Currently, it can be one of",
+            "fields": [],
+            "extended_by": [
+                "RevenueWithdrawalStatePending",
+                "RevenueWithdrawalStateSucceeded",
+                "RevenueWithdrawalStateFailed"
+            ]
+        },
+        {
+            "name": "RevenueWithdrawalStatePending",
+            "description": "The withdrawal is in progress.",
+            "fields": [
+                {
+                    "name": "type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Type of the state, always “pending”"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "RevenueWithdrawalStateSucceeded",
+            "description": "The withdrawal succeeded.",
+            "fields": [
+                {
+                    "name": "type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Type of the state, always “succeeded”"
+                },
+                {
+                    "name": "date",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Date the withdrawal was completed in Unix time"
+                },
+                {
+                    "name": "url",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "An HTTPS URL that can be used to see transaction details"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "RevenueWithdrawalStateFailed",
+            "description": "The withdrawal failed and the transaction was refunded.",
+            "fields": [
+                {
+                    "name": "type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Type of the state, always “failed”"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "TransactionPartner",
+            "description": "This object describes the source of a transaction, or its recipient for outgoing transactions. Currently, it can be one of",
+            "fields": [],
+            "extended_by": [
+                "TransactionPartnerFragment",
+                "TransactionPartnerUser",
+                "TransactionPartnerOther"
+            ]
+        },
+        {
+            "name": "TransactionPartnerFragment",
+            "description": "Describes a withdrawal transaction with Fragment.",
+            "fields": [
+                {
+                    "name": "type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Type of the transaction partner, always “fragment”"
+                },
+                {
+                    "name": "withdrawal_state",
+                    "types": [
+                        "RevenueWithdrawalState"
+                    ],
+                    "optional": true,
+                    "description": "Optional. State of the transaction if the transaction is outgoing"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "TransactionPartnerUser",
+            "description": "Describes a transaction with a user.",
+            "fields": [
+                {
+                    "name": "type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Type of the transaction partner, always “user”"
+                },
+                {
+                    "name": "user",
+                    "types": [
+                        "User"
+                    ],
+                    "optional": false,
+                    "description": "Information about the user"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "TransactionPartnerOther",
+            "description": "Describes a transaction with an unknown source or recipient.",
+            "fields": [
+                {
+                    "name": "type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Type of the transaction partner, always “other”"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "StarTransaction",
+            "description": "Describes a Telegram Star transaction.",
+            "fields": [
+                {
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier of the transaction. Coincides with the identifer of the original transaction for refund transactions. Coincides with SuccessfulPayment.telegram_payment_charge_id for successful incoming payments from users."
+                },
+                {
+                    "name": "amount",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Number of Telegram Stars transferred by the transaction"
+                },
+                {
+                    "name": "date",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Date the transaction was created in Unix time"
+                },
+                {
+                    "name": "source",
+                    "types": [
+                        "TransactionPartner"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Source of an incoming transaction (e.g., a user purchasing goods or services, Fragment refunding a failed withdrawal). Only for incoming transactions"
+                },
+                {
+                    "name": "receiver",
+                    "types": [
+                        "TransactionPartner"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Receiver of an outgoing transaction (e.g., a user for a purchase refund, Fragment for a withdrawal). Only for outgoing transactions"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "StarTransactions",
+            "description": "Contains a list of Telegram Star transactions.",
+            "fields": [
+                {
+                    "name": "transactions",
+                    "types": [
+                        "Array<StarTransaction>"
+                    ],
+                    "optional": false,
+                    "description": "The list of transactions"
+                }
+            ],
+            "extended_by": []
+        },
+        {
             "name": "PassportData",
             "description": "Describes Telegram Passport data shared with the bot by the user.",
             "fields": [
@@ -14643,8 +14847,16 @@
         },
         {
             "name": "editMessageText",
-            "description": "Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.",
+            "description": "Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.",
             "fields": [
+                {
+                    "name": "business_connection_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
                 {
                     "name": "chat_id",
                     "types": [
@@ -14718,8 +14930,16 @@
         },
         {
             "name": "editMessageCaption",
-            "description": "Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.",
+            "description": "Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.",
             "fields": [
+                {
+                    "name": "business_connection_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
                 {
                     "name": "chat_id",
                     "types": [
@@ -14793,8 +15013,16 @@
         },
         {
             "name": "editMessageMedia",
-            "description": "Use this method to edit animation, audio, document, photo, or video messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.",
+            "description": "Use this method to edit animation, audio, document, photo, or video messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.",
             "fields": [
+                {
+                    "name": "business_connection_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
                 {
                     "name": "chat_id",
                     "types": [
@@ -14846,6 +15074,14 @@
             "name": "editMessageLiveLocation",
             "description": "Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.",
             "fields": [
+                {
+                    "name": "business_connection_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
                 {
                     "name": "chat_id",
                     "types": [
@@ -14938,6 +15174,14 @@
             "description": "Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned.",
             "fields": [
                 {
+                    "name": "business_connection_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
+                {
                     "name": "chat_id",
                     "types": [
                         "int",
@@ -14978,8 +15222,16 @@
         },
         {
             "name": "editMessageReplyMarkup",
-            "description": "Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.",
+            "description": "Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.",
             "fields": [
+                {
+                    "name": "business_connection_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
                 {
                     "name": "chat_id",
                     "types": [
@@ -15023,6 +15275,14 @@
             "name": "stopPoll",
             "description": "Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned.",
             "fields": [
+                {
+                    "name": "business_connection_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
                 {
                     "name": "chat_id",
                     "types": [
@@ -16183,6 +16443,32 @@
             ],
             "return_types": [
                 "bool"
+            ]
+        },
+        {
+            "name": "getStarTransactions",
+            "description": "Returns the bot's Telegram Star transactions in chronological order. On success, returns a StarTransactions object.",
+            "fields": [
+                {
+                    "name": "offset",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Number of transactions to skip in the response"
+                },
+                {
+                    "name": "limit",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "The maximum number of transactions to be retrieved. Values between 1-100 are accepted. Defaults to 100.",
+                    "default": 100
+                }
+            ],
+            "return_types": [
+                "StarTransactions"
             ]
         },
         {

@@ -2894,7 +2894,9 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to edit text and game messages. On success, if the edited message is not an inline
-     * message, the edited Message is returned, otherwise True is returned.
+     * message, the edited Message is returned, otherwise True is returned. Note that business messages
+     * that were not sent by the bot and do not contain an inline keyboard can only be edited within 48
+     * hours from the time they were sent.
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
      *                                       the target channel (in the format @channelusername)
@@ -2906,6 +2908,7 @@ abstract class Api implements ApiInterface {
      *                                       instead of parse_mode
      * @param array|null $link_preview_options Link preview generation options for the message
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard.
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#editmessagetext
@@ -2918,7 +2921,8 @@ abstract class Api implements ApiInterface {
         string $parse_mode = null,
         array $entities = null,
         array $link_preview_options = null,
-        array $reply_markup = null
+        array $reply_markup = null,
+        string $business_connection_id = null
     ): \stdClass {
         $args = [
             'text' => $text
@@ -2931,13 +2935,16 @@ abstract class Api implements ApiInterface {
         if (null !== $entities) $args['entities'] = json_encode($entities);
         if (null !== $link_preview_options) $args['link_preview_options'] = json_encode($link_preview_options);
         if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
+        if (null !== $business_connection_id) $args['business_connection_id'] = $business_connection_id;
 
         return $this->Request('editMessageText', $args);
     }
 
     /**
      * Use this method to edit captions of messages. On success, if the edited message is not an inline
-     * message, the edited Message is returned, otherwise True is returned.
+     * message, the edited Message is returned, otherwise True is returned. Note that business messages
+     * that were not sent by the bot and do not contain an inline keyboard can only be edited within 48
+     * hours from the time they were sent.
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
      *                                       the target channel (in the format @channelusername)
@@ -2950,6 +2957,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $show_caption_above_media Pass True, if the caption must be shown above the message media. Supported only for animation, photo
      *                                       and video messages.
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard.
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#editmessagecaption
@@ -2962,7 +2970,8 @@ abstract class Api implements ApiInterface {
         string $parse_mode = null,
         array $caption_entities = null,
         bool $show_caption_above_media = null,
-        array $reply_markup = null
+        array $reply_markup = null,
+        string $business_connection_id = null
     ): \stdClass {
         $args = [];
 
@@ -2974,6 +2983,7 @@ abstract class Api implements ApiInterface {
         if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
         if (null !== $show_caption_above_media) $args['show_caption_above_media'] = $show_caption_above_media;
         if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
+        if (null !== $business_connection_id) $args['business_connection_id'] = $business_connection_id;
 
         return $this->Request('editMessageCaption', $args);
     }
@@ -2984,7 +2994,8 @@ abstract class Api implements ApiInterface {
      * document albums and to a photo or a video otherwise. When an inline message is edited, a new file
      * can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if
      * the edited message is not an inline message, the edited Message is returned, otherwise True is
-     * returned.
+     * returned. Note that business messages that were not sent by the bot and do not contain an inline
+     * keyboard can only be edited within 48 hours from the time they were sent.
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
      *                                       the target channel (in the format @channelusername)
@@ -2992,6 +3003,7 @@ abstract class Api implements ApiInterface {
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
      * @param array $media A JSON-serialized object for a new media content of the message
      * @param array|null $reply_markup A JSON-serialized object for a new inline keyboard.
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#editmessagemedia
@@ -3001,7 +3013,8 @@ abstract class Api implements ApiInterface {
         int|string $chat_id = null,
         int $message_id = null,
         string $inline_message_id = null,
-        array $reply_markup = null
+        array $reply_markup = null,
+        string $business_connection_id = null
     ): \stdClass {
         $args = [
         ];
@@ -3018,6 +3031,7 @@ abstract class Api implements ApiInterface {
         if (null !== $message_id) $args['message_id'] = $message_id;
         if (null !== $inline_message_id) $args['inline_message_id'] = $inline_message_id;
         if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
+        if (null !== $business_connection_id) $args['business_connection_id'] = $business_connection_id;
 
         return $this->Request('editMessageMedia', $args);
     }
@@ -3042,6 +3056,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $proximity_alert_radius The maximum distance for proximity alerts about approaching another chat member, in meters. Must be
      *                                       between 1 and 100000 if specified.
      * @param array|null $reply_markup A JSON-serialized object for a new inline keyboard.
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#editmessagelivelocation
@@ -3056,7 +3071,8 @@ abstract class Api implements ApiInterface {
         float $horizontal_accuracy = null,
         int $heading = null,
         int $proximity_alert_radius = null,
-        array $reply_markup = null
+        array $reply_markup = null,
+        string $business_connection_id = null
     ): \stdClass {
         $args = [
             'latitude' => $latitude,
@@ -3071,6 +3087,7 @@ abstract class Api implements ApiInterface {
         if (null !== $heading) $args['heading'] = $heading;
         if (null !== $proximity_alert_radius) $args['proximity_alert_radius'] = $proximity_alert_radius;
         if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
+        if (null !== $business_connection_id) $args['business_connection_id'] = $business_connection_id;
 
         return $this->Request('editMessageLiveLocation', $args);
     }
@@ -3084,6 +3101,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message with live location to stop
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
      * @param array|null $reply_markup A JSON-serialized object for a new inline keyboard.
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#stopmessagelivelocation
@@ -3092,7 +3110,8 @@ abstract class Api implements ApiInterface {
         int|string $chat_id = null,
         int $message_id = null,
         string $inline_message_id = null,
-        array $reply_markup = null
+        array $reply_markup = null,
+        string $business_connection_id = null
     ): \stdClass {
         $args = [];
 
@@ -3100,19 +3119,23 @@ abstract class Api implements ApiInterface {
         if (null !== $message_id) $args['message_id'] = $message_id;
         if (null !== $inline_message_id) $args['inline_message_id'] = $inline_message_id;
         if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
+        if (null !== $business_connection_id) $args['business_connection_id'] = $business_connection_id;
 
         return $this->Request('stopMessageLiveLocation', $args);
     }
 
     /**
      * Use this method to edit only the reply markup of messages. On success, if the edited message is not
-     * an inline message, the edited Message is returned, otherwise True is returned.
+     * an inline message, the edited Message is returned, otherwise True is returned. Note that business
+     * messages that were not sent by the bot and do not contain an inline keyboard can only be edited
+     * within 48 hours from the time they were sent.
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
      *                                       the target channel (in the format @channelusername)
      * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard.
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#editmessagereplymarkup
@@ -3121,7 +3144,8 @@ abstract class Api implements ApiInterface {
         int|string $chat_id = null,
         int $message_id = null,
         string $inline_message_id = null,
-        array $reply_markup = null
+        array $reply_markup = null,
+        string $business_connection_id = null
     ): \stdClass {
         $args = [];
 
@@ -3129,6 +3153,7 @@ abstract class Api implements ApiInterface {
         if (null !== $message_id) $args['message_id'] = $message_id;
         if (null !== $inline_message_id) $args['inline_message_id'] = $inline_message_id;
         if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
+        if (null !== $business_connection_id) $args['business_connection_id'] = $business_connection_id;
 
         return $this->Request('editMessageReplyMarkup', $args);
     }
@@ -3140,6 +3165,7 @@ abstract class Api implements ApiInterface {
      *                                       @channelusername)
      * @param int $message_id Identifier of the original message with the poll
      * @param array|null $reply_markup A JSON-serialized object for a new message inline keyboard.
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#stoppoll
@@ -3147,7 +3173,8 @@ abstract class Api implements ApiInterface {
     public function stopPoll(
         int|string $chat_id,
         int $message_id,
-        array $reply_markup = null
+        array $reply_markup = null,
+        string $business_connection_id = null
     ): \stdClass {
         $args = [
             'chat_id' => $chat_id,
@@ -3155,6 +3182,7 @@ abstract class Api implements ApiInterface {
         ];
 
         if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
+        if (null !== $business_connection_id) $args['business_connection_id'] = $business_connection_id;
 
         return $this->Request('stopPoll', $args);
     }
@@ -3991,6 +4019,29 @@ abstract class Api implements ApiInterface {
         if (null !== $error_message) $args['error_message'] = $error_message;
 
         return $this->Request('answerPreCheckoutQuery', $args);
+    }
+
+    /**
+     * Returns the bot's Telegram Star transactions in chronological order. On success, returns a
+     * StarTransactions object.
+     *
+     * @param int|null $offset Number of transactions to skip in the response
+     * @param int|null $limit The maximum number of transactions to be retrieved. Values between 1-100 are accepted. Defaults to
+     *                                       100.
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#getstartransactions
+     */
+    public function getStarTransactions(
+        int $offset = null,
+        int $limit = null
+    ): \stdClass {
+        $args = [];
+
+        if (null !== $offset) $args['offset'] = $offset;
+        if (null !== $limit) $args['limit'] = $limit;
+
+        return $this->Request('getStarTransactions', $args);
     }
 
     /**
