@@ -306,11 +306,11 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to copy messages of any kind. Service messages, giveaway messages, giveaway winners
-     * messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the
-     * field correct_option_id is known to the bot. The method is analogous to the method forwardMessage,
-     * but the copied message doesn't have a link to the original message. Returns the MessageId of the
-     * sent message on success.
+     * Use this method to copy messages of any kind. Service messages, paid media messages, giveaway
+     * messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied
+     * only if the value of the field correct_option_id is known to the bot. The method is analogous to the
+     * method forwardMessage, but the copied message doesn't have a link to the original message. Returns
+     * the MessageId of the sent message on success.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
      *                                       @channelusername)
@@ -369,10 +369,10 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to copy messages of any kind. If some of the specified messages can't be found or
-     * copied, they are skipped. Service messages, giveaway messages, giveaway winners messages, and
-     * invoice messages can't be copied. A quiz poll can be copied only if the value of the field
-     * correct_option_id is known to the bot. The method is analogous to the method forwardMessages, but
-     * the copied messages don't have a link to the original message. Album grouping is kept for copied
+     * copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners
+     * messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the
+     * field correct_option_id is known to the bot. The method is analogous to the method forwardMessages,
+     * but the copied messages don't have a link to the original message. Album grouping is kept for copied
      * messages. On success, an array of MessageId of the sent messages is returned.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
@@ -918,6 +918,58 @@ abstract class Api implements ApiInterface {
         if (null !== $business_connection_id) $args['business_connection_id'] = $business_connection_id;
 
         return $this->Request('sendVideoNote', $args);
+    }
+
+    /**
+     * Use this method to send paid media to channel chats. On success, the sent Message is returned.
+     *
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
+     *                                       @channelusername)
+     * @param int $star_count The number of Telegram Stars that must be paid to buy access to the media
+     * @param array $media A JSON-serialized array describing the media to be sent; up to 10 items
+     * @param string|null $caption Media caption, 0-1024 characters after entities parsing
+     * @param string|null $parse_mode Mode for parsing entities in the media caption. See formatting options for more details.
+     * @param array|null $caption_entities A JSON-serialized list of special entities that appear in the caption, which can be specified
+     *                                       instead of parse_mode
+     * @param bool|null $show_caption_above_media Pass True, if the caption must be shown above the message media
+     * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
+     * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
+     * @param array|null $reply_parameters Description of the message to reply to
+     * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#sendpaidmedia
+     */
+    public function sendPaidMedia(
+        int|string $chat_id,
+        int $star_count,
+        array $media,
+        string $caption = null,
+        string $parse_mode = null,
+        array $caption_entities = null,
+        bool $show_caption_above_media = null,
+        bool $disable_notification = null,
+        bool $protect_content = null,
+        array $reply_parameters = null,
+        array $reply_markup = null
+    ): \stdClass {
+        $args = [
+            'chat_id' => $chat_id,
+            'star_count' => $star_count,
+            'media' => json_encode($media)
+        ];
+
+        if (null !== $caption) $args['caption'] = $caption;
+        if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
+        if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
+        if (null !== $show_caption_above_media) $args['show_caption_above_media'] = $show_caption_above_media;
+        if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
+        if (null !== $protect_content) $args['protect_content'] = $protect_content;
+        if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
+        if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
+
+        return $this->Request('sendPaidMedia', $args);
     }
 
     /**
