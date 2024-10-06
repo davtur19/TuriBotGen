@@ -80,7 +80,7 @@ foreach ($api['methods'] as $method) {
         } elseif ($field['types'][0] === 'int' and $field['types'][1] === 'string') {
             $out .= 'int|string';
         } elseif ($field['types'][0] === 'InputFile' and $field['types'][1] === 'string') {
-            $out .= '\CURLFile|string';
+            $out .= '\CURLFile|string|InputFile';
         } elseif ($field['name'] == 'reply_markup') {
             $out .= 'array';
         }
@@ -139,7 +139,7 @@ foreach ($api['methods'] as $method) {
             } elseif ($field['types'][0] === 'int' and $field['types'][1] === 'string') {
                 $out .= 'int|string ';
             } elseif ($field['types'][0] === 'InputFile' and $field['types'][1] === 'string') {
-                $out .= '\CURLFile|string ';
+                $out .= '\CURLFile|string|InputFile ';
             } elseif ($field['name'] == 'reply_markup') {
                 $out .= 'array ';
             }
