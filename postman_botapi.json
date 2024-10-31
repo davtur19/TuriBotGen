@@ -309,6 +309,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
+                            "type": "text"
+                        },
+                        {
                             "key": "message_effect_id",
                             "value": "",
                             "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
@@ -534,6 +540,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
+                            "type": "text"
+                        },
+                        {
                             "key": "reply_parameters",
                             "value": "",
                             "description": "Optional. Description of the message to reply to",
@@ -704,6 +716,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
+                            "type": "text"
+                        },
+                        {
                             "key": "message_effect_id",
                             "value": "",
                             "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
@@ -825,6 +843,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
+                            "type": "text"
+                        },
+                        {
                             "key": "message_effect_id",
                             "value": "",
                             "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
@@ -931,6 +955,12 @@
                             "key": "protect_content",
                             "value": "",
                             "description": "Optional. Protects the contents of the sent message from forwarding and saving",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
                             "type": "text"
                         },
                         {
@@ -1073,6 +1103,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
+                            "type": "text"
+                        },
+                        {
                             "key": "message_effect_id",
                             "value": "",
                             "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
@@ -1206,6 +1242,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
+                            "type": "text"
+                        },
+                        {
                             "key": "message_effect_id",
                             "value": "",
                             "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
@@ -1309,6 +1351,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
+                            "type": "text"
+                        },
+                        {
                             "key": "message_effect_id",
                             "value": "",
                             "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
@@ -1403,6 +1451,12 @@
                             "key": "protect_content",
                             "value": "",
                             "description": "Optional. Protects the contents of the sent message from forwarding and saving",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
                             "type": "text"
                         },
                         {
@@ -1515,6 +1569,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
+                            "type": "text"
+                        },
+                        {
                             "key": "reply_parameters",
                             "value": "",
                             "description": "Optional. Description of the message to reply to",
@@ -1585,6 +1645,12 @@
                             "key": "protect_content",
                             "value": "",
                             "description": "Optional. Protects the contents of the sent messages from forwarding and saving",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
                             "type": "text"
                         },
                         {
@@ -1688,6 +1754,12 @@
                             "key": "protect_content",
                             "value": "",
                             "description": "Optional. Protects the contents of the sent message from forwarding and saving",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
                             "type": "text"
                         },
                         {
@@ -1812,6 +1884,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
+                            "type": "text"
+                        },
+                        {
                             "key": "message_effect_id",
                             "value": "",
                             "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
@@ -1906,6 +1984,12 @@
                             "key": "protect_content",
                             "value": "",
                             "description": "Optional. Protects the contents of the sent message from forwarding and saving",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
                             "type": "text"
                         },
                         {
@@ -2066,6 +2150,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
+                            "type": "text"
+                        },
+                        {
                             "key": "message_effect_id",
                             "value": "",
                             "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
@@ -2142,6 +2232,12 @@
                             "key": "protect_content",
                             "value": "",
                             "description": "Optional. Protects the contents of the sent message from forwarding",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
                             "type": "text"
                         },
                         {
@@ -4888,7 +4984,7 @@
                         "editMessageMedia"
                     ]
                 },
-                "description": "Use this method to edit animation, audio, document, photo, or video messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
+                "description": "Use this method to edit animation, audio, document, photo, or video messages, or to add media to text messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
             }
         },
         {
@@ -5262,6 +5358,12 @@
                             "key": "protect_content",
                             "value": "",
                             "description": "Optional. Protects the contents of the sent message from forwarding and saving",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
                             "type": "text"
                         },
                         {
@@ -6147,6 +6249,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
+                            "type": "text"
+                        },
+                        {
                             "key": "message_effect_id",
                             "value": "",
                             "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
@@ -6571,6 +6679,12 @@
                             "key": "protect_content",
                             "value": "",
                             "description": "Optional. Protects the contents of the sent message from forwarding and saving",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance",
                             "type": "text"
                         },
                         {
