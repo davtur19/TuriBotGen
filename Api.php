@@ -4384,7 +4384,8 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Allows the bot to cancel or re-enable extension of a subscription paid in Telegram Stars.
+     * Allows the bot to cancel or re-enable extension of a subscription paid in Telegram Stars. Returns
+     * True on success.
      *
      * @param int $user_id Identifier of the user whose subscription will be edited
      * @param string $telegram_payment_charge_id Telegram payment identifier for the subscription

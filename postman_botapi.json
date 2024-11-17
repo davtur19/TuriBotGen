@@ -6836,7 +6836,7 @@
                         "editUserStarSubscription"
                     ]
                 },
-                "description": "Allows the bot to cancel or re-enable extension of a subscription paid in Telegram Stars."
+                "description": "Allows the bot to cancel or re-enable extension of a subscription paid in Telegram Stars. Returns True on success."
             }
         },
         {
