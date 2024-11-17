@@ -1514,6 +1514,32 @@ abstract class Api implements ApiInterface {
     }
 
     /**
+     * Changes the emoji status for a given user that previously allowed the bot to manage their emoji
+     * status via the Mini App method requestEmojiStatusAccess. Returns True on success.
+     *
+     * @param int $user_id Unique identifier of the target user
+     * @param string|null $emoji_status_custom_emoji_id Custom emoji identifier of the emoji status to set. Pass an empty string to remove the status.
+     * @param int|null $emoji_status_expiration_date Expiration date of the emoji status, if any
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#setuseremojistatus
+     */
+    public function setUserEmojiStatus(
+        int $user_id,
+        string $emoji_status_custom_emoji_id = null,
+        int $emoji_status_expiration_date = null
+    ): \stdClass {
+        $args = [
+            'user_id' => $user_id
+        ];
+
+        if (null !== $emoji_status_custom_emoji_id) $args['emoji_status_custom_emoji_id'] = $emoji_status_custom_emoji_id;
+        if (null !== $emoji_status_expiration_date) $args['emoji_status_expiration_date'] = $emoji_status_expiration_date;
+
+        return $this->Request('setUserEmojiStatus', $args);
+    }
+
+    /**
      * Use this method to get basic information about a file and prepare it for downloading. For the
      * moment, bots can download files of up to 20MB in size. On success, a File object is returned. The
      * file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where
@@ -3875,6 +3901,54 @@ abstract class Api implements ApiInterface {
     }
 
     /**
+     * Returns the list of gifts that can be sent by the bot to users. Requires no parameters. Returns a
+     * Gifts object.
+     *
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#getavailablegifts
+     */
+    public function getAvailableGifts(): \stdClass {
+        return $this->Request('getAvailableGifts', []);
+    }
+
+    /**
+     * Sends a gift to the given user. The gift can't be converted to Telegram Stars by the user. Returns
+     * True on success.
+     *
+     * @param int $user_id Unique identifier of the target user that will receive the gift
+     * @param string $gift_id Identifier of the gift
+     * @param string|null $text Text that will be shown along with the gift; 0-255 characters
+     * @param string|null $text_parse_mode Mode for parsing entities in the text. See formatting options for more details. Entities other than
+     *                                       “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and
+     *                                       “custom_emoji” are ignored.
+     * @param array|null $text_entities A JSON-serialized list of special entities that appear in the gift text. It can be specified instead
+     *                                       of text_parse_mode. Entities other than “bold”, “italic”, “underline”,
+     *                                       “strikethrough”, “spoiler”, and “custom_emoji” are ignored.
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#sendgift
+     */
+    public function sendGift(
+        int $user_id,
+        string $gift_id,
+        string $text = null,
+        string $text_parse_mode = null,
+        array $text_entities = null
+    ): \stdClass {
+        $args = [
+            'user_id' => $user_id,
+            'gift_id' => $gift_id
+        ];
+
+        if (null !== $text) $args['text'] = $text;
+        if (null !== $text_parse_mode) $args['text_parse_mode'] = $text_parse_mode;
+        if (null !== $text_entities) $args['text_entities'] = json_encode($text_entities);
+
+        return $this->Request('sendGift', $args);
+    }
+
+    /**
      * Use this method to send answers to an inline query. On success, True is returned.No more than 50
      * results per query are allowed.
      *
@@ -3935,6 +4009,40 @@ abstract class Api implements ApiInterface {
 
 
         return $this->Request('answerWebAppQuery', $args);
+    }
+
+    /**
+     * Stores a message that can be sent by a user of a Mini App. Returns a PreparedInlineMessage object.
+     *
+     * @param int $user_id Unique identifier of the target user that can use the prepared message
+     * @param array $result A JSON-serialized object describing the message to be sent
+     * @param bool|null $allow_user_chats Pass True if the message can be sent to private chats with users
+     * @param bool|null $allow_bot_chats Pass True if the message can be sent to private chats with bots
+     * @param bool|null $allow_group_chats Pass True if the message can be sent to group and supergroup chats
+     * @param bool|null $allow_channel_chats Pass True if the message can be sent to channel chats
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#savepreparedinlinemessage
+     */
+    public function savePreparedInlineMessage(
+        int $user_id,
+        array $result,
+        bool $allow_user_chats = null,
+        bool $allow_bot_chats = null,
+        bool $allow_group_chats = null,
+        bool $allow_channel_chats = null
+    ): \stdClass {
+        $args = [
+            'user_id' => $user_id,
+            'result' => json_encode($result)
+        ];
+
+        if (null !== $allow_user_chats) $args['allow_user_chats'] = $allow_user_chats;
+        if (null !== $allow_bot_chats) $args['allow_bot_chats'] = $allow_bot_chats;
+        if (null !== $allow_group_chats) $args['allow_group_chats'] = $allow_group_chats;
+        if (null !== $allow_channel_chats) $args['allow_channel_chats'] = $allow_channel_chats;
+
+        return $this->Request('savePreparedInlineMessage', $args);
     }
 
     /**
@@ -4077,6 +4185,9 @@ abstract class Api implements ApiInterface {
      *                                       Stars.
      * @param array $prices Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery
      *                                       cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in Telegram Stars.
+     * @param int|null $subscription_period The number of seconds the subscription will be active for before the next payment. The currency must
+     *                                       be set to “XTR” (Telegram Stars) if the parameter is used. Currently, it must always be 2592000
+     *                                       (30 days) if specified.
      * @param int|null $max_tip_amount The maximum accepted amount for tips in the smallest units of the currency (integer, not
      *                                       float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp
      *                                       parameter in currencies.json, it shows the number of digits past the decimal point for each currency
@@ -4104,6 +4215,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $send_email_to_provider Pass True if the user's email address should be sent to the provider. Ignored for payments in
      *                                       Telegram Stars.
      * @param bool|null $is_flexible Pass True if the final price depends on the shipping method. Ignored for payments in Telegram Stars.
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the link will be created
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#createinvoicelink
@@ -4115,6 +4227,7 @@ abstract class Api implements ApiInterface {
         string $currency,
         array $prices,
         string $provider_token = null,
+        int $subscription_period = null,
         int $max_tip_amount = null,
         array $suggested_tip_amounts = null,
         string $provider_data = null,
@@ -4128,7 +4241,8 @@ abstract class Api implements ApiInterface {
         bool $need_shipping_address = null,
         bool $send_phone_number_to_provider = null,
         bool $send_email_to_provider = null,
-        bool $is_flexible = null
+        bool $is_flexible = null,
+        string $business_connection_id = null
     ): \stdClass {
         $args = [
             'title' => $title,
@@ -4139,6 +4253,7 @@ abstract class Api implements ApiInterface {
         ];
 
         if (null !== $provider_token) $args['provider_token'] = $provider_token;
+        if (null !== $subscription_period) $args['subscription_period'] = $subscription_period;
         if (null !== $max_tip_amount) $args['max_tip_amount'] = $max_tip_amount;
         if (null !== $suggested_tip_amounts) $args['suggested_tip_amounts'] = json_encode($suggested_tip_amounts);
         if (null !== $provider_data) $args['provider_data'] = $provider_data;
@@ -4153,6 +4268,7 @@ abstract class Api implements ApiInterface {
         if (null !== $send_phone_number_to_provider) $args['send_phone_number_to_provider'] = $send_phone_number_to_provider;
         if (null !== $send_email_to_provider) $args['send_email_to_provider'] = $send_email_to_provider;
         if (null !== $is_flexible) $args['is_flexible'] = $is_flexible;
+        if (null !== $business_connection_id) $args['business_connection_id'] = $business_connection_id;
 
         return $this->Request('createInvoiceLink', $args);
     }
@@ -4265,6 +4381,33 @@ abstract class Api implements ApiInterface {
 
 
         return $this->Request('refundStarPayment', $args);
+    }
+
+    /**
+     * Allows the bot to cancel or re-enable extension of a subscription paid in Telegram Stars.
+     *
+     * @param int $user_id Identifier of the user whose subscription will be edited
+     * @param string $telegram_payment_charge_id Telegram payment identifier for the subscription
+     * @param bool $is_canceled Pass True to cancel extension of the user subscription; the subscription must be active up to the
+     *                                       end of the current subscription period. Pass False to allow the user to re-enable a subscription
+     *                                       that was previously canceled by the bot.
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#edituserstarsubscription
+     */
+    public function editUserStarSubscription(
+        int $user_id,
+        string $telegram_payment_charge_id,
+        bool $is_canceled
+    ): \stdClass {
+        $args = [
+            'user_id' => $user_id,
+            'telegram_payment_charge_id' => $telegram_payment_charge_id,
+            'is_canceled' => $is_canceled
+        ];
+
+
+        return $this->Request('editUserStarSubscription', $args);
     }
 
     /**

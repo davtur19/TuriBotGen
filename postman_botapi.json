@@ -2418,6 +2418,49 @@
             }
         },
         {
+            "name": "setUserEmojiStatus",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "user_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the target user",
+                            "type": "text"
+                        },
+                        {
+                            "key": "emoji_status_custom_emoji_id",
+                            "value": "",
+                            "description": "Optional. Custom emoji identifier of the emoji status to set. Pass an empty string to remove the status.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "emoji_status_expiration_date",
+                            "value": "",
+                            "description": "Optional. Expiration date of the emoji status, if any",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/setUserEmojiStatus",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "setUserEmojiStatus"
+                    ]
+                },
+                "description": "Changes the emoji status for a given user that previously allowed the bot to manage their emoji status via the Mini App method requestEmojiStatusAccess. Returns True on success."
+            }
+        },
+        {
             "name": "getFile",
             "request": {
                 "method": "POST",
@@ -5994,6 +6037,85 @@
             }
         },
         {
+            "name": "getAvailableGifts",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/getAvailableGifts",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "getAvailableGifts"
+                    ]
+                },
+                "description": "Returns the list of gifts that can be sent by the bot to users. Requires no parameters. Returns a Gifts object."
+            }
+        },
+        {
+            "name": "sendGift",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "user_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the target user that will receive the gift",
+                            "type": "text"
+                        },
+                        {
+                            "key": "gift_id",
+                            "value": "",
+                            "description": "Required. Identifier of the gift",
+                            "type": "text"
+                        },
+                        {
+                            "key": "text",
+                            "value": "",
+                            "description": "Optional. Text that will be shown along with the gift; 0-255 characters",
+                            "type": "text"
+                        },
+                        {
+                            "key": "text_parse_mode",
+                            "value": "",
+                            "description": "Optional. Mode for parsing entities in the text. See formatting options for more details. Entities other than \u201cbold\u201d, \u201citalic\u201d, \u201cunderline\u201d, \u201cstrikethrough\u201d, \u201cspoiler\u201d, and \u201ccustom_emoji\u201d are ignored.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "text_entities",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than \u201cbold\u201d, \u201citalic\u201d, \u201cunderline\u201d, \u201cstrikethrough\u201d, \u201cspoiler\u201d, and \u201ccustom_emoji\u201d are ignored.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/sendGift",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "sendGift"
+                    ]
+                },
+                "description": "Sends a gift to the given user. The gift can't be converted to Telegram Stars by the user. Returns True on success."
+            }
+        },
+        {
             "name": "answerInlineQuery",
             "request": {
                 "method": "POST",
@@ -6089,6 +6211,67 @@
                     ]
                 },
                 "description": "Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned."
+            }
+        },
+        {
+            "name": "savePreparedInlineMessage",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "user_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the target user that can use the prepared message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "result",
+                            "value": "",
+                            "description": "Required. A JSON-serialized object describing the message to be sent",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_user_chats",
+                            "value": "",
+                            "description": "Optional. Pass True if the message can be sent to private chats with users",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_bot_chats",
+                            "value": "",
+                            "description": "Optional. Pass True if the message can be sent to private chats with bots",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_group_chats",
+                            "value": "",
+                            "description": "Optional. Pass True if the message can be sent to group and supergroup chats",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_channel_chats",
+                            "value": "",
+                            "description": "Optional. Pass True if the message can be sent to channel chats",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/savePreparedInlineMessage",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "savePreparedInlineMessage"
+                    ]
+                },
+                "description": "Stores a message that can be sent by a user of a Mini App. Returns a PreparedInlineMessage object."
             }
         },
         {
@@ -6298,6 +6481,12 @@
                     "mode": "formdata",
                     "formdata": [
                         {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Optional. Unique identifier of the business connection on behalf of which the link will be created",
+                            "type": "text"
+                        },
+                        {
                             "key": "title",
                             "value": "",
                             "description": "Required. Product name, 1-32 characters",
@@ -6331,6 +6520,12 @@
                             "key": "prices",
                             "value": "",
                             "description": "Required. Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in Telegram Stars.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "subscription_period",
+                            "value": "",
+                            "description": "Optional. The number of seconds the subscription will be active for before the next payment. The currency must be set to \u201cXTR\u201d (Telegram Stars) if the parameter is used. Currently, it must always be 2592000 (30 days) if specified.",
                             "type": "text"
                         },
                         {
@@ -6599,6 +6794,49 @@
                     ]
                 },
                 "description": "Refunds a successful payment in Telegram Stars. Returns True on success."
+            }
+        },
+        {
+            "name": "editUserStarSubscription",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "user_id",
+                            "value": "",
+                            "description": "Required. Identifier of the user whose subscription will be edited",
+                            "type": "text"
+                        },
+                        {
+                            "key": "telegram_payment_charge_id",
+                            "value": "",
+                            "description": "Required. Telegram payment identifier for the subscription",
+                            "type": "text"
+                        },
+                        {
+                            "key": "is_canceled",
+                            "value": "",
+                            "description": "Required. Pass True to cancel extension of the user subscription; the subscription must be active up to the end of the current subscription period. Pass False to allow the user to re-enable a subscription that was previously canceled by the bot.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/editUserStarSubscription",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "editUserStarSubscription"
+                    ]
+                },
+                "description": "Allows the bot to cancel or re-enable extension of a subscription paid in Telegram Stars."
             }
         },
         {
