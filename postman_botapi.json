@@ -6483,7 +6483,7 @@
                         {
                             "key": "business_connection_id",
                             "value": "",
-                            "description": "Optional. Unique identifier of the business connection on behalf of which the link will be created",
+                            "description": "Optional. Unique identifier of the business connection on behalf of which the link will be created. For payments in Telegram Stars only.",
                             "type": "text"
                         },
                         {

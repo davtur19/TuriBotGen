@@ -4215,7 +4215,8 @@ abstract class Api implements ApiInterface {
      * @param bool|null $send_email_to_provider Pass True if the user's email address should be sent to the provider. Ignored for payments in
      *                                       Telegram Stars.
      * @param bool|null $is_flexible Pass True if the final price depends on the shipping method. Ignored for payments in Telegram Stars.
-     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the link will be created
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the link will be created. For
+     *                                       payments in Telegram Stars only.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#createinvoicelink
