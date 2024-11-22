@@ -10682,7 +10682,7 @@
                 {
                     "name": "gift",
                     "types": [
-                        "string"
+                        "Gift"
                     ],
                     "optional": true,
                     "description": "Optional. The gift sent to the user by the bot"
