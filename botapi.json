@@ -1,5 +1,5 @@
 {
-    "version": "8.0.0",
+    "version": "8.1.0",
     "types": [
         {
             "name": "Update",
@@ -10616,11 +10616,59 @@
             "extended_by": []
         },
         {
+            "name": "AffiliateInfo",
+            "description": "Contains information about the affiliate that received a commission via this transaction.",
+            "fields": [
+                {
+                    "name": "affiliate_user",
+                    "types": [
+                        "User"
+                    ],
+                    "optional": true,
+                    "description": "Optional. The bot or the user that received an affiliate commission if it was received by a bot or a user"
+                },
+                {
+                    "name": "affiliate_chat",
+                    "types": [
+                        "Chat"
+                    ],
+                    "optional": true,
+                    "description": "Optional. The chat that received an affiliate commission if it was received by a chat"
+                },
+                {
+                    "name": "commission_per_mille",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "The number of Telegram Stars received by the affiliate for each 1000 Telegram Stars received by the bot from referred users"
+                },
+                {
+                    "name": "amount",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Integer amount of Telegram Stars received by the affiliate from the transaction, rounded to 0; can be negative for refunds"
+                },
+                {
+                    "name": "nanostar_amount",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. The number of 1/1000000000 shares of Telegram Stars received by the affiliate; from -999999999 to 999999999; can be negative for refunds"
+                }
+            ],
+            "extended_by": []
+        },
+        {
             "name": "TransactionPartner",
             "description": "This object describes the source of a transaction, or its recipient for outgoing transactions. Currently, it can be one of",
             "fields": [],
             "extended_by": [
                 "TransactionPartnerUser",
+                "TransactionPartnerAffiliateProgram",
                 "TransactionPartnerFragment",
                 "TransactionPartnerTelegramAds",
                 "TransactionPartnerTelegramApi",
@@ -10646,6 +10694,14 @@
                     ],
                     "optional": false,
                     "description": "Information about the user"
+                },
+                {
+                    "name": "affiliate",
+                    "types": [
+                        "AffiliateInfo"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Information about the affiliate that received a commission via this transaction"
                 },
                 {
                     "name": "invoice_payload",
@@ -10686,6 +10742,37 @@
                     ],
                     "optional": true,
                     "description": "Optional. The gift sent to the user by the bot"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "TransactionPartnerAffiliateProgram",
+            "description": "Describes the affiliate program that issued the affiliate commission received via this transaction.",
+            "fields": [
+                {
+                    "name": "type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Type of the transaction partner, always “affiliate_program”"
+                },
+                {
+                    "name": "sponsor_user",
+                    "types": [
+                        "User"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Information about the bot that sponsored the affiliate program"
+                },
+                {
+                    "name": "commission_per_mille",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "The number of Telegram Stars received by the bot for each 1000 Telegram Stars received by the affiliate program sponsor from referred users"
                 }
             ],
             "extended_by": []
@@ -10784,7 +10871,15 @@
                         "int"
                     ],
                     "optional": false,
-                    "description": "Number of Telegram Stars transferred by the transaction"
+                    "description": "Integer amount of Telegram Stars transferred by the transaction"
+                },
+                {
+                    "name": "nanostar_amount",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. The number of 1/1000000000 shares of Telegram Stars transferred by the transaction; from 0 to 999999999"
                 },
                 {
                     "name": "date",
@@ -17398,7 +17493,7 @@
                         "int"
                     ],
                     "optional": true,
-                    "description": "The number of seconds the subscription will be active for before the next payment. The currency must be set to “XTR” (Telegram Stars) if the parameter is used. Currently, it must always be 2592000 (30 days) if specified. Any number of subscriptions can be active for a given bot at the same time, including multiple concurrent subscriptions from the same user."
+                    "description": "The number of seconds the subscription will be active for before the next payment. The currency must be set to “XTR” (Telegram Stars) if the parameter is used. Currently, it must always be 2592000 (30 days) if specified. Any number of subscriptions can be active for a given bot at the same time, including multiple concurrent subscriptions from the same user. Subscription price must no exceed 2500 Telegram Stars."
                 },
                 {
                     "name": "max_tip_amount",
