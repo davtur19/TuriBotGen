@@ -26,7 +26,7 @@ abstract class Api implements ApiInterface {
      *                                       Update for a complete list of available update types. Specify an empty list to receive all update
      *                                       types except chat_member, message_reaction, and message_reaction_count (default). If not specified,
      *                                       the previous setting will be used.Please note that this parameter doesn't affect updates created
-     *                                       before the call to the getUpdates, so unwanted updates may be received for a short period of time.
+     *                                       before the call to getUpdates, so unwanted updates may be received for a short period of time.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#getupdates
