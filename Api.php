@@ -50,8 +50,9 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever
      * there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing
-     * a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable
-     * amount of attempts. Returns True on success.
+     * a JSON-serialized Update. In case of an unsuccessful request (a request with response HTTP status
+     * code different from 2XY), we will repeat the request and give up after a reasonable amount of
+     * attempts. Returns True on success.
      * If you'd like to make sure that the webhook was set by you, you can specify secret data in the
      * parameter secret_token. If specified, the request will contain a header
      * “X-Telegram-Bot-Api-Secret-Token” with the secret token as content.
@@ -3828,7 +3829,7 @@ abstract class Api implements ApiInterface {
      * @param \CURLFile|string|InputFile|null $thumbnail A .WEBP or .PNG image with the thumbnail, must be up to 128 kilobytes in size and have a width and
      *                                       height of exactly 100px, or a .TGS animation with a thumbnail up to 32 kilobytes in size (see
      *                                       https://core.telegram.org/stickers#animation-requirements for animated sticker technical
-     *                                       requirements), or a WEBM video with the thumbnail up to 32 kilobytes in size; see
+     *                                       requirements), or a .WEBM video with the thumbnail up to 32 kilobytes in size; see
      *                                       https://core.telegram.org/stickers#video-requirements for video sticker technical requirements. Pass
      *                                       a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL
      *                                       as a String for Telegram to get a file from the Internet, or upload a new one using
@@ -3836,7 +3837,7 @@ abstract class Api implements ApiInterface {
      *                                       can't be uploaded via HTTP URL. If omitted, then the thumbnail is dropped and the first sticker is
      *                                       used as the thumbnail.
      * @param string $format Format of the thumbnail, must be one of “static” for a .WEBP or .PNG image, “animated” for a
-     *                                       .TGS animation, or “video” for a WEBM video
+     *                                       .TGS animation, or “video” for a .WEBM video
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#setstickersetthumbnail
@@ -3918,6 +3919,8 @@ abstract class Api implements ApiInterface {
      *
      * @param int $user_id Unique identifier of the target user that will receive the gift
      * @param string $gift_id Identifier of the gift
+     * @param bool|null $pay_for_upgrade Pass True to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for
+     *                                       the receiver
      * @param string|null $text Text that will be shown along with the gift; 0-255 characters
      * @param string|null $text_parse_mode Mode for parsing entities in the text. See formatting options for more details. Entities other than
      *                                       “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and
@@ -3932,6 +3935,7 @@ abstract class Api implements ApiInterface {
     public function sendGift(
         int $user_id,
         string $gift_id,
+        bool $pay_for_upgrade = null,
         string $text = null,
         string $text_parse_mode = null,
         array $text_entities = null
@@ -3941,11 +3945,102 @@ abstract class Api implements ApiInterface {
             'gift_id' => $gift_id
         ];
 
+        if (null !== $pay_for_upgrade) $args['pay_for_upgrade'] = $pay_for_upgrade;
         if (null !== $text) $args['text'] = $text;
         if (null !== $text_parse_mode) $args['text_parse_mode'] = $text_parse_mode;
         if (null !== $text_entities) $args['text_entities'] = json_encode($text_entities);
 
         return $this->Request('sendGift', $args);
+    }
+
+    /**
+     * Verifies a user on behalf of the organization which is represented by the bot. Returns True on
+     * success.
+     *
+     * @param int $user_id Unique identifier of the target user
+     * @param string|null $custom_description Custom description for the verification; 0-70 characters. Must be empty if the organization isn't
+     *                                       allowed to provide a custom verification description.
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#verifyuser
+     */
+    public function verifyUser(
+        int $user_id,
+        string $custom_description = null
+    ): \stdClass {
+        $args = [
+            'user_id' => $user_id
+        ];
+
+        if (null !== $custom_description) $args['custom_description'] = $custom_description;
+
+        return $this->Request('verifyUser', $args);
+    }
+
+    /**
+     * Verifies a chat on behalf of the organization which is represented by the bot. Returns True on
+     * success.
+     *
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
+     *                                       @channelusername)
+     * @param string|null $custom_description Custom description for the verification; 0-70 characters. Must be empty if the organization isn't
+     *                                       allowed to provide a custom verification description.
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#verifychat
+     */
+    public function verifyChat(
+        int|string $chat_id,
+        string $custom_description = null
+    ): \stdClass {
+        $args = [
+            'chat_id' => $chat_id
+        ];
+
+        if (null !== $custom_description) $args['custom_description'] = $custom_description;
+
+        return $this->Request('verifyChat', $args);
+    }
+
+    /**
+     * Removes verification from a user who is currently verified on behalf of the organization represented
+     * by the bot. Returns True on success.
+     *
+     * @param int $user_id Unique identifier of the target user
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#removeuserverification
+     */
+    public function removeUserVerification(
+        int $user_id
+    ): \stdClass {
+        $args = [
+            'user_id' => $user_id
+        ];
+
+
+        return $this->Request('removeUserVerification', $args);
+    }
+
+    /**
+     * Removes verification from a chat that is currently verified on behalf of the organization
+     * represented by the bot. Returns True on success.
+     *
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
+     *                                       @channelusername)
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#removechatverification
+     */
+    public function removeChatVerification(
+        int|string $chat_id
+    ): \stdClass {
+        $args = [
+            'chat_id' => $chat_id
+        ];
+
+
+        return $this->Request('removeChatVerification', $args);
     }
 
     /**

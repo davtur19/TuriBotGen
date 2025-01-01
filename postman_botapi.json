@@ -117,7 +117,7 @@
                         "setWebhook"
                     ]
                 },
-                "description": "Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.\nIf you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter secret_token. If specified, the request will contain a header \u201cX-Telegram-Bot-Api-Secret-Token\u201d with the secret token as content."
+                "description": "Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update. In case of an unsuccessful request (a request with response HTTP status code different from 2XY), we will repeat the request and give up after a reasonable amount of attempts. Returns True on success.\nIf you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter secret_token. If specified, the request will contain a header \u201cX-Telegram-Bot-Api-Secret-Token\u201d with the secret token as content."
             }
         },
         {
@@ -5941,13 +5941,13 @@
                         {
                             "key": "thumbnail",
                             "value": "",
-                            "description": "Optional. A .WEBP or .PNG image with the thumbnail, must be up to 128 kilobytes in size and have a width and height of exactly 100px, or a .TGS animation with a thumbnail up to 32 kilobytes in size (see https://core.telegram.org/stickers#animation-requirements for animated sticker technical requirements), or a WEBM video with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/stickers#video-requirements for video sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files \u00bb. Animated and video sticker set thumbnails can't be uploaded via HTTP URL. If omitted, then the thumbnail is dropped and the first sticker is used as the thumbnail.",
+                            "description": "Optional. A .WEBP or .PNG image with the thumbnail, must be up to 128 kilobytes in size and have a width and height of exactly 100px, or a .TGS animation with a thumbnail up to 32 kilobytes in size (see https://core.telegram.org/stickers#animation-requirements for animated sticker technical requirements), or a .WEBM video with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/stickers#video-requirements for video sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files \u00bb. Animated and video sticker set thumbnails can't be uploaded via HTTP URL. If omitted, then the thumbnail is dropped and the first sticker is used as the thumbnail.",
                             "type": "text"
                         },
                         {
                             "key": "format",
                             "value": "",
-                            "description": "Required. Format of the thumbnail, must be one of \u201cstatic\u201d for a .WEBP or .PNG image, \u201canimated\u201d for a .TGS animation, or \u201cvideo\u201d for a WEBM video",
+                            "description": "Required. Format of the thumbnail, must be one of \u201cstatic\u201d for a .WEBP or .PNG image, \u201canimated\u201d for a .TGS animation, or \u201cvideo\u201d for a .WEBM video",
                             "type": "text"
                         }
                     ]
@@ -6080,6 +6080,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "pay_for_upgrade",
+                            "value": "",
+                            "description": "Optional. Pass True to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver",
+                            "type": "text"
+                        },
+                        {
                             "key": "text",
                             "value": "",
                             "description": "Optional. Text that will be shown along with the gift; 0-255 characters",
@@ -6113,6 +6119,142 @@
                     ]
                 },
                 "description": "Sends a gift to the given user. The gift can't be converted to Telegram Stars by the user. Returns True on success."
+            }
+        },
+        {
+            "name": "verifyUser",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "user_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the target user",
+                            "type": "text"
+                        },
+                        {
+                            "key": "custom_description",
+                            "value": "",
+                            "description": "Optional. Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/verifyUser",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "verifyUser"
+                    ]
+                },
+                "description": "Verifies a user on behalf of the organization which is represented by the bot. Returns True on success."
+            }
+        },
+        {
+            "name": "verifyChat",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat or username of the target channel (in the format @channelusername)",
+                            "type": "text"
+                        },
+                        {
+                            "key": "custom_description",
+                            "value": "",
+                            "description": "Optional. Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/verifyChat",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "verifyChat"
+                    ]
+                },
+                "description": "Verifies a chat on behalf of the organization which is represented by the bot. Returns True on success."
+            }
+        },
+        {
+            "name": "removeUserVerification",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "user_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the target user",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/removeUserVerification",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "removeUserVerification"
+                    ]
+                },
+                "description": "Removes verification from a user who is currently verified on behalf of the organization represented by the bot. Returns True on success."
+            }
+        },
+        {
+            "name": "removeChatVerification",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat or username of the target channel (in the format @channelusername)",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/removeChatVerification",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "removeChatVerification"
+                    ]
+                },
+                "description": "Removes verification from a chat that is currently verified on behalf of the organization represented by the bot. Returns True on success."
             }
         },
         {
