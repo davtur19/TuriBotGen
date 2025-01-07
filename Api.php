@@ -4381,8 +4381,8 @@ abstract class Api implements ApiInterface {
      *                                       example, if delivery to the specified address is not possible)
      * @param array|null $shipping_options Required if ok is True. A JSON-serialized array of available shipping options.
      * @param string|null $error_message Required if ok is False. Error message in human readable form that explains why it is impossible to
-     *                                       complete the order (e.g. "Sorry, delivery to your desired address is unavailable'). Telegram will
-     *                                       display this message to the user.
+     *                                       complete the order (e.g. “Sorry, delivery to your desired address is unavailable”). Telegram
+     *                                       will display this message to the user.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#answershippingquery

@@ -6800,7 +6800,7 @@
                         {
                             "key": "error_message",
                             "value": "",
-                            "description": "Optional. Required if ok is False. Error message in human readable form that explains why it is impossible to complete the order (e.g. \"Sorry, delivery to your desired address is unavailable'). Telegram will display this message to the user.",
+                            "description": "Optional. Required if ok is False. Error message in human readable form that explains why it is impossible to complete the order (e.g. \u201cSorry, delivery to your desired address is unavailable\u201d). Telegram will display this message to the user.",
                             "type": "text"
                         }
                     ]
