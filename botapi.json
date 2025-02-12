@@ -714,6 +714,15 @@
                     "description": "Optional. Default chat member permissions, for groups and supergroups"
                 },
                 {
+                    "name": "can_send_gift",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. True, if gifts can be sent to the chat",
+                    "default": true
+                },
+                {
                     "name": "can_send_paid_media",
                     "types": [
                         "bool"
