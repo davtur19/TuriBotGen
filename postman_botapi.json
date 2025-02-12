@@ -376,6 +376,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "video_start_timestamp",
+                            "value": "",
+                            "description": "Optional. New start timestamp for the forwarded video in the message",
+                            "type": "text"
+                        },
+                        {
                             "key": "disable_notification",
                             "value": "",
                             "description": "Optional. Sends the message silently. Users will receive a notification with no sound.",
@@ -501,6 +507,12 @@
                             "key": "message_id",
                             "value": "",
                             "description": "Required. Message identifier in the chat specified in from_chat_id",
+                            "type": "text"
+                        },
+                        {
+                            "key": "video_start_timestamp",
+                            "value": "",
+                            "description": "Optional. New start timestamp for the copied video in the message",
                             "type": "text"
                         },
                         {
@@ -1052,6 +1064,18 @@
                             "key": "thumbnail",
                             "value": "",
                             "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb",
+                            "type": "text"
+                        },
+                        {
+                            "key": "cover",
+                            "value": "",
+                            "description": "Optional. Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \u201cattach://<file_attach_name>\u201d to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files \u00bb",
+                            "type": "text"
+                        },
+                        {
+                            "key": "start_timestamp",
+                            "value": "",
+                            "description": "Optional. Start timestamp for the video in the message",
                             "type": "text"
                         },
                         {
@@ -2371,7 +2395,7 @@
                         "setMessageReaction"
                     ]
                 },
-                "description": "Use this method to change the chosen reactions on a message. Service messages can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Bots can't use paid reactions. Returns True on success."
+                "description": "Use this method to change the chosen reactions on a message. Service messages of some types can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Bots can't use paid reactions. Returns True on success."
             }
         },
         {
@@ -6057,7 +6081,7 @@
                         "getAvailableGifts"
                     ]
                 },
-                "description": "Returns the list of gifts that can be sent by the bot to users. Requires no parameters. Returns a Gifts object."
+                "description": "Returns the list of gifts that can be sent by the bot to users and channel chats. Requires no parameters. Returns a Gifts object."
             }
         },
         {
@@ -6070,7 +6094,13 @@
                         {
                             "key": "user_id",
                             "value": "",
-                            "description": "Required. Unique identifier of the target user that will receive the gift",
+                            "description": "Optional. Required if chat_id is not specified. Unique identifier of the target user who will receive the gift.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Optional. Required if user_id is not specified. Unique identifier for the chat or username of the channel (in the format @channelusername) that will receive the gift.",
                             "type": "text"
                         },
                         {
@@ -6118,7 +6148,7 @@
                         "sendGift"
                     ]
                 },
-                "description": "Sends a gift to the given user. The gift can't be converted to Telegram Stars by the user. Returns True on success."
+                "description": "Sends a gift to the given user or channel chat. The gift can't be converted to Telegram Stars by the receiver. Returns True on success."
             }
         },
         {

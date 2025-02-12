@@ -1,5 +1,5 @@
 {
-    "version": "8.2.0",
+    "version": "8.3.0",
     "types": [
         {
             "name": "Update",
@@ -2438,6 +2438,22 @@
                     ],
                     "optional": true,
                     "description": "Optional. Video thumbnail"
+                },
+                {
+                    "name": "cover",
+                    "types": [
+                        "Array<PhotoSize>"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Available sizes of the cover of the video in the message"
+                },
+                {
+                    "name": "start_timestamp",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Timestamp in seconds from which the video will play in the message"
                 },
                 {
                     "name": "file_name",
@@ -6800,11 +6816,26 @@
                 {
                     "name": "thumbnail",
                     "types": [
-                        "InputFile",
                         "string"
                     ],
                     "optional": true,
                     "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                },
+                {
+                    "name": "cover",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
+                },
+                {
+                    "name": "start_timestamp",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Start timestamp for the video in the message"
                 },
                 {
                     "name": "caption",
@@ -6905,7 +6936,6 @@
                 {
                     "name": "thumbnail",
                     "types": [
-                        "InputFile",
                         "string"
                     ],
                     "optional": true,
@@ -7002,7 +7032,6 @@
                 {
                     "name": "thumbnail",
                     "types": [
-                        "InputFile",
                         "string"
                     ],
                     "optional": true,
@@ -7083,7 +7112,6 @@
                 {
                     "name": "thumbnail",
                     "types": [
-                        "InputFile",
                         "string"
                     ],
                     "optional": true,
@@ -7187,11 +7215,26 @@
                 {
                     "name": "thumbnail",
                     "types": [
-                        "InputFile",
                         "string"
                     ],
                     "optional": true,
                     "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                },
+                {
+                    "name": "cover",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
+                },
+                {
+                    "name": "start_timestamp",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Start timestamp for the video in the message"
                 },
                 {
                     "name": "width",
@@ -10668,6 +10711,7 @@
             "fields": [],
             "extended_by": [
                 "TransactionPartnerUser",
+                "TransactionPartnerChat",
                 "TransactionPartnerAffiliateProgram",
                 "TransactionPartnerFragment",
                 "TransactionPartnerTelegramAds",
@@ -10742,6 +10786,37 @@
                     ],
                     "optional": true,
                     "description": "Optional. The gift sent to the user by the bot"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "TransactionPartnerChat",
+            "description": "Describes a transaction with a chat.",
+            "fields": [
+                {
+                    "name": "type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Type of the transaction partner, always “chat”"
+                },
+                {
+                    "name": "chat",
+                    "types": [
+                        "Chat"
+                    ],
+                    "optional": false,
+                    "description": "Information about the chat"
+                },
+                {
+                    "name": "gift",
+                    "types": [
+                        "Gift"
+                    ],
+                    "optional": true,
+                    "description": "Optional. The gift sent to the chat by the bot"
                 }
             ],
             "extended_by": []
@@ -11887,6 +11962,14 @@
                     "description": "Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)"
                 },
                 {
+                    "name": "video_start_timestamp",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "New start timestamp for the forwarded video in the message"
+                },
+                {
                     "name": "disable_notification",
                     "types": [
                         "bool"
@@ -12011,6 +12094,14 @@
                     ],
                     "optional": false,
                     "description": "Message identifier in the chat specified in from_chat_id"
+                },
+                {
+                    "name": "video_start_timestamp",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "New start timestamp for the copied video in the message"
                 },
                 {
                     "name": "caption",
@@ -12649,6 +12740,23 @@
                     ],
                     "optional": true,
                     "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                },
+                {
+                    "name": "cover",
+                    "types": [
+                        "InputFile",
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
+                },
+                {
+                    "name": "start_timestamp",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Start timestamp for the video in the message"
                 },
                 {
                     "name": "caption",
@@ -14110,7 +14218,7 @@
         },
         {
             "name": "setMessageReaction",
-            "description": "Use this method to change the chosen reactions on a message. Service messages can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Bots can't use paid reactions. Returns True on success.",
+            "description": "Use this method to change the chosen reactions on a message. Service messages of some types can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Bots can't use paid reactions. Returns True on success.",
             "fields": [
                 {
                     "name": "chat_id",
@@ -16989,7 +17097,7 @@
         },
         {
             "name": "getAvailableGifts",
-            "description": "Returns the list of gifts that can be sent by the bot to users. Requires no parameters. Returns a Gifts object.",
+            "description": "Returns the list of gifts that can be sent by the bot to users and channel chats. Requires no parameters. Returns a Gifts object.",
             "fields": [],
             "return_types": [
                 "Gifts"
@@ -16997,15 +17105,24 @@
         },
         {
             "name": "sendGift",
-            "description": "Sends a gift to the given user. The gift can't be converted to Telegram Stars by the user. Returns True on success.",
+            "description": "Sends a gift to the given user or channel chat. The gift can't be converted to Telegram Stars by the receiver. Returns True on success.",
             "fields": [
                 {
                     "name": "user_id",
                     "types": [
                         "int"
                     ],
-                    "optional": false,
-                    "description": "Unique identifier of the target user that will receive the gift"
+                    "optional": true,
+                    "description": "Required if chat_id is not specified. Unique identifier of the target user who will receive the gift."
+                },
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int",
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Required if user_id is not specified. Unique identifier for the chat or username of the channel (in the format @channelusername) that will receive the gift."
                 },
                 {
                     "name": "gift_id",

@@ -242,6 +242,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
      * @param int|string $from_chat_id Unique identifier for the chat where the original message was sent (or channel username in the
      *                                       format @channelusername)
+     * @param int|null $video_start_timestamp New start timestamp for the forwarded video in the message
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the forwarded message from forwarding and saving
      * @param int $message_id Message identifier in the chat specified in from_chat_id
@@ -254,6 +255,7 @@ abstract class Api implements ApiInterface {
         int|string $from_chat_id,
         int $message_id,
         int $message_thread_id = null,
+        int $video_start_timestamp = null,
         bool $disable_notification = null,
         bool $protect_content = null
     ): \stdClass {
@@ -264,6 +266,7 @@ abstract class Api implements ApiInterface {
         ];
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
+        if (null !== $video_start_timestamp) $args['video_start_timestamp'] = $video_start_timestamp;
         if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
         if (null !== $protect_content) $args['protect_content'] = $protect_content;
 
@@ -323,6 +326,7 @@ abstract class Api implements ApiInterface {
      * @param int|string $from_chat_id Unique identifier for the chat where the original message was sent (or channel username in the
      *                                       format @channelusername)
      * @param int $message_id Message identifier in the chat specified in from_chat_id
+     * @param int|null $video_start_timestamp New start timestamp for the copied video in the message
      * @param string|null $caption New caption for media, 0-1024 characters after entities parsing. If not specified, the original
      *                                       caption is kept
      * @param string|null $parse_mode Mode for parsing entities in the new caption. See formatting options for more details.
@@ -346,6 +350,7 @@ abstract class Api implements ApiInterface {
         int|string $from_chat_id,
         int $message_id,
         int $message_thread_id = null,
+        int $video_start_timestamp = null,
         string $caption = null,
         string $parse_mode = null,
         array $caption_entities = null,
@@ -363,6 +368,7 @@ abstract class Api implements ApiInterface {
         ];
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
+        if (null !== $video_start_timestamp) $args['video_start_timestamp'] = $video_start_timestamp;
         if (null !== $caption) $args['caption'] = $caption;
         if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
         if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
@@ -666,6 +672,11 @@ abstract class Api implements ApiInterface {
      *                                       multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
      *                                       pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
      *                                       <file_attach_name>. More information on Sending Files »
+     * @param \CURLFile|string|InputFile|null $cover Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram
+     *                                       servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass
+     *                                       “attach://<file_attach_name>” to upload a new one using multipart/form-data under
+     *                                       <file_attach_name> name. More information on Sending Files »
+     * @param int|null $start_timestamp Start timestamp for the video in the message
      * @param string|null $caption Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities
      *                                       parsing
      * @param string|null $parse_mode Mode for parsing entities in the video caption. See formatting options for more details.
@@ -695,6 +706,8 @@ abstract class Api implements ApiInterface {
         int $width = null,
         int $height = null,
         \CURLFile|string|InputFile $thumbnail = null,
+        \CURLFile|string|InputFile $cover = null,
+        int $start_timestamp = null,
         string $caption = null,
         string $parse_mode = null,
         array $caption_entities = null,
@@ -719,6 +732,8 @@ abstract class Api implements ApiInterface {
         if (null !== $width) $args['width'] = $width;
         if (null !== $height) $args['height'] = $height;
         if (null !== $thumbnail) $args['thumbnail'] = $thumbnail;
+        if (null !== $cover) $args['cover'] = $cover;
+        if (null !== $start_timestamp) $args['start_timestamp'] = $start_timestamp;
         if (null !== $caption) $args['caption'] = $caption;
         if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
         if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
@@ -1455,9 +1470,10 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to change the chosen reactions on a message. Service messages can't be reacted to.
-     * Automatically forwarded messages from a channel to its discussion group have the same available
-     * reactions as messages in the channel. Bots can't use paid reactions. Returns True on success.
+     * Use this method to change the chosen reactions on a message. Service messages of some types can't be
+     * reacted to. Automatically forwarded messages from a channel to its discussion group have the same
+     * available reactions as messages in the channel. Bots can't use paid reactions. Returns True on
+     * success.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
      *                                       @channelusername)
@@ -3902,8 +3918,8 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Returns the list of gifts that can be sent by the bot to users. Requires no parameters. Returns a
-     * Gifts object.
+     * Returns the list of gifts that can be sent by the bot to users and channel chats. Requires no
+     * parameters. Returns a Gifts object.
      *
      * @return \stdClass
      *
@@ -3914,10 +3930,13 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Sends a gift to the given user. The gift can't be converted to Telegram Stars by the user. Returns
-     * True on success.
+     * Sends a gift to the given user or channel chat. The gift can't be converted to Telegram Stars by the
+     * receiver. Returns True on success.
      *
-     * @param int $user_id Unique identifier of the target user that will receive the gift
+     * @param int|null $user_id Required if chat_id is not specified. Unique identifier of the target user who will receive the
+     *                                       gift.
+     * @param int|string|null $chat_id Required if user_id is not specified. Unique identifier for the chat or username of the channel (in
+     *                                       the format @channelusername) that will receive the gift.
      * @param string $gift_id Identifier of the gift
      * @param bool|null $pay_for_upgrade Pass True to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for
      *                                       the receiver
@@ -3933,18 +3952,20 @@ abstract class Api implements ApiInterface {
      * @see https://core.telegram.org/bots/api#sendgift
      */
     public function sendGift(
-        int $user_id,
         string $gift_id,
+        int $user_id = null,
+        int|string $chat_id = null,
         bool $pay_for_upgrade = null,
         string $text = null,
         string $text_parse_mode = null,
         array $text_entities = null
     ): \stdClass {
         $args = [
-            'user_id' => $user_id,
             'gift_id' => $gift_id
         ];
 
+        if (null !== $user_id) $args['user_id'] = $user_id;
+        if (null !== $chat_id) $args['chat_id'] = $chat_id;
         if (null !== $pay_for_upgrade) $args['pay_for_upgrade'] = $pay_for_upgrade;
         if (null !== $text) $args['text'] = $text;
         if (null !== $text_parse_mode) $args['text_parse_mode'] = $text_parse_mode;
