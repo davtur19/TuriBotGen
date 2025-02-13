@@ -6118,7 +6118,7 @@
                         {
                             "key": "text",
                             "value": "",
-                            "description": "Optional. Text that will be shown along with the gift; 0-255 characters",
+                            "description": "Optional. Text that will be shown along with the gift; 0-128 characters",
                             "type": "text"
                         },
                         {

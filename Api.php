@@ -3940,7 +3940,7 @@ abstract class Api implements ApiInterface {
      * @param string $gift_id Identifier of the gift
      * @param bool|null $pay_for_upgrade Pass True to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for
      *                                       the receiver
-     * @param string|null $text Text that will be shown along with the gift; 0-255 characters
+     * @param string|null $text Text that will be shown along with the gift; 0-128 characters
      * @param string|null $text_parse_mode Mode for parsing entities in the text. See formatting options for more details. Entities other than
      *                                       “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and
      *                                       “custom_emoji” are ignored.
