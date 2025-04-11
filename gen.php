@@ -39,6 +39,7 @@ function returnType(string $type): string {
         'InlineQueryResultsButton' => 'array',
         'LinkPreviewOptions'       => 'array',
         'ReplyParameters'          => 'array',
+        'InputProfilePhoto'        => 'array',
     ];
 
     return $types[$type];
