@@ -41,9 +41,11 @@ function returnType(string $type): string {
         'ReplyParameters'          => 'array',
         'InputProfilePhoto'        => 'array',
         'AcceptedGiftTypes'        => 'array',
+        'InputStoryContent'        => 'array',
     ];
 
     if (!isset($types[$type])) {
+        error_log('[Warning] undefined type: ' . $type);
         return 'array';
     }
 
