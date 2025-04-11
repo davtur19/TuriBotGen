@@ -1541,7 +1541,7 @@
                         {
                             "key": "star_count",
                             "value": "",
-                            "description": "Required. The number of Telegram Stars that must be paid to buy access to the media; 1-2500",
+                            "description": "Required. The number of Telegram Stars that must be paid to buy access to the media; 1-10000",
                             "type": "text"
                         },
                         {
@@ -3124,7 +3124,7 @@
                         {
                             "key": "subscription_price",
                             "value": "",
-                            "description": "Required. The amount of Telegram Stars a user must pay initially and after each subsequent subscription period to be a member of the chat; 1-2500",
+                            "description": "Required. The amount of Telegram Stars a user must pay initially and after each subsequent subscription period to be a member of the chat; 1-10000",
                             "type": "text"
                         }
                     ]
@@ -5379,6 +5379,1079 @@
             }
         },
         {
+            "name": "getAvailableGifts",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/getAvailableGifts",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "getAvailableGifts"
+                    ]
+                },
+                "description": "Returns the list of gifts that can be sent by the bot to users and channel chats. Requires no parameters. Returns a Gifts object."
+            }
+        },
+        {
+            "name": "sendGift",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "user_id",
+                            "value": "",
+                            "description": "Optional. Required if chat_id is not specified. Unique identifier of the target user who will receive the gift.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Optional. Required if user_id is not specified. Unique identifier for the chat or username of the channel (in the format @channelusername) that will receive the gift.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "gift_id",
+                            "value": "",
+                            "description": "Required. Identifier of the gift",
+                            "type": "text"
+                        },
+                        {
+                            "key": "pay_for_upgrade",
+                            "value": "",
+                            "description": "Optional. Pass True to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver",
+                            "type": "text"
+                        },
+                        {
+                            "key": "text",
+                            "value": "",
+                            "description": "Optional. Text that will be shown along with the gift; 0-128 characters",
+                            "type": "text"
+                        },
+                        {
+                            "key": "text_parse_mode",
+                            "value": "",
+                            "description": "Optional. Mode for parsing entities in the text. See formatting options for more details. Entities other than \u201cbold\u201d, \u201citalic\u201d, \u201cunderline\u201d, \u201cstrikethrough\u201d, \u201cspoiler\u201d, and \u201ccustom_emoji\u201d are ignored.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "text_entities",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than \u201cbold\u201d, \u201citalic\u201d, \u201cunderline\u201d, \u201cstrikethrough\u201d, \u201cspoiler\u201d, and \u201ccustom_emoji\u201d are ignored.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/sendGift",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "sendGift"
+                    ]
+                },
+                "description": "Sends a gift to the given user or channel chat. The gift can't be converted to Telegram Stars by the receiver. Returns True on success."
+            }
+        },
+        {
+            "name": "giftPremiumSubscription",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "user_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the target user who will receive a Telegram Premium subscription",
+                            "type": "text"
+                        },
+                        {
+                            "key": "month_count",
+                            "value": "",
+                            "description": "Required. Number of months the Telegram Premium subscription will be active for the user; must be one of 3, 6, or 12",
+                            "type": "text"
+                        },
+                        {
+                            "key": "star_count",
+                            "value": "",
+                            "description": "Required. Number of Telegram Stars to pay for the Telegram Premium subscription; must be 1000 for 3 months, 1500 for 6 months, and 2500 for 12 months",
+                            "type": "text"
+                        },
+                        {
+                            "key": "text",
+                            "value": "",
+                            "description": "Optional. Text that will be shown along with the service message about the subscription; 0-128 characters",
+                            "type": "text"
+                        },
+                        {
+                            "key": "text_parse_mode",
+                            "value": "",
+                            "description": "Optional. Mode for parsing entities in the text. See formatting options for more details. Entities other than \u201cbold\u201d, \u201citalic\u201d, \u201cunderline\u201d, \u201cstrikethrough\u201d, \u201cspoiler\u201d, and \u201ccustom_emoji\u201d are ignored.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "text_entities",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than \u201cbold\u201d, \u201citalic\u201d, \u201cunderline\u201d, \u201cstrikethrough\u201d, \u201cspoiler\u201d, and \u201ccustom_emoji\u201d are ignored.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/giftPremiumSubscription",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "giftPremiumSubscription"
+                    ]
+                },
+                "description": "Gifts a Telegram Premium subscription to the given user. Returns True on success."
+            }
+        },
+        {
+            "name": "verifyUser",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "user_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the target user",
+                            "type": "text"
+                        },
+                        {
+                            "key": "custom_description",
+                            "value": "",
+                            "description": "Optional. Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/verifyUser",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "verifyUser"
+                    ]
+                },
+                "description": "Verifies a user on behalf of the organization which is represented by the bot. Returns True on success."
+            }
+        },
+        {
+            "name": "verifyChat",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat or username of the target channel (in the format @channelusername)",
+                            "type": "text"
+                        },
+                        {
+                            "key": "custom_description",
+                            "value": "",
+                            "description": "Optional. Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/verifyChat",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "verifyChat"
+                    ]
+                },
+                "description": "Verifies a chat on behalf of the organization which is represented by the bot. Returns True on success."
+            }
+        },
+        {
+            "name": "removeUserVerification",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "user_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the target user",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/removeUserVerification",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "removeUserVerification"
+                    ]
+                },
+                "description": "Removes verification from a user who is currently verified on behalf of the organization represented by the bot. Returns True on success."
+            }
+        },
+        {
+            "name": "removeChatVerification",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat or username of the target channel (in the format @channelusername)",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/removeChatVerification",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "removeChatVerification"
+                    ]
+                },
+                "description": "Removes verification from a chat that is currently verified on behalf of the organization represented by the bot. Returns True on success."
+            }
+        },
+        {
+            "name": "readBusinessMessage",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection on behalf of which to read the message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the chat in which the message was received. The chat must have been active in the last 24 hours.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "message_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the message to mark as read",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/readBusinessMessage",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "readBusinessMessage"
+                    ]
+                },
+                "description": "Marks incoming message as read on behalf of a business account. Requires the can_read_messages business bot right. Returns True on success."
+            }
+        },
+        {
+            "name": "deleteBusinessMessages",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection on behalf of which to delete the messages",
+                            "type": "text"
+                        },
+                        {
+                            "key": "message_ids",
+                            "value": "",
+                            "description": "Required. A JSON-serialized list of 1-100 identifiers of messages to delete. All messages must be from the same chat. See deleteMessage for limitations on which messages can be deleted",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/deleteBusinessMessages",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "deleteBusinessMessages"
+                    ]
+                },
+                "description": "Delete messages on behalf of a business account. Requires the can_delete_outgoing_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success."
+            }
+        },
+        {
+            "name": "setBusinessAccountName",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection",
+                            "type": "text"
+                        },
+                        {
+                            "key": "first_name",
+                            "value": "",
+                            "description": "Required. The new value of the first name for the business account; 1-64 characters",
+                            "type": "text"
+                        },
+                        {
+                            "key": "last_name",
+                            "value": "",
+                            "description": "Optional. The new value of the last name for the business account; 0-64 characters",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/setBusinessAccountName",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "setBusinessAccountName"
+                    ]
+                },
+                "description": "Changes the first and last name of a managed business account. Requires the can_change_name business bot right. Returns True on success."
+            }
+        },
+        {
+            "name": "setBusinessAccountUsername",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection",
+                            "type": "text"
+                        },
+                        {
+                            "key": "username",
+                            "value": "",
+                            "description": "Optional. The new value of the username for the business account; 0-32 characters",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/setBusinessAccountUsername",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "setBusinessAccountUsername"
+                    ]
+                },
+                "description": "Changes the username of a managed business account. Requires the can_change_username business bot right. Returns True on success."
+            }
+        },
+        {
+            "name": "setBusinessAccountBio",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection",
+                            "type": "text"
+                        },
+                        {
+                            "key": "bio",
+                            "value": "",
+                            "description": "Optional. The new value of the bio for the business account; 0-140 characters",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/setBusinessAccountBio",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "setBusinessAccountBio"
+                    ]
+                },
+                "description": "Changes the bio of a managed business account. Requires the can_change_bio business bot right. Returns True on success."
+            }
+        },
+        {
+            "name": "setBusinessAccountProfilePhoto",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection",
+                            "type": "text"
+                        },
+                        {
+                            "key": "photo",
+                            "value": "",
+                            "description": "Required. The new profile photo to set",
+                            "type": "text"
+                        },
+                        {
+                            "key": "is_public",
+                            "value": "",
+                            "description": "Optional. Pass True to set the public photo, which will be visible even if the main photo is hidden by the business account's privacy settings. An account can have only one public photo.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/setBusinessAccountProfilePhoto",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "setBusinessAccountProfilePhoto"
+                    ]
+                },
+                "description": "Changes the profile photo of a managed business account. Requires the can_edit_profile_photo business bot right. Returns True on success."
+            }
+        },
+        {
+            "name": "removeBusinessAccountProfilePhoto",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection",
+                            "type": "text"
+                        },
+                        {
+                            "key": "is_public",
+                            "value": "",
+                            "description": "Optional. Pass True to remove the public photo, which is visible even if the main photo is hidden by the business account's privacy settings. After the main photo is removed, the previous profile photo (if present) becomes the main photo.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/removeBusinessAccountProfilePhoto",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "removeBusinessAccountProfilePhoto"
+                    ]
+                },
+                "description": "Removes the current profile photo of a managed business account. Requires the can_edit_profile_photo business bot right. Returns True on success."
+            }
+        },
+        {
+            "name": "setBusinessAccountGiftSettings",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection",
+                            "type": "text"
+                        },
+                        {
+                            "key": "show_gift_button",
+                            "value": "",
+                            "description": "Required. Pass True, if a button for sending a gift to the user or by the business account must always be shown in the input field",
+                            "type": "text"
+                        },
+                        {
+                            "key": "accepted_gift_types",
+                            "value": "",
+                            "description": "Required. Types of gifts accepted by the business account",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/setBusinessAccountGiftSettings",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "setBusinessAccountGiftSettings"
+                    ]
+                },
+                "description": "Changes the privacy settings pertaining to incoming gifts in a managed business account. Requires the can_change_gift_settings business bot right. Returns True on success."
+            }
+        },
+        {
+            "name": "getBusinessAccountStarBalance",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/getBusinessAccountStarBalance",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "getBusinessAccountStarBalance"
+                    ]
+                },
+                "description": "Returns the amount of Telegram Stars owned by a managed business account. Requires the can_view_gifts_and_stars business bot right. Returns StarAmount on success."
+            }
+        },
+        {
+            "name": "transferBusinessAccountStars",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection",
+                            "type": "text"
+                        },
+                        {
+                            "key": "star_count",
+                            "value": "",
+                            "description": "Required. Number of Telegram Stars to transfer; 1-10000",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/transferBusinessAccountStars",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "transferBusinessAccountStars"
+                    ]
+                },
+                "description": "Transfers Telegram Stars from the business account balance to the bot's balance. Requires the can_transfer_stars business bot right. Returns True on success."
+            }
+        },
+        {
+            "name": "getBusinessAccountGifts",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_unsaved",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude gifts that aren't saved to the account's profile page",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_saved",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude gifts that are saved to the account's profile page",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_unlimited",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude gifts that can be purchased an unlimited number of times",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_limited",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude gifts that can be purchased a limited number of times",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_unique",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude unique gifts",
+                            "type": "text"
+                        },
+                        {
+                            "key": "sort_by_price",
+                            "value": "",
+                            "description": "Optional. Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "offset",
+                            "value": "",
+                            "description": "Optional. Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results",
+                            "type": "text"
+                        },
+                        {
+                            "key": "limit",
+                            "value": "",
+                            "description": "Optional. The maximum number of gifts to be returned; 1-100. Defaults to 100",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/getBusinessAccountGifts",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "getBusinessAccountGifts"
+                    ]
+                },
+                "description": "Returns the gifts received and owned by a managed business account. Requires the can_view_gifts_and_stars business bot right. Returns OwnedGifts on success."
+            }
+        },
+        {
+            "name": "convertGiftToStars",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection",
+                            "type": "text"
+                        },
+                        {
+                            "key": "owned_gift_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the regular gift that should be converted to Telegram Stars",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/convertGiftToStars",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "convertGiftToStars"
+                    ]
+                },
+                "description": "Converts a given regular gift to Telegram Stars. Requires the can_convert_gifts_to_stars business bot right. Returns True on success."
+            }
+        },
+        {
+            "name": "upgradeGift",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection",
+                            "type": "text"
+                        },
+                        {
+                            "key": "owned_gift_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the regular gift that should be upgraded to a unique one",
+                            "type": "text"
+                        },
+                        {
+                            "key": "keep_original_details",
+                            "value": "",
+                            "description": "Optional. Pass True to keep the original gift text, sender and receiver in the upgraded gift",
+                            "type": "text"
+                        },
+                        {
+                            "key": "star_count",
+                            "value": "",
+                            "description": "Optional. The amount of Telegram Stars that will be paid for the upgrade from the business account balance. If gift.prepaid_upgrade_star_count > 0, then pass 0, otherwise, the can_transfer_stars business bot right is required and gift.upgrade_star_count must be passed.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/upgradeGift",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "upgradeGift"
+                    ]
+                },
+                "description": "Upgrades a given regular gift to a unique gift. Requires the can_transfer_and_upgrade_gifts business bot right. Additionally requires the can_transfer_stars business bot right if the upgrade is paid. Returns True on success."
+            }
+        },
+        {
+            "name": "transferGift",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection",
+                            "type": "text"
+                        },
+                        {
+                            "key": "owned_gift_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the regular gift that should be transferred",
+                            "type": "text"
+                        },
+                        {
+                            "key": "new_owner_chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the chat which will own the gift. The chat must be active in the last 24 hours.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "star_count",
+                            "value": "",
+                            "description": "Optional. The amount of Telegram Stars that will be paid for the transfer from the business account balance. If positive, then the can_transfer_stars business bot right is required.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/transferGift",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "transferGift"
+                    ]
+                },
+                "description": "Transfers an owned unique gift to another user. Requires the can_transfer_and_upgrade_gifts business bot right. Requires can_transfer_stars business bot right if the transfer is paid. Returns True on success."
+            }
+        },
+        {
+            "name": "postStory",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection",
+                            "type": "text"
+                        },
+                        {
+                            "key": "content",
+                            "value": "",
+                            "description": "Required. Content of the story",
+                            "type": "text"
+                        },
+                        {
+                            "key": "active_period",
+                            "value": "",
+                            "description": "Required. Period after which the story is moved to the archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400",
+                            "type": "text"
+                        },
+                        {
+                            "key": "caption",
+                            "value": "",
+                            "description": "Optional. Caption of the story, 0-2048 characters after entities parsing",
+                            "type": "text"
+                        },
+                        {
+                            "key": "parse_mode",
+                            "value": "",
+                            "description": "Optional. Mode for parsing entities in the story caption. See formatting options for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "caption_entities",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode",
+                            "type": "text"
+                        },
+                        {
+                            "key": "areas",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized list of clickable areas to be shown on the story",
+                            "type": "text"
+                        },
+                        {
+                            "key": "post_to_chat_page",
+                            "value": "",
+                            "description": "Optional. Pass True to keep the story accessible after it expires",
+                            "type": "text"
+                        },
+                        {
+                            "key": "protect_content",
+                            "value": "",
+                            "description": "Optional. Pass True if the content of the story must be protected from forwarding and screenshotting",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/postStory",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "postStory"
+                    ]
+                },
+                "description": "Posts a story on behalf of a managed business account. Requires the can_manage_stories business bot right. Returns Story on success."
+            }
+        },
+        {
+            "name": "editStory",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection",
+                            "type": "text"
+                        },
+                        {
+                            "key": "story_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the story to edit",
+                            "type": "text"
+                        },
+                        {
+                            "key": "content",
+                            "value": "",
+                            "description": "Required. Content of the story",
+                            "type": "text"
+                        },
+                        {
+                            "key": "caption",
+                            "value": "",
+                            "description": "Optional. Caption of the story, 0-2048 characters after entities parsing",
+                            "type": "text"
+                        },
+                        {
+                            "key": "parse_mode",
+                            "value": "",
+                            "description": "Optional. Mode for parsing entities in the story caption. See formatting options for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "caption_entities",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode",
+                            "type": "text"
+                        },
+                        {
+                            "key": "areas",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized list of clickable areas to be shown on the story",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/editStory",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "editStory"
+                    ]
+                },
+                "description": "Edits a story previously posted by the bot on behalf of a managed business account. Requires the can_manage_stories business bot right. Returns Story on success."
+            }
+        },
+        {
+            "name": "deleteStory",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection",
+                            "type": "text"
+                        },
+                        {
+                            "key": "story_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the story to delete",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/deleteStory",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "deleteStory"
+                    ]
+                },
+                "description": "Deletes a story previously posted by the bot on behalf of a managed business account. Requires the can_manage_stories business bot right. Returns True on success."
+            }
+        },
+        {
             "name": "sendSticker",
             "request": {
                 "method": "POST",
@@ -6061,233 +7134,6 @@
             }
         },
         {
-            "name": "getAvailableGifts",
-            "request": {
-                "method": "POST",
-                "body": {
-                    "mode": "formdata",
-                    "formdata": []
-                },
-                "url": {
-                    "raw": "https://api.telegram.org/bot{{token}}/getAvailableGifts",
-                    "protocol": "https",
-                    "host": [
-                        "api",
-                        "telegram",
-                        "org"
-                    ],
-                    "path": [
-                        "bot{{token}}",
-                        "getAvailableGifts"
-                    ]
-                },
-                "description": "Returns the list of gifts that can be sent by the bot to users and channel chats. Requires no parameters. Returns a Gifts object."
-            }
-        },
-        {
-            "name": "sendGift",
-            "request": {
-                "method": "POST",
-                "body": {
-                    "mode": "formdata",
-                    "formdata": [
-                        {
-                            "key": "user_id",
-                            "value": "",
-                            "description": "Optional. Required if chat_id is not specified. Unique identifier of the target user who will receive the gift.",
-                            "type": "text"
-                        },
-                        {
-                            "key": "chat_id",
-                            "value": "",
-                            "description": "Optional. Required if user_id is not specified. Unique identifier for the chat or username of the channel (in the format @channelusername) that will receive the gift.",
-                            "type": "text"
-                        },
-                        {
-                            "key": "gift_id",
-                            "value": "",
-                            "description": "Required. Identifier of the gift",
-                            "type": "text"
-                        },
-                        {
-                            "key": "pay_for_upgrade",
-                            "value": "",
-                            "description": "Optional. Pass True to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver",
-                            "type": "text"
-                        },
-                        {
-                            "key": "text",
-                            "value": "",
-                            "description": "Optional. Text that will be shown along with the gift; 0-128 characters",
-                            "type": "text"
-                        },
-                        {
-                            "key": "text_parse_mode",
-                            "value": "",
-                            "description": "Optional. Mode for parsing entities in the text. See formatting options for more details. Entities other than \u201cbold\u201d, \u201citalic\u201d, \u201cunderline\u201d, \u201cstrikethrough\u201d, \u201cspoiler\u201d, and \u201ccustom_emoji\u201d are ignored.",
-                            "type": "text"
-                        },
-                        {
-                            "key": "text_entities",
-                            "value": "",
-                            "description": "Optional. A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than \u201cbold\u201d, \u201citalic\u201d, \u201cunderline\u201d, \u201cstrikethrough\u201d, \u201cspoiler\u201d, and \u201ccustom_emoji\u201d are ignored.",
-                            "type": "text"
-                        }
-                    ]
-                },
-                "url": {
-                    "raw": "https://api.telegram.org/bot{{token}}/sendGift",
-                    "protocol": "https",
-                    "host": [
-                        "api",
-                        "telegram",
-                        "org"
-                    ],
-                    "path": [
-                        "bot{{token}}",
-                        "sendGift"
-                    ]
-                },
-                "description": "Sends a gift to the given user or channel chat. The gift can't be converted to Telegram Stars by the receiver. Returns True on success."
-            }
-        },
-        {
-            "name": "verifyUser",
-            "request": {
-                "method": "POST",
-                "body": {
-                    "mode": "formdata",
-                    "formdata": [
-                        {
-                            "key": "user_id",
-                            "value": "",
-                            "description": "Required. Unique identifier of the target user",
-                            "type": "text"
-                        },
-                        {
-                            "key": "custom_description",
-                            "value": "",
-                            "description": "Optional. Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.",
-                            "type": "text"
-                        }
-                    ]
-                },
-                "url": {
-                    "raw": "https://api.telegram.org/bot{{token}}/verifyUser",
-                    "protocol": "https",
-                    "host": [
-                        "api",
-                        "telegram",
-                        "org"
-                    ],
-                    "path": [
-                        "bot{{token}}",
-                        "verifyUser"
-                    ]
-                },
-                "description": "Verifies a user on behalf of the organization which is represented by the bot. Returns True on success."
-            }
-        },
-        {
-            "name": "verifyChat",
-            "request": {
-                "method": "POST",
-                "body": {
-                    "mode": "formdata",
-                    "formdata": [
-                        {
-                            "key": "chat_id",
-                            "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target channel (in the format @channelusername)",
-                            "type": "text"
-                        },
-                        {
-                            "key": "custom_description",
-                            "value": "",
-                            "description": "Optional. Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.",
-                            "type": "text"
-                        }
-                    ]
-                },
-                "url": {
-                    "raw": "https://api.telegram.org/bot{{token}}/verifyChat",
-                    "protocol": "https",
-                    "host": [
-                        "api",
-                        "telegram",
-                        "org"
-                    ],
-                    "path": [
-                        "bot{{token}}",
-                        "verifyChat"
-                    ]
-                },
-                "description": "Verifies a chat on behalf of the organization which is represented by the bot. Returns True on success."
-            }
-        },
-        {
-            "name": "removeUserVerification",
-            "request": {
-                "method": "POST",
-                "body": {
-                    "mode": "formdata",
-                    "formdata": [
-                        {
-                            "key": "user_id",
-                            "value": "",
-                            "description": "Required. Unique identifier of the target user",
-                            "type": "text"
-                        }
-                    ]
-                },
-                "url": {
-                    "raw": "https://api.telegram.org/bot{{token}}/removeUserVerification",
-                    "protocol": "https",
-                    "host": [
-                        "api",
-                        "telegram",
-                        "org"
-                    ],
-                    "path": [
-                        "bot{{token}}",
-                        "removeUserVerification"
-                    ]
-                },
-                "description": "Removes verification from a user who is currently verified on behalf of the organization represented by the bot. Returns True on success."
-            }
-        },
-        {
-            "name": "removeChatVerification",
-            "request": {
-                "method": "POST",
-                "body": {
-                    "mode": "formdata",
-                    "formdata": [
-                        {
-                            "key": "chat_id",
-                            "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target channel (in the format @channelusername)",
-                            "type": "text"
-                        }
-                    ]
-                },
-                "url": {
-                    "raw": "https://api.telegram.org/bot{{token}}/removeChatVerification",
-                    "protocol": "https",
-                    "host": [
-                        "api",
-                        "telegram",
-                        "org"
-                    ],
-                    "path": [
-                        "bot{{token}}",
-                        "removeChatVerification"
-                    ]
-                },
-                "description": "Removes verification from a chat that is currently verified on behalf of the organization represented by the bot. Returns True on success."
-            }
-        },
-        {
             "name": "answerInlineQuery",
             "request": {
                 "method": "POST",
@@ -6697,7 +7543,7 @@
                         {
                             "key": "subscription_period",
                             "value": "",
-                            "description": "Optional. The number of seconds the subscription will be active for before the next payment. The currency must be set to \u201cXTR\u201d (Telegram Stars) if the parameter is used. Currently, it must always be 2592000 (30 days) if specified. Any number of subscriptions can be active for a given bot at the same time, including multiple concurrent subscriptions from the same user. Subscription price must no exceed 2500 Telegram Stars.",
+                            "description": "Optional. The number of seconds the subscription will be active for before the next payment. The currency must be set to \u201cXTR\u201d (Telegram Stars) if the parameter is used. Currently, it must always be 2592000 (30 days) if specified. Any number of subscriptions can be active for a given bot at the same time, including multiple concurrent subscriptions from the same user. Subscription price must no exceed 10000 Telegram Stars.",
                             "type": "text"
                         },
                         {
