@@ -40,7 +40,12 @@ function returnType(string $type): string {
         'LinkPreviewOptions'       => 'array',
         'ReplyParameters'          => 'array',
         'InputProfilePhoto'        => 'array',
+        'AcceptedGiftTypes'        => 'array',
     ];
+
+    if (!isset($types[$type])) {
+        return 'array';
+    }
 
     return $types[$type];
 }
