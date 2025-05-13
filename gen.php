@@ -143,16 +143,19 @@ foreach ($api['methods'] as $method) {
             $out .= TAB;
             if (count($field['types']) === 1) {
                 $out .= returnType($field['types'][0]);
-                $out .= ' ';
             } elseif ($field['types'][0] === 'int' and $field['types'][1] === 'string') {
-                $out .= 'int|string ';
+                $out .= 'int|string';
             } elseif ($field['types'][0] === 'InputFile' and $field['types'][1] === 'string') {
-                $out .= '\CURLFile|string|InputFile ';
+                $out .= '\CURLFile|string|InputFile';
             } elseif ($field['name'] == 'reply_markup') {
-                $out .= 'array ';
+                $out .= 'array';
+            }
+            // if optional explicit declare nullable
+            if ($field['optional']) {
+                $out .= '|null';
             }
 
-            $out .= '$' . $field['name'];
+            $out .= ' $' . $field['name'];
 
             if (!$field['optional']) {
                 //gen array $args of mandatory parameters
