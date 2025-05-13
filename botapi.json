@@ -7636,7 +7636,7 @@
                     "default": true
                 },
                 {
-                    "name": "can_delete_outgoing_messages",
+                    "name": "can_delete_sent_messages",
                     "types": [
                         "bool"
                     ],
@@ -8429,7 +8429,8 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the profile photo, must be “static”"
+                    "description": "Type of the profile photo, must be static",
+                    "default": "static"
                 },
                 {
                     "name": "photo",
@@ -8452,7 +8453,8 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the profile photo, must be “animated”"
+                    "description": "Type of the profile photo, must be animated",
+                    "default": "animated"
                 },
                 {
                     "name": "animation",
@@ -8493,7 +8495,8 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the content, must be “photo”"
+                    "description": "Type of the content, must be photo",
+                    "default": "photo"
                 },
                 {
                     "name": "photo",
@@ -8516,7 +8519,8 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the content, must be “video”"
+                    "description": "Type of the content, must be video",
+                    "default": "video"
                 },
                 {
                     "name": "video",
@@ -18049,7 +18053,7 @@
         },
         {
             "name": "deleteBusinessMessages",
-            "description": "Delete messages on behalf of a business account. Requires the can_delete_outgoing_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success.",
+            "description": "Delete messages on behalf of a business account. Requires the can_delete_sent_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success.",
             "fields": [
                 {
                     "name": "business_connection_id",
