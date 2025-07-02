@@ -3693,9 +3693,9 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Delete messages on behalf of a business account. Requires the can_delete_sent_messages business bot
-     * right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right
-     * to delete any message. Returns True on success.
+     * Delete messages on behalf of a business account. Requires the can_delete_outgoing_messages business
+     * bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot
+     * right to delete any message. Returns True on success.
      *
      * @param array $message_ids A JSON-serialized list of 1-100 identifiers of messages to delete. All messages must be from the
      *                                       same chat. See deleteMessage for limitations on which messages can be deleted
