@@ -2098,7 +2098,7 @@
                         {
                             "key": "options",
                             "value": "",
-                            "description": "Required. A JSON-serialized list of 2-10 answer options",
+                            "description": "Required. A JSON-serialized list of 2-12 answer options",
                             "type": "text"
                         },
                         {
@@ -2213,6 +2213,79 @@
                     ]
                 },
                 "description": "Use this method to send a native poll. On success, the sent Message is returned."
+            }
+        },
+        {
+            "name": "sendChecklist",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection on behalf of which the message will be sent",
+                            "type": "text"
+                        },
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat",
+                            "type": "text"
+                        },
+                        {
+                            "key": "checklist",
+                            "value": "",
+                            "description": "Required. A JSON-serialized object for the checklist to send",
+                            "type": "text"
+                        },
+                        {
+                            "key": "disable_notification",
+                            "value": "",
+                            "description": "Optional. Sends the message silently. Users will receive a notification with no sound.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "protect_content",
+                            "value": "",
+                            "description": "Optional. Protects the contents of the sent message from forwarding and saving",
+                            "type": "text"
+                        },
+                        {
+                            "key": "message_effect_id",
+                            "value": "",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "reply_parameters",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized object for description of the message to reply to",
+                            "type": "text"
+                        },
+                        {
+                            "key": "reply_markup",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized object for an inline keyboard",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/sendChecklist",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "sendChecklist"
+                    ]
+                },
+                "description": "Use this method to send a checklist on behalf of a connected business account. On success, the sent Message is returned."
             }
         },
         {
@@ -2690,7 +2763,7 @@
                         {
                             "key": "can_manage_chat",
                             "value": "",
-                            "description": "Optional. Pass True if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege.",
+                            "description": "Optional. Pass True if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege.",
                             "type": "text"
                         },
                         {
@@ -2750,7 +2823,7 @@
                         {
                             "key": "can_post_messages",
                             "value": "",
-                            "description": "Optional. Pass True if the administrator can post messages in the channel, or access channel statistics; for channels only",
+                            "description": "Optional. Pass True if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only",
                             "type": "text"
                         },
                         {
@@ -5198,6 +5271,61 @@
                     ]
                 },
                 "description": "Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned."
+            }
+        },
+        {
+            "name": "editMessageChecklist",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection on behalf of which the message will be sent",
+                            "type": "text"
+                        },
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat",
+                            "type": "text"
+                        },
+                        {
+                            "key": "message_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "checklist",
+                            "value": "",
+                            "description": "Required. A JSON-serialized object for the new checklist",
+                            "type": "text"
+                        },
+                        {
+                            "key": "reply_markup",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized object for the new inline keyboard for the message",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/editMessageChecklist",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "editMessageChecklist"
+                    ]
+                },
+                "description": "Use this method to edit a checklist on behalf of a connected business account. On success, the edited Message is returned."
             }
         },
         {
@@ -7738,6 +7866,30 @@
                     ]
                 },
                 "description": "Once the user has confirmed their payment and shipping details, the Bot API sends the final confirmation in the form of an Update with the field pre_checkout_query. Use this method to respond to such pre-checkout queries. On success, True is returned. Note: The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent."
+            }
+        },
+        {
+            "name": "getMyStarBalance",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/getMyStarBalance",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "getMyStarBalance"
+                    ]
+                },
+                "description": "A method to get the current Telegram Stars balance of the bot. Requires no parameters. On success, returns a StarAmount object."
             }
         },
         {

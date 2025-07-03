@@ -1297,7 +1297,7 @@ abstract class Api implements ApiInterface {
      *                                       custom emoji entities are allowed
      * @param array|null $question_entities A JSON-serialized list of special entities that appear in the poll question. It can be specified
      *                                       instead of question_parse_mode
-     * @param array $options A JSON-serialized list of 2-10 answer options
+     * @param array $options A JSON-serialized list of 2-12 answer options
      * @param bool|null $is_anonymous True, if the poll needs to be anonymous, defaults to True
      * @param string|null $type Poll type, “quiz” or “regular”, defaults to “regular”
      * @param bool|null $allows_multiple_answers True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to False
@@ -1378,6 +1378,47 @@ abstract class Api implements ApiInterface {
         if (null !== $business_connection_id) $args['business_connection_id'] = $business_connection_id;
 
         return $this->Request('sendPoll', $args);
+    }
+
+    /**
+     * Use this method to send a checklist on behalf of a connected business account. On success, the sent
+     * Message is returned.
+     *
+     * @param int $chat_id Unique identifier for the target chat
+     * @param array $checklist A JSON-serialized object for the checklist to send
+     * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
+     * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param array|null $reply_parameters A JSON-serialized object for description of the message to reply to
+     * @param array|null $reply_markup A JSON-serialized object for an inline keyboard
+     * @param string $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#sendchecklist
+     */
+    public function sendChecklist(
+        int $chat_id,
+        array $checklist,
+        string $business_connection_id,
+        bool|null $disable_notification = null,
+        bool|null $protect_content = null,
+        string|null $message_effect_id = null,
+        array|null $reply_parameters = null,
+        array|null $reply_markup = null
+    ): \stdClass {
+        $args = [
+            'chat_id' => $chat_id,
+            'checklist' => json_encode($checklist),
+            'business_connection_id' => $business_connection_id
+        ];
+
+        if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
+        if (null !== $protect_content) $args['protect_content'] = $protect_content;
+        if (null !== $message_effect_id) $args['message_effect_id'] = $message_effect_id;
+        if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
+        if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
+
+        return $this->Request('sendChecklist', $args);
     }
 
     /**
@@ -1694,8 +1735,8 @@ abstract class Api implements ApiInterface {
      * @param int $user_id Unique identifier of the target user
      * @param bool|null $is_anonymous Pass True if the administrator's presence in the chat is hidden
      * @param bool|null $can_manage_chat Pass True if the administrator can access the chat event log, get boost list, see hidden supergroup
-     *                                       and channel members, report spam messages and ignore slow mode. Implied by any other administrator
-     *                                       privilege.
+     *                                       and channel members, report spam messages, ignore slow mode, and send messages to the chat without
+     *                                       paying Telegram Stars. Implied by any other administrator privilege.
      * @param bool|null $can_delete_messages Pass True if the administrator can delete messages of other users
      * @param bool|null $can_manage_video_chats Pass True if the administrator can manage video chats
      * @param bool|null $can_restrict_members Pass True if the administrator can restrict, ban or unban chat members, or access supergroup
@@ -1709,8 +1750,8 @@ abstract class Api implements ApiInterface {
      * @param bool|null $can_edit_stories Pass True if the administrator can edit stories posted by other users, post stories to the chat
      *                                       page, pin chat stories, and access the chat's story archive
      * @param bool|null $can_delete_stories Pass True if the administrator can delete stories posted by other users
-     * @param bool|null $can_post_messages Pass True if the administrator can post messages in the channel, or access channel statistics; for
-     *                                       channels only
+     * @param bool|null $can_post_messages Pass True if the administrator can post messages in the channel, approve suggested posts, or access
+     *                                       channel statistics; for channels only
      * @param bool|null $can_edit_messages Pass True if the administrator can edit messages of other users and can pin messages; for channels
      *                                       only
      * @param bool|null $can_pin_messages Pass True if the administrator can pin messages; for supergroups only
@@ -3361,6 +3402,38 @@ abstract class Api implements ApiInterface {
     }
 
     /**
+     * Use this method to edit a checklist on behalf of a connected business account. On success, the
+     * edited Message is returned.
+     *
+     * @param int $chat_id Unique identifier for the target chat
+     * @param int $message_id Unique identifier for the target message
+     * @param array $checklist A JSON-serialized object for the new checklist
+     * @param array|null $reply_markup A JSON-serialized object for the new inline keyboard for the message
+     * @param string $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#editmessagechecklist
+     */
+    public function editMessageChecklist(
+        int $chat_id,
+        int $message_id,
+        array $checklist,
+        string $business_connection_id,
+        array|null $reply_markup = null
+    ): \stdClass {
+        $args = [
+            'chat_id' => $chat_id,
+            'message_id' => $message_id,
+            'checklist' => json_encode($checklist),
+            'business_connection_id' => $business_connection_id
+        ];
+
+        if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
+
+        return $this->Request('editMessageChecklist', $args);
+    }
+
+    /**
      * Use this method to edit only the reply markup of messages. On success, if the edited message is not
      * an inline message, the edited Message is returned, otherwise True is returned. Note that business
      * messages that were not sent by the bot and do not contain an inline keyboard can only be edited
@@ -4980,6 +5053,18 @@ abstract class Api implements ApiInterface {
         if (null !== $error_message) $args['error_message'] = $error_message;
 
         return $this->Request('answerPreCheckoutQuery', $args);
+    }
+
+    /**
+     * A method to get the current Telegram Stars balance of the bot. Requires no parameters. On success,
+     * returns a StarAmount object.
+     *
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#getmystarbalance
+     */
+    public function getMyStarBalance(): \stdClass {
+        return $this->Request('getMyStarBalance', []);
     }
 
     /**
