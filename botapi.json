@@ -7117,7 +7117,7 @@
                 {
                     "name": "next_transfer_date",
                     "types": [
-                        "string"
+                        "int"
                     ],
                     "optional": true,
                     "description": "Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now"
@@ -7322,7 +7322,7 @@
                 {
                     "name": "next_transfer_date",
                     "types": [
-                        "string"
+                        "int"
                     ],
                     "optional": true,
                     "description": "Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now"
