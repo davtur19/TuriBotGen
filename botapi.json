@@ -3257,8 +3257,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Optional. Pass True if other users can mark tasks as done or not done in the checklist",
-                    "default": true
+                    "description": "Optional. Pass True if other users can mark tasks as done or not done in the checklist"
                 }
             ],
             "extended_by": []
