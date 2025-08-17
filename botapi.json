@@ -4651,7 +4651,7 @@
         },
         {
             "name": "SuggestedPostPrice",
-            "description": "Desribes price of a suggested post.",
+            "description": "Describes the price of a suggested post.",
             "fields": [
                 {
                     "name": "currency",
