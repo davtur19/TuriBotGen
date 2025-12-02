@@ -1,5 +1,5 @@
 {
-    "version": "9.0.0",
+    "version": "9.2.0",
     "types": [
         {
             "name": "Update",
@@ -452,6 +452,15 @@
                     "optional": true,
                     "description": "Optional. True, if the supergroup chat is a forum (has topics enabled)",
                     "default": true
+                },
+                {
+                    "name": "is_direct_messages",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. True, if the chat is the direct messages chat of a channel",
+                    "default": true
                 }
             ],
             "extended_by": []
@@ -515,6 +524,15 @@
                     ],
                     "optional": true,
                     "description": "Optional. True, if the supergroup chat is a forum (has topics enabled)",
+                    "default": true
+                },
+                {
+                    "name": "is_direct_messages",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. True, if the chat is the direct messages chat of a channel",
                     "default": true
                 },
                 {
@@ -588,6 +606,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. For private chats, the personal channel of the user"
+                },
+                {
+                    "name": "parent_chat",
+                    "types": [
+                        "Chat"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Information about the corresponding channel chat; for direct messages chats only"
                 },
                 {
                     "name": "available_reactions",
@@ -855,6 +881,14 @@
                     "description": "Optional. Unique identifier of a message thread to which the message belongs; for supergroups only"
                 },
                 {
+                    "name": "direct_messages_topic",
+                    "types": [
+                        "DirectMessagesTopic"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Information about the direct messages chat topic that contains the message"
+                },
+                {
                     "name": "from",
                     "types": [
                         "User"
@@ -969,6 +1003,14 @@
                     "description": "Optional. For replies to a story, the original story"
                 },
                 {
+                    "name": "reply_to_checklist_task_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Identifier of the specific checklist task that is being replied to"
+                },
+                {
                     "name": "via_bot",
                     "types": [
                         "User"
@@ -1000,6 +1042,15 @@
                     ],
                     "optional": true,
                     "description": "Optional. True, if the message was sent by an implicit action, for example, as an away or a greeting business message, or as a scheduled message",
+                    "default": true
+                },
+                {
+                    "name": "is_paid_post",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. True, if the message is a paid post. Note that such posts must not be deleted for 24 hours to receive the payment and can't be edited.",
                     "default": true
                 },
                 {
@@ -1049,6 +1100,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. Options used for link preview generation for the message, if it is a text message and link preview options were changed"
+                },
+                {
+                    "name": "suggested_post_info",
+                    "types": [
+                        "SuggestedPostInfo"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Information about suggested post parameters if the message is a suggested post in a channel direct messages chat. If the message is an approved or declined suggested post, then it can't be edited."
                 },
                 {
                     "name": "effect_id",
@@ -1171,6 +1230,14 @@
                     "optional": true,
                     "description": "Optional. True, if the message media is covered by a spoiler animation",
                     "default": true
+                },
+                {
+                    "name": "checklist",
+                    "types": [
+                        "Checklist"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Message is a checklist"
                 },
                 {
                     "name": "contact",
@@ -1425,6 +1492,30 @@
                     "description": "Optional. Service message: chat background set"
                 },
                 {
+                    "name": "checklist_tasks_done",
+                    "types": [
+                        "ChecklistTasksDone"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Service message: some tasks in a checklist were marked as done or not done"
+                },
+                {
+                    "name": "checklist_tasks_added",
+                    "types": [
+                        "ChecklistTasksAdded"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Service message: tasks were added to a checklist"
+                },
+                {
+                    "name": "direct_message_price_changed",
+                    "types": [
+                        "DirectMessagePriceChanged"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Service message: the price for paid messages in the corresponding direct messages chat of a channel has changed"
+                },
+                {
                     "name": "forum_topic_created",
                     "types": [
                         "ForumTopicCreated"
@@ -1511,6 +1602,46 @@
                     ],
                     "optional": true,
                     "description": "Optional. Service message: the price for paid messages has changed in the chat"
+                },
+                {
+                    "name": "suggested_post_approved",
+                    "types": [
+                        "SuggestedPostApproved"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Service message: a suggested post was approved"
+                },
+                {
+                    "name": "suggested_post_approval_failed",
+                    "types": [
+                        "SuggestedPostApprovalFailed"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Service message: approval of a suggested post has failed"
+                },
+                {
+                    "name": "suggested_post_declined",
+                    "types": [
+                        "SuggestedPostDeclined"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Service message: a suggested post was declined"
+                },
+                {
+                    "name": "suggested_post_paid",
+                    "types": [
+                        "SuggestedPostPaid"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Service message: payment for a suggested post was received"
+                },
+                {
+                    "name": "suggested_post_refunded",
+                    "types": [
+                        "SuggestedPostRefunded"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Service message: payment for a suggested post was refunded"
                 },
                 {
                     "name": "video_chat_scheduled",
@@ -1847,6 +1978,14 @@
                     "default": true
                 },
                 {
+                    "name": "checklist",
+                    "types": [
+                        "Checklist"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Message is a checklist"
+                },
+                {
                     "name": "contact",
                     "types": [
                         "Contact"
@@ -1940,7 +2079,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. If the message to be replied to is from a different chat, unique identifier for the chat or username of the channel (in the format @channelusername). Not supported for messages sent on behalf of a business account."
+                    "description": "Optional. If the message to be replied to is from a different chat, unique identifier for the chat or username of the channel (in the format @channelusername). Not supported for messages sent on behalf of a business account and messages from channel direct messages chats."
                 },
                 {
                     "name": "allow_sending_without_reply",
@@ -1981,6 +2120,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. Position of the quote in the original message in UTF-16 code units"
+                },
+                {
+                    "name": "checklist_task_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Identifier of the specific checklist task to be replied to"
                 }
             ],
             "extended_by": []
@@ -3033,6 +3180,250 @@
             "extended_by": []
         },
         {
+            "name": "ChecklistTask",
+            "description": "Describes a task in a checklist.",
+            "fields": [
+                {
+                    "name": "id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier of the task"
+                },
+                {
+                    "name": "text",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Text of the task"
+                },
+                {
+                    "name": "text_entities",
+                    "types": [
+                        "Array<MessageEntity>"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Special entities that appear in the task text"
+                },
+                {
+                    "name": "completed_by_user",
+                    "types": [
+                        "User"
+                    ],
+                    "optional": true,
+                    "description": "Optional. User that completed the task; omitted if the task wasn't completed"
+                },
+                {
+                    "name": "completion_date",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Point in time (Unix timestamp) when the task was completed; 0 if the task wasn't completed"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "Checklist",
+            "description": "Describes a checklist.",
+            "fields": [
+                {
+                    "name": "title",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Title of the checklist"
+                },
+                {
+                    "name": "title_entities",
+                    "types": [
+                        "Array<MessageEntity>"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Special entities that appear in the checklist title"
+                },
+                {
+                    "name": "tasks",
+                    "types": [
+                        "Array<ChecklistTask>"
+                    ],
+                    "optional": false,
+                    "description": "List of tasks in the checklist"
+                },
+                {
+                    "name": "others_can_add_tasks",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. True, if users other than the creator of the list can add tasks to the list",
+                    "default": true
+                },
+                {
+                    "name": "others_can_mark_tasks_as_done",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. True, if users other than the creator of the list can mark tasks as done or not done",
+                    "default": true
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "InputChecklistTask",
+            "description": "Describes a task to add to a checklist.",
+            "fields": [
+                {
+                    "name": "id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier of the task; must be positive and unique among all task identifiers currently present in the checklist"
+                },
+                {
+                    "name": "text",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Text of the task; 1-100 characters after entities parsing"
+                },
+                {
+                    "name": "parse_mode",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Mode for parsing entities in the text. See formatting options for more details."
+                },
+                {
+                    "name": "text_entities",
+                    "types": [
+                        "Array<MessageEntity>"
+                    ],
+                    "optional": true,
+                    "description": "Optional. List of special entities that appear in the text, which can be specified instead of parse_mode. Currently, only bold, italic, underline, strikethrough, spoiler, and custom_emoji entities are allowed."
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "InputChecklist",
+            "description": "Describes a checklist to create.",
+            "fields": [
+                {
+                    "name": "title",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Title of the checklist; 1-255 characters after entities parsing"
+                },
+                {
+                    "name": "parse_mode",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Mode for parsing entities in the title. See formatting options for more details."
+                },
+                {
+                    "name": "title_entities",
+                    "types": [
+                        "Array<MessageEntity>"
+                    ],
+                    "optional": true,
+                    "description": "Optional. List of special entities that appear in the title, which can be specified instead of parse_mode. Currently, only bold, italic, underline, strikethrough, spoiler, and custom_emoji entities are allowed."
+                },
+                {
+                    "name": "tasks",
+                    "types": [
+                        "Array<InputChecklistTask>"
+                    ],
+                    "optional": false,
+                    "description": "List of 1-30 tasks in the checklist"
+                },
+                {
+                    "name": "others_can_add_tasks",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Pass True if other users can add tasks to the checklist"
+                },
+                {
+                    "name": "others_can_mark_tasks_as_done",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Pass True if other users can mark tasks as done or not done in the checklist"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "ChecklistTasksDone",
+            "description": "Describes a service message about checklist tasks marked as done or not done.",
+            "fields": [
+                {
+                    "name": "checklist_message",
+                    "types": [
+                        "Message"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Message containing the checklist whose tasks were marked as done or not done. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply."
+                },
+                {
+                    "name": "marked_as_done_task_ids",
+                    "types": [
+                        "Array<int>"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Identifiers of the tasks that were marked as done"
+                },
+                {
+                    "name": "marked_as_not_done_task_ids",
+                    "types": [
+                        "Array<int>"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Identifiers of the tasks that were marked as not done"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "ChecklistTasksAdded",
+            "description": "Describes a service message about tasks added to a checklist.",
+            "fields": [
+                {
+                    "name": "checklist_message",
+                    "types": [
+                        "Message"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Message containing the checklist to which the tasks were added. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply."
+                },
+                {
+                    "name": "tasks",
+                    "types": [
+                        "Array<ChecklistTask>"
+                    ],
+                    "optional": false,
+                    "description": "List of tasks added to the checklist"
+                }
+            ],
+            "extended_by": []
+        },
+        {
             "name": "Location",
             "description": "This object represents a point on the map.",
             "fields": [
@@ -3808,6 +4199,169 @@
             "extended_by": []
         },
         {
+            "name": "DirectMessagePriceChanged",
+            "description": "Describes a service message about a change in the price of direct messages sent to a channel chat.",
+            "fields": [
+                {
+                    "name": "are_direct_messages_enabled",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": false,
+                    "description": "True, if direct messages are enabled for the channel chat; false otherwise"
+                },
+                {
+                    "name": "direct_message_star_count",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. The new number of Telegram Stars that must be paid by users for each direct message sent to the channel. Does not apply to users who have been exempted by administrators. Defaults to 0.",
+                    "default": 0
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "SuggestedPostApproved",
+            "description": "Describes a service message about the approval of a suggested post.",
+            "fields": [
+                {
+                    "name": "suggested_post_message",
+                    "types": [
+                        "Message"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply."
+                },
+                {
+                    "name": "price",
+                    "types": [
+                        "SuggestedPostPrice"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Amount paid for the post"
+                },
+                {
+                    "name": "send_date",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Date when the post will be published"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "SuggestedPostApprovalFailed",
+            "description": "Describes a service message about the failed approval of a suggested post. Currently, only caused by insufficient user funds at the time of approval.",
+            "fields": [
+                {
+                    "name": "suggested_post_message",
+                    "types": [
+                        "Message"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Message containing the suggested post whose approval has failed. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply."
+                },
+                {
+                    "name": "price",
+                    "types": [
+                        "SuggestedPostPrice"
+                    ],
+                    "optional": false,
+                    "description": "Expected price of the post"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "SuggestedPostDeclined",
+            "description": "Describes a service message about the rejection of a suggested post.",
+            "fields": [
+                {
+                    "name": "suggested_post_message",
+                    "types": [
+                        "Message"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply."
+                },
+                {
+                    "name": "comment",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Comment with which the post was declined"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "SuggestedPostPaid",
+            "description": "Describes a service message about a successful payment for a suggested post.",
+            "fields": [
+                {
+                    "name": "suggested_post_message",
+                    "types": [
+                        "Message"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply."
+                },
+                {
+                    "name": "currency",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Currency in which the payment was made. Currently, one of “XTR” for Telegram Stars or “TON” for toncoins"
+                },
+                {
+                    "name": "amount",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. The amount of the currency that was received by the channel in nanotoncoins; for payments in toncoins only"
+                },
+                {
+                    "name": "star_amount",
+                    "types": [
+                        "StarAmount"
+                    ],
+                    "optional": true,
+                    "description": "Optional. The amount of Telegram Stars that was received by the channel; for payments in Telegram Stars only"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "SuggestedPostRefunded",
+            "description": "Describes a service message about a payment refund for a suggested post.",
+            "fields": [
+                {
+                    "name": "suggested_post_message",
+                    "types": [
+                        "Message"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply."
+                },
+                {
+                    "name": "reason",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Reason for the refund. Currently, one of “post_deleted” if the post was deleted within 24 hours of being posted or removed from scheduled messages without being posted, or “payment_refunded” if the payer refunded their payment."
+                }
+            ],
+            "extended_by": []
+        },
+        {
             "name": "GiveawayCreated",
             "description": "This object represents a service message about the creation of a scheduled giveaway.",
             "fields": [
@@ -4091,6 +4645,106 @@
                     ],
                     "optional": true,
                     "description": "Optional. True, if the link preview must be shown above the message text; otherwise, the link preview will be shown below the message text"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "SuggestedPostPrice",
+            "description": "Describes the price of a suggested post.",
+            "fields": [
+                {
+                    "name": "currency",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Currency in which the post will be paid. Currently, must be one of “XTR” for Telegram Stars or “TON” for toncoins"
+                },
+                {
+                    "name": "amount",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "The amount of the currency that will be paid for the post in the smallest units of the currency, i.e. Telegram Stars or nanotoncoins. Currently, price in Telegram Stars must be between 5 and 100000, and price in nanotoncoins must be between 10000000 and 10000000000000."
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "SuggestedPostInfo",
+            "description": "Contains information about a suggested post.",
+            "fields": [
+                {
+                    "name": "state",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "State of the suggested post. Currently, it can be one of “pending”, “approved”, “declined”."
+                },
+                {
+                    "name": "price",
+                    "types": [
+                        "SuggestedPostPrice"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Proposed price of the post. If the field is omitted, then the post is unpaid."
+                },
+                {
+                    "name": "send_date",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Proposed send date of the post. If the field is omitted, then the post can be published at any time within 30 days at the sole discretion of the user or administrator who approves it."
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "SuggestedPostParameters",
+            "description": "Contains parameters of a post that is being suggested by the bot.",
+            "fields": [
+                {
+                    "name": "price",
+                    "types": [
+                        "SuggestedPostPrice"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Proposed price for the post. If the field is omitted, then the post is unpaid."
+                },
+                {
+                    "name": "send_date",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Proposed send date of the post. If specified, then the date must be between 300 second and 2678400 seconds (30 days) in the future. If the field is omitted, then the post can be published at any time within 30 days at the sole discretion of the user who approves it."
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "DirectMessagesTopic",
+            "description": "Describes a topic of a direct messages chat.",
+            "fields": [
+                {
+                    "name": "topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier of the topic. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier."
+                },
+                {
+                    "name": "user",
+                    "types": [
+                        "User"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Information about the user that created the topic. Currently, it is always present"
                 }
             ],
             "extended_by": []
@@ -4556,7 +5210,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted. Not supported for messages sent on behalf of a Telegram Business account."
+                    "description": "Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted. Not supported for messages sent in channel direct messages chats and on behalf of a Telegram Business account."
                 },
                 {
                     "name": "switch_inline_query_current_chat",
@@ -4564,7 +5218,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted.This offers a quick way for the user to open your bot in inline mode in the same chat - good for selecting something from multiple options. Not supported in channels and for messages sent on behalf of a Telegram Business account."
+                    "description": "Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted.This offers a quick way for the user to open your bot in inline mode in the same chat - good for selecting something from multiple options. Not supported in channels and for messages sent in channel direct messages chats and on behalf of a Telegram Business account."
                 },
                 {
                     "name": "switch_inline_query_chosen_chat",
@@ -4572,7 +5226,7 @@
                         "SwitchInlineQueryChosenChat"
                     ],
                     "optional": true,
-                    "description": "Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type, open that chat and insert the bot's username and the specified inline query in the input field. Not supported for messages sent on behalf of a Telegram Business account."
+                    "description": "Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type, open that chat and insert the bot's username and the specified inline query in the input field. Not supported for messages sent in channel direct messages chats and on behalf of a Telegram Business account."
                 },
                 {
                     "name": "copy_text",
@@ -4949,7 +5603,7 @@
                         "bool"
                     ],
                     "optional": false,
-                    "description": "True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege."
+                    "description": "True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege."
                 },
                 {
                     "name": "can_delete_messages",
@@ -5029,7 +5683,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Optional. True, if the administrator can post messages in the channel, or access channel statistics; for channels only"
+                    "description": "Optional. True, if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only"
                 },
                 {
                     "name": "can_edit_messages",
@@ -5054,6 +5708,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only"
+                },
+                {
+                    "name": "can_manage_direct_messages",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. True, if the administrator can manage direct messages of the channel and decline suggested posts; for channels only"
                 }
             ],
             "extended_by": []
@@ -5223,7 +5885,7 @@
                         "bool"
                     ],
                     "optional": false,
-                    "description": "True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege."
+                    "description": "True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege."
                 },
                 {
                     "name": "can_delete_messages",
@@ -5303,7 +5965,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Optional. True, if the administrator can post messages in the channel, or access channel statistics; for channels only"
+                    "description": "Optional. True, if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only"
                 },
                 {
                     "name": "can_edit_messages",
@@ -5328,6 +5990,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only"
+                },
+                {
+                    "name": "can_manage_direct_messages",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. True, if the administrator can manage direct messages of the channel and decline suggested posts; for channels only"
                 },
                 {
                     "name": "custom_title",
@@ -5461,7 +6131,7 @@
                         "bool"
                     ],
                     "optional": false,
-                    "description": "True, if the user is allowed to send polls"
+                    "description": "True, if the user is allowed to send polls and checklists"
                 },
                 {
                     "name": "can_send_other_messages",
@@ -5697,7 +6367,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Optional. True, if the user is allowed to send polls"
+                    "description": "Optional. True, if the user is allowed to send polls and checklists"
                 },
                 {
                     "name": "can_send_other_messages",
@@ -6224,7 +6894,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Reaction emoji. Currently, it can be one of \"👍\", \"👎\", \"❤\", \"🔥\", \"🥰\", \"👏\", \"😁\", \"🤔\", \"🤯\", \"😱\", \"🤬\", \"😢\", \"🎉\", \"🤩\", \"🤮\", \"💩\", \"🙏\", \"👌\", \"🕊\", \"🤡\", \"🥱\", \"🥴\", \"😍\", \"🐳\", \"❤‍🔥\", \"🌚\", \"🌭\", \"💯\", \"🤣\", \"⚡\", \"🍌\", \"🏆\", \"💔\", \"🤨\", \"😐\", \"🍓\", \"🍾\", \"💋\", \"🖕\", \"😈\", \"😴\", \"😭\", \"🤓\", \"👻\", \"👨‍💻\", \"👀\", \"🎃\", \"🙈\", \"😇\", \"😨\", \"🤝\", \"✍\", \"🤗\", \"🫡\", \"🎅\", \"🎄\", \"☃\", \"💅\", \"🤪\", \"🗿\", \"🆒\", \"💘\", \"🙉\", \"🦄\", \"😘\", \"💊\", \"🙊\", \"😎\", \"👾\", \"🤷‍♂\", \"🤷\", \"🤷‍♀\", \"😡\""
+                    "description": "Reaction emoji. Currently, it can be one of \"❤\", \"👍\", \"👎\", \"🔥\", \"🥰\", \"👏\", \"😁\", \"🤔\", \"🤯\", \"😱\", \"🤬\", \"😢\", \"🎉\", \"🤩\", \"🤮\", \"💩\", \"🙏\", \"👌\", \"🕊\", \"🤡\", \"🥱\", \"🥴\", \"😍\", \"🐳\", \"❤‍🔥\", \"🌚\", \"🌭\", \"💯\", \"🤣\", \"⚡\", \"🍌\", \"🏆\", \"💔\", \"🤨\", \"😐\", \"🍓\", \"🍾\", \"💋\", \"🖕\", \"😈\", \"😴\", \"😭\", \"🤓\", \"👻\", \"👨‍💻\", \"👀\", \"🎃\", \"🙈\", \"😇\", \"😨\", \"🤝\", \"✍\", \"🤗\", \"🫡\", \"🎅\", \"🎄\", \"☃\", \"💅\", \"🤪\", \"🗿\", \"🆒\", \"💘\", \"🙉\", \"🦄\", \"😘\", \"💊\", \"🙊\", \"😎\", \"👾\", \"🤷‍♂\", \"🤷\", \"🤷‍♀\", \"😡\""
                 }
             ],
             "extended_by": []
@@ -6482,6 +7152,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. The number of remaining gifts of this type that can be sent; for limited gifts only"
+                },
+                {
+                    "name": "publisher_chat",
+                    "types": [
+                        "Chat"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Information about the chat that published the gift"
                 }
             ],
             "extended_by": []
@@ -6684,6 +7362,14 @@
                     ],
                     "optional": false,
                     "description": "Backdrop of the gift"
+                },
+                {
+                    "name": "publisher_chat",
+                    "types": [
+                        "Chat"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Information about the chat that published the gift"
                 }
             ],
             "extended_by": []
@@ -6779,7 +7465,15 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Origin of the gift. Currently, either “upgrade” or “transfer”"
+                    "description": "Origin of the gift. Currently, either “upgrade” for gifts upgraded from regular gifts, “transfer” for gifts transferred from other users or channels, or “resale” for gifts bought from other users"
+                },
+                {
+                    "name": "last_resale_star_count",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. For gifts bought from other users, the price paid for the gift"
                 },
                 {
                     "name": "owned_gift_id",
@@ -6796,6 +7490,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift"
+                },
+                {
+                    "name": "next_transfer_date",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now"
                 }
             ],
             "extended_by": []
@@ -6993,6 +7695,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift"
+                },
+                {
+                    "name": "next_transfer_date",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now"
                 }
             ],
             "extended_by": []
@@ -7211,7 +7921,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel direct messages chats and channel chats aren't supported."
                 }
             ],
             "extended_by": []
@@ -7236,7 +7946,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel direct messages chats and channel chats aren't supported."
                 }
             ],
             "extended_by": []
@@ -7261,7 +7971,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel direct messages chats and channel chats aren't supported."
                 },
                 {
                     "name": "user_id",
@@ -7636,7 +8346,7 @@
                     "default": true
                 },
                 {
-                    "name": "can_delete_outgoing_messages",
+                    "name": "can_delete_sent_messages",
                     "types": [
                         "bool"
                     ],
@@ -8429,7 +9139,8 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the profile photo, must be “static”"
+                    "description": "Type of the profile photo, must be static",
+                    "default": "static"
                 },
                 {
                     "name": "photo",
@@ -8452,7 +9163,8 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the profile photo, must be “animated”"
+                    "description": "Type of the profile photo, must be animated",
+                    "default": "animated"
                 },
                 {
                     "name": "animation",
@@ -8493,7 +9205,8 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the content, must be “photo”"
+                    "description": "Type of the content, must be photo",
+                    "default": "photo"
                 },
                 {
                     "name": "photo",
@@ -8516,7 +9229,8 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the content, must be “video”"
+                    "description": "Type of the content, must be video",
+                    "default": "video"
                 },
                 {
                     "name": "video",
@@ -13072,6 +13786,14 @@
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
                 },
                 {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
+                },
+                {
                     "name": "text",
                     "types": [
                         "string"
@@ -13136,6 +13858,14 @@
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
+                {
                     "name": "reply_parameters",
                     "types": [
                         "ReplyParameters"
@@ -13181,6 +13911,14 @@
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
                 },
                 {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be forwarded; required if the message is forwarded to a direct messages chat"
+                },
+                {
                     "name": "from_chat_id",
                     "types": [
                         "int",
@@ -13212,6 +13950,14 @@
                     ],
                     "optional": true,
                     "description": "Protects the contents of the forwarded message from forwarding and saving"
+                },
+                {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only"
                 },
                 {
                     "name": "message_id",
@@ -13246,6 +13992,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the messages will be forwarded; required if the messages are forwarded to a direct messages chat"
                 },
                 {
                     "name": "from_chat_id",
@@ -13305,6 +14059,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 {
                     "name": "from_chat_id",
@@ -13388,6 +14150,14 @@
                     "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
                 },
                 {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
+                {
                     "name": "reply_parameters",
                     "types": [
                         "ReplyParameters"
@@ -13431,6 +14201,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat"
                 },
                 {
                     "name": "from_chat_id",
@@ -13506,6 +14284,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 {
                     "name": "photo",
@@ -13589,6 +14375,14 @@
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
+                {
                     "name": "reply_parameters",
                     "types": [
                         "ReplyParameters"
@@ -13640,6 +14434,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 {
                     "name": "audio",
@@ -13740,6 +14542,14 @@
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
+                {
                     "name": "reply_parameters",
                     "types": [
                         "ReplyParameters"
@@ -13791,6 +14601,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 {
                     "name": "document",
@@ -13875,6 +14693,14 @@
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
+                {
                     "name": "reply_parameters",
                     "types": [
                         "ReplyParameters"
@@ -13926,6 +14752,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 {
                     "name": "video",
@@ -14067,6 +14901,14 @@
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
+                {
                     "name": "reply_parameters",
                     "types": [
                         "ReplyParameters"
@@ -14118,6 +14960,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 {
                     "name": "animation",
@@ -14234,6 +15084,14 @@
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
+                {
                     "name": "reply_parameters",
                     "types": [
                         "ReplyParameters"
@@ -14285,6 +15143,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 {
                     "name": "voice",
@@ -14360,6 +15226,14 @@
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
+                {
                     "name": "reply_parameters",
                     "types": [
                         "ReplyParameters"
@@ -14411,6 +15285,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 {
                     "name": "video_note",
@@ -14479,6 +15361,14 @@
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
+                {
                     "name": "reply_parameters",
                     "types": [
                         "ReplyParameters"
@@ -14522,6 +15412,22 @@
                     ],
                     "optional": false,
                     "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername). If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance."
+                },
+                {
+                    "name": "message_thread_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 {
                     "name": "star_count",
@@ -14604,6 +15510,14 @@
                     "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
                 },
                 {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
+                {
                     "name": "reply_parameters",
                     "types": [
                         "ReplyParameters"
@@ -14629,7 +15543,7 @@
         },
         {
             "name": "sendMediaGroup",
-            "description": "Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.",
+            "description": "Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Message objects that were sent is returned.",
             "fields": [
                 {
                     "name": "business_connection_id",
@@ -14655,6 +15569,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat"
                 },
                 {
                     "name": "media",
@@ -14739,6 +15661,14 @@
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
                 },
                 {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
+                },
+                {
                     "name": "latitude",
                     "types": [
                         "float"
@@ -14819,6 +15749,14 @@
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
+                {
                     "name": "reply_parameters",
                     "types": [
                         "ReplyParameters"
@@ -14870,6 +15808,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 {
                     "name": "latitude",
@@ -14968,6 +15914,14 @@
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
+                {
                     "name": "reply_parameters",
                     "types": [
                         "ReplyParameters"
@@ -15019,6 +15973,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 {
                     "name": "phone_number",
@@ -15085,6 +16047,14 @@
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
                 {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
+                {
                     "name": "reply_parameters",
                     "types": [
                         "ReplyParameters"
@@ -15127,7 +16097,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername). Polls can't be sent to channel direct messages chats."
                 },
                 {
                     "name": "message_thread_id",
@@ -15167,7 +16137,7 @@
                         "Array<InputPollOption>"
                     ],
                     "optional": false,
-                    "description": "A JSON-serialized list of 2-10 answer options"
+                    "description": "A JSON-serialized list of 2-12 answer options"
                 },
                 {
                     "name": "is_anonymous",
@@ -15309,6 +16279,79 @@
             ]
         },
         {
+            "name": "sendChecklist",
+            "description": "Use this method to send a checklist on behalf of a connected business account. On success, the sent Message is returned.",
+            "fields": [
+                {
+                    "name": "business_connection_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier of the business connection on behalf of which the message will be sent"
+                },
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier for the target chat"
+                },
+                {
+                    "name": "checklist",
+                    "types": [
+                        "InputChecklist"
+                    ],
+                    "optional": false,
+                    "description": "A JSON-serialized object for the checklist to send"
+                },
+                {
+                    "name": "disable_notification",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Sends the message silently. Users will receive a notification with no sound."
+                },
+                {
+                    "name": "protect_content",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Protects the contents of the sent message from forwarding and saving"
+                },
+                {
+                    "name": "message_effect_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier of the message effect to be added to the message"
+                },
+                {
+                    "name": "reply_parameters",
+                    "types": [
+                        "ReplyParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object for description of the message to reply to"
+                },
+                {
+                    "name": "reply_markup",
+                    "types": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object for an inline keyboard"
+                }
+            ],
+            "return_types": [
+                "Message"
+            ]
+        },
+        {
             "name": "sendDice",
             "description": "Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned.",
             "fields": [
@@ -15336,6 +16379,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 {
                     "name": "emoji",
@@ -15377,6 +16428,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
+                },
+                {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
                 },
                 {
                     "name": "reply_parameters",
@@ -15421,7 +16480,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel chats and channel direct messages chats aren't supported."
                 },
                 {
                     "name": "message_thread_id",
@@ -15731,7 +16790,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege."
+                    "description": "Pass True if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege."
                 },
                 {
                     "name": "can_delete_messages",
@@ -15811,7 +16870,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True if the administrator can post messages in the channel, or access channel statistics; for channels only"
+                    "description": "Pass True if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only"
                 },
                 {
                     "name": "can_edit_messages",
@@ -15836,6 +16895,14 @@
                     ],
                     "optional": true,
                     "description": "Pass True if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only"
+                },
+                {
+                    "name": "can_manage_direct_messages",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Pass True if the administrator can manage direct messages within the channel and decline suggested posts; for channels only"
                 }
             ],
             "return_types": [
@@ -16340,7 +17407,7 @@
         },
         {
             "name": "pinChatMessage",
-            "description": "Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.",
+            "description": "Use this method to add a message to the list of pinned messages in a chat. In private chats and channel direct messages chats, all non-service messages can be pinned. Conversely, the bot must be an administrator with the 'can_pin_messages' right or the 'can_edit_messages' right to pin messages in groups and channels respectively. Returns True on success.",
             "fields": [
                 {
                     "name": "business_connection_id",
@@ -16382,7 +17449,7 @@
         },
         {
             "name": "unpinChatMessage",
-            "description": "Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.",
+            "description": "Use this method to remove a message from the list of pinned messages in a chat. In private chats and channel direct messages chats, all messages can be unpinned. Conversely, the bot must be an administrator with the 'can_pin_messages' right or the 'can_edit_messages' right to unpin messages in groups and channels respectively. Returns True on success.",
             "fields": [
                 {
                     "name": "business_connection_id",
@@ -16416,7 +17483,7 @@
         },
         {
             "name": "unpinAllChatMessages",
-            "description": "Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.",
+            "description": "Use this method to clear the list of pinned messages in a chat. In private chats and channel direct messages chats, no additional rights are required to unpin all pinned messages. Conversely, the bot must be an administrator with the 'can_pin_messages' right or the 'can_edit_messages' right to unpin all pinned messages in groups and channels respectively. Returns True on success.",
             "fields": [
                 {
                     "name": "chat_id",
@@ -16443,7 +17510,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername). Channel direct messages chats aren't supported; leave the corresponding channel instead."
                 }
             ],
             "return_types": [
@@ -17278,526 +18345,6 @@
             ]
         },
         {
-            "name": "editMessageText",
-            "description": "Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.",
-            "fields": [
-                {
-                    "name": "business_connection_id",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
-                },
-                {
-                    "name": "chat_id",
-                    "types": [
-                        "int",
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                {
-                    "name": "message_id",
-                    "types": [
-                        "int"
-                    ],
-                    "optional": true,
-                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
-                },
-                {
-                    "name": "inline_message_id",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
-                },
-                {
-                    "name": "text",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": false,
-                    "description": "New text of the message, 1-4096 characters after entities parsing"
-                },
-                {
-                    "name": "parse_mode",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Mode for parsing entities in the message text. See formatting options for more details."
-                },
-                {
-                    "name": "entities",
-                    "types": [
-                        "Array<MessageEntity>"
-                    ],
-                    "optional": true,
-                    "description": "A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode"
-                },
-                {
-                    "name": "link_preview_options",
-                    "types": [
-                        "LinkPreviewOptions"
-                    ],
-                    "optional": true,
-                    "description": "Link preview generation options for the message"
-                },
-                {
-                    "name": "reply_markup",
-                    "types": [
-                        "InlineKeyboardMarkup"
-                    ],
-                    "optional": true,
-                    "description": "A JSON-serialized object for an inline keyboard."
-                }
-            ],
-            "return_types": [
-                "Message",
-                "bool"
-            ]
-        },
-        {
-            "name": "editMessageCaption",
-            "description": "Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.",
-            "fields": [
-                {
-                    "name": "business_connection_id",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
-                },
-                {
-                    "name": "chat_id",
-                    "types": [
-                        "int",
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                {
-                    "name": "message_id",
-                    "types": [
-                        "int"
-                    ],
-                    "optional": true,
-                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
-                },
-                {
-                    "name": "inline_message_id",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
-                },
-                {
-                    "name": "caption",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "New caption of the message, 0-1024 characters after entities parsing"
-                },
-                {
-                    "name": "parse_mode",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Mode for parsing entities in the message caption. See formatting options for more details."
-                },
-                {
-                    "name": "caption_entities",
-                    "types": [
-                        "Array<MessageEntity>"
-                    ],
-                    "optional": true,
-                    "description": "A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode"
-                },
-                {
-                    "name": "show_caption_above_media",
-                    "types": [
-                        "bool"
-                    ],
-                    "optional": true,
-                    "description": "Pass True, if the caption must be shown above the message media. Supported only for animation, photo and video messages."
-                },
-                {
-                    "name": "reply_markup",
-                    "types": [
-                        "InlineKeyboardMarkup"
-                    ],
-                    "optional": true,
-                    "description": "A JSON-serialized object for an inline keyboard."
-                }
-            ],
-            "return_types": [
-                "Message",
-                "bool"
-            ]
-        },
-        {
-            "name": "editMessageMedia",
-            "description": "Use this method to edit animation, audio, document, photo, or video messages, or to add media to text messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.",
-            "fields": [
-                {
-                    "name": "business_connection_id",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
-                },
-                {
-                    "name": "chat_id",
-                    "types": [
-                        "int",
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                {
-                    "name": "message_id",
-                    "types": [
-                        "int"
-                    ],
-                    "optional": true,
-                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
-                },
-                {
-                    "name": "inline_message_id",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
-                },
-                {
-                    "name": "media",
-                    "types": [
-                        "InputMedia"
-                    ],
-                    "optional": false,
-                    "description": "A JSON-serialized object for a new media content of the message"
-                },
-                {
-                    "name": "reply_markup",
-                    "types": [
-                        "InlineKeyboardMarkup"
-                    ],
-                    "optional": true,
-                    "description": "A JSON-serialized object for a new inline keyboard."
-                }
-            ],
-            "return_types": [
-                "Message",
-                "bool"
-            ]
-        },
-        {
-            "name": "editMessageLiveLocation",
-            "description": "Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.",
-            "fields": [
-                {
-                    "name": "business_connection_id",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
-                },
-                {
-                    "name": "chat_id",
-                    "types": [
-                        "int",
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                {
-                    "name": "message_id",
-                    "types": [
-                        "int"
-                    ],
-                    "optional": true,
-                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
-                },
-                {
-                    "name": "inline_message_id",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
-                },
-                {
-                    "name": "latitude",
-                    "types": [
-                        "float"
-                    ],
-                    "optional": false,
-                    "description": "Latitude of new location"
-                },
-                {
-                    "name": "longitude",
-                    "types": [
-                        "float"
-                    ],
-                    "optional": false,
-                    "description": "Longitude of new location"
-                },
-                {
-                    "name": "live_period",
-                    "types": [
-                        "int"
-                    ],
-                    "optional": true,
-                    "description": "New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current live_period by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then live_period remains unchanged"
-                },
-                {
-                    "name": "horizontal_accuracy",
-                    "types": [
-                        "float"
-                    ],
-                    "optional": true,
-                    "description": "The radius of uncertainty for the location, measured in meters; 0-1500"
-                },
-                {
-                    "name": "heading",
-                    "types": [
-                        "int"
-                    ],
-                    "optional": true,
-                    "description": "Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified."
-                },
-                {
-                    "name": "proximity_alert_radius",
-                    "types": [
-                        "int"
-                    ],
-                    "optional": true,
-                    "description": "The maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified."
-                },
-                {
-                    "name": "reply_markup",
-                    "types": [
-                        "InlineKeyboardMarkup"
-                    ],
-                    "optional": true,
-                    "description": "A JSON-serialized object for a new inline keyboard."
-                }
-            ],
-            "return_types": [
-                "Message",
-                "bool"
-            ]
-        },
-        {
-            "name": "stopMessageLiveLocation",
-            "description": "Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned.",
-            "fields": [
-                {
-                    "name": "business_connection_id",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
-                },
-                {
-                    "name": "chat_id",
-                    "types": [
-                        "int",
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                {
-                    "name": "message_id",
-                    "types": [
-                        "int"
-                    ],
-                    "optional": true,
-                    "description": "Required if inline_message_id is not specified. Identifier of the message with live location to stop"
-                },
-                {
-                    "name": "inline_message_id",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
-                },
-                {
-                    "name": "reply_markup",
-                    "types": [
-                        "InlineKeyboardMarkup"
-                    ],
-                    "optional": true,
-                    "description": "A JSON-serialized object for a new inline keyboard."
-                }
-            ],
-            "return_types": [
-                "Message",
-                "bool"
-            ]
-        },
-        {
-            "name": "editMessageReplyMarkup",
-            "description": "Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.",
-            "fields": [
-                {
-                    "name": "business_connection_id",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
-                },
-                {
-                    "name": "chat_id",
-                    "types": [
-                        "int",
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                {
-                    "name": "message_id",
-                    "types": [
-                        "int"
-                    ],
-                    "optional": true,
-                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
-                },
-                {
-                    "name": "inline_message_id",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
-                },
-                {
-                    "name": "reply_markup",
-                    "types": [
-                        "InlineKeyboardMarkup"
-                    ],
-                    "optional": true,
-                    "description": "A JSON-serialized object for an inline keyboard."
-                }
-            ],
-            "return_types": [
-                "Message",
-                "bool"
-            ]
-        },
-        {
-            "name": "stopPoll",
-            "description": "Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned.",
-            "fields": [
-                {
-                    "name": "business_connection_id",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
-                },
-                {
-                    "name": "chat_id",
-                    "types": [
-                        "int",
-                        "string"
-                    ],
-                    "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                {
-                    "name": "message_id",
-                    "types": [
-                        "int"
-                    ],
-                    "optional": false,
-                    "description": "Identifier of the original message with the poll"
-                },
-                {
-                    "name": "reply_markup",
-                    "types": [
-                        "InlineKeyboardMarkup"
-                    ],
-                    "optional": true,
-                    "description": "A JSON-serialized object for a new message inline keyboard."
-                }
-            ],
-            "return_types": [
-                "Poll"
-            ]
-        },
-        {
-            "name": "deleteMessage",
-            "description": "Use this method to delete a message, including service messages, with the following limitations:- A message can only be deleted if it was sent less than 48 hours ago.- Service messages about a supergroup, channel, or forum topic creation can't be deleted.- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.- Bots can delete outgoing messages in private chats, groups, and supergroups.- Bots can delete incoming messages in private chats.- Bots granted can_post_messages permissions can delete outgoing messages in channels.- If the bot is an administrator of a group, it can delete any message there.- If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.Returns True on success.",
-            "fields": [
-                {
-                    "name": "chat_id",
-                    "types": [
-                        "int",
-                        "string"
-                    ],
-                    "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                {
-                    "name": "message_id",
-                    "types": [
-                        "int"
-                    ],
-                    "optional": false,
-                    "description": "Identifier of the message to delete"
-                }
-            ],
-            "return_types": [
-                "bool"
-            ]
-        },
-        {
-            "name": "deleteMessages",
-            "description": "Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped. Returns True on success.",
-            "fields": [
-                {
-                    "name": "chat_id",
-                    "types": [
-                        "int",
-                        "string"
-                    ],
-                    "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                {
-                    "name": "message_ids",
-                    "types": [
-                        "Array<int>"
-                    ],
-                    "optional": false,
-                    "description": "A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations on which messages can be deleted"
-                }
-            ],
-            "return_types": [
-                "bool"
-            ]
-        },
-        {
             "name": "getAvailableGifts",
             "description": "Returns the list of gifts that can be sent by the bot to users and channel chats. Requires no parameters. Returns a Gifts object.",
             "fields": [],
@@ -17964,7 +18511,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername). Channel direct messages chats can't be verified."
                 },
                 {
                     "name": "custom_description",
@@ -18049,7 +18596,7 @@
         },
         {
             "name": "deleteBusinessMessages",
-            "description": "Delete messages on behalf of a business account. Requires the can_delete_outgoing_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success.",
+            "description": "Delete messages on behalf of a business account. Requires the can_delete_sent_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success.",
             "fields": [
                 {
                     "name": "business_connection_id",
@@ -18649,6 +19196,641 @@
             ]
         },
         {
+            "name": "editMessageText",
+            "description": "Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.",
+            "fields": [
+                {
+                    "name": "business_connection_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int",
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                {
+                    "name": "message_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
+                },
+                {
+                    "name": "inline_message_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
+                },
+                {
+                    "name": "text",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "New text of the message, 1-4096 characters after entities parsing"
+                },
+                {
+                    "name": "parse_mode",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Mode for parsing entities in the message text. See formatting options for more details."
+                },
+                {
+                    "name": "entities",
+                    "types": [
+                        "Array<MessageEntity>"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode"
+                },
+                {
+                    "name": "link_preview_options",
+                    "types": [
+                        "LinkPreviewOptions"
+                    ],
+                    "optional": true,
+                    "description": "Link preview generation options for the message"
+                },
+                {
+                    "name": "reply_markup",
+                    "types": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object for an inline keyboard."
+                }
+            ],
+            "return_types": [
+                "Message",
+                "bool"
+            ]
+        },
+        {
+            "name": "editMessageCaption",
+            "description": "Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.",
+            "fields": [
+                {
+                    "name": "business_connection_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int",
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                {
+                    "name": "message_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
+                },
+                {
+                    "name": "inline_message_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
+                },
+                {
+                    "name": "caption",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "New caption of the message, 0-1024 characters after entities parsing"
+                },
+                {
+                    "name": "parse_mode",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Mode for parsing entities in the message caption. See formatting options for more details."
+                },
+                {
+                    "name": "caption_entities",
+                    "types": [
+                        "Array<MessageEntity>"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode"
+                },
+                {
+                    "name": "show_caption_above_media",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Pass True, if the caption must be shown above the message media. Supported only for animation, photo and video messages."
+                },
+                {
+                    "name": "reply_markup",
+                    "types": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object for an inline keyboard."
+                }
+            ],
+            "return_types": [
+                "Message",
+                "bool"
+            ]
+        },
+        {
+            "name": "editMessageMedia",
+            "description": "Use this method to edit animation, audio, document, photo, or video messages, or to add media to text messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.",
+            "fields": [
+                {
+                    "name": "business_connection_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int",
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                {
+                    "name": "message_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
+                },
+                {
+                    "name": "inline_message_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
+                },
+                {
+                    "name": "media",
+                    "types": [
+                        "InputMedia"
+                    ],
+                    "optional": false,
+                    "description": "A JSON-serialized object for a new media content of the message"
+                },
+                {
+                    "name": "reply_markup",
+                    "types": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object for a new inline keyboard."
+                }
+            ],
+            "return_types": [
+                "Message",
+                "bool"
+            ]
+        },
+        {
+            "name": "editMessageLiveLocation",
+            "description": "Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.",
+            "fields": [
+                {
+                    "name": "business_connection_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int",
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                {
+                    "name": "message_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
+                },
+                {
+                    "name": "inline_message_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
+                },
+                {
+                    "name": "latitude",
+                    "types": [
+                        "float"
+                    ],
+                    "optional": false,
+                    "description": "Latitude of new location"
+                },
+                {
+                    "name": "longitude",
+                    "types": [
+                        "float"
+                    ],
+                    "optional": false,
+                    "description": "Longitude of new location"
+                },
+                {
+                    "name": "live_period",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current live_period by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then live_period remains unchanged"
+                },
+                {
+                    "name": "horizontal_accuracy",
+                    "types": [
+                        "float"
+                    ],
+                    "optional": true,
+                    "description": "The radius of uncertainty for the location, measured in meters; 0-1500"
+                },
+                {
+                    "name": "heading",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified."
+                },
+                {
+                    "name": "proximity_alert_radius",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "The maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified."
+                },
+                {
+                    "name": "reply_markup",
+                    "types": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object for a new inline keyboard."
+                }
+            ],
+            "return_types": [
+                "Message",
+                "bool"
+            ]
+        },
+        {
+            "name": "stopMessageLiveLocation",
+            "description": "Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned.",
+            "fields": [
+                {
+                    "name": "business_connection_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int",
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                {
+                    "name": "message_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Required if inline_message_id is not specified. Identifier of the message with live location to stop"
+                },
+                {
+                    "name": "inline_message_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
+                },
+                {
+                    "name": "reply_markup",
+                    "types": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object for a new inline keyboard."
+                }
+            ],
+            "return_types": [
+                "Message",
+                "bool"
+            ]
+        },
+        {
+            "name": "editMessageChecklist",
+            "description": "Use this method to edit a checklist on behalf of a connected business account. On success, the edited Message is returned.",
+            "fields": [
+                {
+                    "name": "business_connection_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier of the business connection on behalf of which the message will be sent"
+                },
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier for the target chat"
+                },
+                {
+                    "name": "message_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier for the target message"
+                },
+                {
+                    "name": "checklist",
+                    "types": [
+                        "InputChecklist"
+                    ],
+                    "optional": false,
+                    "description": "A JSON-serialized object for the new checklist"
+                },
+                {
+                    "name": "reply_markup",
+                    "types": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object for the new inline keyboard for the message"
+                }
+            ],
+            "return_types": [
+                "Message"
+            ]
+        },
+        {
+            "name": "editMessageReplyMarkup",
+            "description": "Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.",
+            "fields": [
+                {
+                    "name": "business_connection_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int",
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                {
+                    "name": "message_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
+                },
+                {
+                    "name": "inline_message_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
+                },
+                {
+                    "name": "reply_markup",
+                    "types": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object for an inline keyboard."
+                }
+            ],
+            "return_types": [
+                "Message",
+                "bool"
+            ]
+        },
+        {
+            "name": "stopPoll",
+            "description": "Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned.",
+            "fields": [
+                {
+                    "name": "business_connection_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int",
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                {
+                    "name": "message_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Identifier of the original message with the poll"
+                },
+                {
+                    "name": "reply_markup",
+                    "types": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object for a new message inline keyboard."
+                }
+            ],
+            "return_types": [
+                "Poll"
+            ]
+        },
+        {
+            "name": "approveSuggestedPost",
+            "description": "Use this method to approve a suggested post in a direct messages chat. The bot must have the 'can_post_messages' administrator right in the corresponding channel chat. Returns True on success.",
+            "fields": [
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier for the target direct messages chat"
+                },
+                {
+                    "name": "message_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Identifier of a suggested post message to approve"
+                },
+                {
+                    "name": "send_date",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future"
+                }
+            ],
+            "return_types": [
+                "bool"
+            ]
+        },
+        {
+            "name": "declineSuggestedPost",
+            "description": "Use this method to decline a suggested post in a direct messages chat. The bot must have the 'can_manage_direct_messages' administrator right in the corresponding channel chat. Returns True on success.",
+            "fields": [
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier for the target direct messages chat"
+                },
+                {
+                    "name": "message_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Identifier of a suggested post message to decline"
+                },
+                {
+                    "name": "comment",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Comment for the creator of the suggested post; 0-128 characters"
+                }
+            ],
+            "return_types": [
+                "bool"
+            ]
+        },
+        {
+            "name": "deleteMessage",
+            "description": "Use this method to delete a message, including service messages, with the following limitations:- A message can only be deleted if it was sent less than 48 hours ago.- Service messages about a supergroup, channel, or forum topic creation can't be deleted.- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.- Bots can delete outgoing messages in private chats, groups, and supergroups.- Bots can delete incoming messages in private chats.- Bots granted can_post_messages permissions can delete outgoing messages in channels.- If the bot is an administrator of a group, it can delete any message there.- If the bot has can_delete_messages administrator right in a supergroup or a channel, it can delete any message there.- If the bot has can_manage_direct_messages administrator right in a channel, it can delete any message in the corresponding direct messages chat.Returns True on success.",
+            "fields": [
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int",
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                {
+                    "name": "message_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Identifier of the message to delete"
+                }
+            ],
+            "return_types": [
+                "bool"
+            ]
+        },
+        {
+            "name": "deleteMessages",
+            "description": "Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped. Returns True on success.",
+            "fields": [
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int",
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                {
+                    "name": "message_ids",
+                    "types": [
+                        "Array<int>"
+                    ],
+                    "optional": false,
+                    "description": "A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations on which messages can be deleted"
+                }
+            ],
+            "return_types": [
+                "bool"
+            ]
+        },
+        {
             "name": "sendSticker",
             "description": "Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers. On success, the sent Message is returned.",
             "fields": [
@@ -18676,6 +19858,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 {
                     "name": "sticker",
@@ -18725,6 +19915,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
+                },
+                {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
                 },
                 {
                     "name": "reply_parameters",
@@ -19336,6 +20534,14 @@
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
                 },
                 {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
+                },
+                {
                     "name": "title",
                     "types": [
                         "string"
@@ -19535,6 +20741,14 @@
                     ],
                     "optional": true,
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
+                },
+                {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
                 },
                 {
                     "name": "reply_parameters",
@@ -19818,6 +21032,14 @@
             ]
         },
         {
+            "name": "getMyStarBalance",
+            "description": "A method to get the current Telegram Stars balance of the bot. Requires no parameters. On success, returns a StarAmount object.",
+            "fields": [],
+            "return_types": [
+                "StarAmount"
+            ]
+        },
+        {
             "name": "getStarTransactions",
             "description": "Returns the bot's Telegram Star transactions in chronological order. On success, returns a StarTransactions object.",
             "fields": [
@@ -19944,7 +21166,7 @@
                         "int"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat"
+                    "description": "Unique identifier for the target chat. Games can't be sent to channel direct messages chats and channel chats."
                 },
                 {
                     "name": "message_thread_id",
