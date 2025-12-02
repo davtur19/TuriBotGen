@@ -42,6 +42,8 @@ function returnType(string $type): string {
         'InputProfilePhoto'        => 'array',
         'AcceptedGiftTypes'        => 'array',
         'InputStoryContent'        => 'array',
+        'SuggestedPostParameters'  => 'array',
+        'InputChecklist'           => 'array',
     ];
 
     if (!isset($types[$type])) {
