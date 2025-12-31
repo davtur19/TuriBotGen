@@ -269,7 +269,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -378,7 +378,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -409,6 +409,12 @@
                             "key": "protect_content",
                             "value": "",
                             "description": "Optional. Protects the contents of the forwarded message from forwarding and saving",
+                            "type": "text"
+                        },
+                        {
+                            "key": "message_effect_id",
+                            "value": "",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; only available when forwarding to private chats",
                             "type": "text"
                         },
                         {
@@ -457,7 +463,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -524,7 +530,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -594,6 +600,12 @@
                             "type": "text"
                         },
                         {
+                            "key": "message_effect_id",
+                            "value": "",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; only available when copying to private chats",
+                            "type": "text"
+                        },
+                        {
                             "key": "suggested_post_parameters",
                             "value": "",
                             "description": "Optional. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.",
@@ -645,7 +657,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -724,7 +736,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -851,7 +863,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -990,7 +1002,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -1117,7 +1129,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -1286,7 +1298,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -1437,7 +1449,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -1558,7 +1570,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -1673,7 +1685,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -1685,7 +1697,7 @@
                         {
                             "key": "star_count",
                             "value": "",
-                            "description": "Required. The number of Telegram Stars that must be paid to buy access to the media; 1-10000",
+                            "description": "Required. The number of Telegram Stars that must be paid to buy access to the media; 1-25000",
                             "type": "text"
                         },
                         {
@@ -1800,7 +1812,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -1885,7 +1897,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -2012,7 +2024,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -2151,7 +2163,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -2266,7 +2278,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -2502,7 +2514,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -2578,6 +2590,67 @@
             }
         },
         {
+            "name": "sendMessageDraft",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target private chat",
+                            "type": "text"
+                        },
+                        {
+                            "key": "message_thread_id",
+                            "value": "",
+                            "description": "Optional. Unique identifier for the target message thread",
+                            "type": "text"
+                        },
+                        {
+                            "key": "draft_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier are animated",
+                            "type": "text"
+                        },
+                        {
+                            "key": "text",
+                            "value": "",
+                            "description": "Required. Text of the message to be sent, 1-4096 characters after entities parsing",
+                            "type": "text"
+                        },
+                        {
+                            "key": "parse_mode",
+                            "value": "",
+                            "description": "Optional. Mode for parsing entities in the message text. See formatting options for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "entities",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/sendMessageDraft",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "sendMessageDraft"
+                    ]
+                },
+                "description": "Use this method to stream a partial message to a user while the message is being generated; supported only for bots with forum topic mode enabled. Returns True on success."
+            }
+        },
+        {
             "name": "sendChatAction",
             "request": {
                 "method": "POST",
@@ -2599,7 +2672,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread; for supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread or topic of a forum; for supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -2985,7 +3058,7 @@
                         {
                             "key": "can_restrict_members",
                             "value": "",
-                            "description": "Optional. Pass True if the administrator can restrict, ban or unban chat members, or access supergroup statistics",
+                            "description": "Optional. Pass True if the administrator can restrict, ban or unban chat members, or access supergroup statistics. For backward compatibility, defaults to True for promotions of channel administrators",
                             "type": "text"
                         },
                         {
@@ -4195,7 +4268,7 @@
                         "editForumTopic"
                     ]
                 },
-                "description": "Use this method to edit name and icon of a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success."
+                "description": "Use this method to edit name and icon of a topic in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success."
             }
         },
         {
@@ -4306,7 +4379,7 @@
                         "deleteForumTopic"
                     ]
                 },
-                "description": "Use this method to delete a forum topic along with all its messages in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights. Returns True on success."
+                "description": "Use this method to delete a forum topic along with all its messages in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights. Returns True on success."
             }
         },
         {
@@ -4343,7 +4416,7 @@
                         "unpinAllForumTopicMessages"
                     ]
                 },
-                "description": "Use this method to clear the list of pinned messages in a forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success."
+                "description": "Use this method to clear the list of pinned messages in a forum topic in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success."
             }
         },
         {
@@ -5164,7 +5237,7 @@
                         {
                             "key": "gift_id",
                             "value": "",
-                            "description": "Required. Identifier of the gift",
+                            "description": "Required. Identifier of the gift; limited gifts can't be sent to channel chats",
                             "type": "text"
                         },
                         {
@@ -5826,15 +5899,27 @@
                             "type": "text"
                         },
                         {
-                            "key": "exclude_limited",
+                            "key": "exclude_limited_upgradable",
                             "value": "",
-                            "description": "Optional. Pass True to exclude gifts that can be purchased a limited number of times",
+                            "description": "Optional. Pass True to exclude gifts that can be purchased a limited number of times and can be upgraded to unique",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_limited_non_upgradable",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude gifts that can be purchased a limited number of times and can't be upgraded to unique",
                             "type": "text"
                         },
                         {
                             "key": "exclude_unique",
                             "value": "",
                             "description": "Optional. Pass True to exclude unique gifts",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_from_blockchain",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude gifts that were assigned from the TON blockchain and can't be resold or transferred in Telegram",
                             "type": "text"
                         },
                         {
@@ -5871,6 +5956,176 @@
                     ]
                 },
                 "description": "Returns the gifts received and owned by a managed business account. Requires the can_view_gifts_and_stars business bot right. Returns OwnedGifts on success."
+            }
+        },
+        {
+            "name": "getUserGifts",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "user_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the user",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_unlimited",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude gifts that can be purchased an unlimited number of times",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_limited_upgradable",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude gifts that can be purchased a limited number of times and can be upgraded to unique",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_limited_non_upgradable",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude gifts that can be purchased a limited number of times and can't be upgraded to unique",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_from_blockchain",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude gifts that were assigned from the TON blockchain and can't be resold or transferred in Telegram",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_unique",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude unique gifts",
+                            "type": "text"
+                        },
+                        {
+                            "key": "sort_by_price",
+                            "value": "",
+                            "description": "Optional. Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "offset",
+                            "value": "",
+                            "description": "Optional. Offset of the first entry to return as received from the previous request; use an empty string to get the first chunk of results",
+                            "type": "text"
+                        },
+                        {
+                            "key": "limit",
+                            "value": "",
+                            "description": "Optional. The maximum number of gifts to be returned; 1-100. Defaults to 100",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/getUserGifts",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "getUserGifts"
+                    ]
+                },
+                "description": "Returns the gifts owned and hosted by a user. Returns OwnedGifts on success."
+            }
+        },
+        {
+            "name": "getChatGifts",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat or username of the target channel (in the format @channelusername)",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_unsaved",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude gifts that aren't saved to the chat's profile page. Always True, unless the bot has the can_post_messages administrator right in the channel.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_saved",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude gifts that are saved to the chat's profile page. Always False, unless the bot has the can_post_messages administrator right in the channel.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_unlimited",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude gifts that can be purchased an unlimited number of times",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_limited_upgradable",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude gifts that can be purchased a limited number of times and can be upgraded to unique",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_limited_non_upgradable",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude gifts that can be purchased a limited number of times and can't be upgraded to unique",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_from_blockchain",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude gifts that were assigned from the TON blockchain and can't be resold or transferred in Telegram",
+                            "type": "text"
+                        },
+                        {
+                            "key": "exclude_unique",
+                            "value": "",
+                            "description": "Optional. Pass True to exclude unique gifts",
+                            "type": "text"
+                        },
+                        {
+                            "key": "sort_by_price",
+                            "value": "",
+                            "description": "Optional. Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "offset",
+                            "value": "",
+                            "description": "Optional. Offset of the first entry to return as received from the previous request; use an empty string to get the first chunk of results",
+                            "type": "text"
+                        },
+                        {
+                            "key": "limit",
+                            "value": "",
+                            "description": "Optional. The maximum number of gifts to be returned; 1-100. Defaults to 100",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/getChatGifts",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "getChatGifts"
+                    ]
+                },
+                "description": "Returns the gifts owned by a chat. Returns OwnedGifts on success."
             }
         },
         {
@@ -6085,6 +6340,67 @@
                     ]
                 },
                 "description": "Posts a story on behalf of a managed business account. Requires the can_manage_stories business bot right. Returns Story on success."
+            }
+        },
+        {
+            "name": "repostStory",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection",
+                            "type": "text"
+                        },
+                        {
+                            "key": "from_chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the chat which posted the story that should be reposted",
+                            "type": "text"
+                        },
+                        {
+                            "key": "from_story_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the story that should be reposted",
+                            "type": "text"
+                        },
+                        {
+                            "key": "active_period",
+                            "value": "",
+                            "description": "Required. Period after which the story is moved to the archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400",
+                            "type": "text"
+                        },
+                        {
+                            "key": "post_to_chat_page",
+                            "value": "",
+                            "description": "Optional. Pass True to keep the story accessible after it expires",
+                            "type": "text"
+                        },
+                        {
+                            "key": "protect_content",
+                            "value": "",
+                            "description": "Optional. Pass True if the content of the story must be protected from forwarding and screenshotting",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/repostStory",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "repostStory"
+                    ]
+                },
+                "description": "Reposts a story on behalf of a business account from another business account. Both business accounts must be managed by the same bot, and the story on the source account must have been posted (or reposted) by the bot. Requires the can_manage_stories business bot right for both business accounts. Returns Story on success."
             }
         },
         {
@@ -6897,7 +7213,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -7744,7 +8060,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
@@ -8388,7 +8704,7 @@
                         {
                             "key": "message_thread_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
                             "type": "text"
                         },
                         {
