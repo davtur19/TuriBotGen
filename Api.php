@@ -1786,6 +1786,31 @@ abstract class Api implements ApiInterface {
     }
 
     /**
+     * Use this method to get a list of profile audios for a user. Returns a UserProfileAudios object.
+     *
+     * @param int $user_id Unique identifier of the target user
+     * @param int|null $offset Sequential number of the first audio to be returned. By default, all audios are returned.
+     * @param int|null $limit Limits the number of audios to be retrieved. Values between 1-100 are accepted. Defaults to 100.
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#getuserprofileaudios
+     */
+    public function getUserProfileAudios(
+        int $user_id,
+        int|null $offset = null,
+        int|null $limit = null
+    ): \stdClass {
+        $args = [
+            'user_id' => $user_id
+        ];
+
+        if (null !== $offset) $args['offset'] = $offset;
+        if (null !== $limit) $args['limit'] = $limit;
+
+        return $this->Request('getUserProfileAudios', $args);
+    }
+
+    /**
      * Changes the emoji status for a given user that previously allowed the bot to manage their emoji
      * status via the Mini App method requestEmojiStatusAccess. Returns True on success.
      *
@@ -2715,9 +2740,10 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in
-     * the chat for this to work and must have the can_manage_topics administrator rights. Returns
-     * information about the created topic as a ForumTopic object.
+     * Use this method to create a topic in a forum supergroup chat or a private chat with a user. In the
+     * case of a supergroup chat the bot must be an administrator in the chat for this to work and must
+     * have the can_manage_topics administrator right. Returns information about the created topic as a
+     * ForumTopic object.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
      *                                       @supergroupusername)
@@ -3300,6 +3326,36 @@ abstract class Api implements ApiInterface {
         if (null !== $language_code) $args['language_code'] = $language_code;
 
         return $this->Request('getMyShortDescription', $args);
+    }
+
+    /**
+     * Changes the profile photo of the bot. Returns True on success.
+     *
+     * @param array $photo The new profile photo to set
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#setmyprofilephoto
+     */
+    public function setMyProfilePhoto(
+        array $photo
+    ): \stdClass {
+        $args = [
+            'photo' => json_encode($photo)
+        ];
+
+
+        return $this->Request('setMyProfilePhoto', $args);
+    }
+
+    /**
+     * Removes the profile photo of the bot. Requires no parameters. Returns True on success.
+     *
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#removemyprofilephoto
+     */
+    public function removeMyProfilePhoto(): \stdClass {
+        return $this->Request('removeMyProfilePhoto', []);
     }
 
     /**
