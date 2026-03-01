@@ -1651,8 +1651,8 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to stream a partial message to a user while the message is being generated;
-     * supported only for bots with forum topic mode enabled. Returns True on success.
+     * Use this method to stream a partial message to a user while the message is being generated. Returns
+     * True on success.
      *
      * @param int $chat_id Unique identifier for the target private chat
      * @param int|null $message_thread_id Unique identifier for the target message thread
@@ -1998,6 +1998,7 @@ abstract class Api implements ApiInterface {
      *                                       only
      * @param bool|null $can_manage_direct_messages Pass True if the administrator can manage direct messages within the channel and decline suggested
      *                                       posts; for channels only
+     * @param bool|null $can_manage_tags Pass True if the administrator can edit the tags of regular members; for groups and supergroups only
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#promotechatmember
@@ -2020,7 +2021,8 @@ abstract class Api implements ApiInterface {
         bool|null $can_edit_messages = null,
         bool|null $can_pin_messages = null,
         bool|null $can_manage_topics = null,
-        bool|null $can_manage_direct_messages = null
+        bool|null $can_manage_direct_messages = null,
+        bool|null $can_manage_tags = null
     ): \stdClass {
         $args = [
             'chat_id' => $chat_id,
@@ -2043,6 +2045,7 @@ abstract class Api implements ApiInterface {
         if (null !== $can_pin_messages) $args['can_pin_messages'] = $can_pin_messages;
         if (null !== $can_manage_topics) $args['can_manage_topics'] = $can_manage_topics;
         if (null !== $can_manage_direct_messages) $args['can_manage_direct_messages'] = $can_manage_direct_messages;
+        if (null !== $can_manage_tags) $args['can_manage_tags'] = $can_manage_tags;
 
         return $this->Request('promoteChatMember', $args);
     }
@@ -2072,6 +2075,34 @@ abstract class Api implements ApiInterface {
 
 
         return $this->Request('setChatAdministratorCustomTitle', $args);
+    }
+
+    /**
+     * Use this method to set a tag for a regular member in a group or a supergroup. The bot must be an
+     * administrator in the chat for this to work and must have the can_manage_tags administrator right.
+     * Returns True on success.
+     *
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
+     *                                       @supergroupusername)
+     * @param int $user_id Unique identifier of the target user
+     * @param string|null $tag New tag for the member; 0-16 characters, emoji are not allowed
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#setchatmembertag
+     */
+    public function setChatMemberTag(
+        int|string $chat_id,
+        int $user_id,
+        string|null $tag = null
+    ): \stdClass {
+        $args = [
+            'chat_id' => $chat_id,
+            'user_id' => $user_id
+        ];
+
+        if (null !== $tag) $args['tag'] = $tag;
+
+        return $this->Request('setChatMemberTag', $args);
     }
 
     /**

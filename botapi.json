@@ -1,5 +1,5 @@
 {
-    "version": "9.4.0",
+    "version": "9.5.0",
     "types": [
         {
             "name": "Update",
@@ -969,6 +969,14 @@
                     "description": "Optional. The bot that actually sent the message on behalf of the business account. Available only for outgoing messages sent on behalf of the connected business account."
                 },
                 {
+                    "name": "sender_tag",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Tag or custom title of the sender of the message; for supergroups only"
+                },
+                {
                     "name": "date",
                     "types": [
                         "int"
@@ -1107,7 +1115,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. The unique identifier of a media message group this message belongs to"
+                    "description": "Optional. The unique identifier inside this chat of a media message group this message belongs to"
                 },
                 {
                     "name": "author_signature",
@@ -1831,7 +1839,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the entity. Currently, can be “mention” (@username), “hashtag” (#hashtag or #hashtag@chatusername), “cashtag” ($USD or $USD@chatusername), “bot_command” (/start@jobs_bot), “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text), “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “spoiler” (spoiler message), “blockquote” (block quotation), “expandable_blockquote” (collapsed-by-default block quotation), “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames), “custom_emoji” (for inline custom emoji stickers)"
+                    "description": "Type of the entity. Currently, can be “mention” (@username), “hashtag” (#hashtag or #hashtag@chatusername), “cashtag” ($USD or $USD@chatusername), “bot_command” (/start@jobs_bot), “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text), “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “spoiler” (spoiler message), “blockquote” (block quotation), “expandable_blockquote” (collapsed-by-default block quotation), “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames), “custom_emoji” (for inline custom emoji stickers), or “date_time” (for formatted date and time)"
                 },
                 {
                     "name": "offset",
@@ -1880,6 +1888,22 @@
                     ],
                     "optional": true,
                     "description": "Optional. For “custom_emoji” only, unique identifier of the custom emoji. Use getCustomEmojiStickers to get full information about the sticker"
+                },
+                {
+                    "name": "unix_time",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. For “date_time” only, the Unix time associated with the entity"
+                },
+                {
+                    "name": "date_time_format",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. For “date_time” only, the string that defines the formatting of the date and time. See date-time entity formatting for more details."
                 }
             ],
             "extended_by": []
@@ -5923,6 +5947,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. True, if the administrator can manage direct messages of the channel and decline suggested posts; for channels only"
+                },
+                {
+                    "name": "can_manage_tags",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. True, if the administrator can edit the tags of regular members; for groups and supergroups only. If omitted defaults to the value of can_pin_messages."
                 }
             ],
             "extended_by": []
@@ -6207,6 +6239,14 @@
                     "description": "Optional. True, if the administrator can manage direct messages of the channel and decline suggested posts; for channels only"
                 },
                 {
+                    "name": "can_manage_tags",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. True, if the administrator can edit the tags of regular members; for groups and supergroups only. If omitted defaults to the value of can_pin_messages."
+                },
+                {
                     "name": "custom_title",
                     "types": [
                         "string"
@@ -6228,6 +6268,14 @@
                     ],
                     "optional": false,
                     "description": "The member's status in the chat, always “member”"
+                },
+                {
+                    "name": "tag",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Tag of the member"
                 },
                 {
                     "name": "user",
@@ -6259,6 +6307,14 @@
                     ],
                     "optional": false,
                     "description": "The member's status in the chat, always “restricted”"
+                },
+                {
+                    "name": "tag",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Tag of the member"
                 },
                 {
                     "name": "user",
@@ -6355,6 +6411,14 @@
                     ],
                     "optional": false,
                     "description": "True, if the user is allowed to add web page previews to their messages"
+                },
+                {
+                    "name": "can_edit_tag",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": false,
+                    "description": "True, if the user is allowed to edit their own tag"
                 },
                 {
                     "name": "can_change_info",
@@ -6591,6 +6655,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. True, if the user is allowed to add web page previews to their messages"
+                },
+                {
+                    "name": "can_edit_tag",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. True, if the user is allowed to edit their own tag"
                 },
                 {
                     "name": "can_change_info",
@@ -17001,7 +17073,7 @@
         },
         {
             "name": "sendMessageDraft",
-            "description": "Use this method to stream a partial message to a user while the message is being generated; supported only for bots with forum topic mode enabled. Returns True on success.",
+            "description": "Use this method to stream a partial message to a user while the message is being generated. Returns True on success.",
             "fields": [
                 {
                     "name": "chat_id",
@@ -17533,6 +17605,14 @@
                     ],
                     "optional": true,
                     "description": "Pass True if the administrator can manage direct messages within the channel and decline suggested posts; for channels only"
+                },
+                {
+                    "name": "can_manage_tags",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Pass True if the administrator can edit the tags of regular members; for groups and supergroups only"
                 }
             ],
             "return_types": [
@@ -17567,6 +17647,40 @@
                     ],
                     "optional": false,
                     "description": "New custom title for the administrator; 0-16 characters, emoji are not allowed"
+                }
+            ],
+            "return_types": [
+                "bool"
+            ]
+        },
+        {
+            "name": "setChatMemberTag",
+            "description": "Use this method to set a tag for a regular member in a group or a supergroup. The bot must be an administrator in the chat for this to work and must have the can_manage_tags administrator right. Returns True on success.",
+            "fields": [
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int",
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                },
+                {
+                    "name": "user_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier of the target user"
+                },
+                {
+                    "name": "tag",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "New tag for the member; 0-16 characters, emoji are not allowed"
                 }
             ],
             "return_types": [
