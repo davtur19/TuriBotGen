@@ -487,7 +487,7 @@ abstract class Api implements ApiInterface {
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload
      *                                       a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width
      *                                       and height must not exceed 10000 in total. Width and height ratio must be at most 20. More
-     *                                       information on Sending Files В»
+     *                                       information on Sending Files »
      * @param string|null $caption Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities
      *                                       parsing
      * @param string|null $parse_mode Mode for parsing entities in the photo caption. See formatting options for more details.
@@ -568,7 +568,7 @@ abstract class Api implements ApiInterface {
      *                                       is sent to a direct messages chat
      * @param \CURLFile|string|InputFile $audio Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram
      *                                       servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the
-     *                                       Internet, or upload a new one using multipart/form-data. More information on Sending Files В»
+     *                                       Internet, or upload a new one using multipart/form-data. More information on Sending Files »
      * @param string|null $caption Audio caption, 0-1024 characters after entities parsing
      * @param string|null $parse_mode Mode for parsing entities in the audio caption. See formatting options for more details.
      * @param array|null $caption_entities A JSON-serialized list of special entities that appear in the caption, which can be specified
@@ -581,7 +581,7 @@ abstract class Api implements ApiInterface {
      *                                       width and height should not exceed 320. Ignored if the file is not uploaded using
      *                                       multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
      *                                       pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
-     *                                       <file_attach_name>. More information on Sending Files В»
+     *                                       <file_attach_name>. More information on Sending Files »
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
@@ -657,13 +657,13 @@ abstract class Api implements ApiInterface {
      *                                       is sent to a direct messages chat
      * @param \CURLFile|string|InputFile $document File to send. Pass a file_id as String to send a file that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload
-     *                                       a new one using multipart/form-data. More information on Sending Files В»
+     *                                       a new one using multipart/form-data. More information on Sending Files »
      * @param \CURLFile|string|InputFile|null $thumbnail Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
      *                                       server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
      *                                       width and height should not exceed 320. Ignored if the file is not uploaded using
      *                                       multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
      *                                       pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
-     *                                       <file_attach_name>. More information on Sending Files В»
+     *                                       <file_attach_name>. More information on Sending Files »
      * @param string|null $caption Document caption (may also be used when resending documents by file_id), 0-1024 characters after
      *                                       entities parsing
      * @param string|null $parse_mode Mode for parsing entities in the document caption. See formatting options for more details.
@@ -742,7 +742,7 @@ abstract class Api implements ApiInterface {
      *                                       is sent to a direct messages chat
      * @param \CURLFile|string|InputFile $video Video to send. Pass a file_id as String to send a video that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload
-     *                                       a new video using multipart/form-data. More information on Sending Files В»
+     *                                       a new video using multipart/form-data. More information on Sending Files »
      * @param int|null $duration Duration of sent video in seconds
      * @param int|null $width Video width
      * @param int|null $height Video height
@@ -751,11 +751,11 @@ abstract class Api implements ApiInterface {
      *                                       width and height should not exceed 320. Ignored if the file is not uploaded using
      *                                       multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
      *                                       pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
-     *                                       <file_attach_name>. More information on Sending Files В»
+     *                                       <file_attach_name>. More information on Sending Files »
      * @param \CURLFile|string|InputFile|null $cover Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram
      *                                       servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass
      *                                       “attach://<file_attach_name>” to upload a new one using multipart/form-data under
-     *                                       <file_attach_name> name. More information on Sending Files В»
+     *                                       <file_attach_name> name. More information on Sending Files »
      * @param int|null $start_timestamp Start timestamp for the video in the message
      * @param string|null $caption Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities
      *                                       parsing
@@ -851,7 +851,7 @@ abstract class Api implements ApiInterface {
      *                                       is sent to a direct messages chat
      * @param \CURLFile|string|InputFile $animation Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or
-     *                                       upload a new animation using multipart/form-data. More information on Sending Files В»
+     *                                       upload a new animation using multipart/form-data. More information on Sending Files »
      * @param int|null $duration Duration of sent animation in seconds
      * @param int|null $width Animation width
      * @param int|null $height Animation height
@@ -860,7 +860,7 @@ abstract class Api implements ApiInterface {
      *                                       width and height should not exceed 320. Ignored if the file is not uploaded using
      *                                       multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
      *                                       pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
-     *                                       <file_attach_name>. More information on Sending Files В»
+     *                                       <file_attach_name>. More information on Sending Files »
      * @param string|null $caption Animation caption (may also be used when resending animation by file_id), 0-1024 characters after
      *                                       entities parsing
      * @param string|null $parse_mode Mode for parsing entities in the animation caption. See formatting options for more details.
@@ -950,7 +950,7 @@ abstract class Api implements ApiInterface {
      *                                       is sent to a direct messages chat
      * @param \CURLFile|string|InputFile $voice Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload
-     *                                       a new one using multipart/form-data. More information on Sending Files В»
+     *                                       a new one using multipart/form-data. More information on Sending Files »
      * @param string|null $caption Voice message caption, 0-1024 characters after entities parsing
      * @param string|null $parse_mode Mode for parsing entities in the voice message caption. See formatting options for more details.
      * @param array|null $caption_entities A JSON-serialized list of special entities that appear in the caption, which can be specified
@@ -1025,7 +1025,7 @@ abstract class Api implements ApiInterface {
      *                                       is sent to a direct messages chat
      * @param \CURLFile|string|InputFile $video_note Video note to send. Pass a file_id as String to send a video note that exists on the Telegram
      *                                       servers (recommended) or upload a new video using multipart/form-data. More information on Sending
-     *                                       Files В». Sending video notes by a URL is currently unsupported
+     *                                       Files ». Sending video notes by a URL is currently unsupported
      * @param int|null $duration Duration of sent video in seconds
      * @param int|null $length Video width and height, i.e. diameter of the video message
      * @param \CURLFile|string|InputFile|null $thumbnail Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
@@ -1033,7 +1033,7 @@ abstract class Api implements ApiInterface {
      *                                       width and height should not exceed 320. Ignored if the file is not uploaded using
      *                                       multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
      *                                       pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
-     *                                       <file_attach_name>. More information on Sending Files В»
+     *                                       <file_attach_name>. More information on Sending Files »
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
@@ -1622,10 +1622,10 @@ abstract class Api implements ApiInterface {
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
      *                                       is sent to a direct messages chat
-     * @param string|null $emoji Emoji on which the dice throw animation is based. Currently, must be one of “рџЋІ”,
-     *                                       “рџЋЇ”, “рџЏЂ”, “вљЅ”, “рџЋі”, or “рџЋ°”. Dice can have
-     *                                       values 1-6 for “рџЋІ”, “рџЋЇ” and “рџЋі”, values 1-5 for “рџЏЂ” and
-     *                                       “вљЅ”, and values 1-64 for “рџЋ°”. Defaults to “рџЋІ”
+     * @param string|null $emoji Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”,
+     *                                       “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”,
+     *                                       “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”.
+     *                                       Defaults to “🎲”
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
@@ -4898,7 +4898,7 @@ abstract class Api implements ApiInterface {
      * @param \CURLFile|string|InputFile $sticker Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet,
      *                                       or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending
-     *                                       Files В». Video and animated stickers can't be sent via an HTTP URL.
+     *                                       Files ». Video and animated stickers can't be sent via an HTTP URL.
      * @param string|null $emoji Emoji associated with the sticker; only for just uploaded stickers
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
@@ -4998,8 +4998,7 @@ abstract class Api implements ApiInterface {
      *
      * @param int $user_id User identifier of sticker file owner
      * @param \CURLFile $sticker A file with the sticker in .WEBP, .PNG, .TGS, or .WEBM format. See
-     *                                       https://core.telegram.org/stickers for technical requirements. More information on Sending Files
-     *                                       В»
+     *                                       https://core.telegram.org/stickers for technical requirements. More information on Sending Files »
      * @param string $sticker_format Format of the sticker, must be one of “static”, “animated”, “video”
      * @return \stdClass
      *
@@ -5267,9 +5266,9 @@ abstract class Api implements ApiInterface {
      *                                       https://core.telegram.org/stickers#video-requirements for video sticker technical requirements. Pass
      *                                       a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL
      *                                       as a String for Telegram to get a file from the Internet, or upload a new one using
-     *                                       multipart/form-data. More information on Sending Files В». Animated and video sticker set
-     *                                       thumbnails can't be uploaded via HTTP URL. If omitted, then the thumbnail is dropped and the first
-     *                                       sticker is used as the thumbnail.
+     *                                       multipart/form-data. More information on Sending Files ». Animated and video sticker set thumbnails
+     *                                       can't be uploaded via HTTP URL. If omitted, then the thumbnail is dropped and the first sticker is
+     *                                       used as the thumbnail.
      * @param string $format Format of the thumbnail, must be one of “static” for a .WEBP or .PNG image, “animated” for a
      *                                       .TGS animation, or “video” for a .WEBM video
      * @return \stdClass
