@@ -748,7 +748,7 @@
                         {
                             "key": "photo",
                             "value": "",
-                            "description": "Required. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More information on Sending Files \u00bb",
+                            "description": "Required. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More information on Sending Files \u0412\u00bb",
                             "type": "text"
                         },
                         {
@@ -875,7 +875,7 @@
                         {
                             "key": "audio",
                             "value": "",
-                            "description": "Required. Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files \u00bb",
+                            "description": "Required. Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files \u0412\u00bb",
                             "type": "text"
                         },
                         {
@@ -917,7 +917,7 @@
                         {
                             "key": "thumbnail",
                             "value": "",
-                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb",
+                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u0412\u00bb",
                             "type": "text"
                         },
                         {
@@ -1014,13 +1014,13 @@
                         {
                             "key": "document",
                             "value": "",
-                            "description": "Required. File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files \u00bb",
+                            "description": "Required. File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files \u0412\u00bb",
                             "type": "text"
                         },
                         {
                             "key": "thumbnail",
                             "value": "",
-                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb",
+                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u0412\u00bb",
                             "type": "text"
                         },
                         {
@@ -1141,7 +1141,7 @@
                         {
                             "key": "video",
                             "value": "",
-                            "description": "Required. Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More information on Sending Files \u00bb",
+                            "description": "Required. Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More information on Sending Files \u0412\u00bb",
                             "type": "text"
                         },
                         {
@@ -1165,13 +1165,13 @@
                         {
                             "key": "thumbnail",
                             "value": "",
-                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb",
+                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u0412\u00bb",
                             "type": "text"
                         },
                         {
                             "key": "cover",
                             "value": "",
-                            "description": "Optional. Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \u201cattach://<file_attach_name>\u201d to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files \u00bb",
+                            "description": "Optional. Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \u201cattach://<file_attach_name>\u201d to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files \u0412\u00bb",
                             "type": "text"
                         },
                         {
@@ -1310,7 +1310,7 @@
                         {
                             "key": "animation",
                             "value": "",
-                            "description": "Required. Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More information on Sending Files \u00bb",
+                            "description": "Required. Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More information on Sending Files \u0412\u00bb",
                             "type": "text"
                         },
                         {
@@ -1334,7 +1334,7 @@
                         {
                             "key": "thumbnail",
                             "value": "",
-                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb",
+                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u0412\u00bb",
                             "type": "text"
                         },
                         {
@@ -1461,7 +1461,7 @@
                         {
                             "key": "voice",
                             "value": "",
-                            "description": "Required. Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files \u00bb",
+                            "description": "Required. Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files \u0412\u00bb",
                             "type": "text"
                         },
                         {
@@ -1582,7 +1582,7 @@
                         {
                             "key": "video_note",
                             "value": "",
-                            "description": "Required. Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files \u00bb. Sending video notes by a URL is currently unsupported",
+                            "description": "Required. Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files \u0412\u00bb. Sending video notes by a URL is currently unsupported",
                             "type": "text"
                         },
                         {
@@ -1600,7 +1600,7 @@
                         {
                             "key": "thumbnail",
                             "value": "",
-                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb",
+                            "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u0412\u00bb",
                             "type": "text"
                         },
                         {
@@ -2320,13 +2320,37 @@
                         {
                             "key": "allows_multiple_answers",
                             "value": "",
-                            "description": "Optional. True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to False",
+                            "description": "Optional. Pass True, if the poll allows multiple answers, defaults to False",
                             "type": "text"
                         },
                         {
-                            "key": "correct_option_id",
+                            "key": "allows_revoting",
                             "value": "",
-                            "description": "Optional. 0-based identifier of the correct answer option, required for polls in quiz mode",
+                            "description": "Optional. Pass True, if the poll allows to change chosen answer options, defaults to False for quizzes and to True for regular polls",
+                            "type": "text"
+                        },
+                        {
+                            "key": "shuffle_options",
+                            "value": "",
+                            "description": "Optional. Pass True, if the poll options must be shown in random order",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_adding_options",
+                            "value": "",
+                            "description": "Optional. Pass True, if answer options can be added to the poll after creation; not supported for anonymous polls and quizzes",
+                            "type": "text"
+                        },
+                        {
+                            "key": "hide_results_until_closes",
+                            "value": "",
+                            "description": "Optional. Pass True, if poll results must be shown only after the poll closes",
+                            "type": "text"
+                        },
+                        {
+                            "key": "correct_option_ids",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized list of monotonically increasing 0-based identifiers of the correct answer options, required for polls in quiz mode",
                             "type": "text"
                         },
                         {
@@ -2350,19 +2374,37 @@
                         {
                             "key": "open_period",
                             "value": "",
-                            "description": "Optional. Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together with close_date.",
+                            "description": "Optional. Amount of time in seconds the poll will be active after creation, 5-2628000. Can't be used together with close_date.",
                             "type": "text"
                         },
                         {
                             "key": "close_date",
                             "value": "",
-                            "description": "Optional. Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and no more than 600 seconds in the future. Can't be used together with open_period.",
+                            "description": "Optional. Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and no more than 2628000 seconds in the future. Can't be used together with open_period.",
                             "type": "text"
                         },
                         {
                             "key": "is_closed",
                             "value": "",
                             "description": "Optional. Pass True if the poll needs to be immediately closed. This can be useful for poll preview.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "description",
+                            "value": "",
+                            "description": "Optional. Description of the poll to be sent, 0-1024 characters after entities parsing",
+                            "type": "text"
+                        },
+                        {
+                            "key": "description_parse_mode",
+                            "value": "",
+                            "description": "Optional. Mode for parsing entities in the poll description. See formatting options for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "description_entities",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized list of special entities that appear in the poll description, which can be specified instead of description_parse_mode",
                             "type": "text"
                         },
                         {
@@ -2526,7 +2568,7 @@
                         {
                             "key": "emoji",
                             "value": "",
-                            "description": "Optional. Emoji on which the dice throw animation is based. Currently, must be one of \u201c\ud83c\udfb2\u201d, \u201c\ud83c\udfaf\u201d, \u201c\ud83c\udfc0\u201d, \u201c\u26bd\u201d, \u201c\ud83c\udfb3\u201d, or \u201c\ud83c\udfb0\u201d. Dice can have values 1-6 for \u201c\ud83c\udfb2\u201d, \u201c\ud83c\udfaf\u201d and \u201c\ud83c\udfb3\u201d, values 1-5 for \u201c\ud83c\udfc0\u201d and \u201c\u26bd\u201d, and values 1-64 for \u201c\ud83c\udfb0\u201d. Defaults to \u201c\ud83c\udfb2\u201d",
+                            "description": "Optional. Emoji on which the dice throw animation is based. Currently, must be one of \u201c\u0440\u045f\u040b\u0406\u201d, \u201c\u0440\u045f\u040b\u0407\u201d, \u201c\u0440\u045f\u040f\u0402\u201d, \u201c\u0432\u0459\u0405\u201d, \u201c\u0440\u045f\u040b\u0456\u201d, or \u201c\u0440\u045f\u040b\u00b0\u201d. Dice can have values 1-6 for \u201c\u0440\u045f\u040b\u0406\u201d, \u201c\u0440\u045f\u040b\u0407\u201d and \u201c\u0440\u045f\u040b\u0456\u201d, values 1-5 for \u201c\u0440\u045f\u040f\u0402\u201d and \u201c\u0432\u0459\u0405\u201d, and values 1-64 for \u201c\u0440\u045f\u040b\u00b0\u201d. Defaults to \u201c\u0440\u045f\u040b\u0406\u201d",
                             "type": "text"
                         },
                         {
@@ -4827,6 +4869,68 @@
             }
         },
         {
+            "name": "getManagedBotToken",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "user_id",
+                            "value": "",
+                            "description": "Required. User identifier of the managed bot whose token will be returned",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/getManagedBotToken",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "getManagedBotToken"
+                    ]
+                },
+                "description": "Use this method to get the token of a managed bot. Returns the token as String on success."
+            }
+        },
+        {
+            "name": "replaceManagedBotToken",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "user_id",
+                            "value": "",
+                            "description": "Required. User identifier of the managed bot whose token will be replaced",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/replaceManagedBotToken",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "replaceManagedBotToken"
+                    ]
+                },
+                "description": "Use this method to revoke the current token of a managed bot and generate a new one. Returns the new token as String on success."
+            }
+        },
+        {
             "name": "setMyCommands",
             "request": {
                 "method": "POST",
@@ -5402,13 +5506,13 @@
                         {
                             "key": "text_parse_mode",
                             "value": "",
-                            "description": "Optional. Mode for parsing entities in the text. See formatting options for more details. Entities other than \u201cbold\u201d, \u201citalic\u201d, \u201cunderline\u201d, \u201cstrikethrough\u201d, \u201cspoiler\u201d, and \u201ccustom_emoji\u201d are ignored.",
+                            "description": "Optional. Mode for parsing entities in the text. See formatting options for more details. Entities other than \u201cbold\u201d, \u201citalic\u201d, \u201cunderline\u201d, \u201cstrikethrough\u201d, \u201cspoiler\u201d, \u201ccustom_emoji\u201d, and \u201cdate_time\u201d are ignored.",
                             "type": "text"
                         },
                         {
                             "key": "text_entities",
                             "value": "",
-                            "description": "Optional. A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than \u201cbold\u201d, \u201citalic\u201d, \u201cunderline\u201d, \u201cstrikethrough\u201d, \u201cspoiler\u201d, and \u201ccustom_emoji\u201d are ignored.",
+                            "description": "Optional. A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than \u201cbold\u201d, \u201citalic\u201d, \u201cunderline\u201d, \u201cstrikethrough\u201d, \u201cspoiler\u201d, \u201ccustom_emoji\u201d, and \u201cdate_time\u201d are ignored.",
                             "type": "text"
                         }
                     ]
@@ -5463,13 +5567,13 @@
                         {
                             "key": "text_parse_mode",
                             "value": "",
-                            "description": "Optional. Mode for parsing entities in the text. See formatting options for more details. Entities other than \u201cbold\u201d, \u201citalic\u201d, \u201cunderline\u201d, \u201cstrikethrough\u201d, \u201cspoiler\u201d, and \u201ccustom_emoji\u201d are ignored.",
+                            "description": "Optional. Mode for parsing entities in the text. See formatting options for more details. Entities other than \u201cbold\u201d, \u201citalic\u201d, \u201cunderline\u201d, \u201cstrikethrough\u201d, \u201cspoiler\u201d, \u201ccustom_emoji\u201d, and \u201cdate_time\u201d are ignored.",
                             "type": "text"
                         },
                         {
                             "key": "text_entities",
                             "value": "",
-                            "description": "Optional. A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than \u201cbold\u201d, \u201citalic\u201d, \u201cunderline\u201d, \u201cstrikethrough\u201d, \u201cspoiler\u201d, and \u201ccustom_emoji\u201d are ignored.",
+                            "description": "Optional. A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than \u201cbold\u201d, \u201citalic\u201d, \u201cunderline\u201d, \u201cstrikethrough\u201d, \u201cspoiler\u201d, \u201ccustom_emoji\u201d, and \u201cdate_time\u201d are ignored.",
                             "type": "text"
                         }
                     ]
@@ -6655,6 +6759,141 @@
             }
         },
         {
+            "name": "answerWebAppQuery",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "web_app_query_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the query to be answered",
+                            "type": "text"
+                        },
+                        {
+                            "key": "result",
+                            "value": "",
+                            "description": "Required. A JSON-serialized object describing the message to be sent",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/answerWebAppQuery",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "answerWebAppQuery"
+                    ]
+                },
+                "description": "Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned."
+            }
+        },
+        {
+            "name": "savePreparedInlineMessage",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "user_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the target user that can use the prepared message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "result",
+                            "value": "",
+                            "description": "Required. A JSON-serialized object describing the message to be sent",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_user_chats",
+                            "value": "",
+                            "description": "Optional. Pass True if the message can be sent to private chats with users",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_bot_chats",
+                            "value": "",
+                            "description": "Optional. Pass True if the message can be sent to private chats with bots",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_group_chats",
+                            "value": "",
+                            "description": "Optional. Pass True if the message can be sent to group and supergroup chats",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_channel_chats",
+                            "value": "",
+                            "description": "Optional. Pass True if the message can be sent to channel chats",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/savePreparedInlineMessage",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "savePreparedInlineMessage"
+                    ]
+                },
+                "description": "Stores a message that can be sent by a user of a Mini App. Returns a PreparedInlineMessage object."
+            }
+        },
+        {
+            "name": "savePreparedKeyboardButton",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "user_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the target user that can use the button",
+                            "type": "text"
+                        },
+                        {
+                            "key": "button",
+                            "value": "",
+                            "description": "Required. A JSON-serialized object describing the button to be saved. The button must be of the type request_users, request_chat, or request_managed_bot",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/savePreparedKeyboardButton",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "savePreparedKeyboardButton"
+                    ]
+                },
+                "description": "Stores a keyboard button that can be used by a user within a Mini App. Returns a PreparedKeyboardButton object."
+            }
+        },
+        {
             "name": "editMessageText",
             "request": {
                 "method": "POST",
@@ -7372,7 +7611,7 @@
                         {
                             "key": "sticker",
                             "value": "",
-                            "description": "Required. Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files \u00bb. Video and animated stickers can't be sent via an HTTP URL.",
+                            "description": "Required. Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files \u0412\u00bb. Video and animated stickers can't be sent via an HTTP URL.",
                             "type": "text"
                         },
                         {
@@ -7519,7 +7758,7 @@
                         {
                             "key": "sticker",
                             "value": "",
-                            "description": "Required. A file with the sticker in .WEBP, .PNG, .TGS, or .WEBM format. See https://core.telegram.org/stickers for technical requirements. More information on Sending Files \u00bb",
+                            "description": "Required. A file with the sticker in .WEBP, .PNG, .TGS, or .WEBM format. See https://core.telegram.org/stickers for technical requirements. More information on Sending Files \u0412\u00bb",
                             "type": "text"
                         },
                         {
@@ -7937,7 +8176,7 @@
                         {
                             "key": "thumbnail",
                             "value": "",
-                            "description": "Optional. A .WEBP or .PNG image with the thumbnail, must be up to 128 kilobytes in size and have a width and height of exactly 100px, or a .TGS animation with a thumbnail up to 32 kilobytes in size (see https://core.telegram.org/stickers#animation-requirements for animated sticker technical requirements), or a .WEBM video with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/stickers#video-requirements for video sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files \u00bb. Animated and video sticker set thumbnails can't be uploaded via HTTP URL. If omitted, then the thumbnail is dropped and the first sticker is used as the thumbnail.",
+                            "description": "Optional. A .WEBP or .PNG image with the thumbnail, must be up to 128 kilobytes in size and have a width and height of exactly 100px, or a .TGS animation with a thumbnail up to 32 kilobytes in size (see https://core.telegram.org/stickers#animation-requirements for animated sticker technical requirements), or a .WEBM video with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/stickers#video-requirements for video sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files \u0412\u00bb. Animated and video sticker set thumbnails can't be uploaded via HTTP URL. If omitted, then the thumbnail is dropped and the first sticker is used as the thumbnail.",
                             "type": "text"
                         },
                         {
@@ -8091,104 +8330,6 @@
                     ]
                 },
                 "description": "Use this method to send answers to an inline query. On success, True is returned.No more than 50 results per query are allowed."
-            }
-        },
-        {
-            "name": "answerWebAppQuery",
-            "request": {
-                "method": "POST",
-                "body": {
-                    "mode": "formdata",
-                    "formdata": [
-                        {
-                            "key": "web_app_query_id",
-                            "value": "",
-                            "description": "Required. Unique identifier for the query to be answered",
-                            "type": "text"
-                        },
-                        {
-                            "key": "result",
-                            "value": "",
-                            "description": "Required. A JSON-serialized object describing the message to be sent",
-                            "type": "text"
-                        }
-                    ]
-                },
-                "url": {
-                    "raw": "https://api.telegram.org/bot{{token}}/answerWebAppQuery",
-                    "protocol": "https",
-                    "host": [
-                        "api",
-                        "telegram",
-                        "org"
-                    ],
-                    "path": [
-                        "bot{{token}}",
-                        "answerWebAppQuery"
-                    ]
-                },
-                "description": "Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned."
-            }
-        },
-        {
-            "name": "savePreparedInlineMessage",
-            "request": {
-                "method": "POST",
-                "body": {
-                    "mode": "formdata",
-                    "formdata": [
-                        {
-                            "key": "user_id",
-                            "value": "",
-                            "description": "Required. Unique identifier of the target user that can use the prepared message",
-                            "type": "text"
-                        },
-                        {
-                            "key": "result",
-                            "value": "",
-                            "description": "Required. A JSON-serialized object describing the message to be sent",
-                            "type": "text"
-                        },
-                        {
-                            "key": "allow_user_chats",
-                            "value": "",
-                            "description": "Optional. Pass True if the message can be sent to private chats with users",
-                            "type": "text"
-                        },
-                        {
-                            "key": "allow_bot_chats",
-                            "value": "",
-                            "description": "Optional. Pass True if the message can be sent to private chats with bots",
-                            "type": "text"
-                        },
-                        {
-                            "key": "allow_group_chats",
-                            "value": "",
-                            "description": "Optional. Pass True if the message can be sent to group and supergroup chats",
-                            "type": "text"
-                        },
-                        {
-                            "key": "allow_channel_chats",
-                            "value": "",
-                            "description": "Optional. Pass True if the message can be sent to channel chats",
-                            "type": "text"
-                        }
-                    ]
-                },
-                "url": {
-                    "raw": "https://api.telegram.org/bot{{token}}/savePreparedInlineMessage",
-                    "protocol": "https",
-                    "host": [
-                        "api",
-                        "telegram",
-                        "org"
-                    ],
-                    "path": [
-                        "bot{{token}}",
-                        "savePreparedInlineMessage"
-                    ]
-                },
-                "description": "Stores a message that can be sent by a user of a Mini App. Returns a PreparedInlineMessage object."
             }
         },
         {

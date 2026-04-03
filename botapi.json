@@ -1,5 +1,5 @@
 {
-    "version": "9.5.0",
+    "version": "9.6.0",
     "types": [
         {
             "name": "Update",
@@ -196,6 +196,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. A boost was removed from a chat. The bot must be an administrator in the chat to receive these updates."
+                },
+                {
+                    "name": "managed_bot",
+                    "types": [
+                        "ManagedBotUpdated"
+                    ],
+                    "optional": true,
+                    "description": "Optional. A new bot was created to be managed by the bot or token of a bot was changed"
                 }
             ],
             "extended_by": []
@@ -404,6 +412,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. True, if the bot allows users to create and delete topics in private chats. Returned only in getMe."
+                },
+                {
+                    "name": "can_manage_bots",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. True, if other bots can be created to be controlled by the bot. Returned only in getMe."
                 }
             ],
             "extended_by": []
@@ -1067,6 +1083,14 @@
                     "description": "Optional. Identifier of the specific checklist task that is being replied to"
                 },
                 {
+                    "name": "reply_to_poll_option_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Persistent identifier of the specific poll option that is being replied to"
+                },
+                {
                     "name": "via_bot",
                     "types": [
                         "User"
@@ -1317,7 +1341,7 @@
                         "Game"
                     ],
                     "optional": true,
-                    "description": "Optional. Message is a game, information about the game. More about games »"
+                    "description": "Optional. Message is a game, information about the game. More about games В»"
                 },
                 {
                     "name": "poll",
@@ -1465,7 +1489,7 @@
                         "Invoice"
                     ],
                     "optional": true,
-                    "description": "Optional. Message is an invoice for a payment, information about the invoice. More about payments »"
+                    "description": "Optional. Message is an invoice for a payment, information about the invoice. More about payments В»"
                 },
                 {
                     "name": "successful_payment",
@@ -1473,7 +1497,7 @@
                         "SuccessfulPayment"
                     ],
                     "optional": true,
-                    "description": "Optional. Message is a service message about a successful payment, information about the payment. More about payments »"
+                    "description": "Optional. Message is a service message about a successful payment, information about the payment. More about payments В»"
                 },
                 {
                     "name": "refunded_payment",
@@ -1481,7 +1505,7 @@
                         "RefundedPayment"
                     ],
                     "optional": true,
-                    "description": "Optional. Message is a service message about a refunded payment, information about the payment. More about payments »"
+                    "description": "Optional. Message is a service message about a refunded payment, information about the payment. More about payments В»"
                 },
                 {
                     "name": "users_shared",
@@ -1529,7 +1553,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. The domain name of the website on which the user has logged in. More about Telegram Login »"
+                    "description": "Optional. The domain name of the website on which the user has logged in. More about Telegram Login В»"
                 },
                 {
                     "name": "write_access_allowed",
@@ -1676,12 +1700,36 @@
                     "description": "Optional. Service message: a giveaway without public winners was completed"
                 },
                 {
+                    "name": "managed_bot_created",
+                    "types": [
+                        "ManagedBotCreated"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Service message: user created a bot that will be managed by the current bot"
+                },
+                {
                     "name": "paid_message_price_changed",
                     "types": [
                         "PaidMessagePriceChanged"
                     ],
                     "optional": true,
                     "description": "Optional. Service message: the price for paid messages has changed in the chat"
+                },
+                {
+                    "name": "poll_option_added",
+                    "types": [
+                        "PollOptionAdded"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Service message: answer option was added to a poll"
+                },
+                {
+                    "name": "poll_option_deleted",
+                    "types": [
+                        "PollOptionDeleted"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Service message: answer option was deleted from a poll"
                 },
                 {
                     "name": "suggested_post_approved",
@@ -1926,7 +1974,7 @@
                         "Array<MessageEntity>"
                     ],
                     "optional": true,
-                    "description": "Optional. Special entities that appear in the quote. Currently, only bold, italic, underline, strikethrough, spoiler, and custom_emoji entities are kept in quotes."
+                    "description": "Optional. Special entities that appear in the quote. Currently, only bold, italic, underline, strikethrough, spoiler, custom_emoji, and date_time entities are kept in quotes."
                 },
                 {
                     "name": "position",
@@ -2103,7 +2151,7 @@
                         "Game"
                     ],
                     "optional": true,
-                    "description": "Optional. Message is a game, information about the game. More about games »"
+                    "description": "Optional. Message is a game, information about the game. More about games В»"
                 },
                 {
                     "name": "giveaway",
@@ -2127,7 +2175,7 @@
                         "Invoice"
                     ],
                     "optional": true,
-                    "description": "Optional. Message is an invoice for a payment, information about the invoice. More about payments »"
+                    "description": "Optional. Message is an invoice for a payment, information about the invoice. More about payments В»"
                 },
                 {
                     "name": "location",
@@ -2191,7 +2239,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. Quoted part of the message to be replied to; 0-1024 characters after entities parsing. The quote must be an exact substring of the message to be replied to, including bold, italic, underline, strikethrough, spoiler, and custom_emoji entities. The message will fail to send if the quote isn't found in the original message."
+                    "description": "Optional. Quoted part of the message to be replied to; 0-1024 characters after entities parsing. The quote must be an exact substring of the message to be replied to, including bold, italic, underline, strikethrough, spoiler, custom_emoji, and date_time entities. The message will fail to send if the quote isn't found in the original message."
                 },
                 {
                     "name": "quote_parse_mode",
@@ -2224,6 +2272,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. Identifier of the specific checklist task to be replied to"
+                },
+                {
+                    "name": "poll_option_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Persistent identifier of the specific poll option to be replied to"
                 }
             ],
             "extended_by": []
@@ -3113,7 +3169,7 @@
                         "int"
                     ],
                     "optional": false,
-                    "description": "Value of the dice, 1-6 for “🎲”, “🎯” and “🎳” base emoji, 1-5 for “🏀” and “⚽” base emoji, 1-64 for “🎰” base emoji"
+                    "description": "Value of the dice, 1-6 for “рџЋІ”, “рџЋЇ” and “рџЋі” base emoji, 1-5 for “рџЏЂ” and “вљЅ” base emoji, 1-64 for “рџЋ°” base emoji"
                 }
             ],
             "extended_by": []
@@ -3122,6 +3178,14 @@
             "name": "PollOption",
             "description": "This object contains information about one answer option in a poll.",
             "fields": [
+                {
+                    "name": "persistent_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier of the option, persistent on option addition and deletion"
+                },
                 {
                     "name": "text",
                     "types": [
@@ -3144,7 +3208,31 @@
                         "int"
                     ],
                     "optional": false,
-                    "description": "Number of users that voted for this option"
+                    "description": "Number of users who voted for this option; may be 0 if unknown"
+                },
+                {
+                    "name": "added_by_user",
+                    "types": [
+                        "User"
+                    ],
+                    "optional": true,
+                    "description": "Optional. User who added the option; omitted if the option wasn't added by a user after poll creation"
+                },
+                {
+                    "name": "added_by_chat",
+                    "types": [
+                        "Chat"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Chat that added the option; omitted if the option wasn't added by a chat after poll creation"
+                },
+                {
+                    "name": "addition_date",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Point in time (Unix timestamp) when the option was added; omitted if the option existed in the original poll"
                 }
             ],
             "extended_by": []
@@ -3215,6 +3303,14 @@
                     ],
                     "optional": false,
                     "description": "0-based identifiers of chosen answer options. May be empty if the vote was retracted."
+                },
+                {
+                    "name": "option_persistent_ids",
+                    "types": [
+                        "Array<string>"
+                    ],
+                    "optional": false,
+                    "description": "Persistent identifiers of the chosen answer options. May be empty if the vote was retracted."
                 }
             ],
             "extended_by": []
@@ -3296,12 +3392,20 @@
                     "description": "True, if the poll allows multiple answers"
                 },
                 {
-                    "name": "correct_option_id",
+                    "name": "allows_revoting",
                     "types": [
-                        "int"
+                        "bool"
+                    ],
+                    "optional": false,
+                    "description": "True, if the poll allows to change the chosen answer options"
+                },
+                {
+                    "name": "correct_option_ids",
+                    "types": [
+                        "Array<int>"
                     ],
                     "optional": true,
-                    "description": "Optional. 0-based identifier of the correct answer option. Available only for polls in the quiz mode, which are closed, or was sent (not forwarded) by the bot or to the private chat with the bot."
+                    "description": "Optional. Array of 0-based identifiers of the correct answer options. Available only for polls in quiz mode which are closed or were sent (not forwarded) by the bot or to the private chat with the bot."
                 },
                 {
                     "name": "explanation",
@@ -3334,6 +3438,22 @@
                     ],
                     "optional": true,
                     "description": "Optional. Point in time (Unix timestamp) when the poll will be automatically closed"
+                },
+                {
+                    "name": "description",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Description of the poll; for polls inside the Message object only"
+                },
+                {
+                    "name": "description_entities",
+                    "types": [
+                        "Array<MessageEntity>"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Special entities like usernames, URLs, bot commands, etc. that appear in the description"
                 }
             ],
             "extended_by": []
@@ -3476,7 +3596,7 @@
                         "Array<MessageEntity>"
                     ],
                     "optional": true,
-                    "description": "Optional. List of special entities that appear in the text, which can be specified instead of parse_mode. Currently, only bold, italic, underline, strikethrough, spoiler, and custom_emoji entities are allowed."
+                    "description": "Optional. List of special entities that appear in the text, which can be specified instead of parse_mode. Currently, only bold, italic, underline, strikethrough, spoiler, custom_emoji, and date_time entities are allowed."
                 }
             ],
             "extended_by": []
@@ -3507,7 +3627,7 @@
                         "Array<MessageEntity>"
                     ],
                     "optional": true,
-                    "description": "Optional. List of special entities that appear in the title, which can be specified instead of parse_mode. Currently, only bold, italic, underline, strikethrough, spoiler, and custom_emoji entities are allowed."
+                    "description": "Optional. List of special entities that appear in the title, which can be specified instead of parse_mode. Currently, only bold, italic, underline, strikethrough, spoiler, custom_emoji, and date_time entities are allowed."
                 },
                 {
                     "name": "tasks",
@@ -3773,6 +3893,122 @@
                     ],
                     "optional": false,
                     "description": "New auto-delete time for messages in the chat; in seconds"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "ManagedBotCreated",
+            "description": "This object contains information about the bot that was created to be managed by the current bot.",
+            "fields": [
+                {
+                    "name": "bot",
+                    "types": [
+                        "User"
+                    ],
+                    "optional": false,
+                    "description": "Information about the bot. The bot's token can be fetched using the method getManagedBotToken."
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "ManagedBotUpdated",
+            "description": "This object contains information about the creation or token update of a bot that is managed by the current bot.",
+            "fields": [
+                {
+                    "name": "user",
+                    "types": [
+                        "User"
+                    ],
+                    "optional": false,
+                    "description": "User that created the bot"
+                },
+                {
+                    "name": "bot",
+                    "types": [
+                        "User"
+                    ],
+                    "optional": false,
+                    "description": "Information about the bot. Token of the bot can be fetched using the method getManagedBotToken."
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "PollOptionAdded",
+            "description": "Describes a service message about an option added to a poll.",
+            "fields": [
+                {
+                    "name": "poll_message",
+                    "types": [
+                        "MaybeInaccessibleMessage"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Message containing the poll to which the option was added, if known. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply."
+                },
+                {
+                    "name": "option_persistent_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier of the added option"
+                },
+                {
+                    "name": "option_text",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Option text"
+                },
+                {
+                    "name": "option_text_entities",
+                    "types": [
+                        "Array<MessageEntity>"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Special entities that appear in the option_text"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "PollOptionDeleted",
+            "description": "Describes a service message about an option deleted from a poll.",
+            "fields": [
+                {
+                    "name": "poll_message",
+                    "types": [
+                        "MaybeInaccessibleMessage"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Message containing the poll from which the option was deleted, if known. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply."
+                },
+                {
+                    "name": "option_persistent_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier of the deleted option"
+                },
+                {
+                    "name": "option_text",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Option text"
+                },
+                {
+                    "name": "option_text_entities",
+                    "types": [
+                        "Array<MessageEntity>"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Special entities that appear in the option_text"
                 }
             ],
             "extended_by": []
@@ -5128,6 +5364,14 @@
                     "description": "Optional. If specified, pressing the button will open a list of suitable chats. Tapping on a chat will send its identifier to the bot in a “chat_shared” service message. Available in private chats only."
                 },
                 {
+                    "name": "request_managed_bot",
+                    "types": [
+                        "KeyboardButtonRequestManagedBot"
+                    ],
+                    "optional": true,
+                    "description": "Optional. If specified, pressing the button will ask the user to create and share a bot that will be managed by the current bot. Available for bots that enabled management of other bots in the @BotFather Mini App. Available in private chats only."
+                },
+                {
                     "name": "request_contact",
                     "types": [
                         "bool"
@@ -5164,7 +5408,7 @@
         },
         {
             "name": "KeyboardButtonRequestUsers",
-            "description": "This object defines the criteria used to request suitable users. Information about the selected users will be shared with the bot when the corresponding button is pressed. More about requesting users »",
+            "description": "This object defines the criteria used to request suitable users. Information about the selected users will be shared with the bot when the corresponding button is pressed. More about requesting users В»",
             "fields": [
                 {
                     "name": "request_id",
@@ -5228,7 +5472,7 @@
         },
         {
             "name": "KeyboardButtonRequestChat",
-            "description": "This object defines the criteria used to request a suitable chat. Information about the selected chat will be shared with the bot when the corresponding button is pressed. The bot will be granted requested rights in the chat if appropriate. More about requesting chats ».",
+            "description": "This object defines the criteria used to request a suitable chat. Information about the selected chat will be shared with the bot when the corresponding button is pressed. The bot will be granted requested rights in the chat if appropriate. More about requesting chats В».",
             "fields": [
                 {
                     "name": "request_id",
@@ -5317,6 +5561,37 @@
                     ],
                     "optional": true,
                     "description": "Optional. Pass True to request the chat's photo"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "KeyboardButtonRequestManagedBot",
+            "description": "This object defines the parameters for the creation of a managed bot. Information about the created bot will be shared with the bot using the update managed_bot and a Message with the field managed_bot_created.",
+            "fields": [
+                {
+                    "name": "request_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Signed 32-bit identifier of the request. Must be unique within the message"
+                },
+                {
+                    "name": "suggested_name",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Suggested name for the bot"
+                },
+                {
+                    "name": "suggested_username",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Suggested username for the bot"
                 }
             ],
             "extended_by": []
@@ -5481,7 +5756,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Optional. Specify True, to send a Pay button. Substrings “⭐” and “XTR” in the buttons's text will be replaced with a Telegram Star icon.NOTE: This type of button must always be the first button in the first row and can only be used in invoice messages."
+                    "description": "Optional. Specify True, to send a Pay button. Substrings “в­ђ” and “XTR” in the buttons's text will be replaced with a Telegram Star icon.NOTE: This type of button must always be the first button in the first row and can only be used in invoice messages."
                 }
             ],
             "extended_by": []
@@ -9137,6 +9412,59 @@
             "extended_by": []
         },
         {
+            "name": "SentWebAppMessage",
+            "description": "Describes an inline message sent by a Web App on behalf of a user.",
+            "fields": [
+                {
+                    "name": "inline_message_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message."
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "PreparedInlineMessage",
+            "description": "Describes an inline message to be sent by a user of a Mini App.",
+            "fields": [
+                {
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier of the prepared message"
+                },
+                {
+                    "name": "expiration_date",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Expiration date of the prepared message, in Unix time. Expired prepared messages can no longer be used"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "PreparedKeyboardButton",
+            "description": "Describes a keyboard button to be used by a user of a Mini App.",
+            "fields": [
+                {
+                    "name": "id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier of the keyboard button"
+                }
+            ],
+            "extended_by": []
+        },
+        {
             "name": "ResponseParameters",
             "description": "Describes why a request was unsuccessful.",
             "fields": [
@@ -9190,7 +9518,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
+                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files В»"
                 },
                 {
                     "name": "caption",
@@ -9254,7 +9582,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
+                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files В»"
                 },
                 {
                     "name": "thumbnail",
@@ -9262,7 +9590,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files В»"
                 },
                 {
                     "name": "cover",
@@ -9270,7 +9598,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
+                    "description": "Optional. Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files В»"
                 },
                 {
                     "name": "start_timestamp",
@@ -9374,7 +9702,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
+                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files В»"
                 },
                 {
                     "name": "thumbnail",
@@ -9382,7 +9710,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files В»"
                 },
                 {
                     "name": "caption",
@@ -9470,7 +9798,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
+                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files В»"
                 },
                 {
                     "name": "thumbnail",
@@ -9478,7 +9806,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files В»"
                 },
                 {
                     "name": "caption",
@@ -9550,7 +9878,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
+                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files В»"
                 },
                 {
                     "name": "thumbnail",
@@ -9558,7 +9886,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files В»"
                 },
                 {
                     "name": "caption",
@@ -9629,7 +9957,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
+                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files В»"
                 }
             ],
             "extended_by": []
@@ -9653,7 +9981,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
+                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files В»"
                 },
                 {
                     "name": "thumbnail",
@@ -9661,7 +9989,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files В»"
                 },
                 {
                     "name": "cover",
@@ -9669,7 +9997,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
+                    "description": "Optional. Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files В»"
                 },
                 {
                     "name": "start_timestamp",
@@ -9742,7 +10070,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "The static profile photo. Profile photos can't be reused and can only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the photo was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                    "description": "The static profile photo. Profile photos can't be reused and can only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the photo was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files В»"
                 }
             ],
             "extended_by": []
@@ -9766,7 +10094,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "The animated profile photo. Profile photos can't be reused and can only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the photo was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                    "description": "The animated profile photo. Profile photos can't be reused and can only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the photo was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files В»"
                 },
                 {
                     "name": "main_frame_timestamp",
@@ -9808,7 +10136,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "The photo to post as a story. The photo must be of the size 1080x1920 and must not exceed 10 MB. The photo can't be reused and can only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the photo was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                    "description": "The photo to post as a story. The photo must be of the size 1080x1920 and must not exceed 10 MB. The photo can't be reused and can only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the photo was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files В»"
                 }
             ],
             "extended_by": []
@@ -9832,7 +10160,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "The video to post as a story. The video must be of the size 720x1280, streamable, encoded with H.265 codec, with key frames added each second in the MPEG4 format, and must not exceed 30 MB. The video can't be reused and can only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the video was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                    "description": "The video to post as a story. The video must be of the size 720x1280, streamable, encoded with H.265 codec, with key frames added each second in the MPEG4 format, and must not exceed 30 MB. The video can't be reused and can only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the video was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files В»"
                 },
                 {
                     "name": "duration",
@@ -10086,7 +10414,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "The added sticker. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new file using multipart/form-data under <file_attach_name> name. Animated and video stickers can't be uploaded via HTTP URL. More information on Sending Files »"
+                    "description": "The added sticker. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new file using multipart/form-data under <file_attach_name> name. Animated and video stickers can't be uploaded via HTTP URL. More information on Sending Files В»"
                 },
                 {
                     "name": "format",
@@ -12614,44 +12942,6 @@
             "extended_by": []
         },
         {
-            "name": "SentWebAppMessage",
-            "description": "Describes an inline message sent by a Web App on behalf of a user.",
-            "fields": [
-                {
-                    "name": "inline_message_id",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message."
-                }
-            ],
-            "extended_by": []
-        },
-        {
-            "name": "PreparedInlineMessage",
-            "description": "Describes an inline message to be sent by a user of a Mini App.",
-            "fields": [
-                {
-                    "name": "id",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": false,
-                    "description": "Unique identifier of the prepared message"
-                },
-                {
-                    "name": "expiration_date",
-                    "types": [
-                        "int"
-                    ],
-                    "optional": false,
-                    "description": "Expiration date of the prepared message, in Unix time. Expired prepared messages can no longer be used"
-                }
-            ],
-            "extended_by": []
-        },
-        {
             "name": "LabeledPrice",
             "description": "This object represents a portion of the price for goods or services.",
             "fields": [
@@ -14910,7 +15200,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More information on Sending Files »"
+                    "description": "Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More information on Sending Files В»"
                 },
                 {
                     "name": "caption",
@@ -15060,7 +15350,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files »"
+                    "description": "Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files В»"
                 },
                 {
                     "name": "caption",
@@ -15117,7 +15407,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files В»"
                 },
                 {
                     "name": "disable_notification",
@@ -15227,7 +15517,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files »"
+                    "description": "File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files В»"
                 },
                 {
                     "name": "thumbnail",
@@ -15236,7 +15526,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files В»"
                 },
                 {
                     "name": "caption",
@@ -15378,7 +15668,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More information on Sending Files »"
+                    "description": "Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More information on Sending Files В»"
                 },
                 {
                     "name": "duration",
@@ -15411,7 +15701,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files В»"
                 },
                 {
                     "name": "cover",
@@ -15420,7 +15710,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
+                    "description": "Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files В»"
                 },
                 {
                     "name": "start_timestamp",
@@ -15586,7 +15876,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More information on Sending Files »"
+                    "description": "Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More information on Sending Files В»"
                 },
                 {
                     "name": "duration",
@@ -15619,7 +15909,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files В»"
                 },
                 {
                     "name": "caption",
@@ -15769,7 +16059,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files »"
+                    "description": "Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files В»"
                 },
                 {
                     "name": "caption",
@@ -15911,7 +16201,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files ». Sending video notes by a URL is currently unsupported"
+                    "description": "Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files В». Sending video notes by a URL is currently unsupported"
                 },
                 {
                     "name": "duration",
@@ -15936,7 +16226,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files В»"
                 },
                 {
                     "name": "disable_notification",
@@ -16773,16 +17063,49 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to False",
+                    "description": "Pass True, if the poll allows multiple answers, defaults to False",
                     "default": false
                 },
                 {
-                    "name": "correct_option_id",
+                    "name": "allows_revoting",
                     "types": [
-                        "int"
+                        "bool"
                     ],
                     "optional": true,
-                    "description": "0-based identifier of the correct answer option, required for polls in quiz mode"
+                    "description": "Pass True, if the poll allows to change chosen answer options, defaults to False for quizzes and to True for regular polls",
+                    "default": false
+                },
+                {
+                    "name": "shuffle_options",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Pass True, if the poll options must be shown in random order"
+                },
+                {
+                    "name": "allow_adding_options",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Pass True, if answer options can be added to the poll after creation; not supported for anonymous polls and quizzes"
+                },
+                {
+                    "name": "hide_results_until_closes",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Pass True, if poll results must be shown only after the poll closes"
+                },
+                {
+                    "name": "correct_option_ids",
+                    "types": [
+                        "Array<int>"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized list of monotonically increasing 0-based identifiers of the correct answer options, required for polls in quiz mode"
                 },
                 {
                     "name": "explanation",
@@ -16814,7 +17137,7 @@
                         "int"
                     ],
                     "optional": true,
-                    "description": "Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together with close_date."
+                    "description": "Amount of time in seconds the poll will be active after creation, 5-2628000. Can't be used together with close_date."
                 },
                 {
                     "name": "close_date",
@@ -16822,7 +17145,7 @@
                         "int"
                     ],
                     "optional": true,
-                    "description": "Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and no more than 600 seconds in the future. Can't be used together with open_period."
+                    "description": "Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and no more than 2628000 seconds in the future. Can't be used together with open_period."
                 },
                 {
                     "name": "is_closed",
@@ -16831,6 +17154,30 @@
                     ],
                     "optional": true,
                     "description": "Pass True if the poll needs to be immediately closed. This can be useful for poll preview."
+                },
+                {
+                    "name": "description",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Description of the poll to be sent, 0-1024 characters after entities parsing"
+                },
+                {
+                    "name": "description_parse_mode",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Mode for parsing entities in the poll description. See formatting options for more details."
+                },
+                {
+                    "name": "description_entities",
+                    "types": [
+                        "Array<MessageEntity>"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized list of special entities that appear in the poll description, which can be specified instead of description_parse_mode"
                 },
                 {
                     "name": "disable_notification",
@@ -17004,8 +17351,8 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲”",
-                    "default": "🎲"
+                    "description": "Emoji on which the dice throw animation is based. Currently, must be one of “рџЋІ”, “рџЋЇ”, “рџЏЂ”, “вљЅ”, “рџЋі”, or “рџЋ°”. Dice can have values 1-6 for “рџЋІ”, “рџЋЇ” and “рџЋі”, values 1-5 for “рџЏЂ” and “вљЅ”, and values 1-64 for “рџЋ°”. Defaults to “рџЋІ”",
+                    "default": "рџЋІ"
                 },
                 {
                     "name": "disable_notification",
@@ -18792,6 +19139,40 @@
             ]
         },
         {
+            "name": "getManagedBotToken",
+            "description": "Use this method to get the token of a managed bot. Returns the token as String on success.",
+            "fields": [
+                {
+                    "name": "user_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "User identifier of the managed bot whose token will be returned"
+                }
+            ],
+            "return_types": [
+                "string"
+            ]
+        },
+        {
+            "name": "replaceManagedBotToken",
+            "description": "Use this method to revoke the current token of a managed bot and generate a new one. Returns the new token as String on success.",
+            "fields": [
+                {
+                    "name": "user_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "User identifier of the managed bot whose token will be replaced"
+                }
+            ],
+            "return_types": [
+                "string"
+            ]
+        },
+        {
             "name": "setMyCommands",
             "description": "Use this method to change the list of the bot's commands. See this manual for more details about bot commands. Returns True on success.",
             "fields": [
@@ -19172,7 +19553,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Mode for parsing entities in the text. See formatting options for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji” are ignored."
+                    "description": "Mode for parsing entities in the text. See formatting options for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, “custom_emoji”, and “date_time” are ignored."
                 },
                 {
                     "name": "text_entities",
@@ -19180,7 +19561,7 @@
                         "Array<MessageEntity>"
                     ],
                     "optional": true,
-                    "description": "A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji” are ignored."
+                    "description": "A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, “custom_emoji”, and “date_time” are ignored."
                 }
             ],
             "return_types": [
@@ -19229,7 +19610,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Mode for parsing entities in the text. See formatting options for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji” are ignored."
+                    "description": "Mode for parsing entities in the text. See formatting options for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, “custom_emoji”, and “date_time” are ignored."
                 },
                 {
                     "name": "text_entities",
@@ -19237,7 +19618,7 @@
                         "Array<MessageEntity>"
                     ],
                     "optional": true,
-                    "description": "A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji” are ignored."
+                    "description": "A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, “custom_emoji”, and “date_time” are ignored."
                 }
             ],
             "return_types": [
@@ -20219,6 +20600,113 @@
             ]
         },
         {
+            "name": "answerWebAppQuery",
+            "description": "Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned.",
+            "fields": [
+                {
+                    "name": "web_app_query_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier for the query to be answered"
+                },
+                {
+                    "name": "result",
+                    "types": [
+                        "InlineQueryResult"
+                    ],
+                    "optional": false,
+                    "description": "A JSON-serialized object describing the message to be sent"
+                }
+            ],
+            "return_types": [
+                "SentWebAppMessage"
+            ]
+        },
+        {
+            "name": "savePreparedInlineMessage",
+            "description": "Stores a message that can be sent by a user of a Mini App. Returns a PreparedInlineMessage object.",
+            "fields": [
+                {
+                    "name": "user_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier of the target user that can use the prepared message"
+                },
+                {
+                    "name": "result",
+                    "types": [
+                        "InlineQueryResult"
+                    ],
+                    "optional": false,
+                    "description": "A JSON-serialized object describing the message to be sent"
+                },
+                {
+                    "name": "allow_user_chats",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Pass True if the message can be sent to private chats with users"
+                },
+                {
+                    "name": "allow_bot_chats",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Pass True if the message can be sent to private chats with bots"
+                },
+                {
+                    "name": "allow_group_chats",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Pass True if the message can be sent to group and supergroup chats"
+                },
+                {
+                    "name": "allow_channel_chats",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Pass True if the message can be sent to channel chats"
+                }
+            ],
+            "return_types": [
+                "PreparedInlineMessage"
+            ]
+        },
+        {
+            "name": "savePreparedKeyboardButton",
+            "description": "Stores a keyboard button that can be used by a user within a Mini App. Returns a PreparedKeyboardButton object.",
+            "fields": [
+                {
+                    "name": "user_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier of the target user that can use the button"
+                },
+                {
+                    "name": "button",
+                    "types": [
+                        "KeyboardButton"
+                    ],
+                    "optional": false,
+                    "description": "A JSON-serialized object describing the button to be saved. The button must be of the type request_users, request_chat, or request_managed_bot"
+                }
+            ],
+            "return_types": [
+                "PreparedKeyboardButton"
+            ]
+        },
+        {
             "name": "editMessageText",
             "description": "Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.",
             "fields": [
@@ -20897,7 +21385,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files ». Video and animated stickers can't be sent via an HTTP URL."
+                    "description": "Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files В». Video and animated stickers can't be sent via an HTTP URL."
                 },
                 {
                     "name": "emoji",
@@ -21023,7 +21511,7 @@
                         "InputFile"
                     ],
                     "optional": false,
-                    "description": "A file with the sticker in .WEBP, .PNG, .TGS, or .WEBM format. See https://core.telegram.org/stickers for technical requirements. More information on Sending Files »"
+                    "description": "A file with the sticker in .WEBP, .PNG, .TGS, or .WEBM format. See https://core.telegram.org/stickers for technical requirements. More information on Sending Files В»"
                 },
                 {
                     "name": "sticker_format",
@@ -21338,7 +21826,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "A .WEBP or .PNG image with the thumbnail, must be up to 128 kilobytes in size and have a width and height of exactly 100px, or a .TGS animation with a thumbnail up to 32 kilobytes in size (see https://core.telegram.org/stickers#animation-requirements for animated sticker technical requirements), or a .WEBM video with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/stickers#video-requirements for video sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files ». Animated and video sticker set thumbnails can't be uploaded via HTTP URL. If omitted, then the thumbnail is dropped and the first sticker is used as the thumbnail."
+                    "description": "A .WEBP or .PNG image with the thumbnail, must be up to 128 kilobytes in size and have a width and height of exactly 100px, or a .TGS animation with a thumbnail up to 32 kilobytes in size (see https://core.telegram.org/stickers#animation-requirements for animated sticker technical requirements), or a .WEBM video with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/stickers#video-requirements for video sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files В». Animated and video sticker set thumbnails can't be uploaded via HTTP URL. If omitted, then the thumbnail is dropped and the first sticker is used as the thumbnail."
                 },
                 {
                     "name": "format",
@@ -21451,88 +21939,6 @@
             ],
             "return_types": [
                 "bool"
-            ]
-        },
-        {
-            "name": "answerWebAppQuery",
-            "description": "Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned.",
-            "fields": [
-                {
-                    "name": "web_app_query_id",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": false,
-                    "description": "Unique identifier for the query to be answered"
-                },
-                {
-                    "name": "result",
-                    "types": [
-                        "InlineQueryResult"
-                    ],
-                    "optional": false,
-                    "description": "A JSON-serialized object describing the message to be sent"
-                }
-            ],
-            "return_types": [
-                "SentWebAppMessage"
-            ]
-        },
-        {
-            "name": "savePreparedInlineMessage",
-            "description": "Stores a message that can be sent by a user of a Mini App. Returns a PreparedInlineMessage object.",
-            "fields": [
-                {
-                    "name": "user_id",
-                    "types": [
-                        "int"
-                    ],
-                    "optional": false,
-                    "description": "Unique identifier of the target user that can use the prepared message"
-                },
-                {
-                    "name": "result",
-                    "types": [
-                        "InlineQueryResult"
-                    ],
-                    "optional": false,
-                    "description": "A JSON-serialized object describing the message to be sent"
-                },
-                {
-                    "name": "allow_user_chats",
-                    "types": [
-                        "bool"
-                    ],
-                    "optional": true,
-                    "description": "Pass True if the message can be sent to private chats with users"
-                },
-                {
-                    "name": "allow_bot_chats",
-                    "types": [
-                        "bool"
-                    ],
-                    "optional": true,
-                    "description": "Pass True if the message can be sent to private chats with bots"
-                },
-                {
-                    "name": "allow_group_chats",
-                    "types": [
-                        "bool"
-                    ],
-                    "optional": true,
-                    "description": "Pass True if the message can be sent to group and supergroup chats"
-                },
-                {
-                    "name": "allow_channel_chats",
-                    "types": [
-                        "bool"
-                    ],
-                    "optional": true,
-                    "description": "Pass True if the message can be sent to channel chats"
-                }
-            ],
-            "return_types": [
-                "PreparedInlineMessage"
             ]
         },
         {

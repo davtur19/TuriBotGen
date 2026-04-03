@@ -487,7 +487,7 @@ abstract class Api implements ApiInterface {
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload
      *                                       a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width
      *                                       and height must not exceed 10000 in total. Width and height ratio must be at most 20. More
-     *                                       information on Sending Files »
+     *                                       information on Sending Files В»
      * @param string|null $caption Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities
      *                                       parsing
      * @param string|null $parse_mode Mode for parsing entities in the photo caption. See formatting options for more details.
@@ -568,7 +568,7 @@ abstract class Api implements ApiInterface {
      *                                       is sent to a direct messages chat
      * @param \CURLFile|string|InputFile $audio Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram
      *                                       servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the
-     *                                       Internet, or upload a new one using multipart/form-data. More information on Sending Files »
+     *                                       Internet, or upload a new one using multipart/form-data. More information on Sending Files В»
      * @param string|null $caption Audio caption, 0-1024 characters after entities parsing
      * @param string|null $parse_mode Mode for parsing entities in the audio caption. See formatting options for more details.
      * @param array|null $caption_entities A JSON-serialized list of special entities that appear in the caption, which can be specified
@@ -581,7 +581,7 @@ abstract class Api implements ApiInterface {
      *                                       width and height should not exceed 320. Ignored if the file is not uploaded using
      *                                       multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
      *                                       pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
-     *                                       <file_attach_name>. More information on Sending Files »
+     *                                       <file_attach_name>. More information on Sending Files В»
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
@@ -657,13 +657,13 @@ abstract class Api implements ApiInterface {
      *                                       is sent to a direct messages chat
      * @param \CURLFile|string|InputFile $document File to send. Pass a file_id as String to send a file that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload
-     *                                       a new one using multipart/form-data. More information on Sending Files »
+     *                                       a new one using multipart/form-data. More information on Sending Files В»
      * @param \CURLFile|string|InputFile|null $thumbnail Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
      *                                       server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
      *                                       width and height should not exceed 320. Ignored if the file is not uploaded using
      *                                       multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
      *                                       pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
-     *                                       <file_attach_name>. More information on Sending Files »
+     *                                       <file_attach_name>. More information on Sending Files В»
      * @param string|null $caption Document caption (may also be used when resending documents by file_id), 0-1024 characters after
      *                                       entities parsing
      * @param string|null $parse_mode Mode for parsing entities in the document caption. See formatting options for more details.
@@ -742,7 +742,7 @@ abstract class Api implements ApiInterface {
      *                                       is sent to a direct messages chat
      * @param \CURLFile|string|InputFile $video Video to send. Pass a file_id as String to send a video that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload
-     *                                       a new video using multipart/form-data. More information on Sending Files »
+     *                                       a new video using multipart/form-data. More information on Sending Files В»
      * @param int|null $duration Duration of sent video in seconds
      * @param int|null $width Video width
      * @param int|null $height Video height
@@ -751,11 +751,11 @@ abstract class Api implements ApiInterface {
      *                                       width and height should not exceed 320. Ignored if the file is not uploaded using
      *                                       multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
      *                                       pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
-     *                                       <file_attach_name>. More information on Sending Files »
+     *                                       <file_attach_name>. More information on Sending Files В»
      * @param \CURLFile|string|InputFile|null $cover Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram
      *                                       servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass
      *                                       “attach://<file_attach_name>” to upload a new one using multipart/form-data under
-     *                                       <file_attach_name> name. More information on Sending Files »
+     *                                       <file_attach_name> name. More information on Sending Files В»
      * @param int|null $start_timestamp Start timestamp for the video in the message
      * @param string|null $caption Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities
      *                                       parsing
@@ -851,7 +851,7 @@ abstract class Api implements ApiInterface {
      *                                       is sent to a direct messages chat
      * @param \CURLFile|string|InputFile $animation Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or
-     *                                       upload a new animation using multipart/form-data. More information on Sending Files »
+     *                                       upload a new animation using multipart/form-data. More information on Sending Files В»
      * @param int|null $duration Duration of sent animation in seconds
      * @param int|null $width Animation width
      * @param int|null $height Animation height
@@ -860,7 +860,7 @@ abstract class Api implements ApiInterface {
      *                                       width and height should not exceed 320. Ignored if the file is not uploaded using
      *                                       multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
      *                                       pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
-     *                                       <file_attach_name>. More information on Sending Files »
+     *                                       <file_attach_name>. More information on Sending Files В»
      * @param string|null $caption Animation caption (may also be used when resending animation by file_id), 0-1024 characters after
      *                                       entities parsing
      * @param string|null $parse_mode Mode for parsing entities in the animation caption. See formatting options for more details.
@@ -950,7 +950,7 @@ abstract class Api implements ApiInterface {
      *                                       is sent to a direct messages chat
      * @param \CURLFile|string|InputFile $voice Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload
-     *                                       a new one using multipart/form-data. More information on Sending Files »
+     *                                       a new one using multipart/form-data. More information on Sending Files В»
      * @param string|null $caption Voice message caption, 0-1024 characters after entities parsing
      * @param string|null $parse_mode Mode for parsing entities in the voice message caption. See formatting options for more details.
      * @param array|null $caption_entities A JSON-serialized list of special entities that appear in the caption, which can be specified
@@ -1025,7 +1025,7 @@ abstract class Api implements ApiInterface {
      *                                       is sent to a direct messages chat
      * @param \CURLFile|string|InputFile $video_note Video note to send. Pass a file_id as String to send a video note that exists on the Telegram
      *                                       servers (recommended) or upload a new video using multipart/form-data. More information on Sending
-     *                                       Files ». Sending video notes by a URL is currently unsupported
+     *                                       Files В». Sending video notes by a URL is currently unsupported
      * @param int|null $duration Duration of sent video in seconds
      * @param int|null $length Video width and height, i.e. diameter of the video message
      * @param \CURLFile|string|InputFile|null $thumbnail Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
@@ -1033,7 +1033,7 @@ abstract class Api implements ApiInterface {
      *                                       width and height should not exceed 320. Ignored if the file is not uploaded using
      *                                       multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
      *                                       pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
-     *                                       <file_attach_name>. More information on Sending Files »
+     *                                       <file_attach_name>. More information on Sending Files В»
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
@@ -1466,18 +1466,29 @@ abstract class Api implements ApiInterface {
      * @param array $options A JSON-serialized list of 2-12 answer options
      * @param bool|null $is_anonymous True, if the poll needs to be anonymous, defaults to True
      * @param string|null $type Poll type, “quiz” or “regular”, defaults to “regular”
-     * @param bool|null $allows_multiple_answers True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to False
-     * @param int|null $correct_option_id 0-based identifier of the correct answer option, required for polls in quiz mode
+     * @param bool|null $allows_multiple_answers Pass True, if the poll allows multiple answers, defaults to False
+     * @param bool|null $allows_revoting Pass True, if the poll allows to change chosen answer options, defaults to False for quizzes and to
+     *                                       True for regular polls
+     * @param bool|null $shuffle_options Pass True, if the poll options must be shown in random order
+     * @param bool|null $allow_adding_options Pass True, if answer options can be added to the poll after creation; not supported for anonymous
+     *                                       polls and quizzes
+     * @param bool|null $hide_results_until_closes Pass True, if poll results must be shown only after the poll closes
+     * @param array|null $correct_option_ids A JSON-serialized list of monotonically increasing 0-based identifiers of the correct answer
+     *                                       options, required for polls in quiz mode
      * @param string|null $explanation Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style
      *                                       poll, 0-200 characters with at most 2 line feeds after entities parsing
      * @param string|null $explanation_parse_mode Mode for parsing entities in the explanation. See formatting options for more details.
      * @param array|null $explanation_entities A JSON-serialized list of special entities that appear in the poll explanation. It can be specified
      *                                       instead of explanation_parse_mode
-     * @param int|null $open_period Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together with
-     *                                       close_date.
+     * @param int|null $open_period Amount of time in seconds the poll will be active after creation, 5-2628000. Can't be used together
+     *                                       with close_date.
      * @param int|null $close_date Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and no
-     *                                       more than 600 seconds in the future. Can't be used together with open_period.
+     *                                       more than 2628000 seconds in the future. Can't be used together with open_period.
      * @param bool|null $is_closed Pass True if the poll needs to be immediately closed. This can be useful for poll preview.
+     * @param string|null $description Description of the poll to be sent, 0-1024 characters after entities parsing
+     * @param string|null $description_parse_mode Mode for parsing entities in the poll description. See formatting options for more details.
+     * @param array|null $description_entities A JSON-serialized list of special entities that appear in the poll description, which can be
+     *                                       specified instead of description_parse_mode
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
@@ -1501,13 +1512,20 @@ abstract class Api implements ApiInterface {
         bool|null $is_anonymous = null,
         string|null $type = null,
         bool|null $allows_multiple_answers = null,
-        int|null $correct_option_id = null,
+        bool|null $allows_revoting = null,
+        bool|null $shuffle_options = null,
+        bool|null $allow_adding_options = null,
+        bool|null $hide_results_until_closes = null,
+        array|null $correct_option_ids = null,
         string|null $explanation = null,
         string|null $explanation_parse_mode = null,
         array|null $explanation_entities = null,
         int|null $open_period = null,
         int|null $close_date = null,
         bool|null $is_closed = null,
+        string|null $description = null,
+        string|null $description_parse_mode = null,
+        array|null $description_entities = null,
         bool|null $disable_notification = null,
         bool|null $protect_content = null,
         bool|null $allow_paid_broadcast = null,
@@ -1528,13 +1546,20 @@ abstract class Api implements ApiInterface {
         if (null !== $is_anonymous) $args['is_anonymous'] = $is_anonymous;
         if (null !== $type) $args['type'] = $type;
         if (null !== $allows_multiple_answers) $args['allows_multiple_answers'] = $allows_multiple_answers;
-        if (null !== $correct_option_id) $args['correct_option_id'] = $correct_option_id;
+        if (null !== $allows_revoting) $args['allows_revoting'] = $allows_revoting;
+        if (null !== $shuffle_options) $args['shuffle_options'] = $shuffle_options;
+        if (null !== $allow_adding_options) $args['allow_adding_options'] = $allow_adding_options;
+        if (null !== $hide_results_until_closes) $args['hide_results_until_closes'] = $hide_results_until_closes;
+        if (null !== $correct_option_ids) $args['correct_option_ids'] = json_encode($correct_option_ids);
         if (null !== $explanation) $args['explanation'] = $explanation;
         if (null !== $explanation_parse_mode) $args['explanation_parse_mode'] = $explanation_parse_mode;
         if (null !== $explanation_entities) $args['explanation_entities'] = json_encode($explanation_entities);
         if (null !== $open_period) $args['open_period'] = $open_period;
         if (null !== $close_date) $args['close_date'] = $close_date;
         if (null !== $is_closed) $args['is_closed'] = $is_closed;
+        if (null !== $description) $args['description'] = $description;
+        if (null !== $description_parse_mode) $args['description_parse_mode'] = $description_parse_mode;
+        if (null !== $description_entities) $args['description_entities'] = json_encode($description_entities);
         if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
         if (null !== $protect_content) $args['protect_content'] = $protect_content;
         if (null !== $allow_paid_broadcast) $args['allow_paid_broadcast'] = $allow_paid_broadcast;
@@ -1597,10 +1622,10 @@ abstract class Api implements ApiInterface {
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
      *                                       is sent to a direct messages chat
-     * @param string|null $emoji Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”,
-     *                                       “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”,
-     *                                       “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”.
-     *                                       Defaults to “🎲”
+     * @param string|null $emoji Emoji on which the dice throw animation is based. Currently, must be one of “рџЋІ”,
+     *                                       “рџЋЇ”, “рџЏЂ”, “вљЅ”, “рџЋі”, or “рџЋ°”. Dice can have
+     *                                       values 1-6 for “рџЋІ”, “рџЋЇ” and “рџЋі”, values 1-5 for “рџЏЂ” and
+     *                                       “вљЅ”, and values 1-64 for “рџЋ°”. Defaults to “рџЋІ”
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
@@ -3158,6 +3183,45 @@ abstract class Api implements ApiInterface {
     }
 
     /**
+     * Use this method to get the token of a managed bot. Returns the token as String on success.
+     *
+     * @param int $user_id User identifier of the managed bot whose token will be returned
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#getmanagedbottoken
+     */
+    public function getManagedBotToken(
+        int $user_id
+    ): \stdClass {
+        $args = [
+            'user_id' => $user_id
+        ];
+
+
+        return $this->Request('getManagedBotToken', $args);
+    }
+
+    /**
+     * Use this method to revoke the current token of a managed bot and generate a new one. Returns the new
+     * token as String on success.
+     *
+     * @param int $user_id User identifier of the managed bot whose token will be replaced
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#replacemanagedbottoken
+     */
+    public function replaceManagedBotToken(
+        int $user_id
+    ): \stdClass {
+        $args = [
+            'user_id' => $user_id
+        ];
+
+
+        return $this->Request('replaceManagedBotToken', $args);
+    }
+
+    /**
      * Use this method to change the list of the bot's commands. See this manual for more details about bot
      * commands. Returns True on success.
      *
@@ -3502,11 +3566,11 @@ abstract class Api implements ApiInterface {
      *                                       the receiver
      * @param string|null $text Text that will be shown along with the gift; 0-128 characters
      * @param string|null $text_parse_mode Mode for parsing entities in the text. See formatting options for more details. Entities other than
-     *                                       “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and
-     *                                       “custom_emoji” are ignored.
+     *                                       “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, “custom_emoji”,
+     *                                       and “date_time” are ignored.
      * @param array|null $text_entities A JSON-serialized list of special entities that appear in the gift text. It can be specified instead
      *                                       of text_parse_mode. Entities other than “bold”, “italic”, “underline”,
-     *                                       “strikethrough”, “spoiler”, and “custom_emoji” are ignored.
+     *                                       “strikethrough”, “spoiler”, “custom_emoji”, and “date_time” are ignored.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#sendgift
@@ -3544,11 +3608,11 @@ abstract class Api implements ApiInterface {
      *                                       1500 for 6 months, and 2500 for 12 months
      * @param string|null $text Text that will be shown along with the service message about the subscription; 0-128 characters
      * @param string|null $text_parse_mode Mode for parsing entities in the text. See formatting options for more details. Entities other than
-     *                                       “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and
-     *                                       “custom_emoji” are ignored.
+     *                                       “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, “custom_emoji”,
+     *                                       and “date_time” are ignored.
      * @param array|null $text_entities A JSON-serialized list of special entities that appear in the gift text. It can be specified instead
      *                                       of text_parse_mode. Entities other than “bold”, “italic”, “underline”,
-     *                                       “strikethrough”, “spoiler”, and “custom_emoji” are ignored.
+     *                                       “strikethrough”, “spoiler”, “custom_emoji”, and “date_time” are ignored.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#giftpremiumsubscription
@@ -4300,6 +4364,88 @@ abstract class Api implements ApiInterface {
     }
 
     /**
+     * Use this method to set the result of an interaction with a Web App and send a corresponding message
+     * on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage
+     * object is returned.
+     *
+     * @param string $web_app_query_id Unique identifier for the query to be answered
+     * @param array $result A JSON-serialized object describing the message to be sent
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#answerwebappquery
+     */
+    public function answerWebAppQuery(
+        string $web_app_query_id,
+        array $result
+    ): \stdClass {
+        $args = [
+            'web_app_query_id' => $web_app_query_id,
+            'result' => json_encode($result)
+        ];
+
+
+        return $this->Request('answerWebAppQuery', $args);
+    }
+
+    /**
+     * Stores a message that can be sent by a user of a Mini App. Returns a PreparedInlineMessage object.
+     *
+     * @param int $user_id Unique identifier of the target user that can use the prepared message
+     * @param array $result A JSON-serialized object describing the message to be sent
+     * @param bool|null $allow_user_chats Pass True if the message can be sent to private chats with users
+     * @param bool|null $allow_bot_chats Pass True if the message can be sent to private chats with bots
+     * @param bool|null $allow_group_chats Pass True if the message can be sent to group and supergroup chats
+     * @param bool|null $allow_channel_chats Pass True if the message can be sent to channel chats
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#savepreparedinlinemessage
+     */
+    public function savePreparedInlineMessage(
+        int $user_id,
+        array $result,
+        bool|null $allow_user_chats = null,
+        bool|null $allow_bot_chats = null,
+        bool|null $allow_group_chats = null,
+        bool|null $allow_channel_chats = null
+    ): \stdClass {
+        $args = [
+            'user_id' => $user_id,
+            'result' => json_encode($result)
+        ];
+
+        if (null !== $allow_user_chats) $args['allow_user_chats'] = $allow_user_chats;
+        if (null !== $allow_bot_chats) $args['allow_bot_chats'] = $allow_bot_chats;
+        if (null !== $allow_group_chats) $args['allow_group_chats'] = $allow_group_chats;
+        if (null !== $allow_channel_chats) $args['allow_channel_chats'] = $allow_channel_chats;
+
+        return $this->Request('savePreparedInlineMessage', $args);
+    }
+
+    /**
+     * Stores a keyboard button that can be used by a user within a Mini App. Returns a
+     * PreparedKeyboardButton object.
+     *
+     * @param int $user_id Unique identifier of the target user that can use the button
+     * @param array $button A JSON-serialized object describing the button to be saved. The button must be of the type
+     *                                       request_users, request_chat, or request_managed_bot
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#savepreparedkeyboardbutton
+     */
+    public function savePreparedKeyboardButton(
+        int $user_id,
+        array $button
+    ): \stdClass {
+        $args = [
+            'user_id' => $user_id,
+            'button' => json_encode($button)
+        ];
+
+
+        return $this->Request('savePreparedKeyboardButton', $args);
+    }
+
+    /**
      * Use this method to edit text and game messages. On success, if the edited message is not an inline
      * message, the edited Message is returned, otherwise True is returned. Note that business messages
      * that were not sent by the bot and do not contain an inline keyboard can only be edited within 48
@@ -4752,7 +4898,7 @@ abstract class Api implements ApiInterface {
      * @param \CURLFile|string|InputFile $sticker Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet,
      *                                       or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending
-     *                                       Files ». Video and animated stickers can't be sent via an HTTP URL.
+     *                                       Files В». Video and animated stickers can't be sent via an HTTP URL.
      * @param string|null $emoji Emoji associated with the sticker; only for just uploaded stickers
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
@@ -4852,7 +4998,8 @@ abstract class Api implements ApiInterface {
      *
      * @param int $user_id User identifier of sticker file owner
      * @param \CURLFile $sticker A file with the sticker in .WEBP, .PNG, .TGS, or .WEBM format. See
-     *                                       https://core.telegram.org/stickers for technical requirements. More information on Sending Files »
+     *                                       https://core.telegram.org/stickers for technical requirements. More information on Sending Files
+     *                                       В»
      * @param string $sticker_format Format of the sticker, must be one of “static”, “animated”, “video”
      * @return \stdClass
      *
@@ -5120,9 +5267,9 @@ abstract class Api implements ApiInterface {
      *                                       https://core.telegram.org/stickers#video-requirements for video sticker technical requirements. Pass
      *                                       a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL
      *                                       as a String for Telegram to get a file from the Internet, or upload a new one using
-     *                                       multipart/form-data. More information on Sending Files ». Animated and video sticker set thumbnails
-     *                                       can't be uploaded via HTTP URL. If omitted, then the thumbnail is dropped and the first sticker is
-     *                                       used as the thumbnail.
+     *                                       multipart/form-data. More information on Sending Files В». Animated and video sticker set
+     *                                       thumbnails can't be uploaded via HTTP URL. If omitted, then the thumbnail is dropped and the first
+     *                                       sticker is used as the thumbnail.
      * @param string $format Format of the thumbnail, must be one of “static” for a .WEBP or .PNG image, “animated” for a
      *                                       .TGS animation, or “video” for a .WEBM video
      * @return \stdClass
@@ -5225,64 +5372,6 @@ abstract class Api implements ApiInterface {
         if (null !== $button) $args['button'] = json_encode($button);
 
         return $this->Request('answerInlineQuery', $args);
-    }
-
-    /**
-     * Use this method to set the result of an interaction with a Web App and send a corresponding message
-     * on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage
-     * object is returned.
-     *
-     * @param string $web_app_query_id Unique identifier for the query to be answered
-     * @param array $result A JSON-serialized object describing the message to be sent
-     * @return \stdClass
-     *
-     * @see https://core.telegram.org/bots/api#answerwebappquery
-     */
-    public function answerWebAppQuery(
-        string $web_app_query_id,
-        array $result
-    ): \stdClass {
-        $args = [
-            'web_app_query_id' => $web_app_query_id,
-            'result' => json_encode($result)
-        ];
-
-
-        return $this->Request('answerWebAppQuery', $args);
-    }
-
-    /**
-     * Stores a message that can be sent by a user of a Mini App. Returns a PreparedInlineMessage object.
-     *
-     * @param int $user_id Unique identifier of the target user that can use the prepared message
-     * @param array $result A JSON-serialized object describing the message to be sent
-     * @param bool|null $allow_user_chats Pass True if the message can be sent to private chats with users
-     * @param bool|null $allow_bot_chats Pass True if the message can be sent to private chats with bots
-     * @param bool|null $allow_group_chats Pass True if the message can be sent to group and supergroup chats
-     * @param bool|null $allow_channel_chats Pass True if the message can be sent to channel chats
-     * @return \stdClass
-     *
-     * @see https://core.telegram.org/bots/api#savepreparedinlinemessage
-     */
-    public function savePreparedInlineMessage(
-        int $user_id,
-        array $result,
-        bool|null $allow_user_chats = null,
-        bool|null $allow_bot_chats = null,
-        bool|null $allow_group_chats = null,
-        bool|null $allow_channel_chats = null
-    ): \stdClass {
-        $args = [
-            'user_id' => $user_id,
-            'result' => json_encode($result)
-        ];
-
-        if (null !== $allow_user_chats) $args['allow_user_chats'] = $allow_user_chats;
-        if (null !== $allow_bot_chats) $args['allow_bot_chats'] = $allow_bot_chats;
-        if (null !== $allow_group_chats) $args['allow_group_chats'] = $allow_group_chats;
-        if (null !== $allow_channel_chats) $args['allow_channel_chats'] = $allow_channel_chats;
-
-        return $this->Request('savePreparedInlineMessage', $args);
     }
 
     /**
