@@ -1,9 +1,9 @@
 {
-    "version": "9.6.0",
+    "version": "10.0.0",
     "types": [
         {
             "name": "Update",
-            "description": "This object represents an incoming update.At most one of the optional parameters can be present in any given update.",
+            "description": "This object represents an incoming update.At most one of the optional fields can be present in any given update.",
             "fields": [
                 {
                     "name": "update_id",
@@ -76,6 +76,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. Messages were deleted from a connected business account"
+                },
+                {
+                    "name": "guest_message",
+                    "types": [
+                        "Message"
+                    ],
+                    "optional": true,
+                    "description": "Optional. New guest message. The bot can use the field Message.guest_query_id and the method answerGuestQuery to send a message in response."
                 },
                 {
                     "name": "message_reaction",
@@ -374,6 +382,14 @@
                     "description": "Optional. True, if privacy mode is disabled for the bot. Returned only in getMe."
                 },
                 {
+                    "name": "supports_guest_queries",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. True, if the bot supports guest queries from chats it is not a member of. Returned only in getMe."
+                },
+                {
                     "name": "supports_inline_queries",
                     "types": [
                         "bool"
@@ -387,7 +403,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Optional. True, if the bot can be connected to a Telegram Business account to receive its messages. Returned only in getMe."
+                    "description": "Optional. True, if the bot can be connected to a user account to manage it. Returned only in getMe."
                 },
                 {
                     "name": "has_main_web_app",
@@ -1001,6 +1017,14 @@
                     "description": "Date the message was sent in Unix time. It is always a positive number, representing a valid date."
                 },
                 {
+                    "name": "guest_query_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. The unique identifier for the guest query. Use this identifier with the method answerGuestQuery to send a response message. If non-empty, the message belongs to the chat where the guest bot was summoned, which may not coincide with other existing bot chats sharing the same identifier."
+                },
+                {
                     "name": "business_connection_id",
                     "types": [
                         "string"
@@ -1097,6 +1121,22 @@
                     ],
                     "optional": true,
                     "description": "Optional. Bot through which the message was sent"
+                },
+                {
+                    "name": "guest_bot_caller_user",
+                    "types": [
+                        "User"
+                    ],
+                    "optional": true,
+                    "description": "Optional. For a message sent by a guest bot, this is the user whose original message triggered the bot's response"
+                },
+                {
+                    "name": "guest_bot_caller_chat",
+                    "types": [
+                        "Chat"
+                    ],
+                    "optional": true,
+                    "description": "Optional. For a message sent by a guest bot, this is the chat whose original message triggered the bot's response"
                 },
                 {
                     "name": "edit_date",
@@ -1220,6 +1260,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. Message is a general file, information about the file"
+                },
+                {
+                    "name": "live_photo",
+                    "types": [
+                        "LivePhoto"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Message is a live photo, information about the live photo. For backward compatibility, when this field is set, the photo field will also be set"
                 },
                 {
                     "name": "paid_media",
@@ -2057,6 +2105,14 @@
                     "description": "Optional. Message is a general file, information about the file"
                 },
                 {
+                    "name": "live_photo",
+                    "types": [
+                        "LivePhoto"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Message is a live photo, information about the live photo"
+                },
+                {
                     "name": "paid_media",
                     "types": [
                         "PaidMediaInfo"
@@ -2223,7 +2279,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. If the message to be replied to is from a different chat, unique identifier for the chat or username of the channel (in the format @channelusername). Not supported for messages sent on behalf of a business account and messages from channel direct messages chats."
+                    "description": "Optional. If the message to be replied to is from a different chat, unique identifier for the chat or username of the bot, supergroup or channel in the format @username. Not supported for messages sent on behalf of a business account and messages from channel direct messages chats."
                 },
                 {
                     "name": "allow_sending_without_reply",
@@ -2704,6 +2760,77 @@
             "extended_by": []
         },
         {
+            "name": "LivePhoto",
+            "description": "This object represents a live photo.",
+            "fields": [
+                {
+                    "name": "photo",
+                    "types": [
+                        "Array<PhotoSize>"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Available sizes of the corresponding static photo"
+                },
+                {
+                    "name": "file_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Identifier for the video file which can be used to download or reuse the file"
+                },
+                {
+                    "name": "file_unique_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier for the video file which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file."
+                },
+                {
+                    "name": "width",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Video width as defined by the sender"
+                },
+                {
+                    "name": "height",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Video height as defined by the sender"
+                },
+                {
+                    "name": "duration",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Duration of the video in seconds as defined by the sender"
+                },
+                {
+                    "name": "mime_type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. MIME type of the file as defined by the sender"
+                },
+                {
+                    "name": "file_size",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value."
+                }
+            ],
+            "extended_by": []
+        },
+        {
             "name": "Story",
             "description": "This object represents a story.",
             "fields": [
@@ -3014,10 +3141,57 @@
             "description": "This object describes paid media. Currently, it can be one of",
             "fields": [],
             "extended_by": [
-                "PaidMediaPreview",
+                "PaidMediaLivePhoto",
                 "PaidMediaPhoto",
+                "PaidMediaPreview",
                 "PaidMediaVideo"
             ]
+        },
+        {
+            "name": "PaidMediaLivePhoto",
+            "description": "",
+            "fields": [
+                {
+                    "name": "type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Type of the paid media, always “live_photo”"
+                },
+                {
+                    "name": "live_photo",
+                    "types": [
+                        "LivePhoto"
+                    ],
+                    "optional": false,
+                    "description": "The photo"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "PaidMediaPhoto",
+            "description": "The paid media is a photo.",
+            "fields": [
+                {
+                    "name": "type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Type of the paid media, always “photo”"
+                },
+                {
+                    "name": "photo",
+                    "types": [
+                        "Array<PhotoSize>"
+                    ],
+                    "optional": false,
+                    "description": "The photo"
+                }
+            ],
+            "extended_by": []
         },
         {
             "name": "PaidMediaPreview",
@@ -3054,29 +3228,6 @@
                     ],
                     "optional": true,
                     "description": "Optional. Duration of the media in seconds as defined by the sender"
-                }
-            ],
-            "extended_by": []
-        },
-        {
-            "name": "PaidMediaPhoto",
-            "description": "The paid media is a photo.",
-            "fields": [
-                {
-                    "name": "type",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": false,
-                    "description": "Type of the paid media, always “photo”"
-                },
-                {
-                    "name": "photo",
-                    "types": [
-                        "Array<PhotoSize>"
-                    ],
-                    "optional": false,
-                    "description": "The photo"
                 }
             ],
             "extended_by": []
@@ -3175,6 +3326,114 @@
             "extended_by": []
         },
         {
+            "name": "PollMedia",
+            "description": "At most one of the optional fields can be present in any given object.",
+            "fields": [
+                {
+                    "name": "animation",
+                    "types": [
+                        "Animation"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Media is an animation, information about the animation"
+                },
+                {
+                    "name": "audio",
+                    "types": [
+                        "Audio"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Media is an audio file, information about the file; currently, can't be received in a poll option"
+                },
+                {
+                    "name": "document",
+                    "types": [
+                        "Document"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Media is a general file, information about the file; currently, can't be received in a poll option"
+                },
+                {
+                    "name": "live_photo",
+                    "types": [
+                        "LivePhoto"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Media is a live photo, information about the live photo"
+                },
+                {
+                    "name": "location",
+                    "types": [
+                        "Location"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Media is a shared location, information about the location"
+                },
+                {
+                    "name": "photo",
+                    "types": [
+                        "Array<PhotoSize>"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Media is a photo, available sizes of the photo"
+                },
+                {
+                    "name": "sticker",
+                    "types": [
+                        "Sticker"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Media is a sticker, information about the sticker; currently, for poll options only"
+                },
+                {
+                    "name": "venue",
+                    "types": [
+                        "Venue"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Media is a venue, information about the venue"
+                },
+                {
+                    "name": "video",
+                    "types": [
+                        "Video"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Media is a video, information about the video"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "InputPollMedia",
+            "description": "This object represents the content of a poll description or a quiz explanation to be sent. It should be one of",
+            "fields": [],
+            "extended_by": [
+                "InputMediaAnimation",
+                "InputMediaAudio",
+                "InputMediaDocument",
+                "InputMediaLivePhoto",
+                "InputMediaLocation",
+                "InputMediaPhoto",
+                "InputMediaVenue",
+                "InputMediaVideo"
+            ]
+        },
+        {
+            "name": "InputPollOptionMedia",
+            "description": "This object represents the content of a poll option to be sent. It should be one of",
+            "fields": [],
+            "extended_by": [
+                "InputMediaAnimation",
+                "InputMediaLivePhoto",
+                "InputMediaLocation",
+                "InputMediaPhoto",
+                "InputMediaSticker",
+                "InputMediaVenue",
+                "InputMediaVideo"
+            ]
+        },
+        {
             "name": "PollOption",
             "description": "This object contains information about one answer option in a poll.",
             "fields": [
@@ -3201,6 +3460,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. Special entities that appear in the option text. Currently, only custom emoji entities are allowed in poll option texts"
+                },
+                {
+                    "name": "media",
+                    "types": [
+                        "PollMedia"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Media added to the poll option"
                 },
                 {
                     "name": "voter_count",
@@ -3264,6 +3531,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. A JSON-serialized list of special entities that appear in the poll option text. It can be specified instead of text_parse_mode"
+                },
+                {
+                    "name": "media",
+                    "types": [
+                        "InputPollOptionMedia"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Media added to the poll option"
                 }
             ],
             "extended_by": []
@@ -3400,6 +3675,22 @@
                     "description": "True, if the poll allows to change the chosen answer options"
                 },
                 {
+                    "name": "members_only",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": false,
+                    "description": "True if voting is limited to users who have been members of the chat where the poll was originally sent for more than 24 hours"
+                },
+                {
+                    "name": "country_codes",
+                    "types": [
+                        "Array<string>"
+                    ],
+                    "optional": true,
+                    "description": "Optional. A list of two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which users can vote in the poll. If omitted, then users from any country can participate in the poll."
+                },
+                {
                     "name": "correct_option_ids",
                     "types": [
                         "Array<int>"
@@ -3422,6 +3713,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. Special entities like usernames, URLs, bot commands, etc. that appear in the explanation"
+                },
+                {
+                    "name": "explanation_media",
+                    "types": [
+                        "PollMedia"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Media added to the quiz explanation"
                 },
                 {
                     "name": "open_period",
@@ -3454,6 +3753,14 @@
                     ],
                     "optional": true,
                     "description": "Optional. Special entities like usernames, URLs, bot commands, etc. that appear in the description"
+                },
+                {
+                    "name": "media",
+                    "types": [
+                        "PollMedia"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Media added to the poll description; for polls inside the Message object only"
                 }
             ],
             "extended_by": []
@@ -5263,7 +5570,7 @@
         },
         {
             "name": "ReplyKeyboardMarkup",
-            "description": "This object represents a custom keyboard with reply options (see Introduction to bots for details and examples). Not supported in channels and for messages sent on behalf of a Telegram Business account.",
+            "description": "This object represents a custom keyboard with reply options (see Introduction to bots for details and examples). Not supported in channels and for messages sent on behalf of a business account.",
             "fields": [
                 {
                     "name": "keyboard",
@@ -5613,7 +5920,7 @@
         },
         {
             "name": "ReplyKeyboardRemove",
-            "description": "Upon receiving a message with this object, Telegram clients will remove the current custom keyboard and display the default letter-keyboard. By default, custom keyboards are displayed until a new keyboard is sent by a bot. An exception is made for one-time keyboards that are hidden immediately after the user presses a button (see ReplyKeyboardMarkup). Not supported in channels and for messages sent on behalf of a Telegram Business account.",
+            "description": "Upon receiving a message with this object, Telegram clients will remove the current custom keyboard and display the default letter-keyboard. By default, custom keyboards are displayed until a new keyboard is sent by a bot. An exception is made for one-time keyboards that are hidden immediately after the user presses a button (see ReplyKeyboardMarkup). Not supported in channels and for messages sent on behalf of a business account.",
             "fields": [
                 {
                     "name": "remove_keyboard",
@@ -5700,7 +6007,7 @@
                         "WebAppInfo"
                     ],
                     "optional": true,
-                    "description": "Optional. Description of the Web App that will be launched when the user presses the button. The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery. Available only in private chats between a user and the bot. Not supported for messages sent on behalf of a Telegram Business account."
+                    "description": "Optional. Description of the Web App that will be launched when the user presses the button. The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery. Available only in private chats between a user and the bot. Not supported for messages sent on behalf of a business account."
                 },
                 {
                     "name": "login_url",
@@ -5716,7 +6023,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted. Not supported for messages sent in channel direct messages chats and on behalf of a Telegram Business account."
+                    "description": "Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted. Not supported for messages sent in channel direct messages chats and on behalf of a business account."
                 },
                 {
                     "name": "switch_inline_query_current_chat",
@@ -5724,7 +6031,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted.This offers a quick way for the user to open your bot in inline mode in the same chat - good for selecting something from multiple options. Not supported in channels and for messages sent in channel direct messages chats and on behalf of a Telegram Business account."
+                    "description": "Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted.This offers a quick way for the user to open your bot in inline mode in the same chat - good for selecting something from multiple options. Not supported in channels and for messages sent in channel direct messages chats and on behalf of a business account."
                 },
                 {
                     "name": "switch_inline_query_chosen_chat",
@@ -5732,7 +6039,7 @@
                         "SwitchInlineQueryChosenChat"
                     ],
                     "optional": true,
-                    "description": "Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type, open that chat and insert the bot's username and the specified inline query in the input field. Not supported for messages sent in channel direct messages chats and on behalf of a Telegram Business account."
+                    "description": "Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type, open that chat and insert the bot's username and the specified inline query in the input field. Not supported for messages sent in channel direct messages chats and on behalf of a business account."
                 },
                 {
                     "name": "copy_text",
@@ -5927,7 +6234,7 @@
         },
         {
             "name": "ForceReply",
-            "description": "Upon receiving a message with this object, Telegram clients will display a reply interface to the user (act as if the user has selected the bot's message and tapped 'Reply'). This can be extremely useful if you want to create user-friendly step-by-step interfaces without having to sacrifice privacy mode. Not supported in channels and for messages sent on behalf of a Telegram Business account.",
+            "description": "Upon receiving a message with this object, Telegram clients will display a reply interface to the user (act as if the user has selected the bot's message and tapped 'Reply'). This can be extremely useful if you want to create user-friendly step-by-step interfaces without having to sacrifice privacy mode. Not supported in channels and for messages sent on behalf of a user account.",
             "fields": [
                 {
                     "name": "force_reply",
@@ -6688,6 +6995,14 @@
                     "description": "True, if the user is allowed to add web page previews to their messages"
                 },
                 {
+                    "name": "can_react_to_messages",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": false,
+                    "description": "True, if the user is allowed to react to messages"
+                },
+                {
                     "name": "can_edit_tag",
                     "types": [
                         "bool"
@@ -6932,12 +7247,20 @@
                     "description": "Optional. True, if the user is allowed to add web page previews to their messages"
                 },
                 {
+                    "name": "can_react_to_messages",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. True, if the user is allowed to react to messages. If omitted, defaults to the value of can_send_messages."
+                },
+                {
                     "name": "can_edit_tag",
                     "types": [
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Optional. True, if the user is allowed to edit their own tag"
+                    "description": "Optional. True, if the user is allowed to edit their own tag. If omitted, defaults to the value of can_pin_messages."
                 },
                 {
                     "name": "can_change_info",
@@ -8570,6 +8893,29 @@
             "extended_by": []
         },
         {
+            "name": "BotAccessSettings",
+            "description": "This object describes the access settings of a bot.",
+            "fields": [
+                {
+                    "name": "is_access_restricted",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": false,
+                    "description": "True, if only selected users can access the bot. The bot's owner can always access it."
+                },
+                {
+                    "name": "added_users",
+                    "types": [
+                        "Array<User>"
+                    ],
+                    "optional": true,
+                    "description": "Optional. The list of other users who have access to the bot if the access is restricted"
+                }
+            ],
+            "extended_by": []
+        },
+        {
             "name": "AcceptedGiftTypes",
             "description": "This object describes the types of gifts that can be gifted to a user or a chat.",
             "fields": [
@@ -8760,7 +9106,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel direct messages chats and channel chats aren't supported."
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username. Channel direct messages chats and channel chats aren't supported."
                 }
             ],
             "extended_by": []
@@ -8785,7 +9131,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel direct messages chats and channel chats aren't supported."
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username. Channel direct messages chats and channel chats aren't supported."
                 }
             ],
             "extended_by": []
@@ -8810,7 +9156,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel direct messages chats and channel chats aren't supported."
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username. Channel direct messages chats and channel chats aren't supported."
                 },
                 {
                     "name": "user_id",
@@ -9157,7 +9503,7 @@
                         "User"
                     ],
                     "optional": true,
-                    "description": "Optional. The user which will be the new owner of the chat if the previous owner does not return to the chat"
+                    "description": "Optional. The user who will become the new owner of the chat if the previous owner does not return to the chat"
                 }
             ],
             "extended_by": []
@@ -9427,6 +9773,21 @@
             "extended_by": []
         },
         {
+            "name": "SentGuestMessage",
+            "description": "Describes an inline message sent by a guest bot.",
+            "fields": [
+                {
+                    "name": "inline_message_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Identifier of the sent inline message"
+                }
+            ],
+            "extended_by": []
+        },
+        {
             "name": "PreparedInlineMessage",
             "description": "Describes an inline message to be sent by a user of a Mini App.",
             "fields": [
@@ -9493,195 +9854,12 @@
             "fields": [],
             "extended_by": [
                 "InputMediaAnimation",
-                "InputMediaDocument",
                 "InputMediaAudio",
+                "InputMediaDocument",
+                "InputMediaLivePhoto",
                 "InputMediaPhoto",
                 "InputMediaVideo"
             ]
-        },
-        {
-            "name": "InputMediaPhoto",
-            "description": "Represents a photo to be sent.",
-            "fields": [
-                {
-                    "name": "type",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": false,
-                    "description": "Type of the result, must be photo",
-                    "default": "photo"
-                },
-                {
-                    "name": "media",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": false,
-                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
-                },
-                {
-                    "name": "caption",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing"
-                },
-                {
-                    "name": "parse_mode",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Optional. Mode for parsing entities in the photo caption. See formatting options for more details."
-                },
-                {
-                    "name": "caption_entities",
-                    "types": [
-                        "Array<MessageEntity>"
-                    ],
-                    "optional": true,
-                    "description": "Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode"
-                },
-                {
-                    "name": "show_caption_above_media",
-                    "types": [
-                        "bool"
-                    ],
-                    "optional": true,
-                    "description": "Optional. Pass True, if the caption must be shown above the message media"
-                },
-                {
-                    "name": "has_spoiler",
-                    "types": [
-                        "bool"
-                    ],
-                    "optional": true,
-                    "description": "Optional. Pass True if the photo needs to be covered with a spoiler animation"
-                }
-            ],
-            "extended_by": []
-        },
-        {
-            "name": "InputMediaVideo",
-            "description": "Represents a video to be sent.",
-            "fields": [
-                {
-                    "name": "type",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": false,
-                    "description": "Type of the result, must be video",
-                    "default": "video"
-                },
-                {
-                    "name": "media",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": false,
-                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
-                },
-                {
-                    "name": "thumbnail",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
-                },
-                {
-                    "name": "cover",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Optional. Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
-                },
-                {
-                    "name": "start_timestamp",
-                    "types": [
-                        "int"
-                    ],
-                    "optional": true,
-                    "description": "Optional. Start timestamp for the video in the message"
-                },
-                {
-                    "name": "caption",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Optional. Caption of the video to be sent, 0-1024 characters after entities parsing"
-                },
-                {
-                    "name": "parse_mode",
-                    "types": [
-                        "string"
-                    ],
-                    "optional": true,
-                    "description": "Optional. Mode for parsing entities in the video caption. See formatting options for more details."
-                },
-                {
-                    "name": "caption_entities",
-                    "types": [
-                        "Array<MessageEntity>"
-                    ],
-                    "optional": true,
-                    "description": "Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode"
-                },
-                {
-                    "name": "show_caption_above_media",
-                    "types": [
-                        "bool"
-                    ],
-                    "optional": true,
-                    "description": "Optional. Pass True, if the caption must be shown above the message media"
-                },
-                {
-                    "name": "width",
-                    "types": [
-                        "int"
-                    ],
-                    "optional": true,
-                    "description": "Optional. Video width"
-                },
-                {
-                    "name": "height",
-                    "types": [
-                        "int"
-                    ],
-                    "optional": true,
-                    "description": "Optional. Video height"
-                },
-                {
-                    "name": "duration",
-                    "types": [
-                        "int"
-                    ],
-                    "optional": true,
-                    "description": "Optional. Video duration in seconds"
-                },
-                {
-                    "name": "supports_streaming",
-                    "types": [
-                        "bool"
-                    ],
-                    "optional": true,
-                    "description": "Optional. Pass True if the uploaded video is suitable for streaming"
-                },
-                {
-                    "name": "has_spoiler",
-                    "types": [
-                        "bool"
-                    ],
-                    "optional": true,
-                    "description": "Optional. Pass True if the video needs to be covered with a spoiler animation"
-                }
-            ],
-            "extended_by": []
         },
         {
             "name": "InputMediaAnimation",
@@ -9924,6 +10102,414 @@
             "extended_by": []
         },
         {
+            "name": "InputMediaLivePhoto",
+            "description": "Represents a live photo to be sent.",
+            "fields": [
+                {
+                    "name": "type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Type of the result, must be live_photo",
+                    "default": "live_photo"
+                },
+                {
+                    "name": "media",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Video of the live photo to send. Pass a file_id to send a file that exists on the Telegram servers (recommended) or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files ». Sending live photos by a URL is currently unsupported."
+                },
+                {
+                    "name": "photo",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "The static photo to send. Pass a file_id to send a file that exists on the Telegram servers (recommended) or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files ». Sending live photos by a URL is currently unsupported."
+                },
+                {
+                    "name": "caption",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Caption of the live photo to be sent, 0-1024 characters after entities parsing"
+                },
+                {
+                    "name": "parse_mode",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Mode for parsing entities in the live photo caption. See formatting options for more details."
+                },
+                {
+                    "name": "caption_entities",
+                    "types": [
+                        "Array<MessageEntity>"
+                    ],
+                    "optional": true,
+                    "description": "Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode"
+                },
+                {
+                    "name": "show_caption_above_media",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Pass True, if the caption must be shown above the message media"
+                },
+                {
+                    "name": "has_spoiler",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Pass True if the live photo needs to be covered with a spoiler animation"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "InputMediaLocation",
+            "description": "Represents a location to be sent.",
+            "fields": [
+                {
+                    "name": "type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Type of the result, must be location",
+                    "default": "location"
+                },
+                {
+                    "name": "latitude",
+                    "types": [
+                        "float"
+                    ],
+                    "optional": false,
+                    "description": "Latitude of the location"
+                },
+                {
+                    "name": "longitude",
+                    "types": [
+                        "float"
+                    ],
+                    "optional": false,
+                    "description": "Longitude of the location"
+                },
+                {
+                    "name": "horizontal_accuracy",
+                    "types": [
+                        "float"
+                    ],
+                    "optional": true,
+                    "description": "Optional. The radius of uncertainty for the location, measured in meters; 0-1500"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "InputMediaPhoto",
+            "description": "Represents a photo to be sent.",
+            "fields": [
+                {
+                    "name": "type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Type of the result, must be photo",
+                    "default": "photo"
+                },
+                {
+                    "name": "media",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
+                },
+                {
+                    "name": "caption",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing"
+                },
+                {
+                    "name": "parse_mode",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Mode for parsing entities in the photo caption. See formatting options for more details."
+                },
+                {
+                    "name": "caption_entities",
+                    "types": [
+                        "Array<MessageEntity>"
+                    ],
+                    "optional": true,
+                    "description": "Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode"
+                },
+                {
+                    "name": "show_caption_above_media",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Pass True, if the caption must be shown above the message media"
+                },
+                {
+                    "name": "has_spoiler",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Pass True if the photo needs to be covered with a spoiler animation"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "InputMediaSticker",
+            "description": "Represents a sticker file to be sent.",
+            "fields": [
+                {
+                    "name": "type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Type of the result, must be sticker",
+                    "default": "sticker"
+                },
+                {
+                    "name": "media",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a .WEBP sticker from the Internet, or pass “attach://<file_attach_name>” to upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
+                },
+                {
+                    "name": "emoji",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Emoji associated with the sticker; only for just uploaded stickers"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "InputMediaVenue",
+            "description": "Represents a venue to be sent.",
+            "fields": [
+                {
+                    "name": "type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Type of the result, must be venue",
+                    "default": "venue"
+                },
+                {
+                    "name": "latitude",
+                    "types": [
+                        "float"
+                    ],
+                    "optional": false,
+                    "description": "Latitude of the location"
+                },
+                {
+                    "name": "longitude",
+                    "types": [
+                        "float"
+                    ],
+                    "optional": false,
+                    "description": "Longitude of the location"
+                },
+                {
+                    "name": "title",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Name of the venue"
+                },
+                {
+                    "name": "address",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Address of the venue"
+                },
+                {
+                    "name": "foursquare_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Foursquare identifier of the venue"
+                },
+                {
+                    "name": "foursquare_type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)"
+                },
+                {
+                    "name": "google_place_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Google Places identifier of the venue"
+                },
+                {
+                    "name": "google_place_type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Google Places type of the venue. (See supported types.)"
+                }
+            ],
+            "extended_by": []
+        },
+        {
+            "name": "InputMediaVideo",
+            "description": "Represents a video to be sent.",
+            "fields": [
+                {
+                    "name": "type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Type of the result, must be video",
+                    "default": "video"
+                },
+                {
+                    "name": "media",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
+                },
+                {
+                    "name": "thumbnail",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »"
+                },
+                {
+                    "name": "cover",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »"
+                },
+                {
+                    "name": "start_timestamp",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Start timestamp for the video in the message"
+                },
+                {
+                    "name": "caption",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Caption of the video to be sent, 0-1024 characters after entities parsing"
+                },
+                {
+                    "name": "parse_mode",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Mode for parsing entities in the video caption. See formatting options for more details."
+                },
+                {
+                    "name": "caption_entities",
+                    "types": [
+                        "Array<MessageEntity>"
+                    ],
+                    "optional": true,
+                    "description": "Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode"
+                },
+                {
+                    "name": "show_caption_above_media",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Pass True, if the caption must be shown above the message media"
+                },
+                {
+                    "name": "width",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Video width"
+                },
+                {
+                    "name": "height",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Video height"
+                },
+                {
+                    "name": "duration",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Video duration in seconds"
+                },
+                {
+                    "name": "supports_streaming",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Pass True if the uploaded video is suitable for streaming"
+                },
+                {
+                    "name": "has_spoiler",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Optional. Pass True if the video needs to be covered with a spoiler animation"
+                }
+            ],
+            "extended_by": []
+        },
+        {
             "name": "InputFile",
             "description": "This object represents the contents of a file to be uploaded. Must be posted using multipart/form-data in the usual way that files are uploaded via the browser.",
             "fields": [],
@@ -9934,9 +10520,42 @@
             "description": "This object describes the paid media to be sent. Currently, it can be one of",
             "fields": [],
             "extended_by": [
+                "InputPaidMediaLivePhoto",
                 "InputPaidMediaPhoto",
                 "InputPaidMediaVideo"
             ]
+        },
+        {
+            "name": "InputPaidMediaLivePhoto",
+            "description": "The paid media to send is a live photo.",
+            "fields": [
+                {
+                    "name": "type",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Type of the media, must be live_photo",
+                    "default": "live_photo"
+                },
+                {
+                    "name": "media",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Video of the live photo to send. Pass a file_id to send a file that exists on the Telegram servers (recommended) or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files ». Sending live photos by a URL is currently unsupported."
+                },
+                {
+                    "name": "photo",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "The static photo to send. Pass a file_id to send a file that exists on the Telegram servers (recommended) or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files ». Sending live photos by a URL is currently unsupported."
+                }
+            ],
+            "extended_by": []
         },
         {
             "name": "InputPaidMediaPhoto",
@@ -14659,7 +15278,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -14731,7 +15350,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",
@@ -14784,7 +15403,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -14809,7 +15428,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)"
+                    "description": "Unique identifier for the chat where the original message was sent (or username of the target bot, supergroup or channel in the format @username)"
                 },
                 {
                     "name": "video_start_timestamp",
@@ -14875,7 +15494,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -14900,7 +15519,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the chat where the original messages were sent (or channel username in the format @channelusername)"
+                    "description": "Unique identifier for the chat where the original messages were sent (or username of the target bot, supergroup or channel in the format @username)"
                 },
                 {
                     "name": "message_ids",
@@ -14942,7 +15561,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -14967,7 +15586,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)"
+                    "description": "Unique identifier for the chat where the original message was sent (or username of the target bot, supergroup or channel in the format @username)"
                 },
                 {
                     "name": "message_id",
@@ -15039,7 +15658,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",
@@ -15092,7 +15711,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -15117,7 +15736,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the chat where the original messages were sent (or channel username in the format @channelusername)"
+                    "description": "Unique identifier for the chat where the original messages were sent (or username of the target bot, supergroup or channel in the format @username)"
                 },
                 {
                     "name": "message_ids",
@@ -15175,7 +15794,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -15264,7 +15883,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",
@@ -15307,6 +15926,165 @@
             ]
         },
         {
+            "name": "sendLivePhoto",
+            "description": "Use this method to send live photos. On success, the sent Message is returned.",
+            "fields": [
+                {
+                    "name": "business_connection_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message will be sent"
+                },
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int",
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                {
+                    "name": "message_thread_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
+                },
+                {
+                    "name": "direct_messages_topic_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
+                },
+                {
+                    "name": "live_photo",
+                    "types": [
+                        "InputFile",
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Live photo video to send. The video must be no longer than 10 seconds and must not exceed 10 MB in size. Pass a file_id as String to send a video that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files ». Sending live photos by a URL is currently unsupported."
+                },
+                {
+                    "name": "photo",
+                    "types": [
+                        "InputFile",
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "The static photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files ». Sending live photos by a URL is currently unsupported."
+                },
+                {
+                    "name": "caption",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities parsing"
+                },
+                {
+                    "name": "parse_mode",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Mode for parsing entities in the video caption. See formatting options for more details."
+                },
+                {
+                    "name": "caption_entities",
+                    "types": [
+                        "Array<MessageEntity>"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode"
+                },
+                {
+                    "name": "show_caption_above_media",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Pass True, if the caption must be shown above the message media"
+                },
+                {
+                    "name": "has_spoiler",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Pass True if the video needs to be covered with a spoiler animation"
+                },
+                {
+                    "name": "disable_notification",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Sends the message silently. Users will receive a notification with no sound."
+                },
+                {
+                    "name": "protect_content",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Protects the contents of the sent message from forwarding and saving"
+                },
+                {
+                    "name": "allow_paid_broadcast",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
+                },
+                {
+                    "name": "message_effect_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": true,
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
+                },
+                {
+                    "name": "suggested_post_parameters",
+                    "types": [
+                        "SuggestedPostParameters"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
+                {
+                    "name": "reply_parameters",
+                    "types": [
+                        "ReplyParameters"
+                    ],
+                    "optional": true,
+                    "description": "Description of the message to reply to"
+                },
+                {
+                    "name": "reply_markup",
+                    "types": [
+                        "InlineKeyboardMarkup",
+                        "ReplyKeyboardMarkup",
+                        "ReplyKeyboardRemove",
+                        "ForceReply"
+                    ],
+                    "optional": true,
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user."
+                }
+            ],
+            "return_types": [
+                "Message"
+            ]
+        },
+        {
             "name": "sendAudio",
             "description": "Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.\nFor sending voice messages, use the sendVoice method instead.",
             "fields": [
@@ -15325,7 +16103,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -15431,7 +16209,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",
@@ -15492,7 +16270,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -15582,7 +16360,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",
@@ -15643,7 +16421,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -15790,7 +16568,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",
@@ -15851,7 +16629,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -15973,7 +16751,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",
@@ -16034,7 +16812,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -16115,7 +16893,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",
@@ -16176,7 +16954,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -16250,7 +17028,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",
@@ -16311,7 +17089,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername). If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance."
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance."
                 },
                 {
                     "name": "message_thread_id",
@@ -16407,7 +17185,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "suggested_post_parameters",
@@ -16443,7 +17221,7 @@
         },
         {
             "name": "sendMediaGroup",
-            "description": "Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Message objects that were sent is returned.",
+            "description": "Use this method to send a group of photos, live photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Message objects that were sent is returned.",
             "fields": [
                 {
                     "name": "business_connection_id",
@@ -16460,7 +17238,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -16481,7 +17259,7 @@
                 {
                     "name": "media",
                     "types": [
-                        "Array<InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo>"
+                        "Array<InputMediaAudio|InputMediaDocument|InputMediaLivePhoto|InputMediaPhoto|InputMediaVideo>"
                     ],
                     "optional": false,
                     "description": "A JSON-serialized array describing messages to be sent, must include 2-10 items"
@@ -16508,7 +17286,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",
@@ -16550,7 +17328,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -16638,7 +17416,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",
@@ -16699,7 +17477,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -16803,7 +17581,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",
@@ -16864,7 +17642,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -16936,7 +17714,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",
@@ -16997,7 +17775,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername). Polls can't be sent to channel direct messages chats."
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. Polls can't be sent to channel direct messages chats."
                 },
                 {
                     "name": "message_thread_id",
@@ -17037,7 +17815,7 @@
                         "Array<InputPollOption>"
                     ],
                     "optional": false,
-                    "description": "A JSON-serialized list of 2-12 answer options"
+                    "description": "A JSON-serialized list of 1-12 answer options"
                 },
                 {
                     "name": "is_anonymous",
@@ -17100,6 +17878,22 @@
                     "description": "Pass True, if poll results must be shown only after the poll closes"
                 },
                 {
+                    "name": "members_only",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Pass True, if voting is limited to users who have been members of the chat where the poll is being sent for more than 24 hours; for channel chats only"
+                },
+                {
+                    "name": "country_codes",
+                    "types": [
+                        "Array<string>"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized list of 0-12 two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which users can vote in the poll; for channel chats only. If omitted or empty, then users from any country can participate in the poll."
+                },
+                {
                     "name": "correct_option_ids",
                     "types": [
                         "Array<int>"
@@ -17130,6 +17924,14 @@
                     ],
                     "optional": true,
                     "description": "A JSON-serialized list of special entities that appear in the poll explanation. It can be specified instead of explanation_parse_mode"
+                },
+                {
+                    "name": "explanation_media",
+                    "types": [
+                        "InputPollMedia"
+                    ],
+                    "optional": true,
+                    "description": "Media added to the quiz explanation"
                 },
                 {
                     "name": "open_period",
@@ -17180,6 +17982,14 @@
                     "description": "A JSON-serialized list of special entities that appear in the poll description, which can be specified instead of description_parse_mode"
                 },
                 {
+                    "name": "media",
+                    "types": [
+                        "InputPollMedia"
+                    ],
+                    "optional": true,
+                    "description": "Media added to the poll description"
+                },
+                {
                     "name": "disable_notification",
                     "types": [
                         "bool"
@@ -17201,7 +18011,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",
@@ -17250,10 +18060,11 @@
                 {
                     "name": "chat_id",
                     "types": [
-                        "int"
+                        "int",
+                        "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat"
+                    "description": "Unique identifier for the target chat or username of the target bot in the format @username"
                 },
                 {
                     "name": "checklist",
@@ -17327,7 +18138,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -17376,7 +18187,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",
@@ -17420,7 +18231,7 @@
         },
         {
             "name": "sendMessageDraft",
-            "description": "Use this method to stream a partial message to a user while the message is being generated. Returns True on success.",
+            "description": "Use this method to stream a partial message to a user while the message is being generated. Note that the streamed draft is ephemeral and acts as a temporary 30-second preview - once the output is finalized, you must call sendMessage with the complete message to persist it in the user's chat. Returns True on success.",
             "fields": [
                 {
                     "name": "chat_id",
@@ -17444,15 +18255,15 @@
                         "int"
                     ],
                     "optional": false,
-                    "description": "Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier are animated"
+                    "description": "Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier are animated."
                 },
                 {
                     "name": "text",
                     "types": [
                         "string"
                     ],
-                    "optional": false,
-                    "description": "Text of the message to be sent, 1-4096 characters after entities parsing"
+                    "optional": true,
+                    "description": "Text of the message to be sent, 0-4096 characters after entities parsing. Pass an empty text to show a “Thinking…” placeholder."
                 },
                 {
                     "name": "parse_mode",
@@ -17494,7 +18305,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel chats and channel direct messages chats aren't supported."
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. Channel chats and channel direct messages chats aren't supported."
                 },
                 {
                     "name": "message_thread_id",
@@ -17528,7 +18339,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_id",
@@ -17688,7 +18499,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target group or username of the target supergroup or channel in the format @username"
                 },
                 {
                     "name": "user_id",
@@ -17730,7 +18541,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target group or username of the target supergroup or channel in the format @username"
                 },
                 {
                     "name": "user_id",
@@ -17764,7 +18575,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 },
                 {
                     "name": "user_id",
@@ -17814,7 +18625,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel in the format @username"
                 },
                 {
                     "name": "user_id",
@@ -17977,7 +18788,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 },
                 {
                     "name": "user_id",
@@ -18011,7 +18822,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 },
                 {
                     "name": "user_id",
@@ -18045,7 +18856,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel in the format @username"
                 },
                 {
                     "name": "sender_chat_id",
@@ -18071,7 +18882,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel in the format @username"
                 },
                 {
                     "name": "sender_chat_id",
@@ -18097,7 +18908,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 },
                 {
                     "name": "permissions",
@@ -18131,7 +18942,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel in the format @username"
                 }
             ],
             "return_types": [
@@ -18149,7 +18960,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel in the format @username"
                 },
                 {
                     "name": "name",
@@ -18199,7 +19010,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel in the format @username"
                 },
                 {
                     "name": "invite_link",
@@ -18257,7 +19068,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target channel chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target channel chat or username of the target channel in the format @username"
                 },
                 {
                     "name": "name",
@@ -18299,7 +19110,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel in the format @username"
                 },
                 {
                     "name": "invite_link",
@@ -18333,7 +19144,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier of the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier of the target chat or username of the target channel in the format @username"
                 },
                 {
                     "name": "invite_link",
@@ -18359,7 +19170,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel in the format @username"
                 },
                 {
                     "name": "user_id",
@@ -18385,7 +19196,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel in the format @username"
                 },
                 {
                     "name": "user_id",
@@ -18411,7 +19222,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel in the format @username"
                 },
                 {
                     "name": "photo",
@@ -18437,7 +19248,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel in the format @username"
                 }
             ],
             "return_types": [
@@ -18455,7 +19266,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel in the format @username"
                 },
                 {
                     "name": "title",
@@ -18481,7 +19292,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel in the format @username"
                 },
                 {
                     "name": "description",
@@ -18515,7 +19326,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel in the format @username"
                 },
                 {
                     "name": "message_id",
@@ -18557,7 +19368,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel in the format @username"
                 },
                 {
                     "name": "message_id",
@@ -18583,7 +19394,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel in the format @username"
                 }
             ],
             "return_types": [
@@ -18601,7 +19412,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername). Channel direct messages chats aren't supported; leave the corresponding channel instead."
+                    "description": "Unique identifier for the target chat or username of the target supergroup or channel in the format @username. Channel direct messages chats aren't supported; leave the corresponding channel instead."
                 }
             ],
             "return_types": [
@@ -18619,7 +19430,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup or channel in the format @username"
                 }
             ],
             "return_types": [
@@ -18628,7 +19439,7 @@
         },
         {
             "name": "getChatAdministrators",
-            "description": "Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of ChatMember objects.",
+            "description": "Use this method to get a list of administrators in a chat. Returns an Array of ChatMember objects.",
             "fields": [
                 {
                     "name": "chat_id",
@@ -18637,7 +19448,15 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup or channel in the format @username"
+                },
+                {
+                    "name": "return_bots",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": true,
+                    "description": "Pass True to additionally receive all bots that are administrators of the chat. By default, bots other than the current bot are omitted."
                 }
             ],
             "return_types": [
@@ -18655,7 +19474,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup or channel in the format @username"
                 }
             ],
             "return_types": [
@@ -18673,7 +19492,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup or channel in the format @username"
                 },
                 {
                     "name": "user_id",
@@ -18689,6 +19508,31 @@
             ]
         },
         {
+            "name": "getUserPersonalChatMessages",
+            "description": "Use this method to get the last messages from the personal chat (i.e., the chat currently added to their profile) of a given user. On success, an array of Message objects is returned.",
+            "fields": [
+                {
+                    "name": "user_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier for the target user"
+                },
+                {
+                    "name": "limit",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "The maximum number of messages to return; 1-20"
+                }
+            ],
+            "return_types": [
+                "Array<Message>"
+            ]
+        },
+        {
             "name": "setChatStickerSet",
             "description": "Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method. Returns True on success.",
             "fields": [
@@ -18699,7 +19543,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 },
                 {
                     "name": "sticker_set_name",
@@ -18725,7 +19569,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 }
             ],
             "return_types": [
@@ -18751,7 +19595,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 },
                 {
                     "name": "name",
@@ -18793,7 +19637,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -18835,7 +19679,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -18861,7 +19705,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -18887,7 +19731,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -18913,7 +19757,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -18939,7 +19783,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 },
                 {
                     "name": "name",
@@ -18965,7 +19809,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 }
             ],
             "return_types": [
@@ -18983,7 +19827,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 }
             ],
             "return_types": [
@@ -19001,7 +19845,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 }
             ],
             "return_types": [
@@ -19019,7 +19863,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 }
             ],
             "return_types": [
@@ -19037,7 +19881,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 }
             ],
             "return_types": [
@@ -19096,6 +19940,31 @@
             ]
         },
         {
+            "name": "answerGuestQuery",
+            "description": "Use this method to reply to a received guest message. On success, a SentGuestMessage object is returned.",
+            "fields": [
+                {
+                    "name": "guest_query_id",
+                    "types": [
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier for the query to be answered"
+                },
+                {
+                    "name": "result",
+                    "types": [
+                        "InlineQueryResult"
+                    ],
+                    "optional": false,
+                    "description": "A JSON-serialized object describing the message to be sent"
+                }
+            ],
+            "return_types": [
+                "SentGuestMessage"
+            ]
+        },
+        {
             "name": "getUserChatBoosts",
             "description": "Use this method to get the list of boosts added to a chat by a user. Requires administrator rights in the chat. Returns a UserChatBoosts object.",
             "fields": [
@@ -19106,7 +19975,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the chat or username of the channel (in the format @channelusername)"
+                    "description": "Unique identifier for the chat or username of the channel in the format @username"
                 },
                 {
                     "name": "user_id",
@@ -19170,6 +20039,56 @@
             ],
             "return_types": [
                 "string"
+            ]
+        },
+        {
+            "name": "getManagedBotAccessSettings",
+            "description": "Use this method to get the access settings of a managed bot. Returns a BotAccessSettings object on success.",
+            "fields": [
+                {
+                    "name": "user_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "User identifier of the managed bot whose access settings will be returned"
+                }
+            ],
+            "return_types": [
+                "BotAccessSettings"
+            ]
+        },
+        {
+            "name": "setManagedBotAccessSettings",
+            "description": "Use this method to change the access settings of a managed bot. Returns True on success.",
+            "fields": [
+                {
+                    "name": "user_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "User identifier of the managed bot whose access settings will be changed"
+                },
+                {
+                    "name": "is_access_restricted",
+                    "types": [
+                        "bool"
+                    ],
+                    "optional": false,
+                    "description": "Pass True, if only selected users can access the bot. The bot's owner can always access it."
+                },
+                {
+                    "name": "added_user_ids",
+                    "types": [
+                        "Array<int>"
+                    ],
+                    "optional": true,
+                    "description": "A JSON-serialized list of up to 10 identifiers of users who will have access to the bot in addition to its owner. Ignored if is_access_restricted is false."
+                }
+            ],
+            "return_types": [
+                "bool"
             ]
         },
         {
@@ -19521,7 +20440,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Required if user_id is not specified. Unique identifier for the chat or username of the channel (in the format @channelusername) that will receive the gift."
+                    "description": "Required if user_id is not specified. Unique identifier for the chat or username of the channel (in the format @username) that will receive the gift."
                 },
                 {
                     "name": "gift_id",
@@ -19661,7 +20580,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername). Channel direct messages chats can't be verified."
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. Channel direct messages chats can't be verified."
                 },
                 {
                     "name": "custom_description",
@@ -19704,7 +20623,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot or channel in the format @username"
                 }
             ],
             "return_types": [
@@ -20176,7 +21095,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel in the format @username"
                 },
                 {
                     "name": "exclude_unsaved",
@@ -20725,7 +21644,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username."
                 },
                 {
                     "name": "message_id",
@@ -20808,7 +21727,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username."
                 },
                 {
                     "name": "message_id",
@@ -20874,7 +21793,7 @@
         },
         {
             "name": "editMessageMedia",
-            "description": "Use this method to edit animation, audio, document, photo, or video messages, or to add media to text messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.",
+            "description": "Use this method to edit animation, audio, document, live photo, photo, or video messages, or to add media to text messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo, a live photo, or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.",
             "fields": [
                 {
                     "name": "business_connection_id",
@@ -20891,7 +21810,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username."
                 },
                 {
                     "name": "message_id",
@@ -20950,7 +21869,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username."
                 },
                 {
                     "name": "message_id",
@@ -21049,7 +21968,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username."
                 },
                 {
                     "name": "message_id",
@@ -21096,10 +22015,11 @@
                 {
                     "name": "chat_id",
                     "types": [
-                        "int"
+                        "int",
+                        "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat"
+                    "description": "Unique identifier for the target chat or username of the target bot in the format @username"
                 },
                 {
                     "name": "message_id",
@@ -21149,7 +22069,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username."
                 },
                 {
                     "name": "message_id",
@@ -21200,7 +22120,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_id",
@@ -21300,7 +22220,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_id",
@@ -21326,7 +22246,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_ids",
@@ -21335,6 +22255,82 @@
                     ],
                     "optional": false,
                     "description": "A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations on which messages can be deleted"
+                }
+            ],
+            "return_types": [
+                "bool"
+            ]
+        },
+        {
+            "name": "deleteMessageReaction",
+            "description": "Use this method to remove a reaction from a message in a group or a supergroup chat. The bot must have the 'can_delete_messages' administrator right in the chat. Returns True on success.",
+            "fields": [
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int",
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @username)"
+                },
+                {
+                    "name": "message_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": false,
+                    "description": "Identifier of the target message"
+                },
+                {
+                    "name": "user_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the user whose reaction will be removed, if the reaction was added by a user"
+                },
+                {
+                    "name": "actor_chat_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the chat whose reaction will be removed, if the reaction was added by a chat"
+                }
+            ],
+            "return_types": [
+                "bool"
+            ]
+        },
+        {
+            "name": "deleteAllMessageReactions",
+            "description": "Use this method to remove up to 10000 recent reactions in a group or a supergroup chat added by a given user or chat. The bot must have the 'can_delete_messages' administrator right in the chat. Returns True on success.",
+            "fields": [
+                {
+                    "name": "chat_id",
+                    "types": [
+                        "int",
+                        "string"
+                    ],
+                    "optional": false,
+                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @username)"
+                },
+                {
+                    "name": "user_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the user whose reactions will be removed, if the reactions were added by a user"
+                },
+                {
+                    "name": "actor_chat_id",
+                    "types": [
+                        "int"
+                    ],
+                    "optional": true,
+                    "description": "Identifier of the chat whose reactions will be removed, if the reactions were added by a chat"
                 }
             ],
             "return_types": [
@@ -21360,7 +22356,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -21417,7 +22413,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",
@@ -21952,7 +22948,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
                 },
                 {
                     "name": "message_thread_id",
@@ -22161,7 +23157,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",
@@ -22592,10 +23588,11 @@
                 {
                     "name": "chat_id",
                     "types": [
-                        "int"
+                        "int",
+                        "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat. Games can't be sent to channel direct messages chats and channel chats."
+                    "description": "Unique identifier for the target chat or username of the target bot in the format @username. Games can't be sent to channel direct messages chats and channel chats."
                 },
                 {
                     "name": "message_thread_id",
@@ -22635,7 +23632,7 @@
                         "bool"
                     ],
                     "optional": true,
-                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
                 },
                 {
                     "name": "message_effect_id",

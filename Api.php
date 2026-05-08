@@ -177,8 +177,8 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to send text messages. On success, the sent Message is returned.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
@@ -191,7 +191,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
      *                                       messages chats only. If the message is sent as a reply to another suggested post, then that
@@ -247,14 +247,14 @@ abstract class Api implements ApiInterface {
      * Use this method to forward messages of any kind. Service messages and messages with protected
      * content can't be forwarded. On success, the sent Message is returned.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be forwarded; required if the
      *                                       message is forwarded to a direct messages chat
-     * @param int|string $from_chat_id Unique identifier for the chat where the original message was sent (or channel username in the
-     *                                       format @channelusername)
+     * @param int|string $from_chat_id Unique identifier for the chat where the original message was sent (or username of the target bot,
+     *                                       supergroup or channel in the format @username)
      * @param int|null $video_start_timestamp New start timestamp for the forwarded video in the message
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the forwarded message from forwarding and saving
@@ -302,14 +302,14 @@ abstract class Api implements ApiInterface {
      * forwarded. Album grouping is kept for forwarded messages. On success, an array of MessageId of the
      * sent messages is returned.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the messages will be forwarded; required if the
      *                                       messages are forwarded to a direct messages chat
-     * @param int|string $from_chat_id Unique identifier for the chat where the original messages were sent (or channel username in the
-     *                                       format @channelusername)
+     * @param int|string $from_chat_id Unique identifier for the chat where the original messages were sent (or username of the target bot,
+     *                                       supergroup or channel in the format @username)
      * @param array $message_ids A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to forward. The
      *                                       identifiers must be specified in a strictly increasing order.
      * @param bool|null $disable_notification Sends the messages silently. Users will receive a notification with no sound.
@@ -348,14 +348,14 @@ abstract class Api implements ApiInterface {
      * method forwardMessage, but the copied message doesn't have a link to the original message. Returns
      * the MessageId of the sent message on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
      *                                       is sent to a direct messages chat
-     * @param int|string $from_chat_id Unique identifier for the chat where the original message was sent (or channel username in the
-     *                                       format @channelusername)
+     * @param int|string $from_chat_id Unique identifier for the chat where the original message was sent (or username of the target bot,
+     *                                       supergroup or channel in the format @username)
      * @param int $message_id Message identifier in the chat specified in from_chat_id
      * @param int|null $video_start_timestamp New start timestamp for the copied video in the message
      * @param string|null $caption New caption for media, 0-1024 characters after entities parsing. If not specified, the original
@@ -368,7 +368,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; only available when copying to
      *                                       private chats
      * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
@@ -432,14 +432,14 @@ abstract class Api implements ApiInterface {
      * but the copied messages don't have a link to the original message. Album grouping is kept for copied
      * messages. On success, an array of MessageId of the sent messages is returned.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the messages will be sent; required if the messages
      *                                       are sent to a direct messages chat
-     * @param int|string $from_chat_id Unique identifier for the chat where the original messages were sent (or channel username in the
-     *                                       format @channelusername)
+     * @param int|string $from_chat_id Unique identifier for the chat where the original messages were sent (or username of the target bot,
+     *                                       supergroup or channel in the format @username)
      * @param array $message_ids A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to copy. The
      *                                       identifiers must be specified in a strictly increasing order.
      * @param bool|null $disable_notification Sends the messages silently. Users will receive a notification with no sound.
@@ -477,8 +477,8 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to send photos. On success, the sent Message is returned.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
@@ -498,7 +498,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
      *                                       messages chats only. If the message is sent as a reply to another suggested post, then that
@@ -555,13 +555,97 @@ abstract class Api implements ApiInterface {
     }
 
     /**
+     * Use this method to send live photos. On success, the sent Message is returned.
+     *
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
+     *                                       @channelusername)
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
+     *                                       private chats of bots with forum topic mode enabled only
+     * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
+     *                                       is sent to a direct messages chat
+     * @param \CURLFile|string|InputFile $live_photo Live photo video to send. The video must be no longer than 10 seconds and must not exceed 10 MB in
+     *                                       size. Pass a file_id as String to send a video that exists on the Telegram servers (recommended) or
+     *                                       upload a new video using multipart/form-data. More information on Sending Files ». Sending live
+     *                                       photos by a URL is currently unsupported.
+     * @param \CURLFile|string|InputFile $photo The static photo to send. Pass a file_id as String to send a photo that exists on the Telegram
+     *                                       servers (recommended) or upload a new video using multipart/form-data. More information on Sending
+     *                                       Files ». Sending live photos by a URL is currently unsupported.
+     * @param string|null $caption Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities
+     *                                       parsing
+     * @param string|null $parse_mode Mode for parsing entities in the video caption. See formatting options for more details.
+     * @param array|null $caption_entities A JSON-serialized list of special entities that appear in the caption, which can be specified
+     *                                       instead of parse_mode
+     * @param bool|null $show_caption_above_media Pass True, if the caption must be shown above the message media
+     * @param bool|null $has_spoiler Pass True if the video needs to be covered with a spoiler animation
+     * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
+     * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
+     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
+     * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
+     *                                       messages chats only. If the message is sent as a reply to another suggested post, then that
+     *                                       suggested post is automatically declined.
+     * @param array|null $reply_parameters Description of the message to reply to
+     * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#sendlivephoto
+     */
+    public function sendLivePhoto(
+        int|string $chat_id,
+        \CURLFile|string|InputFile $live_photo,
+        \CURLFile|string|InputFile $photo,
+        int|null $message_thread_id = null,
+        int|null $direct_messages_topic_id = null,
+        string|null $caption = null,
+        string|null $parse_mode = null,
+        array|null $caption_entities = null,
+        bool|null $show_caption_above_media = null,
+        bool|null $has_spoiler = null,
+        bool|null $disable_notification = null,
+        bool|null $protect_content = null,
+        bool|null $allow_paid_broadcast = null,
+        string|null $message_effect_id = null,
+        array|null $suggested_post_parameters = null,
+        array|null $reply_parameters = null,
+        array|null $reply_markup = null,
+        string|null $business_connection_id = null
+    ): \stdClass {
+        $args = [
+            'chat_id' => $chat_id,
+            'live_photo' => $live_photo,
+            'photo' => $photo
+        ];
+
+        if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
+        if (null !== $direct_messages_topic_id) $args['direct_messages_topic_id'] = $direct_messages_topic_id;
+        if (null !== $caption) $args['caption'] = $caption;
+        if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
+        if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
+        if (null !== $show_caption_above_media) $args['show_caption_above_media'] = $show_caption_above_media;
+        if (null !== $has_spoiler) $args['has_spoiler'] = $has_spoiler;
+        if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
+        if (null !== $protect_content) $args['protect_content'] = $protect_content;
+        if (null !== $allow_paid_broadcast) $args['allow_paid_broadcast'] = $allow_paid_broadcast;
+        if (null !== $message_effect_id) $args['message_effect_id'] = $message_effect_id;
+        if (null !== $suggested_post_parameters) $args['suggested_post_parameters'] = json_encode($suggested_post_parameters);
+        if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
+        if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
+        if (null !== $business_connection_id) $args['business_connection_id'] = $business_connection_id;
+
+        return $this->Request('sendLivePhoto', $args);
+    }
+
+    /**
      * Use this method to send audio files, if you want Telegram clients to display them in the music
      * player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned.
      * Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
      * For sending voice messages, use the sendVoice method instead.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
@@ -585,7 +669,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
      *                                       messages chats only. If the message is sent as a reply to another suggested post, then that
@@ -649,8 +733,8 @@ abstract class Api implements ApiInterface {
      * Use this method to send general files. On success, the sent Message is returned. Bots can currently
      * send files of any type of up to 50 MB in size, this limit may be changed in the future.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
@@ -673,7 +757,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
      *                                       messages chats only. If the message is sent as a reply to another suggested post, then that
@@ -734,8 +818,8 @@ abstract class Api implements ApiInterface {
      * sent as Document). On success, the sent Message is returned. Bots can currently send video files of
      * up to 50 MB in size, this limit may be changed in the future.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
@@ -768,7 +852,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
      *                                       messages chats only. If the message is sent as a reply to another suggested post, then that
@@ -843,8 +927,8 @@ abstract class Api implements ApiInterface {
      * the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this
      * limit may be changed in the future.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
@@ -871,7 +955,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
      *                                       messages chats only. If the message is sent as a reply to another suggested post, then that
@@ -942,8 +1026,8 @@ abstract class Api implements ApiInterface {
      * Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may
      * be changed in the future.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
@@ -959,7 +1043,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
      *                                       messages chats only. If the message is sent as a reply to another suggested post, then that
@@ -1017,8 +1101,8 @@ abstract class Api implements ApiInterface {
      * As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this
      * method to send video messages. On success, the sent Message is returned.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
@@ -1037,7 +1121,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
      *                                       messages chats only. If the message is sent as a reply to another suggested post, then that
@@ -1092,8 +1176,8 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to send paid media. On success, the sent Message is returned.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername). If the chat is a channel, all Telegram Star proceeds from this media will be
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username. If the chat is a channel, all Telegram Star proceeds from this media will be
      *                                       credited to the chat's balance. Otherwise, they will be credited to the bot's balance.
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
@@ -1111,7 +1195,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
      *                                       messages chats only. If the message is sent as a reply to another suggested post, then that
      *                                       suggested post is automatically declined.
@@ -1167,12 +1251,12 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to send a group of photos, videos, documents or audios as an album. Documents and
-     * audio files can be only grouped in an album with messages of the same type. On success, an array of
-     * Message objects that were sent is returned.
+     * Use this method to send a group of photos, live photos, videos, documents or audios as an album.
+     * Documents and audio files can be only grouped in an album with messages of the same type. On
+     * success, an array of Message objects that were sent is returned.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the messages will be sent; required if the messages
@@ -1181,7 +1265,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends messages silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent messages from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
@@ -1228,8 +1312,8 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to send point on the map. On success, the sent Message is returned.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
@@ -1246,7 +1330,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
      *                                       messages chats only. If the message is sent as a reply to another suggested post, then that
@@ -1305,8 +1389,8 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to send information about a venue. On success, the sent Message is returned.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
@@ -1323,7 +1407,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
      *                                       messages chats only. If the message is sent as a reply to another suggested post, then that
@@ -1386,8 +1470,8 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to send phone contacts. On success, the sent Message is returned.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
@@ -1399,7 +1483,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
      *                                       messages chats only. If the message is sent as a reply to another suggested post, then that
@@ -1454,8 +1538,8 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to send a native poll. On success, the sent Message is returned.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername). Polls can't be sent to channel direct messages chats.
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username. Polls can't be sent to channel direct messages chats.
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param string $question Poll question, 1-300 characters
@@ -1463,7 +1547,7 @@ abstract class Api implements ApiInterface {
      *                                       custom emoji entities are allowed
      * @param array|null $question_entities A JSON-serialized list of special entities that appear in the poll question. It can be specified
      *                                       instead of question_parse_mode
-     * @param array $options A JSON-serialized list of 2-12 answer options
+     * @param array $options A JSON-serialized list of 1-12 answer options
      * @param bool|null $is_anonymous True, if the poll needs to be anonymous, defaults to True
      * @param string|null $type Poll type, “quiz” or “regular”, defaults to “regular”
      * @param bool|null $allows_multiple_answers Pass True, if the poll allows multiple answers, defaults to False
@@ -1473,6 +1557,11 @@ abstract class Api implements ApiInterface {
      * @param bool|null $allow_adding_options Pass True, if answer options can be added to the poll after creation; not supported for anonymous
      *                                       polls and quizzes
      * @param bool|null $hide_results_until_closes Pass True, if poll results must be shown only after the poll closes
+     * @param bool|null $members_only Pass True, if voting is limited to users who have been members of the chat where the poll is being
+     *                                       sent for more than 24 hours; for channel chats only
+     * @param array|null $country_codes A JSON-serialized list of 0-12 two-letter ISO 3166-1 alpha-2 country codes indicating the countries
+     *                                       from which users can vote in the poll; for channel chats only. If omitted or empty, then users from
+     *                                       any country can participate in the poll.
      * @param array|null $correct_option_ids A JSON-serialized list of monotonically increasing 0-based identifiers of the correct answer
      *                                       options, required for polls in quiz mode
      * @param string|null $explanation Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style
@@ -1480,6 +1569,7 @@ abstract class Api implements ApiInterface {
      * @param string|null $explanation_parse_mode Mode for parsing entities in the explanation. See formatting options for more details.
      * @param array|null $explanation_entities A JSON-serialized list of special entities that appear in the poll explanation. It can be specified
      *                                       instead of explanation_parse_mode
+     * @param array|null $explanation_media Media added to the quiz explanation
      * @param int|null $open_period Amount of time in seconds the poll will be active after creation, 5-2628000. Can't be used together
      *                                       with close_date.
      * @param int|null $close_date Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and no
@@ -1489,10 +1579,11 @@ abstract class Api implements ApiInterface {
      * @param string|null $description_parse_mode Mode for parsing entities in the poll description. See formatting options for more details.
      * @param array|null $description_entities A JSON-serialized list of special entities that appear in the poll description, which can be
      *                                       specified instead of description_parse_mode
+     * @param array|null $media Media added to the poll description
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
@@ -1516,16 +1607,20 @@ abstract class Api implements ApiInterface {
         bool|null $shuffle_options = null,
         bool|null $allow_adding_options = null,
         bool|null $hide_results_until_closes = null,
+        bool|null $members_only = null,
+        array|null $country_codes = null,
         array|null $correct_option_ids = null,
         string|null $explanation = null,
         string|null $explanation_parse_mode = null,
         array|null $explanation_entities = null,
+        array|null $explanation_media = null,
         int|null $open_period = null,
         int|null $close_date = null,
         bool|null $is_closed = null,
         string|null $description = null,
         string|null $description_parse_mode = null,
         array|null $description_entities = null,
+        array|null $media = null,
         bool|null $disable_notification = null,
         bool|null $protect_content = null,
         bool|null $allow_paid_broadcast = null,
@@ -1550,16 +1645,20 @@ abstract class Api implements ApiInterface {
         if (null !== $shuffle_options) $args['shuffle_options'] = $shuffle_options;
         if (null !== $allow_adding_options) $args['allow_adding_options'] = $allow_adding_options;
         if (null !== $hide_results_until_closes) $args['hide_results_until_closes'] = $hide_results_until_closes;
+        if (null !== $members_only) $args['members_only'] = $members_only;
+        if (null !== $country_codes) $args['country_codes'] = json_encode($country_codes);
         if (null !== $correct_option_ids) $args['correct_option_ids'] = json_encode($correct_option_ids);
         if (null !== $explanation) $args['explanation'] = $explanation;
         if (null !== $explanation_parse_mode) $args['explanation_parse_mode'] = $explanation_parse_mode;
         if (null !== $explanation_entities) $args['explanation_entities'] = json_encode($explanation_entities);
+        if (null !== $explanation_media) $args['explanation_media'] = json_encode($explanation_media);
         if (null !== $open_period) $args['open_period'] = $open_period;
         if (null !== $close_date) $args['close_date'] = $close_date;
         if (null !== $is_closed) $args['is_closed'] = $is_closed;
         if (null !== $description) $args['description'] = $description;
         if (null !== $description_parse_mode) $args['description_parse_mode'] = $description_parse_mode;
         if (null !== $description_entities) $args['description_entities'] = json_encode($description_entities);
+        if (null !== $media) $args['media'] = json_encode($media);
         if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
         if (null !== $protect_content) $args['protect_content'] = $protect_content;
         if (null !== $allow_paid_broadcast) $args['allow_paid_broadcast'] = $allow_paid_broadcast;
@@ -1575,7 +1674,7 @@ abstract class Api implements ApiInterface {
      * Use this method to send a checklist on behalf of a connected business account. On success, the sent
      * Message is returned.
      *
-     * @param int $chat_id Unique identifier for the target chat
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot in the format @username
      * @param array $checklist A JSON-serialized object for the checklist to send
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
@@ -1588,7 +1687,7 @@ abstract class Api implements ApiInterface {
      * @see https://core.telegram.org/bots/api#sendchecklist
      */
     public function sendChecklist(
-        int $chat_id,
+        int|string $chat_id,
         array $checklist,
         string $business_connection_id,
         bool|null $disable_notification = null,
@@ -1616,8 +1715,8 @@ abstract class Api implements ApiInterface {
      * Use this method to send an animated emoji that will display a random value. On success, the sent
      * Message is returned.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
@@ -1629,7 +1728,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
      *                                       messages chats only. If the message is sent as a reply to another suggested post, then that
@@ -1676,14 +1775,17 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to stream a partial message to a user while the message is being generated. Returns
-     * True on success.
+     * Use this method to stream a partial message to a user while the message is being generated. Note
+     * that the streamed draft is ephemeral and acts as a temporary 30-second preview - once the output is
+     * finalized, you must call sendMessage with the complete message to persist it in the user's chat.
+     * Returns True on success.
      *
      * @param int $chat_id Unique identifier for the target private chat
      * @param int|null $message_thread_id Unique identifier for the target message thread
      * @param int $draft_id Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier
-     *                                       are animated
-     * @param string $text Text of the message to be sent, 1-4096 characters after entities parsing
+     *                                       are animated.
+     * @param string|null $text Text of the message to be sent, 0-4096 characters after entities parsing. Pass an empty text to show
+     *                                       a “Thinking…” placeholder.
      * @param string|null $parse_mode Mode for parsing entities in the message text. See formatting options for more details.
      * @param array|null $entities A JSON-serialized list of special entities that appear in message text, which can be specified
      *                                       instead of parse_mode
@@ -1694,18 +1796,18 @@ abstract class Api implements ApiInterface {
     public function sendMessageDraft(
         int $chat_id,
         int $draft_id,
-        string $text,
         int|null $message_thread_id = null,
+        string|null $text = null,
         string|null $parse_mode = null,
         array|null $entities = null
     ): \stdClass {
         $args = [
             'chat_id' => $chat_id,
-            'draft_id' => $draft_id,
-            'text' => $text
+            'draft_id' => $draft_id
         ];
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
+        if (null !== $text) $args['text'] = $text;
         if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
         if (null !== $entities) $args['entities'] = json_encode($entities);
 
@@ -1719,8 +1821,8 @@ abstract class Api implements ApiInterface {
      * We only recommend using this method when a response from the bot will take a noticeable amount of
      * time to arrive.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername). Channel chats and channel direct messages chats aren't supported.
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username. Channel chats and channel direct messages chats aren't supported.
      * @param int|null $message_thread_id Unique identifier for the target message thread or topic of a forum; for supergroups and private
      *                                       chats of bots with forum topic mode enabled only
      * @param string $action Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for
@@ -1755,8 +1857,8 @@ abstract class Api implements ApiInterface {
      * available reactions as messages in the channel. Bots can't use paid reactions. Returns True on
      * success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int $message_id Identifier of the target message. If the message belongs to a media group, the reaction is set to
      *                                       the first non-deleted message in the group instead.
      * @param array|null $reaction A JSON-serialized list of reaction types to set on the message. Currently, as non-premium users,
@@ -1890,8 +1992,8 @@ abstract class Api implements ApiInterface {
      * unless unbanned first. The bot must be an administrator in the chat for this to work and must have
      * the appropriate administrator rights. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target group or username of the target supergroup or channel (in the
-     *                                       format @channelusername)
+     * @param int|string $chat_id Unique identifier for the target group or username of the target supergroup or channel in the format
+     *                                       @username
      * @param int $user_id Unique identifier of the target user
      * @param int|null $until_date Date when the user will be unbanned; Unix time. If user is banned for more than 366 days or less
      *                                       than 30 seconds from the current time they are considered to be banned forever. Applied for
@@ -1928,8 +2030,8 @@ abstract class Api implements ApiInterface {
      * chat they will also be removed from the chat. If you don't want this, use the parameter
      * only_if_banned. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target group or username of the target supergroup or channel (in the
-     *                                       format @channelusername)
+     * @param int|string $chat_id Unique identifier for the target group or username of the target supergroup or channel in the format
+     *                                       @username
      * @param int $user_id Unique identifier of the target user
      * @param bool|null $only_if_banned Do nothing if the user is not banned
      * @return \stdClass
@@ -1956,8 +2058,7 @@ abstract class Api implements ApiInterface {
      * supergroup for this to work and must have the appropriate administrator rights. Pass True for all
      * permissions to lift restrictions from a user. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param int $user_id Unique identifier of the target user
      * @param array $permissions A JSON-serialized object for new user permissions
      * @param bool|null $use_independent_chat_permissions Pass True if chat permissions are set independently. Otherwise, the can_send_other_messages and
@@ -1994,8 +2095,7 @@ abstract class Api implements ApiInterface {
      * administrator in the chat for this to work and must have the appropriate administrator rights. Pass
      * False for all boolean parameters to demote a user. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @param int $user_id Unique identifier of the target user
      * @param bool|null $is_anonymous Pass True if the administrator's presence in the chat is hidden
      * @param bool|null $can_manage_chat Pass True if the administrator can access the chat event log, get boost list, see hidden supergroup
@@ -2079,8 +2179,7 @@ abstract class Api implements ApiInterface {
      * Use this method to set a custom title for an administrator in a supergroup promoted by the bot.
      * Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param int $user_id Unique identifier of the target user
      * @param string $custom_title New custom title for the administrator; 0-16 characters, emoji are not allowed
      * @return \stdClass
@@ -2107,8 +2206,7 @@ abstract class Api implements ApiInterface {
      * administrator in the chat for this to work and must have the can_manage_tags administrator right.
      * Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param int $user_id Unique identifier of the target user
      * @param string|null $tag New tag for the member; 0-16 characters, emoji are not allowed
      * @return \stdClass
@@ -2136,8 +2234,7 @@ abstract class Api implements ApiInterface {
      * must be an administrator in the supergroup or channel for this to work and must have the appropriate
      * administrator rights. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @param int $sender_chat_id Unique identifier of the target sender chat
      * @return \stdClass
      *
@@ -2161,8 +2258,7 @@ abstract class Api implements ApiInterface {
      * be an administrator for this to work and must have the appropriate administrator rights. Returns
      * True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @param int $sender_chat_id Unique identifier of the target sender chat
      * @return \stdClass
      *
@@ -2186,8 +2282,7 @@ abstract class Api implements ApiInterface {
      * the group or a supergroup for this to work and must have the can_restrict_members administrator
      * rights. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param array $permissions A JSON-serialized object for new default chat permissions
      * @param bool|null $use_independent_chat_permissions Pass True if chat permissions are set independently. Otherwise, the can_send_other_messages and
      *                                       can_add_web_page_previews permissions will imply the can_send_messages, can_send_audios,
@@ -2217,8 +2312,7 @@ abstract class Api implements ApiInterface {
      * link is revoked. The bot must be an administrator in the chat for this to work and must have the
      * appropriate administrator rights. Returns the new invite link as String on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#exportchatinvitelink
@@ -2239,8 +2333,7 @@ abstract class Api implements ApiInterface {
      * the chat for this to work and must have the appropriate administrator rights. The link can be
      * revoked using the method revokeChatInviteLink. Returns the new invite link as ChatInviteLink object.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @param string|null $name Invite link name; 0-32 characters
      * @param int|null $expire_date Point in time (Unix timestamp) when the link will expire
      * @param int|null $member_limit The maximum number of users that can be members of the chat simultaneously after joining the chat
@@ -2275,8 +2368,7 @@ abstract class Api implements ApiInterface {
      * administrator in the chat for this to work and must have the appropriate administrator rights.
      * Returns the edited invite link as a ChatInviteLink object.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @param string $invite_link The invite link to edit
      * @param string|null $name Invite link name; 0-32 characters
      * @param int|null $expire_date Point in time (Unix timestamp) when the link will expire
@@ -2315,8 +2407,8 @@ abstract class Api implements ApiInterface {
      * editChatSubscriptionInviteLink or revoked using the method revokeChatInviteLink. Returns the new
      * invite link as a ChatInviteLink object.
      *
-     * @param int|string $chat_id Unique identifier for the target channel chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target channel chat or username of the target channel in the format
+     *                                       @username
      * @param string|null $name Invite link name; 0-32 characters
      * @param int $subscription_period The number of seconds the subscription will be active for before the next payment. Currently, it
      *                                       must always be 2592000 (30 days).
@@ -2347,8 +2439,7 @@ abstract class Api implements ApiInterface {
      * Use this method to edit a subscription invite link created by the bot. The bot must have the
      * can_invite_users administrator rights. Returns the edited invite link as a ChatInviteLink object.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @param string $invite_link The invite link to edit
      * @param string|null $name Invite link name; 0-32 characters
      * @return \stdClass
@@ -2376,8 +2467,7 @@ abstract class Api implements ApiInterface {
      * must have the appropriate administrator rights. Returns the revoked invite link as ChatInviteLink
      * object.
      *
-     * @param int|string $chat_id Unique identifier of the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier of the target chat or username of the target channel in the format @username
      * @param string $invite_link The invite link to revoke
      * @return \stdClass
      *
@@ -2400,8 +2490,7 @@ abstract class Api implements ApiInterface {
      * Use this method to approve a chat join request. The bot must be an administrator in the chat for
      * this to work and must have the can_invite_users administrator right. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @param int $user_id Unique identifier of the target user
      * @return \stdClass
      *
@@ -2424,8 +2513,7 @@ abstract class Api implements ApiInterface {
      * Use this method to decline a chat join request. The bot must be an administrator in the chat for
      * this to work and must have the can_invite_users administrator right. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @param int $user_id Unique identifier of the target user
      * @return \stdClass
      *
@@ -2449,8 +2537,7 @@ abstract class Api implements ApiInterface {
      * The bot must be an administrator in the chat for this to work and must have the appropriate
      * administrator rights. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @param \CURLFile $photo New chat photo, uploaded using multipart/form-data
      * @return \stdClass
      *
@@ -2474,8 +2561,7 @@ abstract class Api implements ApiInterface {
      * an administrator in the chat for this to work and must have the appropriate administrator rights.
      * Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#deletechatphoto
@@ -2496,8 +2582,7 @@ abstract class Api implements ApiInterface {
      * must be an administrator in the chat for this to work and must have the appropriate administrator
      * rights. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @param string $title New chat title, 1-128 characters
      * @return \stdClass
      *
@@ -2521,8 +2606,7 @@ abstract class Api implements ApiInterface {
      * administrator in the chat for this to work and must have the appropriate administrator rights.
      * Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @param string|null $description New chat description, 0-255 characters
      * @return \stdClass
      *
@@ -2547,8 +2631,7 @@ abstract class Api implements ApiInterface {
      * an administrator with the 'can_pin_messages' right or the 'can_edit_messages' right to pin messages
      * in groups and channels respectively. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @param int $message_id Identifier of a message to pin
      * @param bool|null $disable_notification Pass True if it is not necessary to send a notification to all chat members about the new pinned
      *                                       message. Notifications are always disabled in channels and private chats.
@@ -2580,8 +2663,7 @@ abstract class Api implements ApiInterface {
      * administrator with the 'can_pin_messages' right or the 'can_edit_messages' right to unpin messages
      * in groups and channels respectively. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @param int|null $message_id Identifier of the message to unpin. Required if business_connection_id is specified. If not
      *                                       specified, the most recent pinned message (by sending date) will be unpinned.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be unpinned
@@ -2610,8 +2692,7 @@ abstract class Api implements ApiInterface {
      * must be an administrator with the 'can_pin_messages' right or the 'can_edit_messages' right to unpin
      * all pinned messages in groups and channels respectively. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#unpinallchatmessages
@@ -2630,9 +2711,8 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method for your bot to leave a group, supergroup or channel. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup or channel (in the format
-     *                                       @channelusername). Channel direct messages chats aren't supported; leave the corresponding channel
-     *                                       instead.
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup or channel in the format
+     *                                       @username. Channel direct messages chats aren't supported; leave the corresponding channel instead.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#leavechat
@@ -2652,8 +2732,8 @@ abstract class Api implements ApiInterface {
      * Use this method to get up-to-date information about the chat. Returns a ChatFullInfo object on
      * success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup or channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup or channel in the format
+     *                                       @username
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#getchat
@@ -2670,22 +2750,25 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of
-     * ChatMember objects.
+     * Use this method to get a list of administrators in a chat. Returns an Array of ChatMember objects.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup or channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup or channel in the format
+     *                                       @username
+     * @param bool|null $return_bots Pass True to additionally receive all bots that are administrators of the chat. By default, bots
+     *                                       other than the current bot are omitted.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#getchatadministrators
      */
     public function getChatAdministrators(
-        int|string $chat_id
+        int|string $chat_id,
+        bool|null $return_bots = null
     ): \stdClass {
         $args = [
             'chat_id' => $chat_id
         ];
 
+        if (null !== $return_bots) $args['return_bots'] = $return_bots;
 
         return $this->Request('getChatAdministrators', $args);
     }
@@ -2693,8 +2776,8 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to get the number of members in a chat. Returns Int on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup or channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup or channel in the format
+     *                                       @username
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#getchatmembercount
@@ -2714,8 +2797,8 @@ abstract class Api implements ApiInterface {
      * Use this method to get information about a member of a chat. The method is only guaranteed to work
      * for other users if the bot is an administrator in the chat. Returns a ChatMember object on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup or channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup or channel in the format
+     *                                       @username
      * @param int $user_id Unique identifier of the target user
      * @return \stdClass
      *
@@ -2735,13 +2818,35 @@ abstract class Api implements ApiInterface {
     }
 
     /**
+     * Use this method to get the last messages from the personal chat (i.e., the chat currently added to
+     * their profile) of a given user. On success, an array of Message objects is returned.
+     *
+     * @param int $user_id Unique identifier for the target user
+     * @param int $limit The maximum number of messages to return; 1-20
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#getuserpersonalchatmessages
+     */
+    public function getUserPersonalChatMessages(
+        int $user_id,
+        int $limit
+    ): \stdClass {
+        $args = [
+            'user_id' => $user_id,
+            'limit' => $limit
+        ];
+
+
+        return $this->Request('getUserPersonalChatMessages', $args);
+    }
+
+    /**
      * Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in
      * the chat for this to work and must have the appropriate administrator rights. Use the field
      * can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method.
      * Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param string $sticker_set_name Name of the sticker set to be set as the group sticker set
      * @return \stdClass
      *
@@ -2766,8 +2871,7 @@ abstract class Api implements ApiInterface {
      * can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method.
      * Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#deletechatstickerset
@@ -2801,8 +2905,7 @@ abstract class Api implements ApiInterface {
      * have the can_manage_topics administrator right. Returns information about the created topic as a
      * ForumTopic object.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param string $name Topic name, 1-128 characters
      * @param int|null $icon_color Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590
      *                                       (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)
@@ -2835,8 +2938,7 @@ abstract class Api implements ApiInterface {
      * and must have the can_manage_topics administrator rights, unless it is the creator of the topic.
      * Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param int $message_thread_id Unique identifier for the target message thread of the forum topic
      * @param string|null $name New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be
      *                                       kept
@@ -2869,8 +2971,7 @@ abstract class Api implements ApiInterface {
      * in the chat for this to work and must have the can_manage_topics administrator rights, unless it is
      * the creator of the topic. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param int $message_thread_id Unique identifier for the target message thread of the forum topic
      * @return \stdClass
      *
@@ -2894,8 +2995,7 @@ abstract class Api implements ApiInterface {
      * administrator in the chat for this to work and must have the can_manage_topics administrator rights,
      * unless it is the creator of the topic. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param int $message_thread_id Unique identifier for the target message thread of the forum topic
      * @return \stdClass
      *
@@ -2920,8 +3020,7 @@ abstract class Api implements ApiInterface {
      * chat for this to work and must have the can_delete_messages administrator rights. Returns True on
      * success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param int $message_thread_id Unique identifier for the target message thread of the forum topic
      * @return \stdClass
      *
@@ -2946,8 +3045,7 @@ abstract class Api implements ApiInterface {
      * chat for this to work and must have the can_pin_messages administrator right in the supergroup.
      * Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param int $message_thread_id Unique identifier for the target message thread of the forum topic
      * @return \stdClass
      *
@@ -2971,8 +3069,7 @@ abstract class Api implements ApiInterface {
      * an administrator in the chat for this to work and must have the can_manage_topics administrator
      * rights. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param string $name New topic name, 1-128 characters
      * @return \stdClass
      *
@@ -2996,8 +3093,7 @@ abstract class Api implements ApiInterface {
      * administrator in the chat for this to work and must have the can_manage_topics administrator rights.
      * Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#closegeneralforumtopic
@@ -3018,8 +3114,7 @@ abstract class Api implements ApiInterface {
      * administrator in the chat for this to work and must have the can_manage_topics administrator rights.
      * The topic will be automatically unhidden if it was hidden. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#reopengeneralforumtopic
@@ -3040,8 +3135,7 @@ abstract class Api implements ApiInterface {
      * administrator in the chat for this to work and must have the can_manage_topics administrator rights.
      * The topic will be automatically closed if it was open. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#hidegeneralforumtopic
@@ -3062,8 +3156,7 @@ abstract class Api implements ApiInterface {
      * administrator in the chat for this to work and must have the can_manage_topics administrator rights.
      * Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#unhidegeneralforumtopic
@@ -3084,8 +3177,7 @@ abstract class Api implements ApiInterface {
      * administrator in the chat for this to work and must have the can_pin_messages administrator right in
      * the supergroup. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format
-     *                                       @supergroupusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#unpinallgeneralforumtopicmessages
@@ -3140,10 +3232,33 @@ abstract class Api implements ApiInterface {
     }
 
     /**
+     * Use this method to reply to a received guest message. On success, a SentGuestMessage object is
+     * returned.
+     *
+     * @param string $guest_query_id Unique identifier for the query to be answered
+     * @param array $result A JSON-serialized object describing the message to be sent
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#answerguestquery
+     */
+    public function answerGuestQuery(
+        string $guest_query_id,
+        array $result
+    ): \stdClass {
+        $args = [
+            'guest_query_id' => $guest_query_id,
+            'result' => json_encode($result)
+        ];
+
+
+        return $this->Request('answerGuestQuery', $args);
+    }
+
+    /**
      * Use this method to get the list of boosts added to a chat by a user. Requires administrator rights
      * in the chat. Returns a UserChatBoosts object.
      *
-     * @param int|string $chat_id Unique identifier for the chat or username of the channel (in the format @channelusername)
+     * @param int|string $chat_id Unique identifier for the chat or username of the channel in the format @username
      * @param int $user_id Unique identifier of the target user
      * @return \stdClass
      *
@@ -3219,6 +3334,52 @@ abstract class Api implements ApiInterface {
 
 
         return $this->Request('replaceManagedBotToken', $args);
+    }
+
+    /**
+     * Use this method to get the access settings of a managed bot. Returns a BotAccessSettings object on
+     * success.
+     *
+     * @param int $user_id User identifier of the managed bot whose access settings will be returned
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#getmanagedbotaccesssettings
+     */
+    public function getManagedBotAccessSettings(
+        int $user_id
+    ): \stdClass {
+        $args = [
+            'user_id' => $user_id
+        ];
+
+
+        return $this->Request('getManagedBotAccessSettings', $args);
+    }
+
+    /**
+     * Use this method to change the access settings of a managed bot. Returns True on success.
+     *
+     * @param int $user_id User identifier of the managed bot whose access settings will be changed
+     * @param bool $is_access_restricted Pass True, if only selected users can access the bot. The bot's owner can always access it.
+     * @param array|null $added_user_ids A JSON-serialized list of up to 10 identifiers of users who will have access to the bot in addition
+     *                                       to its owner. Ignored if is_access_restricted is false.
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#setmanagedbotaccesssettings
+     */
+    public function setManagedBotAccessSettings(
+        int $user_id,
+        bool $is_access_restricted,
+        array|null $added_user_ids = null
+    ): \stdClass {
+        $args = [
+            'user_id' => $user_id,
+            'is_access_restricted' => $is_access_restricted
+        ];
+
+        if (null !== $added_user_ids) $args['added_user_ids'] = json_encode($added_user_ids);
+
+        return $this->Request('setManagedBotAccessSettings', $args);
     }
 
     /**
@@ -3560,7 +3721,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $user_id Required if chat_id is not specified. Unique identifier of the target user who will receive the
      *                                       gift.
      * @param int|string|null $chat_id Required if user_id is not specified. Unique identifier for the chat or username of the channel (in
-     *                                       the format @channelusername) that will receive the gift.
+     *                                       the format @username) that will receive the gift.
      * @param string $gift_id Identifier of the gift; limited gifts can't be sent to channel chats
      * @param bool|null $pay_for_upgrade Pass True to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for
      *                                       the receiver
@@ -3666,8 +3827,8 @@ abstract class Api implements ApiInterface {
      * Verifies a chat on behalf of the organization which is represented by the bot. Returns True on
      * success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername). Channel direct messages chats can't be verified.
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username. Channel direct messages chats can't be verified.
      * @param string|null $custom_description Custom description for the verification; 0-70 characters. Must be empty if the organization isn't
      *                                       allowed to provide a custom verification description.
      * @return \stdClass
@@ -3711,8 +3872,8 @@ abstract class Api implements ApiInterface {
      * Removes verification from a chat that is currently verified on behalf of the organization
      * represented by the bot. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot or channel in the format
+     *                                       @username
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#removechatverification
@@ -4078,8 +4239,7 @@ abstract class Api implements ApiInterface {
     /**
      * Returns the gifts owned by a chat. Returns OwnedGifts on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @param bool|null $exclude_unsaved Pass True to exclude gifts that aren't saved to the chat's profile page. Always True, unless the bot
      *                                       has the can_post_messages administrator right in the channel.
      * @param bool|null $exclude_saved Pass True to exclude gifts that are saved to the chat's profile page. Always False, unless the bot
@@ -4452,7 +4612,7 @@ abstract class Api implements ApiInterface {
      * hours from the time they were sent.
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
-     *                                       the target channel (in the format @channelusername)
+     *                                       the target bot, supergroup or channel in the format @username.
      * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
      * @param string $text New text of the message, 1-4096 characters after entities parsing
@@ -4500,7 +4660,7 @@ abstract class Api implements ApiInterface {
      * hours from the time they were sent.
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
-     *                                       the target channel (in the format @channelusername)
+     *                                       the target bot, supergroup or channel in the format @username.
      * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
      * @param string|null $caption New caption of the message, 0-1024 characters after entities parsing
@@ -4542,17 +4702,17 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to edit animation, audio, document, photo, or video messages, or to add media to
-     * text messages. If a message is part of a message album, then it can be edited only to an audio for
-     * audio albums, only to a document for document albums and to a photo or a video otherwise. When an
-     * inline message is edited, a new file can't be uploaded; use a previously uploaded file via its
-     * file_id or specify a URL. On success, if the edited message is not an inline message, the edited
-     * Message is returned, otherwise True is returned. Note that business messages that were not sent by
-     * the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they
-     * were sent.
+     * Use this method to edit animation, audio, document, live photo, photo, or video messages, or to add
+     * media to text messages. If a message is part of a message album, then it can be edited only to an
+     * audio for audio albums, only to a document for document albums and to a photo, a live photo, or a
+     * video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously
+     * uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline
+     * message, the edited Message is returned, otherwise True is returned. Note that business messages
+     * that were not sent by the bot and do not contain an inline keyboard can only be edited within 48
+     * hours from the time they were sent.
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
-     *                                       the target channel (in the format @channelusername)
+     *                                       the target bot, supergroup or channel in the format @username.
      * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
      * @param array $media A JSON-serialized object for a new media content of the message
@@ -4596,7 +4756,7 @@ abstract class Api implements ApiInterface {
      * edited message is not an inline message, the edited Message is returned, otherwise True is returned.
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
-     *                                       the target channel (in the format @channelusername)
+     *                                       the target bot, supergroup or channel in the format @username.
      * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
      * @param float $latitude Latitude of new location
@@ -4651,7 +4811,7 @@ abstract class Api implements ApiInterface {
      * the message is not an inline message, the edited Message is returned, otherwise True is returned.
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
-     *                                       the target channel (in the format @channelusername)
+     *                                       the target bot, supergroup or channel in the format @username.
      * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message with live location to stop
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
      * @param array|null $reply_markup A JSON-serialized object for a new inline keyboard.
@@ -4682,7 +4842,7 @@ abstract class Api implements ApiInterface {
      * Use this method to edit a checklist on behalf of a connected business account. On success, the
      * edited Message is returned.
      *
-     * @param int $chat_id Unique identifier for the target chat
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot in the format @username
      * @param int $message_id Unique identifier for the target message
      * @param array $checklist A JSON-serialized object for the new checklist
      * @param array|null $reply_markup A JSON-serialized object for the new inline keyboard for the message
@@ -4692,7 +4852,7 @@ abstract class Api implements ApiInterface {
      * @see https://core.telegram.org/bots/api#editmessagechecklist
      */
     public function editMessageChecklist(
-        int $chat_id,
+        int|string $chat_id,
         int $message_id,
         array $checklist,
         string $business_connection_id,
@@ -4717,7 +4877,7 @@ abstract class Api implements ApiInterface {
      * within 48 hours from the time they were sent.
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
-     *                                       the target channel (in the format @channelusername)
+     *                                       the target bot, supergroup or channel in the format @username.
      * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard.
@@ -4747,8 +4907,8 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int $message_id Identifier of the original message with the poll
      * @param array|null $reply_markup A JSON-serialized object for a new message inline keyboard.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
@@ -4840,8 +5000,8 @@ abstract class Api implements ApiInterface {
      * can_manage_direct_messages administrator right in a channel, it can delete any message in the
      * corresponding direct messages chat.Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int $message_id Identifier of the message to delete
      * @return \stdClass
      *
@@ -4864,8 +5024,8 @@ abstract class Api implements ApiInterface {
      * Use this method to delete multiple messages simultaneously. If some of the specified messages can't
      * be found, they are skipped. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param array $message_ids A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations
      *                                       on which messages can be deleted
      * @return \stdClass
@@ -4886,11 +5046,67 @@ abstract class Api implements ApiInterface {
     }
 
     /**
+     * Use this method to remove a reaction from a message in a group or a supergroup chat. The bot must
+     * have the 'can_delete_messages' administrator right in the chat. Returns True on success.
+     *
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format @username)
+     * @param int $message_id Identifier of the target message
+     * @param int|null $user_id Identifier of the user whose reaction will be removed, if the reaction was added by a user
+     * @param int|null $actor_chat_id Identifier of the chat whose reaction will be removed, if the reaction was added by a chat
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#deletemessagereaction
+     */
+    public function deleteMessageReaction(
+        int|string $chat_id,
+        int $message_id,
+        int|null $user_id = null,
+        int|null $actor_chat_id = null
+    ): \stdClass {
+        $args = [
+            'chat_id' => $chat_id,
+            'message_id' => $message_id
+        ];
+
+        if (null !== $user_id) $args['user_id'] = $user_id;
+        if (null !== $actor_chat_id) $args['actor_chat_id'] = $actor_chat_id;
+
+        return $this->Request('deleteMessageReaction', $args);
+    }
+
+    /**
+     * Use this method to remove up to 10000 recent reactions in a group or a supergroup chat added by a
+     * given user or chat. The bot must have the 'can_delete_messages' administrator right in the chat.
+     * Returns True on success.
+     *
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format @username)
+     * @param int|null $user_id Identifier of the user whose reactions will be removed, if the reactions were added by a user
+     * @param int|null $actor_chat_id Identifier of the chat whose reactions will be removed, if the reactions were added by a chat
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#deleteallmessagereactions
+     */
+    public function deleteAllMessageReactions(
+        int|string $chat_id,
+        int|null $user_id = null,
+        int|null $actor_chat_id = null
+    ): \stdClass {
+        $args = [
+            'chat_id' => $chat_id
+        ];
+
+        if (null !== $user_id) $args['user_id'] = $user_id;
+        if (null !== $actor_chat_id) $args['actor_chat_id'] = $actor_chat_id;
+
+        return $this->Request('deleteAllMessageReactions', $args);
+    }
+
+    /**
      * Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers. On success, the sent
      * Message is returned.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
@@ -4903,7 +5119,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
      *                                       messages chats only. If the message is sent as a reply to another suggested post, then that
@@ -5376,8 +5592,8 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to send invoices. On success, the sent Message is returned.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     *                                       @channelusername)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
@@ -5426,7 +5642,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
      *                                       messages chats only. If the message is sent as a reply to another suggested post, then that
@@ -5795,8 +6011,8 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to send a game. On success, the sent Message is returned.
      *
-     * @param int $chat_id Unique identifier for the target chat. Games can't be sent to channel direct messages chats and
-     *                                       channel chats.
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot in the format @username. Games
+     *                                       can't be sent to channel direct messages chats and channel chats.
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
      *                                       private chats of bots with forum topic mode enabled only
      * @param string $game_short_name Short name of the game, serves as the unique identifier for the game. Set up your games via
@@ -5804,7 +6020,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
-     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard. If empty, one 'Play game_title' button will be
@@ -5815,7 +6031,7 @@ abstract class Api implements ApiInterface {
      * @see https://core.telegram.org/bots/api#sendgame
      */
     public function sendGame(
-        int $chat_id,
+        int|string $chat_id,
         string $game_short_name,
         int|null $message_thread_id = null,
         bool|null $disable_notification = null,
