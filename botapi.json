@@ -3149,7 +3149,7 @@
         },
         {
             "name": "PaidMediaLivePhoto",
-            "description": "",
+            "description": "The paid media is a live photo.",
             "fields": [
                 {
                     "name": "type",
