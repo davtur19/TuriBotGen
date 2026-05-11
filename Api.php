@@ -57,7 +57,7 @@ abstract class Api implements ApiInterface {
      * parameter secret_token. If specified, the request will contain a header
      * “X-Telegram-Bot-Api-Secret-Token” with the secret token as content.
      *
-     * @param string $url HTTPS URL to send updates to. Use an empty string to remove webhook integration
+     * @param string $url HTTPS URL to send updates to. Use an empty string to remove webhook integration.
      * @param \CURLFile|null $certificate Upload your public key certificate so that the root certificate in use can be checked. See our
      *                                       self-signed guide for details.
      * @param string|null $ip_address The fixed IP address which will be used to send webhook requests instead of the IP address resolved
@@ -198,7 +198,7 @@ abstract class Api implements ApiInterface {
      *                                       suggested post is automatically declined.
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -359,7 +359,7 @@ abstract class Api implements ApiInterface {
      * @param int $message_id Message identifier in the chat specified in from_chat_id
      * @param int|null $video_start_timestamp New start timestamp for the copied video in the message
      * @param string|null $caption New caption for media, 0-1024 characters after entities parsing. If not specified, the original
-     *                                       caption is kept
+     *                                       caption is kept.
      * @param string|null $parse_mode Mode for parsing entities in the new caption. See formatting options for more details.
      * @param array|null $caption_entities A JSON-serialized list of special entities that appear in the new caption, which can be specified
      *                                       instead of parse_mode
@@ -376,7 +376,7 @@ abstract class Api implements ApiInterface {
      *                                       suggested post is automatically declined.
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#copymessage
@@ -505,7 +505,7 @@ abstract class Api implements ApiInterface {
      *                                       suggested post is automatically declined.
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -676,7 +676,7 @@ abstract class Api implements ApiInterface {
      *                                       suggested post is automatically declined.
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -764,7 +764,7 @@ abstract class Api implements ApiInterface {
      *                                       suggested post is automatically declined.
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -859,7 +859,7 @@ abstract class Api implements ApiInterface {
      *                                       suggested post is automatically declined.
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -962,7 +962,7 @@ abstract class Api implements ApiInterface {
      *                                       suggested post is automatically declined.
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -1050,7 +1050,7 @@ abstract class Api implements ApiInterface {
      *                                       suggested post is automatically declined.
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -1109,7 +1109,7 @@ abstract class Api implements ApiInterface {
      *                                       is sent to a direct messages chat
      * @param \CURLFile|string|InputFile $video_note Video note to send. Pass a file_id as String to send a video note that exists on the Telegram
      *                                       servers (recommended) or upload a new video using multipart/form-data. More information on Sending
-     *                                       Files ». Sending video notes by a URL is currently unsupported
+     *                                       Files ». Sending video notes by a URL is currently unsupported.
      * @param int|null $duration Duration of sent video in seconds
      * @param int|null $length Video width and height, i.e. diameter of the video message
      * @param \CURLFile|string|InputFile|null $thumbnail Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
@@ -1128,7 +1128,7 @@ abstract class Api implements ApiInterface {
      *                                       suggested post is automatically declined.
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -1201,7 +1201,7 @@ abstract class Api implements ApiInterface {
      *                                       suggested post is automatically declined.
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -1322,7 +1322,7 @@ abstract class Api implements ApiInterface {
      * @param float $longitude Longitude of the location
      * @param float|null $horizontal_accuracy The radius of uncertainty for the location, measured in meters; 0-1500
      * @param int|null $live_period Period in seconds during which the location will be updated (see Live Locations, should be between
-     *                                       60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.
+     *                                       60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely
      * @param int|null $heading For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360
      *                                       if specified.
      * @param int|null $proximity_alert_radius For live locations, a maximum distance for proximity alerts about approaching another chat member,
@@ -1337,7 +1337,7 @@ abstract class Api implements ApiInterface {
      *                                       suggested post is automatically declined.
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -1414,7 +1414,7 @@ abstract class Api implements ApiInterface {
      *                                       suggested post is automatically declined.
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -1490,7 +1490,7 @@ abstract class Api implements ApiInterface {
      *                                       suggested post is automatically declined.
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -1544,9 +1544,9 @@ abstract class Api implements ApiInterface {
      *                                       private chats of bots with forum topic mode enabled only
      * @param string $question Poll question, 1-300 characters
      * @param string|null $question_parse_mode Mode for parsing entities in the question. See formatting options for more details. Currently, only
-     *                                       custom emoji entities are allowed
+     *                                       custom emoji entities are allowed.
      * @param array|null $question_entities A JSON-serialized list of special entities that appear in the poll question. It can be specified
-     *                                       instead of question_parse_mode
+     *                                       instead of question_parse_mode.
      * @param array $options A JSON-serialized list of 1-12 answer options
      * @param bool|null $is_anonymous True, if the poll needs to be anonymous, defaults to True
      * @param string|null $type Poll type, “quiz” or “regular”, defaults to “regular”
@@ -1560,15 +1560,16 @@ abstract class Api implements ApiInterface {
      * @param bool|null $members_only Pass True, if voting is limited to users who have been members of the chat where the poll is being
      *                                       sent for more than 24 hours; for channel chats only
      * @param array|null $country_codes A JSON-serialized list of 0-12 two-letter ISO 3166-1 alpha-2 country codes indicating the countries
-     *                                       from which users can vote in the poll; for channel chats only. If omitted or empty, then users from
-     *                                       any country can participate in the poll.
+     *                                       from which users can vote in the poll; for channel chats only. Use “FT” as a country code to
+     *                                       allow users with anonymous numbers to vote. If omitted or empty, then users from any country can
+     *                                       participate in the poll.
      * @param array|null $correct_option_ids A JSON-serialized list of monotonically increasing 0-based identifiers of the correct answer
      *                                       options, required for polls in quiz mode
      * @param string|null $explanation Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style
      *                                       poll, 0-200 characters with at most 2 line feeds after entities parsing
      * @param string|null $explanation_parse_mode Mode for parsing entities in the explanation. See formatting options for more details.
      * @param array|null $explanation_entities A JSON-serialized list of special entities that appear in the poll explanation. It can be specified
-     *                                       instead of explanation_parse_mode
+     *                                       instead of explanation_parse_mode.
      * @param array|null $explanation_media Media added to the quiz explanation
      * @param int|null $open_period Amount of time in seconds the poll will be active after creation, 5-2628000. Can't be used together
      *                                       with close_date.
@@ -1587,7 +1588,7 @@ abstract class Api implements ApiInterface {
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -1724,7 +1725,7 @@ abstract class Api implements ApiInterface {
      * @param string|null $emoji Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”,
      *                                       “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”,
      *                                       “🎯” and “🎳”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”.
-     *                                       Defaults to “🎲”
+     *                                       Defaults to “🎲”.
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
@@ -1735,7 +1736,7 @@ abstract class Api implements ApiInterface {
      *                                       suggested post is automatically declined.
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -2066,7 +2067,8 @@ abstract class Api implements ApiInterface {
      *                                       can_send_documents, can_send_photos, can_send_videos, can_send_video_notes, and can_send_voice_notes
      *                                       permissions; the can_send_polls permission will imply the can_send_messages permission.
      * @param int|null $until_date Date when restrictions will be lifted for the user; Unix time. If user is restricted for more than
-     *                                       366 days or less than 30 seconds from the current time, they are considered to be restricted forever
+     *                                       366 days or less than 30 seconds from the current time, they are considered to be restricted
+     *                                       forever.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#restrictchatmember
@@ -2104,7 +2106,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $can_delete_messages Pass True if the administrator can delete messages of other users
      * @param bool|null $can_manage_video_chats Pass True if the administrator can manage video chats
      * @param bool|null $can_restrict_members Pass True if the administrator can restrict, ban or unban chat members, or access supergroup
-     *                                       statistics. For backward compatibility, defaults to True for promotions of channel administrators
+     *                                       statistics. For backward compatibility, defaults to True for promotions of channel administrators.
      * @param bool|null $can_promote_members Pass True if the administrator can add new administrators with a subset of their own privileges or
      *                                       demote administrators that they have promoted, directly or indirectly (promoted by administrators
      *                                       that were appointed by him)
@@ -2339,7 +2341,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $member_limit The maximum number of users that can be members of the chat simultaneously after joining the chat
      *                                       via this invite link; 1-99999
      * @param bool|null $creates_join_request True, if users joining the chat via the link need to be approved by chat administrators. If True,
-     *                                       member_limit can't be specified
+     *                                       member_limit can't be specified.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#createchatinvitelink
@@ -2375,7 +2377,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $member_limit The maximum number of users that can be members of the chat simultaneously after joining the chat
      *                                       via this invite link; 1-99999
      * @param bool|null $creates_join_request True, if users joining the chat via the link need to be approved by chat administrators. If True,
-     *                                       member_limit can't be specified
+     *                                       member_limit can't be specified.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#editchatinvitelink
@@ -2908,7 +2910,7 @@ abstract class Api implements ApiInterface {
      * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param string $name Topic name, 1-128 characters
      * @param int|null $icon_color Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590
-     *                                       (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)
+     *                                       (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F).
      * @param string|null $icon_custom_emoji_id Unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to get
      *                                       all allowed custom emoji identifiers.
      * @return \stdClass
@@ -2941,10 +2943,10 @@ abstract class Api implements ApiInterface {
      * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param int $message_thread_id Unique identifier for the target message thread of the forum topic
      * @param string|null $name New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be
-     *                                       kept
+     *                                       kept.
      * @param string|null $icon_custom_emoji_id New unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to
      *                                       get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified,
-     *                                       the current icon will be kept
+     *                                       the current icon will be kept.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#editforumtopic
@@ -3199,7 +3201,7 @@ abstract class Api implements ApiInterface {
      * True is returned.
      *
      * @param string $callback_query_id Unique identifier for the query to be answered
-     * @param string|null $text Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters
+     * @param string|null $text Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters.
      * @param bool|null $show_alert If True, an alert will be shown by the client instead of a notification at the top of the chat
      *                                       screen. Defaults to false.
      * @param string|null $url URL that will be opened by the user's client. If you have created a Game and accepted the conditions
@@ -3391,7 +3393,7 @@ abstract class Api implements ApiInterface {
      * @param array|null $scope A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to
      *                                       BotCommandScopeDefault.
      * @param string|null $language_code A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given
-     *                                       scope, for whose language there are no dedicated commands
+     *                                       scope, for whose language there are no dedicated commands.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#setmycommands
@@ -3418,7 +3420,7 @@ abstract class Api implements ApiInterface {
      * @param array|null $scope A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to
      *                                       BotCommandScopeDefault.
      * @param string|null $language_code A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given
-     *                                       scope, for whose language there are no dedicated commands
+     *                                       scope, for whose language there are no dedicated commands.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#deletemycommands
@@ -3619,8 +3621,8 @@ abstract class Api implements ApiInterface {
      * Returns True on success.
      *
      * @param int|null $chat_id Unique identifier for the target private chat. If not specified, default bot's menu button will be
-     *                                       changed
-     * @param array|null $menu_button A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault
+     *                                       changed.
+     * @param array|null $menu_button A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#setchatmenubutton
@@ -3642,7 +3644,7 @@ abstract class Api implements ApiInterface {
      * menu button. Returns MenuButton on success.
      *
      * @param int|null $chat_id Unique identifier for the target private chat. If not specified, default bot's menu button will be
-     *                                       returned
+     *                                       returned.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#getchatmenubutton
@@ -3922,7 +3924,7 @@ abstract class Api implements ApiInterface {
      * to delete any message. Returns True on success.
      *
      * @param array $message_ids A JSON-serialized list of 1-100 identifiers of messages to delete. All messages must be from the
-     *                                       same chat. See deleteMessage for limitations on which messages can be deleted
+     *                                       same chat. See deleteMessage for limitations on which messages can be deleted.
      * @param string $business_connection_id Unique identifier of the business connection on behalf of which to delete the messages
      * @return \stdClass
      *
@@ -4152,7 +4154,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $sort_by_price Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
      * @param string|null $offset Offset of the first entry to return as received from the previous request; use empty string to get
      *                                       the first chunk of results
-     * @param int|null $limit The maximum number of gifts to be returned; 1-100. Defaults to 100
+     * @param int|null $limit The maximum number of gifts to be returned; 1-100. Defaults to 100.
      * @param string $business_connection_id Unique identifier of the business connection
      * @return \stdClass
      *
@@ -4204,7 +4206,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $sort_by_price Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
      * @param string|null $offset Offset of the first entry to return as received from the previous request; use an empty string to
      *                                       get the first chunk of results
-     * @param int|null $limit The maximum number of gifts to be returned; 1-100. Defaults to 100
+     * @param int|null $limit The maximum number of gifts to be returned; 1-100. Defaults to 100.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#getusergifts
@@ -4255,7 +4257,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $sort_by_price Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
      * @param string|null $offset Offset of the first entry to return as received from the previous request; use an empty string to
      *                                       get the first chunk of results
-     * @param int|null $limit The maximum number of gifts to be returned; 1-100. Defaults to 100
+     * @param int|null $limit The maximum number of gifts to be returned; 1-100. Defaults to 100.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#getchatgifts
@@ -4587,7 +4589,7 @@ abstract class Api implements ApiInterface {
      *
      * @param int $user_id Unique identifier of the target user that can use the button
      * @param array $button A JSON-serialized object describing the button to be saved. The button must be of the type
-     *                                       request_users, request_chat, or request_managed_bot
+     *                                       request_users, request_chat, or request_managed_bot.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#savepreparedkeyboardbutton
@@ -4613,14 +4615,14 @@ abstract class Api implements ApiInterface {
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
      *                                       the target bot, supergroup or channel in the format @username.
-     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit
-     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
+     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit.
+     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message.
      * @param string $text New text of the message, 1-4096 characters after entities parsing
      * @param string|null $parse_mode Mode for parsing entities in the message text. See formatting options for more details.
      * @param array|null $entities A JSON-serialized list of special entities that appear in message text, which can be specified
      *                                       instead of parse_mode
      * @param array|null $link_preview_options Link preview generation options for the message
-     * @param array|null $reply_markup A JSON-serialized object for an inline keyboard.
+     * @param array|null $reply_markup A JSON-serialized object for an inline keyboard
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
      *
@@ -4661,15 +4663,15 @@ abstract class Api implements ApiInterface {
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
      *                                       the target bot, supergroup or channel in the format @username.
-     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit
-     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
+     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit.
+     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message.
      * @param string|null $caption New caption of the message, 0-1024 characters after entities parsing
      * @param string|null $parse_mode Mode for parsing entities in the message caption. See formatting options for more details.
      * @param array|null $caption_entities A JSON-serialized list of special entities that appear in the caption, which can be specified
      *                                       instead of parse_mode
      * @param bool|null $show_caption_above_media Pass True, if the caption must be shown above the message media. Supported only for animation, photo
      *                                       and video messages.
-     * @param array|null $reply_markup A JSON-serialized object for an inline keyboard.
+     * @param array|null $reply_markup A JSON-serialized object for an inline keyboard
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
      *
@@ -4713,10 +4715,10 @@ abstract class Api implements ApiInterface {
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
      *                                       the target bot, supergroup or channel in the format @username.
-     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit
-     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
+     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit.
+     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message.
      * @param array $media A JSON-serialized object for a new media content of the message
-     * @param array|null $reply_markup A JSON-serialized object for a new inline keyboard.
+     * @param array|null $reply_markup A JSON-serialized object for a new inline keyboard
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
      *
@@ -4757,19 +4759,19 @@ abstract class Api implements ApiInterface {
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
      *                                       the target bot, supergroup or channel in the format @username.
-     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit
-     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
+     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit.
+     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message.
      * @param float $latitude Latitude of new location
      * @param float $longitude Longitude of new location
      * @param int|null $live_period New period in seconds during which the location can be updated, starting from the message send date.
      *                                       If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must
      *                                       not exceed the current live_period by more than a day, and the live location expiration date must
-     *                                       remain within the next 90 days. If not specified, then live_period remains unchanged
+     *                                       remain within the next 90 days. If not specified, then live_period remains unchanged.
      * @param float|null $horizontal_accuracy The radius of uncertainty for the location, measured in meters; 0-1500
      * @param int|null $heading Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
      * @param int|null $proximity_alert_radius The maximum distance for proximity alerts about approaching another chat member, in meters. Must be
      *                                       between 1 and 100000 if specified.
-     * @param array|null $reply_markup A JSON-serialized object for a new inline keyboard.
+     * @param array|null $reply_markup A JSON-serialized object for a new inline keyboard
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
      *
@@ -4812,9 +4814,10 @@ abstract class Api implements ApiInterface {
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
      *                                       the target bot, supergroup or channel in the format @username.
-     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message with live location to stop
-     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
-     * @param array|null $reply_markup A JSON-serialized object for a new inline keyboard.
+     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message with live location to
+     *                                       stop.
+     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message.
+     * @param array|null $reply_markup A JSON-serialized object for a new inline keyboard
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
      *
@@ -4878,9 +4881,9 @@ abstract class Api implements ApiInterface {
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
      *                                       the target bot, supergroup or channel in the format @username.
-     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit
-     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
-     * @param array|null $reply_markup A JSON-serialized object for an inline keyboard.
+     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit.
+     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message.
+     * @param array|null $reply_markup A JSON-serialized object for an inline keyboard
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
      *
@@ -4910,7 +4913,7 @@ abstract class Api implements ApiInterface {
      * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
      *                                       format @username
      * @param int $message_id Identifier of the original message with the poll
-     * @param array|null $reply_markup A JSON-serialized object for a new message inline keyboard.
+     * @param array|null $reply_markup A JSON-serialized object for a new message inline keyboard
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
      *
@@ -4941,7 +4944,7 @@ abstract class Api implements ApiInterface {
      * @param int $message_id Identifier of a suggested post message to approve
      * @param int|null $send_date Point in time (Unix timestamp) when the post is expected to be published; omit if the date has
      *                                       already been specified when the suggested post was created. If specified, then the date must be not
-     *                                       more than 2678400 seconds (30 days) in the future
+     *                                       more than 2678400 seconds (30 days) in the future.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#approvesuggestedpost
@@ -5027,7 +5030,7 @@ abstract class Api implements ApiInterface {
      * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
      *                                       format @username
      * @param array $message_ids A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations
-     *                                       on which messages can be deleted
+     *                                       on which messages can be deleted.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#deletemessages
@@ -5126,7 +5129,7 @@ abstract class Api implements ApiInterface {
      *                                       suggested post is automatically declined.
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
-     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @return \stdClass
      *
@@ -5513,7 +5516,7 @@ abstract class Api implements ApiInterface {
      *
      * @param string $name Sticker set name
      * @param string|null $custom_emoji_id Custom emoji identifier of a sticker from the sticker set; pass an empty string to drop the
-     *                                       thumbnail and use the first sticker as the thumbnail.
+     *                                       thumbnail and use the first sticker as the thumbnail
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#setcustomemojistickersetthumbnail
@@ -5618,7 +5621,7 @@ abstract class Api implements ApiInterface {
      * @param string|null $start_parameter Unique deep-linking parameter. If left empty, forwarded copies of the sent message will have a Pay
      *                                       button, allowing multiple users to pay directly from the forwarded message, using the same invoice.
      *                                       If non-empty, forwarded copies of the sent message will have a URL button with a deep link to the
-     *                                       bot (instead of a Pay button), with the value used as the start parameter
+     *                                       bot (instead of a Pay button), with the value used as the start parameter.
      * @param string|null $provider_data JSON-serialized data about the invoice, which will be shared with the payment provider. A detailed
      *                                       description of required fields should be provided by the payment provider.
      * @param string|null $photo_url URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a
@@ -6067,11 +6070,11 @@ abstract class Api implements ApiInterface {
      * @param int $user_id User identifier
      * @param int $score New score, must be non-negative
      * @param bool|null $force Pass True if the high score is allowed to decrease. This can be useful when fixing mistakes or
-     *                                       banning cheaters
+     *                                       banning cheaters.
      * @param bool|null $disable_edit_message Pass True if the game message should not be automatically edited to include the current scoreboard
-     * @param int|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat
-     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the sent message
-     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
+     * @param int|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat.
+     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the sent message.
+     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#setgamescore
@@ -6104,9 +6107,9 @@ abstract class Api implements ApiInterface {
      * several of their neighbors in a game. Returns an Array of GameHighScore objects.
      *
      * @param int $user_id Target user id
-     * @param int|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat
-     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the sent message
-     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
+     * @param int|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat.
+     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the sent message.
+     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#getgamehighscores
