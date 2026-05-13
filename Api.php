@@ -1822,8 +1822,8 @@ abstract class Api implements ApiInterface {
      * We only recommend using this method when a response from the bot will take a noticeable amount of
      * time to arrive.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
-     *                                       format @username. Channel chats and channel direct messages chats aren't supported.
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot or supergroup in the format
+     *                                       @username. Channel chats and channel direct messages chats aren't supported.
      * @param int|null $message_thread_id Unique identifier for the target message thread or topic of a forum; for supergroups and private
      *                                       chats of bots with forum topic mode enabled only
      * @param string $action Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for
