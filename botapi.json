@@ -22272,7 +22272,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @username)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 },
                 {
                     "name": "message_id",
@@ -22314,7 +22314,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @username)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
                 },
                 {
                     "name": "user_id",

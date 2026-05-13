@@ -5052,7 +5052,7 @@ abstract class Api implements ApiInterface {
      * Use this method to remove a reaction from a message in a group or a supergroup chat. The bot must
      * have the 'can_delete_messages' administrator right in the chat. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format @username)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param int $message_id Identifier of the target message
      * @param int|null $user_id Identifier of the user whose reaction will be removed, if the reaction was added by a user
      * @param int|null $actor_chat_id Identifier of the chat whose reaction will be removed, if the reaction was added by a chat
@@ -5082,7 +5082,7 @@ abstract class Api implements ApiInterface {
      * given user or chat. The bot must have the 'can_delete_messages' administrator right in the chat.
      * Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format @username)
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param int|null $user_id Identifier of the user whose reactions will be removed, if the reactions were added by a user
      * @param int|null $actor_chat_id Identifier of the chat whose reactions will be removed, if the reactions were added by a chat
      * @return \stdClass
