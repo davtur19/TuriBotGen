@@ -3620,8 +3620,8 @@ abstract class Api implements ApiInterface {
      * Use this method to change the bot's menu button in a private chat, or the default menu button.
      * Returns True on success.
      *
-     * @param int|null $chat_id Unique identifier for the target private chat. If not specified, default bot's menu button will be
-     *                                       changed.
+     * @param int|null $chat_id Unique identifier for the target private chat. If not specified, the bot's default menu button will
+     *                                       be changed.
      * @param array|null $menu_button A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault.
      * @return \stdClass
      *
@@ -3643,8 +3643,8 @@ abstract class Api implements ApiInterface {
      * Use this method to get the current value of the bot's menu button in a private chat, or the default
      * menu button. Returns MenuButton on success.
      *
-     * @param int|null $chat_id Unique identifier for the target private chat. If not specified, default bot's menu button will be
-     *                                       returned.
+     * @param int|null $chat_id Unique identifier for the target private chat. If not specified, the bot's default menu button will
+     *                                       be returned.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#getchatmenubutton

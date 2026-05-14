@@ -5627,7 +5627,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target private chat. If not specified, default bot's menu button will be changed.",
+                            "description": "Optional. Unique identifier for the target private chat. If not specified, the bot's default menu button will be changed.",
                             "type": "text"
                         },
                         {
@@ -5664,7 +5664,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Optional. Unique identifier for the target private chat. If not specified, default bot's menu button will be returned.",
+                            "description": "Optional. Unique identifier for the target private chat. If not specified, the bot's default menu button will be returned.",
                             "type": "text"
                         }
                     ]
