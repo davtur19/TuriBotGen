@@ -14889,7 +14889,7 @@
                         "InputRichMessage"
                     ],
                     "optional": false,
-                    "description": "Yes"
+                    "description": "The message to be sent"
                 }
             ],
             "extended_by": []
