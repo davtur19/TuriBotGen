@@ -3947,6 +3947,80 @@
             }
         },
         {
+            "name": "answerChatJoinRequestQuery",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_join_request_query_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the join request query",
+                            "type": "text"
+                        },
+                        {
+                            "key": "result",
+                            "value": "",
+                            "description": "Required. Result of the query. Must be either \u201capprove\u201d to allow the user to join the chat, \u201cdecline\u201d to disallow the user to join the chat, or \u201cqueue\u201d to leave the decision to other administrators.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/answerChatJoinRequestQuery",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "answerChatJoinRequestQuery"
+                    ]
+                },
+                "description": "Use this method to process a received chat join request query. Returns True on success."
+            }
+        },
+        {
+            "name": "sendChatJoinRequestWebApp",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_join_request_query_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the join request query",
+                            "type": "text"
+                        },
+                        {
+                            "key": "web_app_url",
+                            "value": "",
+                            "description": "Required. The URL of the Mini App to be opened",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/sendChatJoinRequestWebApp",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "sendChatJoinRequestWebApp"
+                    ]
+                },
+                "description": "Use this method to process a received chat join request query by showing a Mini App to the user before deciding the outcome. Returns True on success."
+            }
+        },
+        {
             "name": "setChatPhoto",
             "request": {
                 "method": "POST",
@@ -7238,7 +7312,7 @@
                         {
                             "key": "text",
                             "value": "",
-                            "description": "Required. New text of the message, 1-4096 characters after entities parsing",
+                            "description": "Optional. New text of the message, 1-4096 characters after entity parsing; required if rich_message isn't specified",
                             "type": "text"
                         },
                         {
@@ -7257,6 +7331,12 @@
                             "key": "link_preview_options",
                             "value": "",
                             "description": "Optional. Link preview generation options for the message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "rich_message",
+                            "value": "",
+                            "description": "Optional. New rich content of the message; required if text isn't specified",
                             "type": "text"
                         },
                         {
@@ -7280,7 +7360,7 @@
                         "editMessageText"
                     ]
                 },
-                "description": "Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
+                "description": "Use this method to edit text, rich and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
             }
         },
         {
@@ -7420,7 +7500,7 @@
                         "editMessageMedia"
                     ]
                 },
-                "description": "Use this method to edit animation, audio, document, live photo, photo, or video messages, or to add media to text messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo, a live photo, or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
+                "description": "Use this method to edit animation, audio, document, live photo, photo, or video messages, or to replace a text or a rich message with a media. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo, a live photo, or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
             }
         },
         {
@@ -8672,6 +8752,152 @@
                     ]
                 },
                 "description": "Use this method to delete a sticker set that was created by the bot. Returns True on success."
+            }
+        },
+        {
+            "name": "sendRichMessage",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Optional. Unique identifier of the business connection on behalf of which the message will be sent",
+                            "type": "text"
+                        },
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "type": "text"
+                        },
+                        {
+                            "key": "message_thread_id",
+                            "value": "",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
+                            "type": "text"
+                        },
+                        {
+                            "key": "direct_messages_topic_id",
+                            "value": "",
+                            "description": "Optional. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat",
+                            "type": "text"
+                        },
+                        {
+                            "key": "rich_message",
+                            "value": "",
+                            "description": "Required. The message to be sent",
+                            "type": "text"
+                        },
+                        {
+                            "key": "disable_notification",
+                            "value": "",
+                            "description": "Optional. Sends the message silently. Users will receive a notification with no sound.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "protect_content",
+                            "value": "",
+                            "description": "Optional. Protects the contents of the sent message from forwarding and saving",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "message_effect_id",
+                            "value": "",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
+                            "type": "text"
+                        },
+                        {
+                            "key": "suggested_post_parameters",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "reply_parameters",
+                            "value": "",
+                            "description": "Optional. Description of the message to reply to",
+                            "type": "text"
+                        },
+                        {
+                            "key": "reply_markup",
+                            "value": "",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/sendRichMessage",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "sendRichMessage"
+                    ]
+                },
+                "description": "Use this method to send rich messages. If the message contains a block with a media element, then the bot must have the right to send the media to the chat. On success, the sent Message is returned."
+            }
+        },
+        {
+            "name": "sendRichMessageDraft",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target private chat",
+                            "type": "text"
+                        },
+                        {
+                            "key": "message_thread_id",
+                            "value": "",
+                            "description": "Optional. Unique identifier for the target message thread",
+                            "type": "text"
+                        },
+                        {
+                            "key": "draft_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "rich_message",
+                            "value": "",
+                            "description": "Required. The partial message to be streamed",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/sendRichMessageDraft",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "sendRichMessageDraft"
+                    ]
+                },
+                "description": "Use this method to stream a partial rich message to a user while the message is being generated. Note that the streamed draft is ephemeral and acts as a temporary 30-second preview - once the output is finalized, you must call sendRichMessage with the complete message to persist it in the user's chat. Returns True on success."
             }
         },
         {

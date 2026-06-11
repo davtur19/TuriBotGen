@@ -2535,6 +2535,52 @@ abstract class Api implements ApiInterface {
     }
 
     /**
+     * Use this method to process a received chat join request query. Returns True on success.
+     *
+     * @param string $chat_join_request_query_id Unique identifier of the join request query
+     * @param string $result Result of the query. Must be either “approve” to allow the user to join the chat, “decline”
+     *                                       to disallow the user to join the chat, or “queue” to leave the decision to other administrators.
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#answerchatjoinrequestquery
+     */
+    public function answerChatJoinRequestQuery(
+        string $chat_join_request_query_id,
+        string $result
+    ): \stdClass {
+        $args = [
+            'chat_join_request_query_id' => $chat_join_request_query_id,
+            'result' => $result
+        ];
+
+
+        return $this->Request('answerChatJoinRequestQuery', $args);
+    }
+
+    /**
+     * Use this method to process a received chat join request query by showing a Mini App to the user
+     * before deciding the outcome. Returns True on success.
+     *
+     * @param string $chat_join_request_query_id Unique identifier of the join request query
+     * @param string $web_app_url The URL of the Mini App to be opened
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#sendchatjoinrequestwebapp
+     */
+    public function sendChatJoinRequestWebApp(
+        string $chat_join_request_query_id,
+        string $web_app_url
+    ): \stdClass {
+        $args = [
+            'chat_join_request_query_id' => $chat_join_request_query_id,
+            'web_app_url' => $web_app_url
+        ];
+
+
+        return $this->Request('sendChatJoinRequestWebApp', $args);
+    }
+
+    /**
      * Use this method to set a new profile photo for the chat. Photos can't be changed for private chats.
      * The bot must be an administrator in the chat for this to work and must have the appropriate
      * administrator rights. Returns True on success.
@@ -4608,20 +4654,22 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to edit text and game messages. On success, if the edited message is not an inline
-     * message, the edited Message is returned, otherwise True is returned. Note that business messages
-     * that were not sent by the bot and do not contain an inline keyboard can only be edited within 48
-     * hours from the time they were sent.
+     * Use this method to edit text, rich and game messages. On success, if the edited message is not an
+     * inline message, the edited Message is returned, otherwise True is returned. Note that business
+     * messages that were not sent by the bot and do not contain an inline keyboard can only be edited
+     * within 48 hours from the time they were sent.
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
      *                                       the target bot, supergroup or channel in the format @username.
      * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit.
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message.
-     * @param string $text New text of the message, 1-4096 characters after entities parsing
+     * @param string|null $text New text of the message, 1-4096 characters after entity parsing; required if rich_message isn't
+     *                                       specified
      * @param string|null $parse_mode Mode for parsing entities in the message text. See formatting options for more details.
      * @param array|null $entities A JSON-serialized list of special entities that appear in message text, which can be specified
      *                                       instead of parse_mode
      * @param array|null $link_preview_options Link preview generation options for the message
+     * @param array|null $rich_message New rich content of the message; required if text isn't specified
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
@@ -4629,26 +4677,27 @@ abstract class Api implements ApiInterface {
      * @see https://core.telegram.org/bots/api#editmessagetext
      */
     public function editMessageText(
-        string $text,
         int|string|null $chat_id = null,
         int|null $message_id = null,
         string|null $inline_message_id = null,
+        string|null $text = null,
         string|null $parse_mode = null,
         array|null $entities = null,
         array|null $link_preview_options = null,
+        array|null $rich_message = null,
         array|null $reply_markup = null,
         string|null $business_connection_id = null
     ): \stdClass {
-        $args = [
-            'text' => $text
-        ];
+        $args = [];
 
         if (null !== $chat_id) $args['chat_id'] = $chat_id;
         if (null !== $message_id) $args['message_id'] = $message_id;
         if (null !== $inline_message_id) $args['inline_message_id'] = $inline_message_id;
+        if (null !== $text) $args['text'] = $text;
         if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
         if (null !== $entities) $args['entities'] = json_encode($entities);
         if (null !== $link_preview_options) $args['link_preview_options'] = json_encode($link_preview_options);
+        if (null !== $rich_message) $args['rich_message'] = json_encode($rich_message);
         if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
         if (null !== $business_connection_id) $args['business_connection_id'] = $business_connection_id;
 
@@ -4704,14 +4753,14 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to edit animation, audio, document, live photo, photo, or video messages, or to add
-     * media to text messages. If a message is part of a message album, then it can be edited only to an
-     * audio for audio albums, only to a document for document albums and to a photo, a live photo, or a
-     * video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously
-     * uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline
-     * message, the edited Message is returned, otherwise True is returned. Note that business messages
-     * that were not sent by the bot and do not contain an inline keyboard can only be edited within 48
-     * hours from the time they were sent.
+     * Use this method to edit animation, audio, document, live photo, photo, or video messages, or to
+     * replace a text or a rich message with a media. If a message is part of a message album, then it can
+     * be edited only to an audio for audio albums, only to a document for document albums and to a photo,
+     * a live photo, or a video otherwise. When an inline message is edited, a new file can't be uploaded;
+     * use a previously uploaded file via its file_id or specify a URL. On success, if the edited message
+     * is not an inline message, the edited Message is returned, otherwise True is returned. Note that
+     * business messages that were not sent by the bot and do not contain an inline keyboard can only be
+     * edited within 48 hours from the time they were sent.
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
      *                                       the target bot, supergroup or channel in the format @username.
@@ -5551,6 +5600,98 @@ abstract class Api implements ApiInterface {
 
 
         return $this->Request('deleteStickerSet', $args);
+    }
+
+    /**
+     * Use this method to send rich messages. If the message contains a block with a media element, then
+     * the bot must have the right to send the media to the chat. On success, the sent Message is returned.
+     *
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
+     *                                       format @username
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and
+     *                                       private chats of bots with forum topic mode enabled only
+     * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
+     *                                       is sent to a direct messages chat
+     * @param array $rich_message The message to be sent
+     * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
+     * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
+     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
+     *                                       Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
+     * @param array|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct
+     *                                       messages chats only. If the message is sent as a reply to another suggested post, then that
+     *                                       suggested post is automatically declined.
+     * @param array|null $reply_parameters Description of the message to reply to
+     * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
+     *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#sendrichmessage
+     */
+    public function sendRichMessage(
+        int|string $chat_id,
+        array $rich_message,
+        int|null $message_thread_id = null,
+        int|null $direct_messages_topic_id = null,
+        bool|null $disable_notification = null,
+        bool|null $protect_content = null,
+        bool|null $allow_paid_broadcast = null,
+        string|null $message_effect_id = null,
+        array|null $suggested_post_parameters = null,
+        array|null $reply_parameters = null,
+        array|null $reply_markup = null,
+        string|null $business_connection_id = null
+    ): \stdClass {
+        $args = [
+            'chat_id' => $chat_id,
+            'rich_message' => json_encode($rich_message)
+        ];
+
+        if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
+        if (null !== $direct_messages_topic_id) $args['direct_messages_topic_id'] = $direct_messages_topic_id;
+        if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
+        if (null !== $protect_content) $args['protect_content'] = $protect_content;
+        if (null !== $allow_paid_broadcast) $args['allow_paid_broadcast'] = $allow_paid_broadcast;
+        if (null !== $message_effect_id) $args['message_effect_id'] = $message_effect_id;
+        if (null !== $suggested_post_parameters) $args['suggested_post_parameters'] = json_encode($suggested_post_parameters);
+        if (null !== $reply_parameters) $args['reply_parameters'] = json_encode($reply_parameters);
+        if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
+        if (null !== $business_connection_id) $args['business_connection_id'] = $business_connection_id;
+
+        return $this->Request('sendRichMessage', $args);
+    }
+
+    /**
+     * Use this method to stream a partial rich message to a user while the message is being generated.
+     * Note that the streamed draft is ephemeral and acts as a temporary 30-second preview - once the
+     * output is finalized, you must call sendRichMessage with the complete message to persist it in the
+     * user's chat. Returns True on success.
+     *
+     * @param int $chat_id Unique identifier for the target private chat
+     * @param int|null $message_thread_id Unique identifier for the target message thread
+     * @param int $draft_id Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier
+     *                                       are animated.
+     * @param array $rich_message The partial message to be streamed
+     * @return \stdClass
+     *
+     * @see https://core.telegram.org/bots/api#sendrichmessagedraft
+     */
+    public function sendRichMessageDraft(
+        int $chat_id,
+        int $draft_id,
+        array $rich_message,
+        int|null $message_thread_id = null
+    ): \stdClass {
+        $args = [
+            'chat_id' => $chat_id,
+            'draft_id' => $draft_id,
+            'rich_message' => json_encode($rich_message)
+        ];
+
+        if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
+
+        return $this->Request('sendRichMessageDraft', $args);
     }
 
     /**
