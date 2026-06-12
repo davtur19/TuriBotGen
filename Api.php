@@ -1783,7 +1783,7 @@ abstract class Api implements ApiInterface {
      *
      * @param int $chat_id Unique identifier for the target private chat
      * @param int|null $message_thread_id Unique identifier for the target message thread
-     * @param int $draft_id Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier
+     * @param int $draft_id Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier
      *                                       are animated.
      * @param string|null $text Text of the message to be sent, 0-4096 characters after entities parsing. Pass an empty text to show
      *                                       a “Thinking…” placeholder.

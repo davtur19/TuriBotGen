@@ -2810,7 +2810,7 @@
                         {
                             "key": "draft_id",
                             "value": "",
-                            "description": "Required. Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier are animated.",
+                            "description": "Required. Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated.",
                             "type": "text"
                         },
                         {

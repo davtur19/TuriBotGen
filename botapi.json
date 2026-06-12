@@ -9927,7 +9927,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the result, must be animation",
+                    "description": "Type of the media, must be animation",
                     "default": "animation"
                 },
                 {
@@ -10023,7 +10023,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the result, must be audio",
+                    "description": "Type of the media, must be audio",
                     "default": "audio"
                 },
                 {
@@ -10103,7 +10103,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the result, must be document",
+                    "description": "Type of the media, must be document",
                     "default": "document"
                 },
                 {
@@ -10167,7 +10167,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the result, must be link",
+                    "description": "Type of the media, must be link",
                     "default": "link"
                 },
                 {
@@ -10191,7 +10191,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the result, must be live_photo",
+                    "description": "Type of the media, must be live_photo",
                     "default": "live_photo"
                 },
                 {
@@ -10263,7 +10263,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the result, must be location",
+                    "description": "Type of the media, must be location",
                     "default": "location"
                 },
                 {
@@ -10303,7 +10303,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the result, must be photo",
+                    "description": "Type of the media, must be photo",
                     "default": "photo"
                 },
                 {
@@ -10367,7 +10367,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the result, must be sticker",
+                    "description": "Type of the media, must be sticker",
                     "default": "sticker"
                 },
                 {
@@ -10399,7 +10399,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the result, must be venue",
+                    "description": "Type of the media, must be venue",
                     "default": "venue"
                 },
                 {
@@ -10479,7 +10479,7 @@
                         "string"
                     ],
                     "optional": false,
-                    "description": "Type of the result, must be video",
+                    "description": "Type of the media, must be video",
                     "default": "video"
                 },
                 {
@@ -19969,7 +19969,7 @@
                         "int"
                     ],
                     "optional": false,
-                    "description": "Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier are animated."
+                    "description": "Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated."
                 },
                 {
                     "name": "text",
