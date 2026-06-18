@@ -7213,7 +7213,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Optional. Identifier of the join request query. If present, then the bot must call sendChatJoinRequestWebApp or directly call answerChatJoinRequestQuery within 10 seconds."
+                    "description": "Optional. Identifier of the join request query; for bots assigned to process join request only. If present, then the bot must call sendChatJoinRequestWebApp or directly call answerChatJoinRequestQuery within 10 seconds."
                 }
             ],
             "extended_by": []
@@ -12636,7 +12636,7 @@
         },
         {
             "name": "RichBlockPhoto",
-            "description": "A block with a photo, corresponding to the HTML tag <photo>.",
+            "description": "A block with a photo, corresponding to the HTML tag <img>.",
             "fields": [
                 {
                     "name": "type",
@@ -20952,7 +20952,7 @@
         },
         {
             "name": "sendChatJoinRequestWebApp",
-            "description": "Use this method to process a received chat join request query by showing a Mini App to the user before deciding the outcome. Returns True on success.",
+            "description": "Use this method to process a received chat join request query by showing a Mini App to the user before deciding the outcome. Call answerChatJoinRequestQuery to resolve the join request query based on the user interaction with the Mini App. Returns True on success.",
             "fields": [
                 {
                     "name": "chat_join_request_query_id",
@@ -24661,7 +24661,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "Unique identifier of the business connection on behalf of which the message will be sent"
+                    "description": "Unique identifier of the business connection on behalf of which the message will be sent. Bot can send rich messages on behalf of a business account only if the corresponding user can send rich messages."
                 },
                 {
                     "name": "chat_id",

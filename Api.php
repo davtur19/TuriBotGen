@@ -2559,7 +2559,8 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to process a received chat join request query by showing a Mini App to the user
-     * before deciding the outcome. Returns True on success.
+     * before deciding the outcome. Call answerChatJoinRequestQuery to resolve the join request query based
+     * on the user interaction with the Mini App. Returns True on success.
      *
      * @param string $chat_join_request_query_id Unique identifier of the join request query
      * @param string $web_app_url The URL of the Mini App to be opened
@@ -5624,7 +5625,9 @@ abstract class Api implements ApiInterface {
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
-     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent. Bot can
+     *                                       send rich messages on behalf of a business account only if the corresponding user can send rich
+     *                                       messages.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#sendrichmessage
