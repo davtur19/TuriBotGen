@@ -4767,7 +4767,7 @@ abstract class Api implements ApiInterface {
      *                                       the target bot, supergroup or channel in the format @username.
      * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit.
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message.
-     * @param array $media A JSON-serialized object for a new media content of the message
+     * @param array $media A JSON-serialized object for the new media content of the message
      * @param array|null $reply_markup A JSON-serialized object for a new inline keyboard
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass

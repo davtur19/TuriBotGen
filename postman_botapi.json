@@ -7476,7 +7476,7 @@
                         {
                             "key": "media",
                             "value": "",
-                            "description": "Required. A JSON-serialized object for a new media content of the message",
+                            "description": "Required. A JSON-serialized object for the new media content of the message",
                             "type": "text"
                         },
                         {
