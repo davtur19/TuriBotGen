@@ -2354,14 +2354,6 @@
                     "description": "Optional. If the message to be replied to is from a different chat, unique identifier for the chat or username of the bot, supergroup or channel in the format @username. Not supported for messages sent on behalf of a business account, messages from channel direct messages chats and ephemeral messages."
                 },
                 {
-                    "name": "allow_sending_without_reply",
-                    "types": [
-                        "bool"
-                    ],
-                    "optional": true,
-                    "description": "Optional. Pass True if the message should be sent even if the specified message to be replied to is not found. Always False for replies in another chat or forum topic. Always True for messages sent on behalf of a business account."
-                },
-                {
                     "name": "ephemeral_message_id",
                     "types": [
                         "int"
