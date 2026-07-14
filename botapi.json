@@ -1053,8 +1053,8 @@
                     "types": [
                         "int"
                     ],
-                    "optional": false,
-                    "description": "For ephemeral messages, identifier of the ephemeral message inside this chat. The identifier may be reused for another ephemeral message after the message is deleted or expires."
+                    "optional": true,
+                    "description": "Optional. For ephemeral messages, identifier of the ephemeral message inside this chat. The identifier may be reused for another ephemeral message after the message is deleted or expires."
                 },
                 {
                     "name": "date",
