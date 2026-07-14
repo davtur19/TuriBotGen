@@ -279,6 +279,18 @@
                             "type": "text"
                         },
                         {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "callback_query_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "type": "text"
+                        },
+                        {
                             "key": "text",
                             "value": "",
                             "description": "Required. Text of the message to be sent, 1-4096 characters after entities parsing",
@@ -511,7 +523,7 @@
                         "forwardMessages"
                     ]
                 },
-                "description": "Use this method to forward multiple messages of any kind. If some of the specified messages can't be found or forwarded, they are skipped. Service messages and messages with protected content can't be forwarded. Album grouping is kept for forwarded messages. On success, an array of MessageId of the sent messages is returned."
+                "description": "Use this method to forward multiple messages of any kind. If some of the specified messages can't be found or forwarded, they are skipped. Service messages and messages with protected content can't be forwarded. Album grouping is kept for forwarded messages. On success, an Array of MessageId of the sent messages is returned."
             }
         },
         {
@@ -578,7 +590,7 @@
                         {
                             "key": "show_caption_above_media",
                             "value": "",
-                            "description": "Optional. Pass True, if the caption must be shown above the message media. Ignored if a new caption isn't specified.",
+                            "description": "Optional. Pass True if the caption must be shown above the message media. Ignored if a new caption isn't specified.",
                             "type": "text"
                         },
                         {
@@ -711,7 +723,7 @@
                         "copyMessages"
                     ]
                 },
-                "description": "Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an array of MessageId of the sent messages is returned."
+                "description": "Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an Array of MessageId of the sent messages is returned."
             }
         },
         {
@@ -746,6 +758,18 @@
                             "type": "text"
                         },
                         {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "callback_query_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "type": "text"
+                        },
+                        {
                             "key": "photo",
                             "value": "",
                             "description": "Required. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More information on Sending Files \u00bb",
@@ -772,7 +796,7 @@
                         {
                             "key": "show_caption_above_media",
                             "value": "",
-                            "description": "Optional. Pass True, if the caption must be shown above the message media",
+                            "description": "Optional. Pass True if the caption must be shown above the message media",
                             "type": "text"
                         },
                         {
@@ -873,6 +897,18 @@
                             "type": "text"
                         },
                         {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "callback_query_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "type": "text"
+                        },
+                        {
                             "key": "live_photo",
                             "value": "",
                             "description": "Required. Live photo video to send. The video must be no longer than 10 seconds and must not exceed 10 MB in size. Pass a file_id as String to send a video that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files \u00bb. Sending live photos by a URL is currently unsupported.",
@@ -905,7 +941,7 @@
                         {
                             "key": "show_caption_above_media",
                             "value": "",
-                            "description": "Optional. Pass True, if the caption must be shown above the message media",
+                            "description": "Optional. Pass True if the caption must be shown above the message media",
                             "type": "text"
                         },
                         {
@@ -1003,6 +1039,18 @@
                             "key": "direct_messages_topic_id",
                             "value": "",
                             "description": "Optional. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat",
+                            "type": "text"
+                        },
+                        {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "callback_query_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
                             "type": "text"
                         },
                         {
@@ -1145,6 +1193,18 @@
                             "type": "text"
                         },
                         {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "callback_query_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "type": "text"
+                        },
+                        {
                             "key": "document",
                             "value": "",
                             "description": "Required. File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files \u00bb",
@@ -1272,6 +1332,18 @@
                             "type": "text"
                         },
                         {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "callback_query_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "type": "text"
+                        },
+                        {
                             "key": "video",
                             "value": "",
                             "description": "Required. Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More information on Sending Files \u00bb",
@@ -1334,7 +1406,7 @@
                         {
                             "key": "show_caption_above_media",
                             "value": "",
-                            "description": "Optional. Pass True, if the caption must be shown above the message media",
+                            "description": "Optional. Pass True if the caption must be shown above the message media",
                             "type": "text"
                         },
                         {
@@ -1441,6 +1513,18 @@
                             "type": "text"
                         },
                         {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "callback_query_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "type": "text"
+                        },
+                        {
                             "key": "animation",
                             "value": "",
                             "description": "Required. Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More information on Sending Files \u00bb",
@@ -1491,7 +1575,7 @@
                         {
                             "key": "show_caption_above_media",
                             "value": "",
-                            "description": "Optional. Pass True, if the caption must be shown above the message media",
+                            "description": "Optional. Pass True if the caption must be shown above the message media",
                             "type": "text"
                         },
                         {
@@ -1589,6 +1673,18 @@
                             "key": "direct_messages_topic_id",
                             "value": "",
                             "description": "Optional. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat",
+                            "type": "text"
+                        },
+                        {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "callback_query_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
                             "type": "text"
                         },
                         {
@@ -1710,6 +1806,18 @@
                             "key": "direct_messages_topic_id",
                             "value": "",
                             "description": "Optional. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat",
+                            "type": "text"
+                        },
+                        {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "callback_query_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
                             "type": "text"
                         },
                         {
@@ -1836,7 +1944,7 @@
                         {
                             "key": "media",
                             "value": "",
-                            "description": "Required. A JSON-serialized array describing the media to be sent; up to 10 items",
+                            "description": "Required. A JSON-serialized Array describing the media to be sent; up to 10 items",
                             "type": "text"
                         },
                         {
@@ -1866,7 +1974,7 @@
                         {
                             "key": "show_caption_above_media",
                             "value": "",
-                            "description": "Optional. Pass True, if the caption must be shown above the message media",
+                            "description": "Optional. Pass True if the caption must be shown above the message media",
                             "type": "text"
                         },
                         {
@@ -1957,7 +2065,7 @@
                         {
                             "key": "media",
                             "value": "",
-                            "description": "Required. A JSON-serialized array describing messages to be sent, must include 2-10 items",
+                            "description": "Required. A JSON-serialized Array describing messages to be sent, must include 2-10 items",
                             "type": "text"
                         },
                         {
@@ -2005,7 +2113,7 @@
                         "sendMediaGroup"
                     ]
                 },
-                "description": "Use this method to send a group of photos, live photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Message objects that were sent is returned."
+                "description": "Use this method to send a group of photos, live photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an Array of Message objects that were sent is returned."
             }
         },
         {
@@ -2040,6 +2148,18 @@
                             "type": "text"
                         },
                         {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "callback_query_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "type": "text"
+                        },
+                        {
                             "key": "latitude",
                             "value": "",
                             "description": "Required. Latitude of the location",
@@ -2060,7 +2180,7 @@
                         {
                             "key": "live_period",
                             "value": "",
-                            "description": "Optional. Period in seconds during which the location will be updated (see Live Locations, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely",
+                            "description": "Optional. Period in seconds during which the location will be updated (see Live Locations), must be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely. Must be 0 for ephemeral messages.",
                             "type": "text"
                         },
                         {
@@ -2164,6 +2284,18 @@
                             "key": "direct_messages_topic_id",
                             "value": "",
                             "description": "Optional. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat",
+                            "type": "text"
+                        },
+                        {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "callback_query_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
                             "type": "text"
                         },
                         {
@@ -2303,6 +2435,18 @@
                             "key": "direct_messages_topic_id",
                             "value": "",
                             "description": "Optional. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat",
+                            "type": "text"
+                        },
+                        {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "callback_query_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
                             "type": "text"
                         },
                         {
@@ -2453,37 +2597,37 @@
                         {
                             "key": "allows_multiple_answers",
                             "value": "",
-                            "description": "Optional. Pass True, if the poll allows multiple answers, defaults to False",
+                            "description": "Optional. Pass True if the poll allows multiple answers, defaults to False",
                             "type": "text"
                         },
                         {
                             "key": "allows_revoting",
                             "value": "",
-                            "description": "Optional. Pass True, if the poll allows to change chosen answer options, defaults to False for quizzes and to True for regular polls",
+                            "description": "Optional. Pass True if the poll allows to change chosen answer options, defaults to False for quizzes and to True for regular polls",
                             "type": "text"
                         },
                         {
                             "key": "shuffle_options",
                             "value": "",
-                            "description": "Optional. Pass True, if the poll options must be shown in random order",
+                            "description": "Optional. Pass True if the poll options must be shown in random order",
                             "type": "text"
                         },
                         {
                             "key": "allow_adding_options",
                             "value": "",
-                            "description": "Optional. Pass True, if answer options can be added to the poll after creation; not supported for anonymous polls and quizzes",
+                            "description": "Optional. Pass True if answer options can be added to the poll after creation; not supported for anonymous polls and quizzes",
                             "type": "text"
                         },
                         {
                             "key": "hide_results_until_closes",
                             "value": "",
-                            "description": "Optional. Pass True, if poll results must be shown only after the poll closes",
+                            "description": "Optional. Pass True if poll results must be shown only after the poll closes",
                             "type": "text"
                         },
                         {
                             "key": "members_only",
                             "value": "",
-                            "description": "Optional. Pass True, if voting is limited to users who have been members of the chat where the poll is being sent for more than 24 hours; for channel chats only",
+                            "description": "Optional. Pass True if voting is limited to users who have been members of the chat where the poll is being sent for more than 24 hours; for channel chats only",
                             "type": "text"
                         },
                         {
@@ -3999,7 +4143,7 @@
                         {
                             "key": "web_app_url",
                             "value": "",
-                            "description": "Required. The URL of the Mini App to be opened",
+                            "description": "Required. An HTTPS URL of a Web App to be opened with additional data as specified in Initializing Web Apps",
                             "type": "text"
                         }
                     ]
@@ -4412,7 +4556,7 @@
                         "getChatMemberCount"
                     ]
                 },
-                "description": "Use this method to get the number of members in a chat. Returns Int on success."
+                "description": "Use this method to get the number of members in a chat. Returns Integer on success."
             }
         },
         {
@@ -4486,7 +4630,7 @@
                         "getUserPersonalChatMessages"
                     ]
                 },
-                "description": "Use this method to get the last messages from the personal chat (i.e., the chat currently added to their profile) of a given user. On success, an array of Message objects is returned."
+                "description": "Use this method to get the last messages from the personal chat (i.e., the chat currently added to their profile) of a given user. On success, an Array of Message objects is returned."
             }
         },
         {
@@ -5041,7 +5185,7 @@
                         {
                             "key": "show_alert",
                             "value": "",
-                            "description": "Optional. If True, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to false.",
+                            "description": "Optional. If True, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to False.",
                             "type": "text"
                         },
                         {
@@ -5288,13 +5432,13 @@
                         {
                             "key": "is_access_restricted",
                             "value": "",
-                            "description": "Required. Pass True, if only selected users can access the bot. The bot's owner can always access it.",
+                            "description": "Required. Pass True if only selected users can access the bot. The bot's owner can always access it.",
                             "type": "text"
                         },
                         {
                             "key": "added_user_ids",
                             "value": "",
-                            "description": "Optional. A JSON-serialized list of up to 10 identifiers of users who will have access to the bot in addition to its owner. Ignored if is_access_restricted is false.",
+                            "description": "Optional. A JSON-serialized list of up to 10 identifiers of users who will have access to the bot in addition to its owner. Ignored if is_access_restricted is False.",
                             "type": "text"
                         }
                     ]
@@ -6408,7 +6552,7 @@
                         {
                             "key": "show_gift_button",
                             "value": "",
-                            "description": "Required. Pass True, if a button for sending a gift to the user or by the business account must always be shown in the input field",
+                            "description": "Required. Pass True if a button for sending a gift to the user or by the business account must always be shown in the input field",
                             "type": "text"
                         },
                         {
@@ -7336,7 +7480,7 @@
                         {
                             "key": "rich_message",
                             "value": "",
-                            "description": "Optional. New rich content of the message; required if text isn't specified",
+                            "description": "Optional. New rich content of the message; required if text isn't specified. Direct upload of new files isn't supported when an inline message is edited.",
                             "type": "text"
                         },
                         {
@@ -7415,7 +7559,7 @@
                         {
                             "key": "show_caption_above_media",
                             "value": "",
-                            "description": "Optional. Pass True, if the caption must be shown above the message media. Supported only for animation, photo and video messages.",
+                            "description": "Optional. Pass True if the caption must be shown above the message media. Supported only for animation, photo and video messages.",
                             "type": "text"
                         },
                         {
@@ -7809,6 +7953,250 @@
             }
         },
         {
+            "name": "editEphemeralMessageText",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat or username of the target supergroup in the format @username",
+                            "type": "text"
+                        },
+                        {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Required. Identifier of the user who received the message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "ephemeral_message_id",
+                            "value": "",
+                            "description": "Required. Identifier of the ephemeral message to edit",
+                            "type": "text"
+                        },
+                        {
+                            "key": "text",
+                            "value": "",
+                            "description": "Required. New text of the message, 1-4096 characters after entity parsing",
+                            "type": "text"
+                        },
+                        {
+                            "key": "parse_mode",
+                            "value": "",
+                            "description": "Optional. Mode for parsing entities in the message text. See formatting options for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "entities",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode",
+                            "type": "text"
+                        },
+                        {
+                            "key": "link_preview_options",
+                            "value": "",
+                            "description": "Optional. Link preview generation options for the message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "reply_markup",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized object for an inline keyboard",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/editEphemeralMessageText",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "editEphemeralMessageText"
+                    ]
+                },
+                "description": "Use this method to edit an ephemeral text message. Note that it is not guaranteed that the user will receive the message edit event, especially if they are offline. On success, True is returned."
+            }
+        },
+        {
+            "name": "editEphemeralMessageMedia",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat or username of the target supergroup in the format @username",
+                            "type": "text"
+                        },
+                        {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Required. Identifier of the user who received the message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "ephemeral_message_id",
+                            "value": "",
+                            "description": "Required. Identifier of the ephemeral message to edit",
+                            "type": "text"
+                        },
+                        {
+                            "key": "media",
+                            "value": "",
+                            "description": "Required. A JSON-serialized object for the new media content of the message. A new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "reply_markup",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized object for an inline keyboard",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/editEphemeralMessageMedia",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "editEphemeralMessageMedia"
+                    ]
+                },
+                "description": "Use this method to edit the media of an ephemeral message. Note that it is not guaranteed that the user will receive the message edit event, especially if they are offline. On success, True is returned."
+            }
+        },
+        {
+            "name": "editEphemeralMessageCaption",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat or username of the target supergroup in the format @username",
+                            "type": "text"
+                        },
+                        {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Required. Identifier of the user who received the message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "ephemeral_message_id",
+                            "value": "",
+                            "description": "Required. Identifier of the ephemeral message to edit",
+                            "type": "text"
+                        },
+                        {
+                            "key": "caption",
+                            "value": "",
+                            "description": "Optional. New caption of the message, 0-1024 characters after entities parsing",
+                            "type": "text"
+                        },
+                        {
+                            "key": "parse_mode",
+                            "value": "",
+                            "description": "Optional. Mode for parsing entities in the message caption. See formatting options for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "caption_entities",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode",
+                            "type": "text"
+                        },
+                        {
+                            "key": "reply_markup",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized object for an inline keyboard",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/editEphemeralMessageCaption",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "editEphemeralMessageCaption"
+                    ]
+                },
+                "description": "Use this method to edit the caption of an ephemeral message. Note that it is not guaranteed that the user will receive the message edit event, especially if they are offline. On success, True is returned."
+            }
+        },
+        {
+            "name": "editEphemeralMessageReplyMarkup",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat or username of the target supergroup in the format @username",
+                            "type": "text"
+                        },
+                        {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Required. Identifier of the user who received the message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "ephemeral_message_id",
+                            "value": "",
+                            "description": "Required. Identifier of the ephemeral message to edit",
+                            "type": "text"
+                        },
+                        {
+                            "key": "reply_markup",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized object for an inline keyboard",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/editEphemeralMessageReplyMarkup",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "editEphemeralMessageReplyMarkup"
+                    ]
+                },
+                "description": "Use this method to edit only the reply markup of an ephemeral message. Note that it is not guaranteed that the user will receive the message edit event, especially if they are offline. On success, True is returned."
+            }
+        },
+        {
             "name": "approveSuggestedPost",
             "request": {
                 "method": "POST",
@@ -7969,6 +8357,49 @@
             }
         },
         {
+            "name": "deleteEphemeralMessage",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat or username of the target supergroup in the format @username",
+                            "type": "text"
+                        },
+                        {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Required. Identifier of the user who received the message",
+                            "type": "text"
+                        },
+                        {
+                            "key": "ephemeral_message_id",
+                            "value": "",
+                            "description": "Required. Identifier of the ephemeral message to delete",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/deleteEphemeralMessage",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "deleteEphemeralMessage"
+                    ]
+                },
+                "description": "Use this method to delete an ephemeral message. Note that it is not guaranteed that the user will receive the message deletion event, especially if they are offline. Returns True on success."
+            }
+        },
+        {
             "name": "deleteMessageReaction",
             "request": {
                 "method": "POST",
@@ -8089,6 +8520,18 @@
                             "key": "direct_messages_topic_id",
                             "value": "",
                             "description": "Optional. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat",
+                            "type": "text"
+                        },
+                        {
+                            "key": "receiver_user_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "callback_query_id",
+                            "value": "",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
                             "type": "text"
                         },
                         {
@@ -8879,7 +9322,7 @@
                         {
                             "key": "rich_message",
                             "value": "",
-                            "description": "Required. The partial message to be streamed",
+                            "description": "Required. The partial message to be streamed. Direct upload of new files isn't supported.",
                             "type": "text"
                         }
                     ]
@@ -8916,7 +9359,7 @@
                         {
                             "key": "results",
                             "value": "",
-                            "description": "Required. A JSON-serialized array of results for the inline query",
+                            "description": "Required. A JSON-serialized Array of results for the inline query",
                             "type": "text"
                         },
                         {
@@ -9031,7 +9474,7 @@
                         {
                             "key": "suggested_tip_amounts",
                             "value": "",
-                            "description": "Optional. A JSON-serialized array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount.",
+                            "description": "Optional. A JSON-serialized Array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount.",
                             "type": "text"
                         },
                         {
@@ -9236,7 +9679,7 @@
                         {
                             "key": "suggested_tip_amounts",
                             "value": "",
-                            "description": "Optional. A JSON-serialized array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount.",
+                            "description": "Optional. A JSON-serialized Array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount.",
                             "type": "text"
                         },
                         {
@@ -9351,7 +9794,7 @@
                         {
                             "key": "shipping_options",
                             "value": "",
-                            "description": "Optional. Required if ok is True. A JSON-serialized array of available shipping options.",
+                            "description": "Optional. Required if ok is True. A JSON-serialized Array of available shipping options.",
                             "type": "text"
                         },
                         {
@@ -9578,7 +10021,7 @@
                         {
                             "key": "errors",
                             "value": "",
-                            "description": "Required. A JSON-serialized array describing the errors",
+                            "description": "Required. A JSON-serialized Array describing the errors",
                             "type": "text"
                         }
                     ]
