@@ -287,7 +287,7 @@
                         {
                             "key": "callback_query_id",
                             "value": "",
-                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any",
                             "type": "text"
                         },
                         {
@@ -766,7 +766,7 @@
                         {
                             "key": "callback_query_id",
                             "value": "",
-                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any",
                             "type": "text"
                         },
                         {
@@ -905,7 +905,7 @@
                         {
                             "key": "callback_query_id",
                             "value": "",
-                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any",
                             "type": "text"
                         },
                         {
@@ -1050,7 +1050,7 @@
                         {
                             "key": "callback_query_id",
                             "value": "",
-                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any",
                             "type": "text"
                         },
                         {
@@ -1201,7 +1201,7 @@
                         {
                             "key": "callback_query_id",
                             "value": "",
-                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any",
                             "type": "text"
                         },
                         {
@@ -1340,7 +1340,7 @@
                         {
                             "key": "callback_query_id",
                             "value": "",
-                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any",
                             "type": "text"
                         },
                         {
@@ -1521,7 +1521,7 @@
                         {
                             "key": "callback_query_id",
                             "value": "",
-                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any",
                             "type": "text"
                         },
                         {
@@ -1684,7 +1684,7 @@
                         {
                             "key": "callback_query_id",
                             "value": "",
-                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any",
                             "type": "text"
                         },
                         {
@@ -1817,7 +1817,7 @@
                         {
                             "key": "callback_query_id",
                             "value": "",
-                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any",
                             "type": "text"
                         },
                         {
@@ -2156,7 +2156,7 @@
                         {
                             "key": "callback_query_id",
                             "value": "",
-                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any",
                             "type": "text"
                         },
                         {
@@ -2295,7 +2295,7 @@
                         {
                             "key": "callback_query_id",
                             "value": "",
-                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any",
                             "type": "text"
                         },
                         {
@@ -2446,7 +2446,7 @@
                         {
                             "key": "callback_query_id",
                             "value": "",
-                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any",
                             "type": "text"
                         },
                         {
@@ -8531,7 +8531,7 @@
                         {
                             "key": "callback_query_id",
                             "value": "",
-                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any",
+                            "description": "Optional. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any",
                             "type": "text"
                         },
                         {

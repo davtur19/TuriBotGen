@@ -1681,7 +1681,7 @@
                         "ProximityAlertTriggered"
                     ],
                     "optional": true,
-                    "description": "Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location."
+                    "description": "Optional. Service message: a user in the chat triggered another user's proximity alert while sharing Live Location"
                 },
                 {
                     "name": "boost_added",
@@ -17977,7 +17977,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 {
                     "name": "text",
@@ -18509,7 +18509,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 {
                     "name": "photo",
@@ -18675,7 +18675,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 {
                     "name": "live_photo",
@@ -18850,7 +18850,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 {
                     "name": "audio",
@@ -19033,7 +19033,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 {
                     "name": "document",
@@ -19200,7 +19200,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 {
                     "name": "video",
@@ -19424,7 +19424,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 {
                     "name": "animation",
@@ -19623,7 +19623,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 {
                     "name": "voice",
@@ -19781,7 +19781,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 {
                     "name": "video_note",
@@ -20171,7 +20171,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 {
                     "name": "latitude",
@@ -20336,7 +20336,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 {
                     "name": "latitude",
@@ -20517,7 +20517,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 {
                     "name": "phone_number",
@@ -25571,7 +25571,7 @@
                         "string"
                     ],
                     "optional": true,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 {
                     "name": "sticker",

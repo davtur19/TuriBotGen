@@ -186,8 +186,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
      *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
      *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if
-     *                                       any
+     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
      * @param string $text Text of the message to be sent, 1-4096 characters after entities parsing
      * @param string|null $parse_mode Mode for parsing entities in the message text. See formatting options for more details.
      * @param array|null $entities A JSON-serialized list of special entities that appear in message text, which can be specified
@@ -495,8 +494,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
      *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
      *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if
-     *                                       any
+     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
      * @param \CURLFile|string|InputFile $photo Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload
      *                                       a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width
@@ -584,8 +582,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
      *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
      *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if
-     *                                       any
+     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
      * @param \CURLFile|string|InputFile $live_photo Live photo video to send. The video must be no longer than 10 seconds and must not exceed 10 MB in
      *                                       size. Pass a file_id as String to send a video that exists on the Telegram servers (recommended) or
      *                                       upload a new video using multipart/form-data. More information on Sending Files ». Sending live
@@ -680,8 +677,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
      *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
      *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if
-     *                                       any
+     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
      * @param \CURLFile|string|InputFile $audio Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram
      *                                       servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the
      *                                       Internet, or upload a new one using multipart/form-data. More information on Sending Files »
@@ -778,8 +774,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
      *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
      *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if
-     *                                       any
+     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
      * @param \CURLFile|string|InputFile $document File to send. Pass a file_id as String to send a file that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload
      *                                       a new one using multipart/form-data. More information on Sending Files »
@@ -872,8 +867,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
      *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
      *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if
-     *                                       any
+     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
      * @param \CURLFile|string|InputFile $video Video to send. Pass a file_id as String to send a video that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload
      *                                       a new video using multipart/form-data. More information on Sending Files »
@@ -990,8 +984,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
      *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
      *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if
-     *                                       any
+     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
      * @param \CURLFile|string|InputFile $animation Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or
      *                                       upload a new animation using multipart/form-data. More information on Sending Files »
@@ -1098,8 +1091,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
      *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
      *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if
-     *                                       any
+     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
      * @param \CURLFile|string|InputFile $voice Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload
      *                                       a new one using multipart/form-data. More information on Sending Files »
@@ -1182,8 +1174,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
      *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
      *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if
-     *                                       any
+     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
      * @param \CURLFile|string|InputFile $video_note Video note to send. Pass a file_id as String to send a video note that exists on the Telegram
      *                                       servers (recommended) or upload a new video using multipart/form-data. More information on Sending
      *                                       Files ». Sending video notes by a URL is currently unsupported.
@@ -1402,8 +1393,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
      *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
      *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if
-     *                                       any
+     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
      * @param float $latitude Latitude of the location
      * @param float $longitude Longitude of the location
      * @param float|null $horizontal_accuracy The radius of uncertainty for the location, measured in meters; 0-1500
@@ -1489,8 +1479,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
      *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
      *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if
-     *                                       any
+     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
      * @param float $latitude Latitude of the venue
      * @param float $longitude Longitude of the venue
      * @param string $title Name of the venue
@@ -1579,8 +1568,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
      *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
      *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if
-     *                                       any
+     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
      * @param string $phone_number Contact's phone number
      * @param string $first_name Contact's first name
      * @param string|null $last_name Contact's last name
@@ -5449,8 +5437,7 @@ abstract class Api implements ApiInterface {
      * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
      *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
      *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if
-     *                                       any
+     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
      * @param \CURLFile|string|InputFile $sticker Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet,
      *                                       or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending
