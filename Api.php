@@ -5911,9 +5911,14 @@ abstract class Api implements ApiInterface {
      * @param int $chat_id Unique identifier for the target private chat
      * @param int|null $message_thread_id Unique identifier for the target message thread
      * @param int $draft_id Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier
-     *                                       are animated.
+     *                                       are animated. Otherwise, the draft is replaced without animation.
      * @param array $rich_message The partial message to be streamed. Direct upload of new files and explicit upload of files by a URL
      *                                       isn't supported.
+     * @param bool|null $can_stop Pass True to show the user a button to stop further drafts. The bot will receive an Update
+     *                                       “stopped_message_generation” if the user presses the button.
+     * @param bool|null $keep_on_stop Pass True to keep the draft in the chat when the button is pressed. The draft will still disappear
+     *                                       after a short time or if the bot sends a message. To fully preserve the partial draft, the bot
+     *                                       should send it as a new message.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#sendrichmessagedraft
@@ -5922,7 +5927,9 @@ abstract class Api implements ApiInterface {
         int $chat_id,
         int $draft_id,
         array $rich_message,
-        int|null $message_thread_id = null
+        int|null $message_thread_id = null,
+        bool|null $can_stop = null,
+        bool|null $keep_on_stop = null
     ): \stdClass {
         $args = [
             'chat_id' => $chat_id,
@@ -5931,6 +5938,8 @@ abstract class Api implements ApiInterface {
         ];
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
+        if (null !== $can_stop) $args['can_stop'] = $can_stop;
+        if (null !== $keep_on_stop) $args['keep_on_stop'] = $keep_on_stop;
 
         return $this->Request('sendRichMessageDraft', $args);
     }

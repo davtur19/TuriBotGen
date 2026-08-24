@@ -9274,13 +9274,25 @@
                         {
                             "key": "draft_id",
                             "value": "",
-                            "description": "Required. Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated.",
+                            "description": "Required. Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated. Otherwise, the draft is replaced without animation.",
                             "type": "text"
                         },
                         {
                             "key": "rich_message",
                             "value": "",
                             "description": "Required. The partial message to be streamed. Direct upload of new files and explicit upload of files by a URL isn't supported.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "can_stop",
+                            "value": "",
+                            "description": "Optional. Pass True to show the user a button to stop further drafts. The bot will receive an Update \u201cstopped_message_generation\u201d if the user presses the button.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "keep_on_stop",
+                            "value": "",
+                            "description": "Optional. Pass True to keep the draft in the chat when the button is pressed. The draft will still disappear after a short time or if the bot sends a message. To fully preserve the partial draft, the bot should send it as a new message.",
                             "type": "text"
                         }
                     ]
