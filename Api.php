@@ -183,10 +183,7 @@ abstract class Api implements ApiInterface {
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
      *                                       is sent to a direct messages chat
-     * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
-     *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
-     *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
+     * @param array|null $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
      * @param string $text Text of the message to be sent, 1-4096 characters after entities parsing
      * @param string|null $parse_mode Mode for parsing entities in the message text. See formatting options for more details.
      * @param array|null $entities A JSON-serialized list of special entities that appear in message text, which can be specified
@@ -213,8 +210,7 @@ abstract class Api implements ApiInterface {
         string $text,
         int|null $message_thread_id = null,
         int|null $direct_messages_topic_id = null,
-        int|null $receiver_user_id = null,
-        string|null $callback_query_id = null,
+        array|null $ephemeral_message_parameters = null,
         string|null $parse_mode = null,
         array|null $entities = null,
         array|null $link_preview_options = null,
@@ -234,8 +230,7 @@ abstract class Api implements ApiInterface {
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
         if (null !== $direct_messages_topic_id) $args['direct_messages_topic_id'] = $direct_messages_topic_id;
-        if (null !== $receiver_user_id) $args['receiver_user_id'] = $receiver_user_id;
-        if (null !== $callback_query_id) $args['callback_query_id'] = $callback_query_id;
+        if (null !== $ephemeral_message_parameters) $args['ephemeral_message_parameters'] = json_encode($ephemeral_message_parameters);
         if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
         if (null !== $entities) $args['entities'] = json_encode($entities);
         if (null !== $link_preview_options) $args['link_preview_options'] = json_encode($link_preview_options);
@@ -491,10 +486,7 @@ abstract class Api implements ApiInterface {
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
      *                                       is sent to a direct messages chat
-     * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
-     *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
-     *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
+     * @param array|null $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
      * @param \CURLFile|string|InputFile $photo Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload
      *                                       a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width
@@ -528,8 +520,7 @@ abstract class Api implements ApiInterface {
         \CURLFile|string|InputFile $photo,
         int|null $message_thread_id = null,
         int|null $direct_messages_topic_id = null,
-        int|null $receiver_user_id = null,
-        string|null $callback_query_id = null,
+        array|null $ephemeral_message_parameters = null,
         string|null $caption = null,
         string|null $parse_mode = null,
         array|null $caption_entities = null,
@@ -551,8 +542,7 @@ abstract class Api implements ApiInterface {
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
         if (null !== $direct_messages_topic_id) $args['direct_messages_topic_id'] = $direct_messages_topic_id;
-        if (null !== $receiver_user_id) $args['receiver_user_id'] = $receiver_user_id;
-        if (null !== $callback_query_id) $args['callback_query_id'] = $callback_query_id;
+        if (null !== $ephemeral_message_parameters) $args['ephemeral_message_parameters'] = json_encode($ephemeral_message_parameters);
         if (null !== $caption) $args['caption'] = $caption;
         if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
         if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
@@ -579,10 +569,7 @@ abstract class Api implements ApiInterface {
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
      *                                       is sent to a direct messages chat
-     * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
-     *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
-     *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
+     * @param array|null $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
      * @param \CURLFile|string|InputFile $live_photo Live photo video to send. The video must be no longer than 10 seconds and must not exceed 10 MB in
      *                                       size. Pass a file_id as String to send a video that exists on the Telegram servers (recommended) or
      *                                       upload a new video using multipart/form-data. More information on Sending Files ». Sending live
@@ -619,8 +606,7 @@ abstract class Api implements ApiInterface {
         \CURLFile|string|InputFile $photo,
         int|null $message_thread_id = null,
         int|null $direct_messages_topic_id = null,
-        int|null $receiver_user_id = null,
-        string|null $callback_query_id = null,
+        array|null $ephemeral_message_parameters = null,
         string|null $caption = null,
         string|null $parse_mode = null,
         array|null $caption_entities = null,
@@ -643,8 +629,7 @@ abstract class Api implements ApiInterface {
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
         if (null !== $direct_messages_topic_id) $args['direct_messages_topic_id'] = $direct_messages_topic_id;
-        if (null !== $receiver_user_id) $args['receiver_user_id'] = $receiver_user_id;
-        if (null !== $callback_query_id) $args['callback_query_id'] = $callback_query_id;
+        if (null !== $ephemeral_message_parameters) $args['ephemeral_message_parameters'] = json_encode($ephemeral_message_parameters);
         if (null !== $caption) $args['caption'] = $caption;
         if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
         if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
@@ -674,10 +659,7 @@ abstract class Api implements ApiInterface {
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
      *                                       is sent to a direct messages chat
-     * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
-     *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
-     *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
+     * @param array|null $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
      * @param \CURLFile|string|InputFile $audio Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram
      *                                       servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the
      *                                       Internet, or upload a new one using multipart/form-data. More information on Sending Files »
@@ -715,8 +697,7 @@ abstract class Api implements ApiInterface {
         \CURLFile|string|InputFile $audio,
         int|null $message_thread_id = null,
         int|null $direct_messages_topic_id = null,
-        int|null $receiver_user_id = null,
-        string|null $callback_query_id = null,
+        array|null $ephemeral_message_parameters = null,
         string|null $caption = null,
         string|null $parse_mode = null,
         array|null $caption_entities = null,
@@ -740,8 +721,7 @@ abstract class Api implements ApiInterface {
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
         if (null !== $direct_messages_topic_id) $args['direct_messages_topic_id'] = $direct_messages_topic_id;
-        if (null !== $receiver_user_id) $args['receiver_user_id'] = $receiver_user_id;
-        if (null !== $callback_query_id) $args['callback_query_id'] = $callback_query_id;
+        if (null !== $ephemeral_message_parameters) $args['ephemeral_message_parameters'] = json_encode($ephemeral_message_parameters);
         if (null !== $caption) $args['caption'] = $caption;
         if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
         if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
@@ -771,10 +751,7 @@ abstract class Api implements ApiInterface {
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
      *                                       is sent to a direct messages chat
-     * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
-     *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
-     *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
+     * @param array|null $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
      * @param \CURLFile|string|InputFile $document File to send. Pass a file_id as String to send a file that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload
      *                                       a new one using multipart/form-data. More information on Sending Files »
@@ -811,8 +788,7 @@ abstract class Api implements ApiInterface {
         \CURLFile|string|InputFile $document,
         int|null $message_thread_id = null,
         int|null $direct_messages_topic_id = null,
-        int|null $receiver_user_id = null,
-        string|null $callback_query_id = null,
+        array|null $ephemeral_message_parameters = null,
         \CURLFile|string|InputFile|null $thumbnail = null,
         string|null $caption = null,
         string|null $parse_mode = null,
@@ -834,8 +810,7 @@ abstract class Api implements ApiInterface {
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
         if (null !== $direct_messages_topic_id) $args['direct_messages_topic_id'] = $direct_messages_topic_id;
-        if (null !== $receiver_user_id) $args['receiver_user_id'] = $receiver_user_id;
-        if (null !== $callback_query_id) $args['callback_query_id'] = $callback_query_id;
+        if (null !== $ephemeral_message_parameters) $args['ephemeral_message_parameters'] = json_encode($ephemeral_message_parameters);
         if (null !== $thumbnail) $args['thumbnail'] = $thumbnail;
         if (null !== $caption) $args['caption'] = $caption;
         if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
@@ -864,10 +839,7 @@ abstract class Api implements ApiInterface {
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
      *                                       is sent to a direct messages chat
-     * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
-     *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
-     *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
+     * @param array|null $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
      * @param \CURLFile|string|InputFile $video Video to send. Pass a file_id as String to send a video that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload
      *                                       a new video using multipart/form-data. More information on Sending Files »
@@ -914,8 +886,7 @@ abstract class Api implements ApiInterface {
         \CURLFile|string|InputFile $video,
         int|null $message_thread_id = null,
         int|null $direct_messages_topic_id = null,
-        int|null $receiver_user_id = null,
-        string|null $callback_query_id = null,
+        array|null $ephemeral_message_parameters = null,
         int|null $duration = null,
         int|null $width = null,
         int|null $height = null,
@@ -944,8 +915,7 @@ abstract class Api implements ApiInterface {
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
         if (null !== $direct_messages_topic_id) $args['direct_messages_topic_id'] = $direct_messages_topic_id;
-        if (null !== $receiver_user_id) $args['receiver_user_id'] = $receiver_user_id;
-        if (null !== $callback_query_id) $args['callback_query_id'] = $callback_query_id;
+        if (null !== $ephemeral_message_parameters) $args['ephemeral_message_parameters'] = json_encode($ephemeral_message_parameters);
         if (null !== $duration) $args['duration'] = $duration;
         if (null !== $width) $args['width'] = $width;
         if (null !== $height) $args['height'] = $height;
@@ -981,10 +951,7 @@ abstract class Api implements ApiInterface {
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
      *                                       is sent to a direct messages chat
-     * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
-     *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
-     *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
+     * @param array|null $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
      * @param \CURLFile|string|InputFile $animation Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or
      *                                       upload a new animation using multipart/form-data. More information on Sending Files »
@@ -1025,8 +992,7 @@ abstract class Api implements ApiInterface {
         \CURLFile|string|InputFile $animation,
         int|null $message_thread_id = null,
         int|null $direct_messages_topic_id = null,
-        int|null $receiver_user_id = null,
-        string|null $callback_query_id = null,
+        array|null $ephemeral_message_parameters = null,
         int|null $duration = null,
         int|null $width = null,
         int|null $height = null,
@@ -1052,8 +1018,7 @@ abstract class Api implements ApiInterface {
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
         if (null !== $direct_messages_topic_id) $args['direct_messages_topic_id'] = $direct_messages_topic_id;
-        if (null !== $receiver_user_id) $args['receiver_user_id'] = $receiver_user_id;
-        if (null !== $callback_query_id) $args['callback_query_id'] = $callback_query_id;
+        if (null !== $ephemeral_message_parameters) $args['ephemeral_message_parameters'] = json_encode($ephemeral_message_parameters);
         if (null !== $duration) $args['duration'] = $duration;
         if (null !== $width) $args['width'] = $width;
         if (null !== $height) $args['height'] = $height;
@@ -1088,10 +1053,7 @@ abstract class Api implements ApiInterface {
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
      *                                       is sent to a direct messages chat
-     * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
-     *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
-     *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
+     * @param array|null $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
      * @param \CURLFile|string|InputFile $voice Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload
      *                                       a new one using multipart/form-data. More information on Sending Files »
@@ -1121,8 +1083,7 @@ abstract class Api implements ApiInterface {
         \CURLFile|string|InputFile $voice,
         int|null $message_thread_id = null,
         int|null $direct_messages_topic_id = null,
-        int|null $receiver_user_id = null,
-        string|null $callback_query_id = null,
+        array|null $ephemeral_message_parameters = null,
         string|null $caption = null,
         string|null $parse_mode = null,
         array|null $caption_entities = null,
@@ -1143,8 +1104,7 @@ abstract class Api implements ApiInterface {
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
         if (null !== $direct_messages_topic_id) $args['direct_messages_topic_id'] = $direct_messages_topic_id;
-        if (null !== $receiver_user_id) $args['receiver_user_id'] = $receiver_user_id;
-        if (null !== $callback_query_id) $args['callback_query_id'] = $callback_query_id;
+        if (null !== $ephemeral_message_parameters) $args['ephemeral_message_parameters'] = json_encode($ephemeral_message_parameters);
         if (null !== $caption) $args['caption'] = $caption;
         if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
         if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
@@ -1162,8 +1122,8 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this
-     * method to send video messages. On success, the sent Message is returned.
+     * Use this method to send a rounded square MPEG4 video of up to 1 minute long. On success, the sent
+     * Message is returned.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the
      *                                       format @username
@@ -1171,10 +1131,7 @@ abstract class Api implements ApiInterface {
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
      *                                       is sent to a direct messages chat
-     * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
-     *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
-     *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
+     * @param array|null $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
      * @param \CURLFile|string|InputFile $video_note Video note to send. Pass a file_id as String to send a video note that exists on the Telegram
      *                                       servers (recommended) or upload a new video using multipart/form-data. More information on Sending
      *                                       Files ». Sending video notes by a URL is currently unsupported.
@@ -1207,8 +1164,7 @@ abstract class Api implements ApiInterface {
         \CURLFile|string|InputFile $video_note,
         int|null $message_thread_id = null,
         int|null $direct_messages_topic_id = null,
-        int|null $receiver_user_id = null,
-        string|null $callback_query_id = null,
+        array|null $ephemeral_message_parameters = null,
         int|null $duration = null,
         int|null $length = null,
         \CURLFile|string|InputFile|null $thumbnail = null,
@@ -1228,8 +1184,7 @@ abstract class Api implements ApiInterface {
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
         if (null !== $direct_messages_topic_id) $args['direct_messages_topic_id'] = $direct_messages_topic_id;
-        if (null !== $receiver_user_id) $args['receiver_user_id'] = $receiver_user_id;
-        if (null !== $callback_query_id) $args['callback_query_id'] = $callback_query_id;
+        if (null !== $ephemeral_message_parameters) $args['ephemeral_message_parameters'] = json_encode($ephemeral_message_parameters);
         if (null !== $duration) $args['duration'] = $duration;
         if (null !== $length) $args['length'] = $length;
         if (null !== $thumbnail) $args['thumbnail'] = $thumbnail;
@@ -1390,10 +1345,7 @@ abstract class Api implements ApiInterface {
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
      *                                       is sent to a direct messages chat
-     * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
-     *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
-     *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
+     * @param array|null $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
      * @param float $latitude Latitude of the location
      * @param float $longitude Longitude of the location
      * @param float|null $horizontal_accuracy The radius of uncertainty for the location, measured in meters; 0-1500
@@ -1426,8 +1378,7 @@ abstract class Api implements ApiInterface {
         float $longitude,
         int|null $message_thread_id = null,
         int|null $direct_messages_topic_id = null,
-        int|null $receiver_user_id = null,
-        string|null $callback_query_id = null,
+        array|null $ephemeral_message_parameters = null,
         float|null $horizontal_accuracy = null,
         int|null $live_period = null,
         int|null $heading = null,
@@ -1449,8 +1400,7 @@ abstract class Api implements ApiInterface {
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
         if (null !== $direct_messages_topic_id) $args['direct_messages_topic_id'] = $direct_messages_topic_id;
-        if (null !== $receiver_user_id) $args['receiver_user_id'] = $receiver_user_id;
-        if (null !== $callback_query_id) $args['callback_query_id'] = $callback_query_id;
+        if (null !== $ephemeral_message_parameters) $args['ephemeral_message_parameters'] = json_encode($ephemeral_message_parameters);
         if (null !== $horizontal_accuracy) $args['horizontal_accuracy'] = $horizontal_accuracy;
         if (null !== $live_period) $args['live_period'] = $live_period;
         if (null !== $heading) $args['heading'] = $heading;
@@ -1476,10 +1426,7 @@ abstract class Api implements ApiInterface {
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
      *                                       is sent to a direct messages chat
-     * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
-     *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
-     *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
+     * @param array|null $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
      * @param float $latitude Latitude of the venue
      * @param float $longitude Longitude of the venue
      * @param string $title Name of the venue
@@ -1513,8 +1460,7 @@ abstract class Api implements ApiInterface {
         string $address,
         int|null $message_thread_id = null,
         int|null $direct_messages_topic_id = null,
-        int|null $receiver_user_id = null,
-        string|null $callback_query_id = null,
+        array|null $ephemeral_message_parameters = null,
         string|null $foursquare_id = null,
         string|null $foursquare_type = null,
         string|null $google_place_id = null,
@@ -1538,8 +1484,7 @@ abstract class Api implements ApiInterface {
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
         if (null !== $direct_messages_topic_id) $args['direct_messages_topic_id'] = $direct_messages_topic_id;
-        if (null !== $receiver_user_id) $args['receiver_user_id'] = $receiver_user_id;
-        if (null !== $callback_query_id) $args['callback_query_id'] = $callback_query_id;
+        if (null !== $ephemeral_message_parameters) $args['ephemeral_message_parameters'] = json_encode($ephemeral_message_parameters);
         if (null !== $foursquare_id) $args['foursquare_id'] = $foursquare_id;
         if (null !== $foursquare_type) $args['foursquare_type'] = $foursquare_type;
         if (null !== $google_place_id) $args['google_place_id'] = $google_place_id;
@@ -1565,10 +1510,7 @@ abstract class Api implements ApiInterface {
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
      *                                       is sent to a direct messages chat
-     * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
-     *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
-     *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
+     * @param array|null $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
      * @param string $phone_number Contact's phone number
      * @param string $first_name Contact's first name
      * @param string|null $last_name Contact's last name
@@ -1595,8 +1537,7 @@ abstract class Api implements ApiInterface {
         string $first_name,
         int|null $message_thread_id = null,
         int|null $direct_messages_topic_id = null,
-        int|null $receiver_user_id = null,
-        string|null $callback_query_id = null,
+        array|null $ephemeral_message_parameters = null,
         string|null $last_name = null,
         string|null $vcard = null,
         bool|null $disable_notification = null,
@@ -1616,8 +1557,7 @@ abstract class Api implements ApiInterface {
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
         if (null !== $direct_messages_topic_id) $args['direct_messages_topic_id'] = $direct_messages_topic_id;
-        if (null !== $receiver_user_id) $args['receiver_user_id'] = $receiver_user_id;
-        if (null !== $callback_query_id) $args['callback_query_id'] = $callback_query_id;
+        if (null !== $ephemeral_message_parameters) $args['ephemeral_message_parameters'] = json_encode($ephemeral_message_parameters);
         if (null !== $last_name) $args['last_name'] = $last_name;
         if (null !== $vcard) $args['vcard'] = $vcard;
         if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
@@ -1881,12 +1821,17 @@ abstract class Api implements ApiInterface {
      * @param int $chat_id Unique identifier for the target private chat
      * @param int|null $message_thread_id Unique identifier for the target message thread
      * @param int $draft_id Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier
-     *                                       are animated.
+     *                                       are animated. Otherwise, the draft is replaced without animation.
      * @param string|null $text Text of the message to be sent, 0-4096 characters after entities parsing. Pass an empty text to show
      *                                       a “Thinking…” placeholder.
      * @param string|null $parse_mode Mode for parsing entities in the message text. See formatting options for more details.
      * @param array|null $entities A JSON-serialized list of special entities that appear in message text, which can be specified
      *                                       instead of parse_mode
+     * @param bool|null $can_stop Pass True to show the user a button to stop further drafts. The bot will receive an Update
+     *                                       “stopped_message_generation” if the user presses the button.
+     * @param bool|null $keep_on_stop Pass True to keep the draft in the chat when the button is pressed. The draft will still disappear
+     *                                       after a short time or if the bot sends a message. To fully preserve the partial draft, the bot
+     *                                       should send it as a new message.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#sendmessagedraft
@@ -1897,7 +1842,9 @@ abstract class Api implements ApiInterface {
         int|null $message_thread_id = null,
         string|null $text = null,
         string|null $parse_mode = null,
-        array|null $entities = null
+        array|null $entities = null,
+        bool|null $can_stop = null,
+        bool|null $keep_on_stop = null
     ): \stdClass {
         $args = [
             'chat_id' => $chat_id,
@@ -1908,6 +1855,8 @@ abstract class Api implements ApiInterface {
         if (null !== $text) $args['text'] = $text;
         if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
         if (null !== $entities) $args['entities'] = json_encode($entities);
+        if (null !== $can_stop) $args['can_stop'] = $can_stop;
+        if (null !== $keep_on_stop) $args['keep_on_stop'] = $keep_on_stop;
 
         return $this->Request('sendMessageDraft', $args);
     }
@@ -2223,6 +2172,8 @@ abstract class Api implements ApiInterface {
      * @param bool|null $can_manage_direct_messages Pass True if the administrator can manage direct messages within the channel and decline suggested
      *                                       posts; for channels only
      * @param bool|null $can_manage_tags Pass True if the administrator can edit the tags of regular members; for groups and supergroups only
+     * @param bool|null $can_send_welcome_messages Pass True if the administrator can manage chat welcome messages or directly send them in the case of
+     *                                       bots
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#promotechatmember
@@ -2246,7 +2197,8 @@ abstract class Api implements ApiInterface {
         bool|null $can_pin_messages = null,
         bool|null $can_manage_topics = null,
         bool|null $can_manage_direct_messages = null,
-        bool|null $can_manage_tags = null
+        bool|null $can_manage_tags = null,
+        bool|null $can_send_welcome_messages = null
     ): \stdClass {
         $args = [
             'chat_id' => $chat_id,
@@ -2270,6 +2222,7 @@ abstract class Api implements ApiInterface {
         if (null !== $can_manage_topics) $args['can_manage_topics'] = $can_manage_topics;
         if (null !== $can_manage_direct_messages) $args['can_manage_direct_messages'] = $can_manage_direct_messages;
         if (null !== $can_manage_tags) $args['can_manage_tags'] = $can_manage_tags;
+        if (null !== $can_send_welcome_messages) $args['can_send_welcome_messages'] = $can_send_welcome_messages;
 
         return $this->Request('promoteChatMember', $args);
     }
@@ -3353,7 +3306,7 @@ abstract class Api implements ApiInterface {
      *                                       comes from a callback_game button.Otherwise, you may use links like t.me/your_bot?start=XXXX that
      *                                       open your bot with a parameter.
      * @param int|null $cache_time The maximum amount of time in seconds that the result of the callback query may be cached
-     *                                       client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0.
+     *                                       client-side. Defaults to 0.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#answercallbackquery
@@ -4767,8 +4720,8 @@ abstract class Api implements ApiInterface {
      * @param array|null $entities A JSON-serialized list of special entities that appear in message text, which can be specified
      *                                       instead of parse_mode
      * @param array|null $link_preview_options Link preview generation options for the message
-     * @param array|null $rich_message New rich content of the message; required if text isn't specified. Direct upload of new files isn't
-     *                                       supported when an inline message is edited.
+     * @param array|null $rich_message New rich content of the message; required if text isn't specified. Direct upload of new files and
+     *                                       explicit upload of files by a URL isn't supported when an inline message is edited.
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
@@ -5085,16 +5038,19 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to edit an ephemeral text message. Note that it is not guaranteed that the user will
-     * receive the message edit event, especially if they are offline. On success, True is returned.
+     * Use this method to edit an ephemeral text or rich message. Note that it is not guaranteed that the
+     * user will receive the message edit event, especially if they are offline. On success, True is
+     * returned.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param int $receiver_user_id Identifier of the user who received the message
      * @param int $ephemeral_message_id Identifier of the ephemeral message to edit
-     * @param string $text New text of the message, 1-4096 characters after entity parsing
+     * @param string|null $text New text of the message, 1-4096 characters after entity parsing; required if rich_message isn't
+     *                                       specified
      * @param string|null $parse_mode Mode for parsing entities in the message text. See formatting options for more details.
      * @param array|null $entities A JSON-serialized list of special entities that appear in message text, which can be specified
      *                                       instead of parse_mode
+     * @param array|null $rich_message New rich content of the message; required if text isn't specified
      * @param array|null $link_preview_options Link preview generation options for the message
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard
      * @return \stdClass
@@ -5105,21 +5061,23 @@ abstract class Api implements ApiInterface {
         int|string $chat_id,
         int $receiver_user_id,
         int $ephemeral_message_id,
-        string $text,
+        string|null $text = null,
         string|null $parse_mode = null,
         array|null $entities = null,
+        array|null $rich_message = null,
         array|null $link_preview_options = null,
         array|null $reply_markup = null
     ): \stdClass {
         $args = [
             'chat_id' => $chat_id,
             'receiver_user_id' => $receiver_user_id,
-            'ephemeral_message_id' => $ephemeral_message_id,
-            'text' => $text
+            'ephemeral_message_id' => $ephemeral_message_id
         ];
 
+        if (null !== $text) $args['text'] = $text;
         if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
         if (null !== $entities) $args['entities'] = json_encode($entities);
+        if (null !== $rich_message) $args['rich_message'] = json_encode($rich_message);
         if (null !== $link_preview_options) $args['link_preview_options'] = json_encode($link_preview_options);
         if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
@@ -5134,8 +5092,7 @@ abstract class Api implements ApiInterface {
      * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param int $receiver_user_id Identifier of the user who received the message
      * @param int $ephemeral_message_id Identifier of the ephemeral message to edit
-     * @param array $media A JSON-serialized object for the new media content of the message. A new file can't be uploaded; use
-     *                                       a previously uploaded file via its file_id or specify a URL.
+     * @param array $media A JSON-serialized object for the new media content of the message
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard
      * @return \stdClass
      *
@@ -5172,6 +5129,8 @@ abstract class Api implements ApiInterface {
      * @param string|null $parse_mode Mode for parsing entities in the message caption. See formatting options for more details.
      * @param array|null $caption_entities A JSON-serialized list of special entities that appear in the caption, which can be specified
      *                                       instead of parse_mode
+     * @param bool|null $show_caption_above_media Pass True if the caption must be shown above the message media. Supported only for animation, photo
+     *                                       and video messages.
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard
      * @return \stdClass
      *
@@ -5184,6 +5143,7 @@ abstract class Api implements ApiInterface {
         string|null $caption = null,
         string|null $parse_mode = null,
         array|null $caption_entities = null,
+        bool|null $show_caption_above_media = null,
         array|null $reply_markup = null
     ): \stdClass {
         $args = [
@@ -5195,6 +5155,7 @@ abstract class Api implements ApiInterface {
         if (null !== $caption) $args['caption'] = $caption;
         if (null !== $parse_mode) $args['parse_mode'] = $parse_mode;
         if (null !== $caption_entities) $args['caption_entities'] = json_encode($caption_entities);
+        if (null !== $show_caption_above_media) $args['show_caption_above_media'] = $show_caption_above_media;
         if (null !== $reply_markup) $args['reply_markup'] = json_encode($reply_markup);
 
         return $this->Request('editEphemeralMessageCaption', $args);
@@ -5434,10 +5395,7 @@ abstract class Api implements ApiInterface {
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
      *                                       is sent to a direct messages chat
-     * @param int|null $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for
-     *                                       group and supergroup chats only. It is not guaranteed that the user will receive the message,
-     *                                       especially if they are offline. See ephemeral message sending for more details.
-     * @param string|null $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
+     * @param array|null $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
      * @param \CURLFile|string|InputFile $sticker Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers
      *                                       (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet,
      *                                       or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending
@@ -5464,8 +5422,7 @@ abstract class Api implements ApiInterface {
         \CURLFile|string|InputFile $sticker,
         int|null $message_thread_id = null,
         int|null $direct_messages_topic_id = null,
-        int|null $receiver_user_id = null,
-        string|null $callback_query_id = null,
+        array|null $ephemeral_message_parameters = null,
         string|null $emoji = null,
         bool|null $disable_notification = null,
         bool|null $protect_content = null,
@@ -5483,8 +5440,7 @@ abstract class Api implements ApiInterface {
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
         if (null !== $direct_messages_topic_id) $args['direct_messages_topic_id'] = $direct_messages_topic_id;
-        if (null !== $receiver_user_id) $args['receiver_user_id'] = $receiver_user_id;
-        if (null !== $callback_query_id) $args['callback_query_id'] = $callback_query_id;
+        if (null !== $ephemeral_message_parameters) $args['ephemeral_message_parameters'] = json_encode($ephemeral_message_parameters);
         if (null !== $emoji) $args['emoji'] = $emoji;
         if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
         if (null !== $protect_content) $args['protect_content'] = $protect_content;
@@ -5891,6 +5847,7 @@ abstract class Api implements ApiInterface {
      *                                       private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message
      *                                       is sent to a direct messages chat
+     * @param array|null $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
      * @param array $rich_message The message to be sent
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
@@ -5915,6 +5872,7 @@ abstract class Api implements ApiInterface {
         array $rich_message,
         int|null $message_thread_id = null,
         int|null $direct_messages_topic_id = null,
+        array|null $ephemeral_message_parameters = null,
         bool|null $disable_notification = null,
         bool|null $protect_content = null,
         bool|null $allow_paid_broadcast = null,
@@ -5931,6 +5889,7 @@ abstract class Api implements ApiInterface {
 
         if (null !== $message_thread_id) $args['message_thread_id'] = $message_thread_id;
         if (null !== $direct_messages_topic_id) $args['direct_messages_topic_id'] = $direct_messages_topic_id;
+        if (null !== $ephemeral_message_parameters) $args['ephemeral_message_parameters'] = json_encode($ephemeral_message_parameters);
         if (null !== $disable_notification) $args['disable_notification'] = $disable_notification;
         if (null !== $protect_content) $args['protect_content'] = $protect_content;
         if (null !== $allow_paid_broadcast) $args['allow_paid_broadcast'] = $allow_paid_broadcast;
@@ -5953,7 +5912,8 @@ abstract class Api implements ApiInterface {
      * @param int|null $message_thread_id Unique identifier for the target message thread
      * @param int $draft_id Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier
      *                                       are animated.
-     * @param array $rich_message The partial message to be streamed. Direct upload of new files isn't supported.
+     * @param array $rich_message The partial message to be streamed. Direct upload of new files and explicit upload of files by a URL
+     *                                       isn't supported.
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#sendrichmessagedraft
