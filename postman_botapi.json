@@ -263,7 +263,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Optional. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query",
                             "type": "text"
                         },
                         {
@@ -378,7 +378,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username",
                             "type": "text"
                         },
                         {
@@ -396,7 +396,7 @@
                         {
                             "key": "from_chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the chat where the original message was sent (or username of the target bot, supergroup or channel in the format @username)",
+                            "description": "Required. Unique identifier for the chat where the original message was sent (or username of the target bot, supergroup, or channel in the format @username)",
                             "type": "text"
                         },
                         {
@@ -463,7 +463,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username",
                             "type": "text"
                         },
                         {
@@ -481,7 +481,7 @@
                         {
                             "key": "from_chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the chat where the original messages were sent (or username of the target bot, supergroup or channel in the format @username)",
+                            "description": "Required. Unique identifier for the chat where the original messages were sent (or username of the target bot, supergroup, or channel in the format @username)",
                             "type": "text"
                         },
                         {
@@ -530,7 +530,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username",
                             "type": "text"
                         },
                         {
@@ -548,7 +548,7 @@
                         {
                             "key": "from_chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the chat where the original message was sent (or username of the target bot, supergroup or channel in the format @username)",
+                            "description": "Required. Unique identifier for the chat where the original message was sent (or username of the target bot, supergroup, or channel in the format @username)",
                             "type": "text"
                         },
                         {
@@ -644,7 +644,7 @@
                         "copyMessage"
                     ]
                 },
-                "description": "Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_ids is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success."
+                "description": "Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, invoice messages, and widget messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_ids is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success."
             }
         },
         {
@@ -657,7 +657,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username",
                             "type": "text"
                         },
                         {
@@ -675,7 +675,7 @@
                         {
                             "key": "from_chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the chat where the original messages were sent (or username of the target bot, supergroup or channel in the format @username)",
+                            "description": "Required. Unique identifier for the chat where the original messages were sent (or username of the target bot, supergroup, or channel in the format @username)",
                             "type": "text"
                         },
                         {
@@ -717,7 +717,7 @@
                         "copyMessages"
                     ]
                 },
-                "description": "Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_ids is known to the bot. The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an Array of MessageId of the sent messages is returned."
+                "description": "Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, invoice messages, and widget messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_ids is known to the bot. The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an Array of MessageId of the sent messages is returned."
             }
         },
         {
@@ -736,7 +736,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Optional. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query",
                             "type": "text"
                         },
                         {
@@ -869,7 +869,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target channel (in the format @channelusername)",
+                            "description": "Optional. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query",
                             "type": "text"
                         },
                         {
@@ -1008,7 +1008,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Optional. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query",
                             "type": "text"
                         },
                         {
@@ -1153,7 +1153,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Optional. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query",
                             "type": "text"
                         },
                         {
@@ -1286,7 +1286,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Optional. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query",
                             "type": "text"
                         },
                         {
@@ -1461,7 +1461,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Optional. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query",
                             "type": "text"
                         },
                         {
@@ -1618,7 +1618,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Optional. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query",
                             "type": "text"
                         },
                         {
@@ -1745,7 +1745,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Optional. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query",
                             "type": "text"
                         },
                         {
@@ -1851,6 +1851,254 @@
             }
         },
         {
+            "name": "sendWidget",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat or username of the target supergroup in the format @username",
+                            "type": "text"
+                        },
+                        {
+                            "key": "message_thread_id",
+                            "value": "",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
+                            "type": "text"
+                        },
+                        {
+                            "key": "html",
+                            "value": "",
+                            "description": "Required. HTML code of the widget, 1-32768 bytes. The code must not exceed 4096 bytes when compressed by zlib with the maximum compression level.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "width",
+                            "value": "",
+                            "description": "Optional. Width of the widget in logical pixels; omit if the widget must occupy the whole width of the message bubble. The width is clamped by the app to the range from 200 to the maximum width of the message bubble.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "height",
+                            "value": "",
+                            "description": "Optional. Height of the widget in logical pixels; omit if the height of the widget isn't fixed. The height is clamped by the app to the range 50-600.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "public_data",
+                            "value": "",
+                            "description": "Optional. Public data of the widget, 0-1024 bytes, which will be available wherever the widget is shown. If the widget is shared, then all messages with it will have the same public data.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "chat_data",
+                            "value": "",
+                            "description": "Optional. Data of the widget, which is specific to the message, 0-1024 bytes",
+                            "type": "text"
+                        },
+                        {
+                            "key": "caption",
+                            "value": "",
+                            "description": "Optional. Widget caption, 0-1024 characters after entities parsing",
+                            "type": "text"
+                        },
+                        {
+                            "key": "parse_mode",
+                            "value": "",
+                            "description": "Optional. Mode for parsing entities in the widget caption. See formatting options for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "caption_entities",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode",
+                            "type": "text"
+                        },
+                        {
+                            "key": "show_caption_above_media",
+                            "value": "",
+                            "description": "Optional. Pass True if the caption must be shown above the widget",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_queries",
+                            "value": "",
+                            "description": "Optional. Pass True to allow the widget to send queries to the bot",
+                            "type": "text"
+                        },
+                        {
+                            "key": "is_shared",
+                            "value": "",
+                            "description": "Optional. Pass True to create a shared widget, which can be sent again using the method sendSharedWidget",
+                            "type": "text"
+                        },
+                        {
+                            "key": "disable_notification",
+                            "value": "",
+                            "description": "Optional. Sends the message silently. Users will receive a notification with no sound.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "protect_content",
+                            "value": "",
+                            "description": "Optional. Protects the contents of the sent message from forwarding and saving",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "message_effect_id",
+                            "value": "",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
+                            "type": "text"
+                        },
+                        {
+                            "key": "reply_parameters",
+                            "value": "",
+                            "description": "Optional. Description of the message to reply to",
+                            "type": "text"
+                        },
+                        {
+                            "key": "reply_markup",
+                            "value": "",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/sendWidget",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "sendWidget"
+                    ]
+                },
+                "description": "Use this method to send a message with an HTML widget. Currently, in the production environment, widgets can be sent only to private chats, and sent widgets automatically have protected content and therefore can't be forwarded. On success, the sent Message is returned."
+            }
+        },
+        {
+            "name": "sendSharedWidget",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the target chat or username of the target supergroup in the format @username",
+                            "type": "text"
+                        },
+                        {
+                            "key": "message_thread_id",
+                            "value": "",
+                            "description": "Optional. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only",
+                            "type": "text"
+                        },
+                        {
+                            "key": "widget_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the shared widget",
+                            "type": "text"
+                        },
+                        {
+                            "key": "chat_data",
+                            "value": "",
+                            "description": "Optional. Data of the widget, which is specific to the message, 0-1024 bytes",
+                            "type": "text"
+                        },
+                        {
+                            "key": "caption",
+                            "value": "",
+                            "description": "Optional. Widget caption, 0-1024 characters after entities parsing",
+                            "type": "text"
+                        },
+                        {
+                            "key": "parse_mode",
+                            "value": "",
+                            "description": "Optional. Mode for parsing entities in the widget caption. See formatting options for more details.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "caption_entities",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode",
+                            "type": "text"
+                        },
+                        {
+                            "key": "show_caption_above_media",
+                            "value": "",
+                            "description": "Optional. Pass True if the caption must be shown above the widget",
+                            "type": "text"
+                        },
+                        {
+                            "key": "disable_notification",
+                            "value": "",
+                            "description": "Optional. Sends the message silently. Users will receive a notification with no sound.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "protect_content",
+                            "value": "",
+                            "description": "Optional. Protects the contents of the sent message from forwarding and saving",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allow_paid_broadcast",
+                            "value": "",
+                            "description": "Optional. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "message_effect_id",
+                            "value": "",
+                            "description": "Optional. Unique identifier of the message effect to be added to the message; for private chats only",
+                            "type": "text"
+                        },
+                        {
+                            "key": "reply_parameters",
+                            "value": "",
+                            "description": "Optional. Description of the message to reply to",
+                            "type": "text"
+                        },
+                        {
+                            "key": "reply_markup",
+                            "value": "",
+                            "description": "Optional. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/sendSharedWidget",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "sendSharedWidget"
+                    ]
+                },
+                "description": "Use this method to send again a shared widget created by the bot. Currently, in the production environment, widgets can be sent only to private chats, and sent widgets automatically have protected content and therefore can't be forwarded. On success, the sent Message is returned."
+            }
+        },
+        {
             "name": "sendPaidMedia",
             "request": {
                 "method": "POST",
@@ -1866,7 +2114,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance.",
+                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username. If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance.",
                             "type": "text"
                         },
                         {
@@ -1993,7 +2241,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username",
                             "type": "text"
                         },
                         {
@@ -2078,7 +2326,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Optional. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query",
                             "type": "text"
                         },
                         {
@@ -2211,7 +2459,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Optional. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query",
                             "type": "text"
                         },
                         {
@@ -2356,7 +2604,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Optional. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query",
                             "type": "text"
                         },
                         {
@@ -2477,7 +2725,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. Polls can't be sent to channel direct messages chats.",
+                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username. Polls can't be sent to channel direct messages chats.",
                             "type": "text"
                         },
                         {
@@ -2779,7 +3027,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username",
                             "type": "text"
                         },
                         {
@@ -2992,7 +3240,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username",
                             "type": "text"
                         },
                         {
@@ -4543,6 +4791,30 @@
             }
         },
         {
+            "name": "getChatShareThemeBackdrops",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/getChatShareThemeBackdrops",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "getChatShareThemeBackdrops"
+                    ]
+                },
+                "description": "Use this method to get the list of backdrops, which can be used as the background of a theme of the screen for sharing a link to a user or a chat. Requires no parameters. Returns a ChatShareThemeBackdrops object."
+            }
+        },
+        {
             "name": "getUserPersonalChatMessages",
             "request": {
                 "method": "POST",
@@ -4717,7 +4989,7 @@
                         "createForumTopic"
                     ]
                 },
-                "description": "Use this method to create a topic in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator right. Returns information about the created topic as a ForumTopic object."
+                "description": "Use this method to create a topic in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator right. In the case of a private chat, a link to the topic can be created in the format https://t.me/<bot_username>/<message_thread_id>; the link opens the topic only for the user. Returns information about the created topic as a ForumTopic object."
             }
         },
         {
@@ -5162,6 +5434,43 @@
                     ]
                 },
                 "description": "Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned."
+            }
+        },
+        {
+            "name": "answerWidgetQuery",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "widget_query_id",
+                            "value": "",
+                            "description": "Required. Unique identifier for the query to be answered",
+                            "type": "text"
+                        },
+                        {
+                            "key": "data",
+                            "value": "",
+                            "description": "Optional. Data to be returned to the widget, 0-1024 bytes",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/answerWidgetQuery",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "answerWidgetQuery"
+                    ]
+                },
+                "description": "Use this method to send an answer to a query from a widget. The query must be answered within 15 seconds. The answer is received only by the widget that sent the query and doesn't change data of the widget; use editMessageWidgetData or editSharedWidgetData to change it. On success, True is returned."
             }
         },
         {
@@ -5957,7 +6266,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Optional. Required if user_id is not specified. Unique identifier for the chat or username of the channel (in the format @username) that will receive the gift.",
+                            "description": "Optional. Required if user_id is not specified. Unique identifier for the chat that will receive the gift or username of the channel in the format @username.",
                             "type": "text"
                         },
                         {
@@ -6087,6 +6396,18 @@
                             "value": "",
                             "description": "Optional. Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.",
                             "type": "text"
+                        },
+                        {
+                            "key": "custom_description_parse_mode",
+                            "value": "",
+                            "description": "Optional. Mode for parsing entities in the custom description. See formatting options for more details. Only \u201ctext_link\u201d entities are supported.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "custom_description_entities",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized list of special entities that appear in the custom description, which can be specified instead of custom_description_parse_mode. Only \u201ctext_link\u201d entities are supported.",
+                            "type": "text"
                         }
                     ]
                 },
@@ -6116,13 +6437,25 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. Channel direct messages chats can't be verified.",
+                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username. Channel direct messages chats can't be verified.",
                             "type": "text"
                         },
                         {
                             "key": "custom_description",
                             "value": "",
                             "description": "Optional. Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "custom_description_parse_mode",
+                            "value": "",
+                            "description": "Optional. Mode for parsing entities in the custom description. See formatting options for more details. Only \u201ctext_link\u201d entities are supported.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "custom_description_entities",
+                            "value": "",
+                            "description": "Optional. A JSON-serialized list of special entities that appear in the custom description, which can be specified instead of custom_description_parse_mode. Only \u201ctext_link\u201d entities are supported.",
                             "type": "text"
                         }
                     ]
@@ -6855,6 +7188,37 @@
             }
         },
         {
+            "name": "getUniqueGift",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "name",
+                            "value": "",
+                            "description": "Required. Unique name of the gift",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/getUniqueGift",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "getUniqueGift"
+                    ]
+                },
+                "description": "Use this method to get information about a unique gift by its name. Returns a UniqueGift object on success."
+            }
+        },
+        {
             "name": "convertGiftToStars",
             "request": {
                 "method": "POST",
@@ -6987,6 +7351,43 @@
                     ]
                 },
                 "description": "Transfers an owned unique gift to another user. Requires the can_transfer_and_upgrade_gifts business bot right. Requires can_transfer_stars business bot right if the transfer is paid. Returns True on success."
+            }
+        },
+        {
+            "name": "deleteBusinessAccountGift",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "business_connection_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the business connection",
+                            "type": "text"
+                        },
+                        {
+                            "key": "owned_gift_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the regular gift that should be deleted",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/deleteBusinessAccountGift",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "deleteBusinessAccountGift"
+                    ]
+                },
+                "description": "Deletes a regular gift owned by a managed business account without receiving Telegram Stars for it. Requires the can_convert_gifts_to_stars business bot right. The gift can be deleted only if it isn't limited (the field total_count of the Gift is omitted) and wasn't refunded. Returns True on success."
             }
         },
         {
@@ -7384,7 +7785,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Optional. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.",
+                            "description": "Optional. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username.",
                             "type": "text"
                         },
                         {
@@ -7469,7 +7870,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Optional. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.",
+                            "description": "Optional. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username.",
                             "type": "text"
                         },
                         {
@@ -7548,7 +7949,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Optional. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.",
+                            "description": "Optional. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username.",
                             "type": "text"
                         },
                         {
@@ -7609,7 +8010,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Optional. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.",
+                            "description": "Optional. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username.",
                             "type": "text"
                         },
                         {
@@ -7700,7 +8101,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Optional. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.",
+                            "description": "Optional. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username.",
                             "type": "text"
                         },
                         {
@@ -7795,6 +8196,104 @@
             }
         },
         {
+            "name": "editMessageWidgetData",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "chat_id",
+                            "value": "",
+                            "description": "Optional. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target supergroup in the format @username.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "message_id",
+                            "value": "",
+                            "description": "Optional. Required if inline_message_id is not specified. Identifier of the message with the widget.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "inline_message_id",
+                            "value": "",
+                            "description": "Optional. Required if chat_id and message_id are not specified. Identifier of the inline message.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "public_data",
+                            "value": "",
+                            "description": "Optional. New public data of the widget, 0-1024 bytes; pass an empty string to remove the public data. If omitted, then the public data isn't changed.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "chat_data",
+                            "value": "",
+                            "description": "Optional. New data of the widget, which is specific to the message, 0-1024 bytes; pass an empty string to remove the data. If omitted, then the data isn't changed.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/editMessageWidgetData",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "editMessageWidgetData"
+                    ]
+                },
+                "description": "Use this method to edit data of a widget in a message sent by the bot or via the bot (for inline bots). Public data of a shared widget can be changed at most once per second. On success, True is returned."
+            }
+        },
+        {
+            "name": "editSharedWidgetData",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "widget_id",
+                            "value": "",
+                            "description": "Required. Unique identifier of the shared widget",
+                            "type": "text"
+                        },
+                        {
+                            "key": "public_data",
+                            "value": "",
+                            "description": "Required. New public data of the widget, 0-1024 bytes; pass an empty string to remove the public data",
+                            "type": "text"
+                        },
+                        {
+                            "key": "cache_time",
+                            "value": "",
+                            "description": "Optional. The maximum amount of time in seconds that the public data of the widget may be cached client-side; 5-3600. If omitted, then the current value is kept, which is 30 by default.",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/editSharedWidgetData",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "editSharedWidgetData"
+                    ]
+                },
+                "description": "Use this method to edit public data of a shared widget created by the bot. A shared widget can be edited at most once per second. On success, True is returned."
+            }
+        },
+        {
             "name": "editMessageReplyMarkup",
             "request": {
                 "method": "POST",
@@ -7810,7 +8309,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Optional. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.",
+                            "description": "Optional. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username.",
                             "type": "text"
                         },
                         {
@@ -7865,7 +8364,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username",
                             "type": "text"
                         },
                         {
@@ -8250,7 +8749,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username",
                             "type": "text"
                         },
                         {
@@ -8287,7 +8786,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username",
                             "type": "text"
                         },
                         {
@@ -8465,7 +8964,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Optional. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query",
                             "type": "text"
                         },
                         {
@@ -9165,7 +9664,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Optional. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query",
                             "type": "text"
                         },
                         {
@@ -9384,7 +9883,7 @@
                         {
                             "key": "chat_id",
                             "value": "",
-                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username",
+                            "description": "Required. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username",
                             "type": "text"
                         },
                         {
