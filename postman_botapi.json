@@ -196,7 +196,7 @@
                         "getMe"
                     ]
                 },
-                "description": "A simple method for testing your bot's authentication token. Requires no parameters. Returns basic information about the bot in form of a User object."
+                "description": "A simple method for testing your bot's authentication token. Requires no parameters. Returns information about the bot in form of a BotFullInfo object."
             }
         },
         {
@@ -5433,7 +5433,7 @@
                         "answerCallbackQuery"
                     ]
                 },
-                "description": "Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned."
+                "description": "Use this method to send answers to callback queries sent from inline keyboards or rich messages. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned."
             }
         },
         {
@@ -5712,6 +5712,121 @@
                     ]
                 },
                 "description": "Use this method to change the access settings of a managed bot. Returns True on success."
+            }
+        },
+        {
+            "name": "setMySettings",
+            "request": {
+                "method": "POST",
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "supports_inline_queries",
+                            "value": "",
+                            "description": "Optional. Pass True to enable inline mode for the bot or False to disable it",
+                            "type": "text"
+                        },
+                        {
+                            "key": "inline_query_placeholder",
+                            "value": "",
+                            "description": "Optional. New placeholder for inline queries, which is shown in the input field after the bot's username. Pass an empty string to use the default placeholder.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "needs_inline_query_location",
+                            "value": "",
+                            "description": "Optional. Pass True to request the location of the user with every inline query to the bot or False to stop requesting it",
+                            "type": "text"
+                        },
+                        {
+                            "key": "inline_feedback_share_denominator",
+                            "value": "",
+                            "description": "Optional. Denominator of the share of chosen inline results received by the bot; the bot receives 1 out of inline_feedback_share_denominator chosen results. Must be one of 1, 10, 100, or 1000. Pass 0 to stop receiving chosen inline results.",
+                            "type": "text"
+                        },
+                        {
+                            "key": "can_join_groups",
+                            "value": "",
+                            "description": "Optional. Pass True to allow adding the bot to groups or False to disallow it",
+                            "type": "text"
+                        },
+                        {
+                            "key": "can_read_all_group_messages",
+                            "value": "",
+                            "description": "Optional. Pass True to disable privacy mode for the bot or False to enable it",
+                            "type": "text"
+                        },
+                        {
+                            "key": "can_connect_to_business",
+                            "value": "",
+                            "description": "Optional. Pass True to allow connecting the bot to user accounts to manage them or False to disallow it",
+                            "type": "text"
+                        },
+                        {
+                            "key": "can_manage_bots",
+                            "value": "",
+                            "description": "Optional. Pass True to allow creating other bots that will be controlled by the bot or False to disallow it",
+                            "type": "text"
+                        },
+                        {
+                            "key": "supports_guest_queries",
+                            "value": "",
+                            "description": "Optional. Pass True to allow guest queries to the bot from chats it isn't a member of or False to disallow them",
+                            "type": "text"
+                        },
+                        {
+                            "key": "supports_join_request_queries",
+                            "value": "",
+                            "description": "Optional. Pass True to allow assigning the bot to process join request queries or False to disallow it",
+                            "type": "text"
+                        },
+                        {
+                            "key": "has_topics_enabled",
+                            "value": "",
+                            "description": "Optional. Pass True to enable forum topic mode in private chats with the bot or False to disable it",
+                            "type": "text"
+                        },
+                        {
+                            "key": "allows_users_to_create_topics",
+                            "value": "",
+                            "description": "Optional. Pass True to allow users to create and delete topics in private chats with the bot or False to disallow it",
+                            "type": "text"
+                        },
+                        {
+                            "key": "has_topic_sidebar",
+                            "value": "",
+                            "description": "Optional. Pass True to show topics in private chats with the bot in a sidebar or False to stop showing them in a sidebar",
+                            "type": "text"
+                        },
+                        {
+                            "key": "can_communicate_with_bots",
+                            "value": "",
+                            "description": "Optional. Pass True to allow the bot to communicate with other bots in groups, private chats, and through business accounts or False to disallow it",
+                            "type": "text"
+                        },
+                        {
+                            "key": "callback_query_mode",
+                            "value": "",
+                            "description": "Optional. Mode in which the bot receives callback queries from buttons in messages sent by the bot. Must be one of \u201cdefault\u201d (the field message is always used and contains an InaccessibleMessage if the message is inaccessible to the bot), \u201cauto\u201d (the field inline_message_id is used instead of the field message if the message is inaccessible to the bot; the field message can still contain an inaccessible message if the message has just been deleted), or \u201cinline\u201d (the field inline_message_id is always used instead of the field message).",
+                            "type": "text"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "https://api.telegram.org/bot{{token}}/setMySettings",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "telegram",
+                        "org"
+                    ],
+                    "path": [
+                        "bot{{token}}",
+                        "setMySettings"
+                    ]
+                },
+                "description": "Use this method to change settings of the bot. Settings that aren't specified remain unchanged. Returns True on success."
             }
         },
         {
