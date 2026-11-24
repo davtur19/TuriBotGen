@@ -19,7 +19,7 @@ abstract class Api implements ApiInterface {
      *                                       starting from -offset update from the end of the updates queue. All previous updates will be
      *                                       forgotten.
      * @param int|null $limit Limits the number of updates to be retrieved. Values between 1-100 are accepted. Defaults to 100.
-     * @param int|null $timeout Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling. Should be positive,
+     * @param int|null $timeout Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling. Should be positive;
      *                                       short polling should be used for testing purposes only.
      * @param array|null $allowed_updates A JSON-serialized list of the update types you want your bot to receive. For example, specify
      *                                       ["message", "edited_channel_post", "callback_query"] to only receive updates of these types. See
@@ -51,7 +51,7 @@ abstract class Api implements ApiInterface {
      * Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever
      * there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing
      * a JSON-serialized Update. In case of an unsuccessful request (a request with response HTTP status
-     * code different from 2XY), we will repeat the request and give up after a reasonable amount of
+     * code different from 2XY), we will repeat the request and give up after a reasonable number of
      * attempts. Returns True on success.
      * If you'd like to make sure that the webhook was set by you, you can specify secret data in the
      * parameter secret_token. If specified, the request will contain a header
@@ -70,7 +70,7 @@ abstract class Api implements ApiInterface {
      *                                       Update for a complete list of available update types. Specify an empty list to receive all update
      *                                       types except chat_member, message_reaction, and message_reaction_count (default). If not specified,
      *                                       the previous setting will be used.Please note that this parameter doesn't affect updates created
-     *                                       before the call to the setWebhook, so unwanted updates may be received for a short period of time.
+     *                                       before the call to setWebhook, so unwanted updates may be received for a short period of time.
      * @param bool|null $drop_pending_updates Pass True to drop all pending updates
      * @param string|null $secret_token A secret token to be sent in a header “X-Telegram-Bot-Api-Secret-Token” in every webhook
      *                                       request, 1-256 characters. Only characters A-Z, a-z, 0-9, _ and - are allowed. The header is useful
@@ -122,8 +122,9 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to get current webhook status. Requires no parameters. On success, returns a
-     * WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty.
+     * Use this method to get the current webhook status. Requires no parameters. On success, returns a
+     * WebhookInfo object. If the bot is using getUpdates, it will return an object with the url field
+     * empty.
      *
      * @return \stdClass
      *
@@ -135,7 +136,7 @@ abstract class Api implements ApiInterface {
 
     /**
      * A simple method for testing your bot's authentication token. Requires no parameters. Returns
-     * information about the bot in form of a BotFullInfo object.
+     * information about the bot in the form of a BotFullInfo object.
      *
      * @return \stdClass
      *
@@ -147,10 +148,10 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to log out from the cloud Bot API server before launching the bot locally. You must
-     * log out the bot before running it locally, otherwise there is no guarantee that the bot will receive
-     * updates. After a successful call, you can immediately log in on a local server, but will not be able
-     * to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no
-     * parameters.
+     * log out the bot before running it locally; otherwise, there is no guarantee that the bot will
+     * receive updates. After a successful call, you can immediately log in on a local server, but will not
+     * be able to log back in to the cloud Bot API server for 10 minutes. Returns True on success. Requires
+     * no parameters.
      *
      * @return \stdClass
      *
@@ -575,15 +576,15 @@ abstract class Api implements ApiInterface {
      *                                       upload a new video using multipart/form-data. More information on Sending Files ». Sending live
      *                                       photos by a URL is currently unsupported.
      * @param \CURLFile|string|InputFile $photo The static photo to send. Pass a file_id as String to send a photo that exists on the Telegram
-     *                                       servers (recommended) or upload a new video using multipart/form-data. More information on Sending
+     *                                       servers (recommended) or upload a new photo using multipart/form-data. More information on Sending
      *                                       Files ». Sending live photos by a URL is currently unsupported.
-     * @param string|null $caption Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities
-     *                                       parsing
-     * @param string|null $parse_mode Mode for parsing entities in the video caption. See formatting options for more details.
+     * @param string|null $caption Live photo caption (may also be used when resending live photos by file_id), 0-1024 characters after
+     *                                       entities parsing
+     * @param string|null $parse_mode Mode for parsing entities in the live photo caption. See formatting options for more details.
      * @param array|null $caption_entities A JSON-serialized list of special entities that appear in the caption, which can be specified
      *                                       instead of parse_mode
      * @param bool|null $show_caption_above_media Pass True if the caption must be shown above the message media
-     * @param bool|null $has_spoiler Pass True if the video needs to be covered with a spoiler animation
+     * @param bool|null $has_spoiler Pass True if the live photo needs to be covered with a spoiler animation
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1
@@ -650,7 +651,7 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to send audio files, if you want Telegram clients to display them in the music
      * player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned.
-     * Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
+     * Bots can currently send audio files of up to 50 MB in size; this limit may be changed in the future.
      * For sending voice messages, use the sendVoice method instead.
      *
      * @param int|string|null $chat_id Unique identifier for the target chat or username of the target bot, supergroup, or channel in the
@@ -673,7 +674,7 @@ abstract class Api implements ApiInterface {
      * @param \CURLFile|string|InputFile|null $thumbnail Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
      *                                       server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
      *                                       width and height should not exceed 320. Ignored if the file is not uploaded using
-     *                                       multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
+     *                                       multipart/form-data. Thumbnails can't be reused and can only be uploaded as a new file, so you can
      *                                       pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
      *                                       <file_attach_name>. More information on Sending Files »
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
@@ -743,7 +744,7 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to send general files. On success, the sent Message is returned. Bots can currently
-     * send files of any type of up to 50 MB in size, this limit may be changed in the future.
+     * send files of any type of up to 50 MB in size; this limit may be changed in the future.
      *
      * @param int|string|null $chat_id Unique identifier for the target chat or username of the target bot, supergroup, or channel in the
      *                                       format @username; required unless the message is sent as an ephemeral reply to a callback query
@@ -758,7 +759,7 @@ abstract class Api implements ApiInterface {
      * @param \CURLFile|string|InputFile|null $thumbnail Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
      *                                       server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
      *                                       width and height should not exceed 320. Ignored if the file is not uploaded using
-     *                                       multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
+     *                                       multipart/form-data. Thumbnails can't be reused and can only be uploaded as a new file, so you can
      *                                       pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
      *                                       <file_attach_name>. More information on Sending Files »
      * @param string|null $caption Document caption (may also be used when resending documents by file_id), 0-1024 characters after
@@ -829,9 +830,9 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be
+     * Use this method to send video files; Telegram clients support MPEG4 videos (other formats may be
      * sent as Document). On success, the sent Message is returned. Bots can currently send video files of
-     * up to 50 MB in size, this limit may be changed in the future.
+     * up to 50 MB in size; this limit may be changed in the future.
      *
      * @param int|string|null $chat_id Unique identifier for the target chat or username of the target bot, supergroup, or channel in the
      *                                       format @username; required unless the message is sent as an ephemeral reply to a callback query
@@ -849,7 +850,7 @@ abstract class Api implements ApiInterface {
      * @param \CURLFile|string|InputFile|null $thumbnail Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
      *                                       server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
      *                                       width and height should not exceed 320. Ignored if the file is not uploaded using
-     *                                       multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
+     *                                       multipart/form-data. Thumbnails can't be reused and can only be uploaded as a new file, so you can
      *                                       pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
      *                                       <file_attach_name>. More information on Sending Files »
      * @param \CURLFile|string|InputFile|null $cover Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram
@@ -942,7 +943,7 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success,
-     * the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this
+     * the sent Message is returned. Bots can currently send animation files of up to 50 MB in size; this
      * limit may be changed in the future.
      *
      * @param int|string|null $chat_id Unique identifier for the target chat or username of the target bot, supergroup, or channel in the
@@ -961,10 +962,10 @@ abstract class Api implements ApiInterface {
      * @param \CURLFile|string|InputFile|null $thumbnail Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
      *                                       server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
      *                                       width and height should not exceed 320. Ignored if the file is not uploaded using
-     *                                       multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
+     *                                       multipart/form-data. Thumbnails can't be reused and can only be uploaded as a new file, so you can
      *                                       pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
      *                                       <file_attach_name>. More information on Sending Files »
-     * @param string|null $caption Animation caption (may also be used when resending animation by file_id), 0-1024 characters after
+     * @param string|null $caption Animation caption (may also be used when resending animations by file_id), 0-1024 characters after
      *                                       entities parsing
      * @param string|null $parse_mode Mode for parsing entities in the animation caption. See formatting options for more details.
      * @param array|null $caption_entities A JSON-serialized list of special entities that appear in the caption, which can be specified
@@ -1044,7 +1045,7 @@ abstract class Api implements ApiInterface {
      * Use this method to send audio files, if you want Telegram clients to display the file as a playable
      * voice message. For this to work, your audio must be in an .OGG file encoded with OPUS, or in .MP3
      * format, or in .M4A format (other formats may be sent as Audio or Document). On success, the sent
-     * Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may
+     * Message is returned. Bots can currently send voice messages of up to 50 MB in size; this limit may
      * be changed in the future.
      *
      * @param int|string|null $chat_id Unique identifier for the target chat or username of the target bot, supergroup, or channel in the
@@ -1122,7 +1123,7 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to send a rounded square MPEG4 video of up to 1 minute long. On success, the sent
+     * Use this method to send a rounded square MPEG4 video up to 1 minute long. On success, the sent
      * Message is returned.
      *
      * @param int|string|null $chat_id Unique identifier for the target chat or username of the target bot, supergroup, or channel in the
@@ -1140,7 +1141,7 @@ abstract class Api implements ApiInterface {
      * @param \CURLFile|string|InputFile|null $thumbnail Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported
      *                                       server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
      *                                       width and height should not exceed 320. Ignored if the file is not uploaded using
-     *                                       multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can
+     *                                       multipart/form-data. Thumbnails can't be reused and can only be uploaded as a new file, so you can
      *                                       pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under
      *                                       <file_attach_name>. More information on Sending Files »
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
@@ -1285,7 +1286,7 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to send again a shared widget created by the bot. Currently, in the production
+     * Use this method to resend a shared widget created by the bot. Currently, in the production
      * environment, widgets can be sent only to private chats, and sent widgets automatically have
      * protected content and therefore can't be forwarded. On success, the sent Message is returned.
      *
@@ -1360,7 +1361,7 @@ abstract class Api implements ApiInterface {
      *                                       is sent to a direct messages chat
      * @param int $star_count The number of Telegram Stars that must be paid to buy access to the media; 1-25000
      * @param array $media A JSON-serialized Array describing the media to be sent; up to 10 items
-     * @param string|null $payload Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your
+     * @param string|null $payload Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user; use it for your
      *                                       internal processes.
      * @param string|null $caption Media caption, 0-1024 characters after entities parsing
      * @param string|null $parse_mode Mode for parsing entities in the media caption. See formatting options for more details.
@@ -1427,7 +1428,7 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to send a group of photos, live photos, videos, documents or audios as an album.
-     * Documents and audio files can be only grouped in an album with messages of the same type. On
+     * Documents and audio files can only be grouped in an album with messages of the same type. On
      * success, an Array of Message objects that were sent is returned.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup, or channel in the
@@ -1485,7 +1486,7 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to send point on the map. On success, the sent Message is returned.
+     * Use this method to send a point on the map. On success, the sent Message is returned.
      *
      * @param int|string|null $chat_id Unique identifier for the target chat or username of the target bot, supergroup, or channel in the
      *                                       format @username; required unless the message is sent as an ephemeral reply to a callback query
@@ -1736,8 +1737,8 @@ abstract class Api implements ApiInterface {
      * @param bool|null $is_anonymous True, if the poll needs to be anonymous, defaults to True
      * @param string|null $type Poll type, “quiz” or “regular”, defaults to “regular”
      * @param bool|null $allows_multiple_answers Pass True if the poll allows multiple answers, defaults to False
-     * @param bool|null $allows_revoting Pass True if the poll allows to change chosen answer options, defaults to False for quizzes and to
-     *                                       True for regular polls
+     * @param bool|null $allows_revoting Pass True if the poll allows changing the chosen answer options, defaults to False for quizzes and
+     *                                       to True for regular polls
      * @param bool|null $shuffle_options Pass True if the poll options must be shown in random order
      * @param bool|null $allow_adding_options Pass True if answer options can be added to the poll after creation; not supported for anonymous
      *                                       polls and quizzes
@@ -2190,8 +2191,8 @@ abstract class Api implements ApiInterface {
      * @param int|string $chat_id Unique identifier for the target group or username of the target supergroup or channel in the format
      *                                       @username
      * @param int $user_id Unique identifier of the target user
-     * @param int|null $until_date Date when the user will be unbanned; Unix time. If user is banned for more than 366 days or less
-     *                                       than 30 seconds from the current time they are considered to be banned forever. Applied for
+     * @param int|null $until_date Date when the user will be unbanned; Unix time. If the user is banned for more than 366 days or less
+     *                                       than 30 seconds from the current time, they are considered to be banned forever. Applied for
      *                                       supergroups and channels only.
      * @param bool|null $revoke_messages Pass True to delete all messages from the chat for the user that is being removed. If False, the
      *                                       user will be able to see messages in the group that were sent before the user was removed. Always
@@ -2260,8 +2261,8 @@ abstract class Api implements ApiInterface {
      *                                       can_add_web_page_previews permissions will imply the can_send_messages, can_send_audios,
      *                                       can_send_documents, can_send_photos, can_send_videos, can_send_video_notes, and can_send_voice_notes
      *                                       permissions; the can_send_polls permission will imply the can_send_messages permission.
-     * @param int|null $until_date Date when restrictions will be lifted for the user; Unix time. If user is restricted for more than
-     *                                       366 days or less than 30 seconds from the current time, they are considered to be restricted
+     * @param int|null $until_date Date when restrictions will be lifted for the user; Unix time. If the user is restricted for more
+     *                                       than 366 days or less than 30 seconds from the current time, they are considered to be restricted
      *                                       forever.
      * @return \stdClass
      *
@@ -2304,7 +2305,7 @@ abstract class Api implements ApiInterface {
      * @param bool|null $can_promote_members Pass True if the administrator can add new administrators with a subset of their own privileges or
      *                                       demote administrators that they have promoted, directly or indirectly (promoted by administrators
      *                                       that were appointed by him)
-     * @param bool|null $can_change_info Pass True if the administrator can change chat title, photo and other settings
+     * @param bool|null $can_change_info Pass True if the administrator can change the chat title, photo and other settings
      * @param bool|null $can_invite_users Pass True if the administrator can invite new users to the chat
      * @param bool|null $can_post_stories Pass True if the administrator can post stories to the chat
      * @param bool|null $can_edit_stories Pass True if the administrator can edit stories posted by other users, post stories to the chat
@@ -2480,7 +2481,7 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to set default chat permissions for all members. The bot must be an administrator in
      * the group or a supergroup for this to work and must have the can_restrict_members administrator
-     * rights. Returns True on success.
+     * right. Returns True on success.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param array $permissions A JSON-serialized object for new default chat permissions
@@ -2531,7 +2532,8 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to create an additional invite link for a chat. The bot must be an administrator in
      * the chat for this to work and must have the appropriate administrator rights. The link can be
-     * revoked using the method revokeChatInviteLink. Returns the new invite link as ChatInviteLink object.
+     * revoked using the method revokeChatInviteLink. Returns the new invite link as a ChatInviteLink
+     * object.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @param string|null $name Invite link name; 0-32 characters
@@ -2603,7 +2605,7 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to create a subscription invite link for a channel chat. The bot must have the
-     * can_invite_users administrator rights. The link can be edited using the method
+     * can_invite_users administrator right. The link can be edited using the method
      * editChatSubscriptionInviteLink or revoked using the method revokeChatInviteLink. Returns the new
      * invite link as a ChatInviteLink object.
      *
@@ -2637,7 +2639,7 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to edit a subscription invite link created by the bot. The bot must have the
-     * can_invite_users administrator rights. Returns the edited invite link as a ChatInviteLink object.
+     * can_invite_users administrator right. Returns the edited invite link as a ChatInviteLink object.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
      * @param string $invite_link The invite link to edit
@@ -2664,7 +2666,7 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new
      * link is automatically generated. The bot must be an administrator in the chat for this to work and
-     * must have the appropriate administrator rights. Returns the revoked invite link as ChatInviteLink
+     * must have the appropriate administrator rights. Returns the revoked invite link as a ChatInviteLink
      * object.
      *
      * @param int|string $chat_id Unique identifier of the target chat or username of the target channel in the format @username
@@ -3194,10 +3196,10 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to edit name and icon of a topic in a forum supergroup chat or a private chat with a
-     * user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work
-     * and must have the can_manage_topics administrator rights, unless it is the creator of the topic.
-     * Returns True on success.
+     * Use this method to edit the name and icon of a topic in a forum supergroup chat or a private chat
+     * with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this
+     * to work and must have the can_manage_topics administrator right, unless it is the creator of the
+     * topic. Returns True on success.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param int $message_thread_id Unique identifier for the target message thread of the forum topic
@@ -3229,7 +3231,7 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator
-     * in the chat for this to work and must have the can_manage_topics administrator rights, unless it is
+     * in the chat for this to work and must have the can_manage_topics administrator right, unless it is
      * the creator of the topic. Returns True on success.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
@@ -3253,7 +3255,7 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an
-     * administrator in the chat for this to work and must have the can_manage_topics administrator rights,
+     * administrator in the chat for this to work and must have the can_manage_topics administrator right,
      * unless it is the creator of the topic. Returns True on success.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
@@ -3278,7 +3280,7 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to delete a forum topic along with all its messages in a forum supergroup chat or a
      * private chat with a user. In the case of a supergroup chat the bot must be an administrator in the
-     * chat for this to work and must have the can_delete_messages administrator rights. Returns True on
+     * chat for this to work and must have the can_delete_messages administrator right. Returns True on
      * success.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
@@ -3328,7 +3330,7 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be
      * an administrator in the chat for this to work and must have the can_manage_topics administrator
-     * rights. Returns True on success.
+     * right. Returns True on success.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
      * @param string $name New topic name, 1-128 characters
@@ -3351,7 +3353,7 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an
-     * administrator in the chat for this to work and must have the can_manage_topics administrator rights.
+     * administrator in the chat for this to work and must have the can_manage_topics administrator right.
      * Returns True on success.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
@@ -3372,7 +3374,7 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an
-     * administrator in the chat for this to work and must have the can_manage_topics administrator rights.
+     * administrator in the chat for this to work and must have the can_manage_topics administrator right.
      * The topic will be automatically unhidden if it was hidden. Returns True on success.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
@@ -3393,7 +3395,7 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an
-     * administrator in the chat for this to work and must have the can_manage_topics administrator rights.
+     * administrator in the chat for this to work and must have the can_manage_topics administrator right.
      * The topic will be automatically closed if it was open. Returns True on success.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
@@ -3414,7 +3416,7 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an
-     * administrator in the chat for this to work and must have the can_manage_topics administrator rights.
+     * administrator in the chat for this to work and must have the can_manage_topics administrator right.
      * Returns True on success.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
@@ -3669,7 +3671,7 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Use this method to change settings of the bot. Settings that aren't specified remain unchanged.
+     * Use this method to change the settings of the bot. Settings that aren't specified remain unchanged.
      * Returns True on success.
      *
      * @param bool|null $supports_inline_queries Pass True to enable inline mode for the bot or False to disable it
@@ -4046,7 +4048,7 @@ abstract class Api implements ApiInterface {
      * Use this method to get the current default administrator rights of the bot. Returns
      * ChatAdministratorRights on success.
      *
-     * @param bool|null $for_channels Pass True to get default administrator rights of the bot in channels. Otherwise, default
+     * @param bool|null $for_channels Pass True to get the default administrator rights of the bot in channels. Otherwise, the default
      *                                       administrator rights of the bot for groups and supergroups will be returned.
      * @return \stdClass
      *
@@ -4248,8 +4250,8 @@ abstract class Api implements ApiInterface {
      * Removes verification from a chat that is currently verified on behalf of the organization
      * represented by the bot. Returns True on success.
      *
-     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot or channel in the format
-     *                                       @username
+     * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup, or channel in the
+     *                                       format @username
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#removechatverification
@@ -4266,7 +4268,7 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Marks incoming message as read on behalf of a business account. Requires the can_read_messages
+     * Marks an incoming message as read on behalf of a business account. Requires the can_read_messages
      * business bot right. Returns True on success.
      *
      * @param int $chat_id Unique identifier of the chat in which the message was received. The chat must have been active in
@@ -4293,7 +4295,7 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Delete messages on behalf of a business account. Requires the can_delete_sent_messages business bot
+     * Deletes messages on behalf of a business account. Requires the can_delete_sent_messages business bot
      * right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right
      * to delete any message. Returns True on success.
      *
@@ -4318,7 +4320,7 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Changes the first and last name of a managed business account. Requires the can_change_name business
+     * Changes the first and last name of a managed business account. Requires the can_edit_name business
      * bot right. Returns True on success.
      *
      * @param string $first_name The new value of the first name for the business account; 1-64 characters
@@ -4344,7 +4346,7 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Changes the username of a managed business account. Requires the can_change_username business bot
+     * Changes the username of a managed business account. Requires the can_edit_username business bot
      * right. Returns True on success.
      *
      * @param string|null $username The new value of the username for the business account; 0-32 characters
@@ -4367,8 +4369,8 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Changes the bio of a managed business account. Requires the can_change_bio business bot right.
-     * Returns True on success.
+     * Changes the bio of a managed business account. Requires the can_edit_bio business bot right. Returns
+     * True on success.
      *
      * @param string|null $bio The new value of the bio for the business account; 0-140 characters
      * @param string $business_connection_id Unique identifier of the business connection
@@ -4526,8 +4528,8 @@ abstract class Api implements ApiInterface {
      * @param bool|null $exclude_from_blockchain Pass True to exclude gifts that were assigned from the TON blockchain and can't be resold or
      *                                       transferred in Telegram
      * @param bool|null $sort_by_price Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
-     * @param string|null $offset Offset of the first entry to return as received from the previous request; use empty string to get
-     *                                       the first chunk of results
+     * @param string|null $offset Offset of the first entry to return as received from the previous request; use an empty string to
+     *                                       get the first chunk of results
      * @param int|null $limit The maximum number of gifts to be returned; 1-100. Defaults to 100.
      * @param string $business_connection_id Unique identifier of the business connection
      * @return \stdClass
@@ -4718,7 +4720,7 @@ abstract class Api implements ApiInterface {
      * @param string $owned_gift_id Unique identifier of the regular gift that should be upgraded to a unique one
      * @param bool|null $keep_original_details Pass True to keep the original gift text, sender and receiver in the upgraded gift
      * @param int|null $star_count The amount of Telegram Stars that will be paid for the upgrade from the business account balance. If
-     *                                       gift.prepaid_upgrade_star_count > 0, then pass 0, otherwise, the can_transfer_stars business bot
+     *                                       gift.prepaid_upgrade_star_count > 0, then pass 0; otherwise, the can_transfer_stars business bot
      *                                       right is required and gift.upgrade_star_count must be passed.
      * @param string $business_connection_id Unique identifier of the business connection
      * @return \stdClass
@@ -4744,11 +4746,12 @@ abstract class Api implements ApiInterface {
 
     /**
      * Transfers an owned unique gift to another user. Requires the can_transfer_and_upgrade_gifts business
-     * bot right. Requires can_transfer_stars business bot right if the transfer is paid. Returns True on
-     * success.
+     * bot right. Requires the can_transfer_stars business bot right if the transfer is paid. Returns True
+     * on success.
      *
-     * @param string $owned_gift_id Unique identifier of the regular gift that should be transferred
-     * @param int $new_owner_chat_id Unique identifier of the chat which will own the gift. The chat must be active in the last 24 hours.
+     * @param string $owned_gift_id Unique identifier of the unique gift that should be transferred
+     * @param int $new_owner_chat_id Unique identifier of the chat which will own the gift. The chat must have been active in the last 24
+     *                                       hours.
      * @param int|null $star_count The amount of Telegram Stars that will be paid for the transfer from the business account balance.
      *                                       If positive, then the can_transfer_stars business bot right is required.
      * @param string $business_connection_id Unique identifier of the business connection
@@ -5027,7 +5030,7 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to edit text, rich and game messages. On success, if the edited message is not an
-     * inline message, the edited Message is returned, otherwise True is returned. Note that business
+     * inline message, the edited Message is returned; otherwise, True is returned. Note that business
      * messages that were not sent by the bot and do not contain an inline keyboard can only be edited
      * within 48 hours from the time they were sent.
      *
@@ -5042,7 +5045,7 @@ abstract class Api implements ApiInterface {
      *                                       instead of parse_mode
      * @param array|null $link_preview_options Link preview generation options for the message
      * @param array|null $rich_message New rich content of the message; required if text isn't specified. Direct upload of new files and
-     *                                       explicit upload of files by a URL isn't supported when an inline message is edited.
+     *                                       explicit upload of files by a URL aren't supported when an inline message is edited.
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
@@ -5079,7 +5082,7 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to edit captions of messages. On success, if the edited message is not an inline
-     * message, the edited Message is returned, otherwise True is returned. Note that business messages
+     * message, the edited Message is returned; otherwise, True is returned. Note that business messages
      * that were not sent by the bot and do not contain an inline keyboard can only be edited within 48
      * hours from the time they were sent.
      *
@@ -5091,8 +5094,8 @@ abstract class Api implements ApiInterface {
      * @param string|null $parse_mode Mode for parsing entities in the message caption. See formatting options for more details.
      * @param array|null $caption_entities A JSON-serialized list of special entities that appear in the caption, which can be specified
      *                                       instead of parse_mode
-     * @param bool|null $show_caption_above_media Pass True if the caption must be shown above the message media. Supported only for animation, photo
-     *                                       and video messages.
+     * @param bool|null $show_caption_above_media Pass True if the caption must be shown above the message media. Supported only for animation, live
+     *                                       photo, paid media, photo, video and widget messages.
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
@@ -5127,11 +5130,11 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to edit animation, audio, document, live photo, photo, or video messages, or to
-     * replace a text or a rich message with a media. If a message is part of a message album, then it can
-     * be edited only to an audio for audio albums, only to a document for document albums and to a photo,
-     * a live photo, or a video otherwise. When an inline message is edited, a new file can't be uploaded;
+     * replace a text or a rich message with media. If a message is part of a message album, then it can be
+     * edited only to an audio for audio albums, only to a document for document albums and to a photo, a
+     * live photo, or a video otherwise. When an inline message is edited, a new file can't be uploaded;
      * use a previously uploaded file via its file_id or specify a URL. On success, if the edited message
-     * is not an inline message, the edited Message is returned, otherwise True is returned. Note that
+     * is not an inline message, the edited Message is returned; otherwise, True is returned. Note that
      * business messages that were not sent by the bot and do not contain an inline keyboard can only be
      * edited within 48 hours from the time they were sent.
      *
@@ -5177,7 +5180,8 @@ abstract class Api implements ApiInterface {
     /**
      * Use this method to edit live location messages. A location can be edited until its live_period
      * expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the
-     * edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+     * edited message is not an inline message, the edited Message is returned; otherwise, True is
+     * returned.
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
      *                                       the target bot, supergroup, or channel in the format @username.
@@ -5232,7 +5236,7 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to stop updating a live location message before live_period expires. On success, if
-     * the message is not an inline message, the edited Message is returned, otherwise True is returned.
+     * the message is not an inline message, the edited Message is returned; otherwise, True is returned.
      *
      * @param int|string|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of
      *                                       the target bot, supergroup, or channel in the format @username.
@@ -5271,7 +5275,7 @@ abstract class Api implements ApiInterface {
      * @param int $message_id Unique identifier for the target message
      * @param array $checklist A JSON-serialized object for the new checklist
      * @param array|null $reply_markup A JSON-serialized object for the new inline keyboard for the message
-     * @param string $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
+     * @param string $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
      * @return \stdClass
      *
      * @see https://core.telegram.org/bots/api#editmessagechecklist
@@ -5359,7 +5363,7 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to edit only the reply markup of messages. On success, if the edited message is not
-     * an inline message, the edited Message is returned, otherwise True is returned. Note that business
+     * an inline message, the edited Message is returned; otherwise, True is returned. Note that business
      * messages that were not sent by the bot and do not contain an inline keyboard can only be edited
      * within 48 hours from the time they were sent.
      *
@@ -5512,8 +5516,8 @@ abstract class Api implements ApiInterface {
      * @param string|null $parse_mode Mode for parsing entities in the message caption. See formatting options for more details.
      * @param array|null $caption_entities A JSON-serialized list of special entities that appear in the caption, which can be specified
      *                                       instead of parse_mode
-     * @param bool|null $show_caption_above_media Pass True if the caption must be shown above the message media. Supported only for animation, photo
-     *                                       and video messages.
+     * @param bool|null $show_caption_above_media Pass True if the caption must be shown above the message media. Supported only for animation, live
+     *                                       photo, photo and video messages.
      * @param array|null $reply_markup A JSON-serialized object for an inline keyboard
      * @return \stdClass
      *
@@ -5581,7 +5585,7 @@ abstract class Api implements ApiInterface {
      * @param int $chat_id Unique identifier for the target direct messages chat
      * @param int $message_id Identifier of a suggested post message to approve
      * @param int|null $send_date Point in time (Unix timestamp) when the post is expected to be published; omit if the date has
-     *                                       already been specified when the suggested post was created. If specified, then the date must be not
+     *                                       already been specified when the suggested post was created. If specified, then the date must not be
      *                                       more than 2678400 seconds (30 days) in the future.
      * @return \stdClass
      *
@@ -5636,9 +5640,9 @@ abstract class Api implements ApiInterface {
      * only be deleted if it was sent more than 24 hours ago.- Bots can delete outgoing messages in private
      * chats, groups, and supergroups.- Bots can delete incoming messages in private chats.- Bots granted
      * can_post_messages permissions can delete outgoing messages in channels.- If the bot is an
-     * administrator of a group, it can delete any message there.- If the bot has can_delete_messages
+     * administrator of a group, it can delete any message there.- If the bot has the can_delete_messages
      * administrator right in a supergroup or a channel, it can delete any message there.- If the bot has
-     * can_manage_direct_messages administrator right in a channel, it can delete any message in the
+     * the can_manage_direct_messages administrator right in a channel, it can delete any message in the
      * corresponding direct messages chat.Returns True on success.
      *
      * @param int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup, or channel in the
@@ -6074,7 +6078,7 @@ abstract class Api implements ApiInterface {
      * must belong to a sticker set created by the bot. Returns True on success.
      *
      * @param string $sticker File identifier of the sticker
-     * @param array|null $keywords A JSON-serialized list of 0-20 search keywords for the sticker with total length of up to 64
+     * @param array|null $keywords A JSON-serialized list of 0-20 search keywords for the sticker with a total length of up to 64
      *                                       characters
      * @return \stdClass
      *
@@ -6243,8 +6247,8 @@ abstract class Api implements ApiInterface {
      * @param array|null $reply_parameters Description of the message to reply to
      * @param array|null $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply
      *                                       keyboard, instructions to remove a reply keyboard or to force a reply from the user.
-     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent. Bot can
-     *                                       send rich messages on behalf of a business account only if the corresponding user can send rich
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent. The bot
+     *                                       can send rich messages on behalf of a business account only if the corresponding user can send rich
      *                                       messages.
      * @return \stdClass
      *
@@ -6296,7 +6300,7 @@ abstract class Api implements ApiInterface {
      * @param int $draft_id Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier
      *                                       are animated. Otherwise, the draft is replaced without animation.
      * @param array $rich_message The partial message to be streamed. Direct upload of new files and explicit upload of files by a URL
-     *                                       isn't supported.
+     *                                       aren't supported.
      * @param bool|null $can_stop Pass True to show the user a button to stop further drafts. The bot will receive an Update
      *                                       “stopped_message_generation” if the user presses the button.
      * @param bool|null $keep_on_stop Pass True to keep the draft in the chat when the button is pressed. The draft will still disappear
@@ -6377,7 +6381,7 @@ abstract class Api implements ApiInterface {
      *                                       is sent to a direct messages chat
      * @param string $title Product name, 1-32 characters
      * @param string $description Product description, 1-255 characters
-     * @param string $payload Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your
+     * @param string $payload Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user; use it for your
      *                                       internal processes.
      * @param string|null $provider_token Payment provider token, obtained via @BotFather. Pass an empty string for payments in Telegram
      *                                       Stars.
@@ -6387,17 +6391,17 @@ abstract class Api implements ApiInterface {
      *                                       cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in Telegram Stars.
      * @param int|null $max_tip_amount The maximum accepted amount for tips in the smallest units of the currency (integer, not
      *                                       float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp
-     *                                       parameter in currencies.json, it shows the number of digits past the decimal point for each currency
+     *                                       parameter in currencies.json; it shows the number of digits past the decimal point for each currency
      *                                       (2 for the majority of currencies). Defaults to 0. Not supported for payments in Telegram Stars.
      * @param array|null $suggested_tip_amounts A JSON-serialized Array of suggested amounts of tips in the smallest units of the currency (integer,
      *                                       not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must
-     *                                       be positive, passed in a strictly increased order and must not exceed max_tip_amount.
+     *                                       be positive, passed in a strictly increasing order and must not exceed max_tip_amount.
      * @param string|null $start_parameter Unique deep-linking parameter. If left empty, forwarded copies of the sent message will have a Pay
      *                                       button, allowing multiple users to pay directly from the forwarded message, using the same invoice.
      *                                       If non-empty, forwarded copies of the sent message will have a URL button with a deep link to the
      *                                       bot (instead of a Pay button), with the value used as the start parameter.
      * @param string|null $provider_data JSON-serialized data about the invoice, which will be shared with the payment provider. A detailed
-     *                                       description of required fields should be provided by the payment provider.
+     *                                       description of the required fields should be provided by the payment provider.
      * @param string|null $photo_url URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a
      *                                       service. People like it better when they see what they are paying for.
      * @param int|null $photo_size Photo size in bytes
@@ -6508,7 +6512,7 @@ abstract class Api implements ApiInterface {
      *
      * @param string $title Product name, 1-32 characters
      * @param string $description Product description, 1-255 characters
-     * @param string $payload Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your
+     * @param string $payload Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user; use it for your
      *                                       internal processes.
      * @param string|null $provider_token Payment provider token, obtained via @BotFather. Pass an empty string for payments in Telegram
      *                                       Stars.
@@ -6519,17 +6523,17 @@ abstract class Api implements ApiInterface {
      * @param int|null $subscription_period The number of seconds the subscription will be active for before the next payment. The currency must
      *                                       be set to “XTR” (Telegram Stars) if the parameter is used. Currently, it must always be 2592000
      *                                       (30 days) if specified. Any number of subscriptions can be active for a given bot at the same time,
-     *                                       including multiple concurrent subscriptions from the same user. Subscription price must no exceed
+     *                                       including multiple concurrent subscriptions from the same user. Subscription price must not exceed
      *                                       10000 Telegram Stars.
      * @param int|null $max_tip_amount The maximum accepted amount for tips in the smallest units of the currency (integer, not
      *                                       float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp
-     *                                       parameter in currencies.json, it shows the number of digits past the decimal point for each currency
+     *                                       parameter in currencies.json; it shows the number of digits past the decimal point for each currency
      *                                       (2 for the majority of currencies). Defaults to 0. Not supported for payments in Telegram Stars.
      * @param array|null $suggested_tip_amounts A JSON-serialized Array of suggested amounts of tips in the smallest units of the currency (integer,
      *                                       not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must
-     *                                       be positive, passed in a strictly increased order and must not exceed max_tip_amount.
+     *                                       be positive, passed in a strictly increasing order and must not exceed max_tip_amount.
      * @param string|null $provider_data JSON-serialized data about the invoice, which will be shared with the payment provider. A detailed
-     *                                       description of required fields should be provided by the payment provider.
+     *                                       description of the required fields should be provided by the payment provider.
      * @param string|null $photo_url URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a
      *                                       service.
      * @param int|null $photo_size Photo size in bytes
@@ -6616,7 +6620,7 @@ abstract class Api implements ApiInterface {
      * @param bool $ok Pass True if delivery to the specified address is possible and False if there are any problems (for
      *                                       example, if delivery to the specified address is not possible)
      * @param array|null $shipping_options Required if ok is True. A JSON-serialized Array of available shipping options.
-     * @param string|null $error_message Required if ok is False. Error message in human readable form that explains why it is impossible to
+     * @param string|null $error_message Required if ok is False. Error message in human-readable form that explains why it is impossible to
      *                                       complete the order (e.g. “Sorry, delivery to your desired address is unavailable”). Telegram
      *                                       will display this message to the user.
      * @return \stdClass
@@ -6649,7 +6653,7 @@ abstract class Api implements ApiInterface {
      * @param string $pre_checkout_query_id Unique identifier for the query to be answered
      * @param bool $ok Specify True if everything is alright (goods are available, etc.) and the bot is ready to proceed
      *                                       with the order. Use False if there are any problems.
-     * @param string|null $error_message Required if ok is False. Error message in human readable form that explains the reason for failure
+     * @param string|null $error_message Required if ok is False. Error message in human-readable form that explains the reason for failure
      *                                       to proceed with the checkout (e.g. "Sorry, somebody just bought the last of our amazing black
      *                                       T-shirts while you were busy filling out your payment details. Please choose a different color or
      *                                       garment!"). Telegram will display this message to the user.
@@ -6758,7 +6762,7 @@ abstract class Api implements ApiInterface {
     }
 
     /**
-     * Informs a user that some of the Telegram Passport elements they provided contains errors. The user
+     * Informs a user that some of the Telegram Passport elements they provided contain errors. The user
      * will not be able to re-submit their Passport to you until the errors are fixed (the contents of the
      * field for which you returned the error must change). Returns True on success.
      * Use this if the data submitted by the user doesn't satisfy the standards your service requires for
@@ -6838,7 +6842,7 @@ abstract class Api implements ApiInterface {
 
     /**
      * Use this method to set the score of the specified user in a game message. On success, if the message
-     * is not an inline message, the Message is returned, otherwise True is returned. Returns an error, if
+     * is not an inline message, the Message is returned; otherwise, True is returned. Returns an error if
      * the new score is not greater than the user's current score in the chat and force is False.
      *
      * @param int $user_id User identifier
